@@ -1,0 +1,10 @@
+{
+  "networks": [
+    "American Express",
+    "BCMC",
+    "GOOGLEPAY",
+    "Maestro",
+    "PAYPAL",
+    "VISA"
+  ]
+}

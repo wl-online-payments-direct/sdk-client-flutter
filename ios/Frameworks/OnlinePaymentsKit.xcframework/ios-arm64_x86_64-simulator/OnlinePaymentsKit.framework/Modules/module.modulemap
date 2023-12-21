@@ -1,0 +1,4 @@
+framework module OnlinePaymentsKit {
+  header "OnlinePaymentsKit-Swift.h"
+  requires objc
+}

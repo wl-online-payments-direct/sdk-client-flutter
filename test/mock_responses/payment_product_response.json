@@ -1,0 +1,177 @@
+{
+  "accountsOnFile": [ {
+    "attributes" : [ {
+      "key" : "cardholderName",
+      "value" : "Wile E. Coyote",
+      "status" : "READ_ONLY"
+    }, {
+      "key" : "cardNumber",
+      "value" : "************1111",
+      "status" : "READ_ONLY"
+    }, {
+      "key" : "cvv",
+      "value" : "111",
+      "status" : "CAN_WRITE"
+    }, {
+      "key" : "expiryDate",
+      "value" : "0120",
+      "status" : "CAN_WRITE"
+    } ],
+    "displayHints" : {
+      "labelTemplate" : [ {
+        "attributeKey" : "alias",
+        "mask" : "{{9999}} {{9999}} {{9999}} {{9999}} {{999}}"
+      } ],
+      "logo" : "aof_logo"
+    },
+    "id" : "0",
+    "paymentProductId" : "3"
+  } ],
+  "allowsRecurring": true,
+  "allowsTokenization": true,
+  "displayHints": {
+    "displayOrder": 0,
+    "label": "MasterCard",
+    "logo": "MasterCard_logo"
+  },
+  "displayHintsList": [
+    {
+      "displayOrder": 0,
+      "label": "MasterCard",
+      "logo": "MasterCard_logo"
+    }
+  ],
+  "fields": [
+    {
+      "dataRestrictions": {
+        "isRequired": true,
+        "validationRules": [ {
+          "validationType": "LENGTH",
+          "messageId": "length",
+          "maxLength": 19,
+          "minLength": 13
+        }, {
+          "validationType": "LUHN",
+          "messageId": "luhn"
+        }, {
+          "validationType": "REGULAREXPRESSION",
+          "messageId": "regularExpression",
+          "regex": "^[0-9]*$"
+        } ]
+      },
+      "displayHints": {
+        "alwaysShow": false,
+        "displayOrder": 0,
+        "formElement": {
+          "type": "text"
+        },
+        "label": "Card number",
+        "mask": "{{9999}} {{9999}} {{9999}} {{9999}} {{999}}",
+        "obfuscate": false,
+        "placeholderLabel": "",
+        "preferredInputType": "StringKeyboard",
+        "tooltip": {
+          "label": ""
+        }
+      },
+      "id": "cardNumber",
+      "type": "numericstring"
+    },
+    {
+      "dataRestrictions": {
+        "isRequired": true,
+        "validationRules": [ {
+          "validationType": "LENGTH",
+          "messageId": "length",
+          "maxLength": 50,
+          "minLength": 2
+        }, {
+          "validationType": "REGULAREXPRESSION",
+          "messageId": "regularExpression",
+          "regex": "^[a-zA-ZàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßẞŠšŽžŸÿčęĘ0-9 +_.=,:\\-\\[\\]\\/\\(\\)']*$"
+        } ]
+      },
+      "displayHints": {
+        "alwaysShow": false,
+        "displayOrder": 1,
+        "formElement": {
+          "type": "text"
+        },
+        "label": "Cardholder's name",
+        "obfuscate": false,
+        "placeholderLabel": "",
+        "preferredInputType": "StringKeyboard",
+        "tooltip": {
+          "label": ""
+        }
+      },
+      "id": "cardholderName",
+      "type": "string"
+    },
+    {
+      "dataRestrictions": {
+        "isRequired": true,
+        "validationRules": [ {
+          "validationType": "EXPIRATIONDATE",
+          "messageId": "expirationDate"
+        }, {
+          "validationType": "REGULAREXPRESSION",
+          "messageId": "regularExpression",
+          "regex": "^(0[1-9]|1[0-2])\\d\\d$"
+        } ]
+      },
+      "displayHints": {
+        "alwaysShow": false,
+        "displayOrder": 2,
+        "formElement": {
+          "type": "list"
+        },
+        "label": "Expiry date",
+        "obfuscate": false,
+        "placeholderLabel": "",
+        "preferredInputType": "StringKeyboard",
+        "tooltip": {
+          "label": ""
+        }
+      },
+      "id": "expiryDate",
+      "type": "expirydate"
+    },
+    {
+      "dataRestrictions": {
+        "isRequired": true,
+        "validationRules": [ {
+          "validationType": "LENGTH",
+          "messageId": "length",
+          "maxLength": 3,
+          "minLength": 3
+        }, {
+          "validationType": "REGULAREXPRESSION",
+          "messageId": "regularExpression",
+          "regex": "^[0-9]*$"
+        } ]
+      },
+      "displayHints": {
+        "alwaysShow": false,
+        "displayOrder": 4,
+        "formElement": {
+          "type": "text"
+        },
+        "label": "Card verification code",
+        "mask": "{{9999}}",
+        "obfuscate": false,
+        "placeholderLabel": "",
+        "preferredInputType": "StringKeyboard",
+        "tooltip": {
+          "label": "Last 3 digits on the back of the card"
+        }
+      },
+      "id": "cvv",
+      "type": "numericstring"
+    }
+  ],
+  "id": "3",
+  "paymentMethod": "card",
+  "paymentProductGroup": "Cards",
+  "usesRedirectionTo3rdParty": false
+}

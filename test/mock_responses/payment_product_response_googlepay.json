@@ -1,0 +1,72 @@
+{
+  "allowsRecurring": false,
+  "allowsTokenization": false,
+  "displayHints": {
+    "displayOrder": 0,
+    "label": "GOOGLEPAY",
+    "logo": "GOOGLEPAY_logo"
+  },
+  "displayHintsList": [
+    {
+      "displayOrder": 0,
+      "label": "GOOGLEPAY",
+      "logo": "GOOGLEPAY_logo"
+    }
+  ],
+  "fields": [
+    {
+      "dataRestrictions": {
+        "isRequired": true,
+        "validationRules": []
+      },
+      "displayHints": {
+        "alwaysShow": false,
+        "displayOrder": 0,
+        "formElement": {
+          "type": "text"
+        },
+        "label": "",
+        "obfuscate": false,
+        "placeholderLabel": "",
+        "preferredInputType": "StringKeyboard",
+        "tooltip": {
+          "label": ""
+        }
+      },
+      "id": "encryptedPaymentData",
+      "type": "string"
+    },
+    {
+      "dataRestrictions": {
+        "isRequired": false,
+        "validationRules": []
+      },
+      "displayHints": {
+        "alwaysShow": false,
+        "displayOrder": 1,
+        "formElement": {
+          "type": "text"
+        },
+        "label": "",
+        "obfuscate": false,
+        "placeholderLabel": "",
+        "preferredInputType": "StringKeyboard",
+        "tooltip": {
+          "label": ""
+        }
+      },
+      "id": "HostedPagePaymentData",
+      "type": "string"
+    }
+  ],
+  "id": "320",
+  "paymentMethod": "mobile",
+  "usesRedirectionTo3rdParty": false,
+  "paymentProduct320SpecificData": {
+    "networks": [
+      "VISA",
+      "MASTERCARD"
+    ],
+    "gateway": "onlinepaymentsgateway"
+  }
+}
