@@ -972,6 +972,7 @@ SWIFT_CLASS_NAMED("PaymentRequest")
 - (NSString * _Nullable)maskedValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)unmaskedValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)fieldIsPartOfAccountOnFile:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)fieldIsPartOfAccountOnFileAndNotModified:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)fieldIsReadOnly:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)maskForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<OPValidationError *> * _Nonnull)validate SWIFT_WARN_UNUSED_RESULT;
@@ -2422,6 +2423,7 @@ SWIFT_CLASS_NAMED("PaymentRequest")
 - (NSString * _Nullable)maskedValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)unmaskedValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)fieldIsPartOfAccountOnFile:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)fieldIsPartOfAccountOnFileAndNotModified:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)fieldIsReadOnly:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nullable)maskForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<OPValidationError *> * _Nonnull)validate SWIFT_WARN_UNUSED_RESULT;
