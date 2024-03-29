@@ -17,14 +17,16 @@ part 'validation_rule_range.g.dart';
 /// Used for validation of the range of an input.
 @JsonSerializable()
 class ValidationRuleRange extends ValidationRule {
-  @JsonKey(required:true)
+  @JsonKey(required: true)
   final int minValue;
-  @JsonKey(required:true)
+  @JsonKey(required: true)
   final int maxValue;
 
-  ValidationRuleRange(ValidationType validationType, String messageId, this.minValue, this.maxValue) : super(validationType, messageId);
+  ValidationRuleRange(
+      super.validationType, super.messageId, this.minValue, this.maxValue);
 
-  factory ValidationRuleRange.fromJson(Map<String, dynamic> json) => _$ValidationRuleRangeFromJson(json);
+  factory ValidationRuleRange.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleRangeFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ValidationRuleRangeToJson(this);

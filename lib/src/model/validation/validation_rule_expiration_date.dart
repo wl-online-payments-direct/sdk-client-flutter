@@ -17,9 +17,10 @@ part 'validation_rule_expiration_date.g.dart';
 /// Used for validation of an expiration date.
 @JsonSerializable()
 class ValidationRuleExpirationDate extends ValidationRule {
-  ValidationRuleExpirationDate(ValidationType validationType, String messageId) : super(validationType, messageId);
+  ValidationRuleExpirationDate(super.validationType, super.messageId);
 
-  factory ValidationRuleExpirationDate.fromJson(Map<String, dynamic> json) => _$ValidationRuleExpirationDateFromJson(json);
+  factory ValidationRuleExpirationDate.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleExpirationDateFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ValidationRuleExpirationDateToJson(this);

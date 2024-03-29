@@ -15,16 +15,15 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'basic_payment_products_request.g.dart';
 
 /// Request used to retrieve [BasicPaymentProducts] from the API.
-@JsonSerializable(
-    explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class BasicPaymentProductsRequest {
   @JsonKey(required: true)
   final PaymentContext paymentContext;
 
   BasicPaymentProductsRequest({required this.paymentContext});
 
-  factory BasicPaymentProductsRequest.fromJson(Map<String, dynamic> json) => _$BasicPaymentProductsRequestFromJson(json);
+  factory BasicPaymentProductsRequest.fromJson(Map<String, dynamic> json) =>
+      _$BasicPaymentProductsRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$BasicPaymentProductsRequestToJson(this);
 }

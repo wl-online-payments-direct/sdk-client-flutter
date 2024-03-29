@@ -9,10 +9,9 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of session;
+part of '../session.dart';
 
 class _NativeFuture<T> {
-
   final Future<String> _job;
   final T Function(Object?) _fromJson;
   final _NativeFutureInterface<T> _listener;
@@ -26,14 +25,23 @@ class _NativeFuture<T> {
       switch (resultStatus) {
         case SdkResultStatus.success:
           final data = result.data;
-          data == null ? _listener.onException(Throwable("No data available for successful call", throwable: null)) : _listener.onSuccess(data);
+          data == null
+              ? _listener.onException(NativeException.fromThrowable(Throwable(
+                  "No data available for successful call",
+                  throwable: null)))
+              : _listener.onSuccess(data);
         case SdkResultStatus.apiError:
           _listener.onApiError(result.error);
         case SdkResultStatus.exception:
-          _listener.onException((result.error?.throwable));
+          _listener.onException(NativeException.fromThrowable(
+              result.throwable ??
+                  Throwable("Exception status without throwable",
+                      throwable: null)));
       }
     }).onError((error, stackTrace) {
-      _listener.onException(Throwable(error.toString(), throwable: Throwable(stackTrace.toString(), throwable: null)));
+      _listener.onException(NativeException.fromThrowable(Throwable(
+          error.toString(),
+          throwable: Throwable(stackTrace.toString(), throwable: null))));
     });
   }
 

@@ -9,7 +9,7 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of session;
+part of '../../session.dart';
 
 /// An implementation of [_NativeSdkInterface] that uses method channels.
 class _NativeApiMethodChannel extends _NativeSdkInterface {
@@ -24,57 +24,62 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
 
   @override
   Future<bool> createSession(String createSessionRequest) async {
-    final result = await _methodChannel.invokeMethod('createSession', {
-      "request" : createSessionRequest
-    });
+    final result = await _methodChannel
+        .invokeMethod('createSession', {"request": createSessionRequest});
     return result;
   }
 
   @override
   Future<String> getIinDetails(String iinDetailsRequest) async {
-    final result = await _methodChannel.invokeMethod('getIinDetails', {
-          "request" : iinDetailsRequest
-        });
+    final result = await _methodChannel
+        .invokeMethod('getIinDetails', {"request": iinDetailsRequest});
     return result;
   }
 
   @override
-  Future<String> getBasicPaymentProducts(String basicPaymentProductRequest) async {
-    final result = await _methodChannel.invokeMethod('getBasicPaymentProducts', {
-      "request" : basicPaymentProductRequest
-    });
+  Future<String> getBasicPaymentProducts(
+      String basicPaymentProductRequest) async {
+    final result = await _methodChannel.invokeMethod(
+        'getBasicPaymentProducts', {"request": basicPaymentProductRequest});
     return result;
   }
 
   @override
   Future<String> getPaymentProduct(String paymentProductRequest) async {
-    final result = await _methodChannel.invokeMethod('getPaymentProduct', {
-      "request" : paymentProductRequest
-    });
+    final result = await _methodChannel
+        .invokeMethod('getPaymentProduct', {"request": paymentProductRequest});
     return result;
   }
 
   @override
-  Future<String> getPaymentProductNetworks(String paymentProductNetworksRequest) async {
-    final result = await _methodChannel.invokeMethod('getPaymentProductNetworks', {
-      "request" : paymentProductNetworksRequest
-    });
+  Future<String> getPaymentProductNetworks(
+      String paymentProductNetworksRequest) async {
+    final result = await _methodChannel.invokeMethod(
+        'getPaymentProductNetworks',
+        {"request": paymentProductNetworksRequest});
     return result;
   }
 
   @override
-  Future<String> getSurchargeCalculation(String surchargeCalculationRequest) async {
-    final result = await _methodChannel.invokeMethod('getSurchargeCalculation', {
-      "request" : surchargeCalculationRequest
-    });
+  Future<String> getCurrencyConversionQuote(
+      String currencyConversionRequest) async {
+    final result = await _methodChannel.invokeMethod(
+        'getCurrencyConversionQuote', {"request": currencyConversionRequest});
+    return result;
+  }
+
+  @override
+  Future<String> getSurchargeCalculation(
+      String surchargeCalculationRequest) async {
+    final result = await _methodChannel.invokeMethod(
+        'getSurchargeCalculation', {"request": surchargeCalculationRequest});
     return result;
   }
 
   @override
   Future<String> preparePaymentRequest(String paymentRequest) async {
-    final result = await _methodChannel.invokeMethod('preparePaymentRequest', {
-      "request" : paymentRequest
-    });
+    final result = await _methodChannel
+        .invokeMethod('preparePaymentRequest', {"request": paymentRequest});
     return result;
   }
 }

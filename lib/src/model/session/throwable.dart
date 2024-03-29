@@ -16,7 +16,6 @@ part 'throwable.g.dart';
 /// Object that contains more information if an API call failed due to a non-API related error.
 @JsonSerializable(explicitToJson: true)
 class Throwable {
-
   @JsonKey(required: false, defaultValue: null)
   String? message;
 
@@ -25,7 +24,8 @@ class Throwable {
 
   Throwable(this.message, {required this.throwable});
 
-  factory Throwable.fromJson(Map<String, dynamic> json) => _$ThrowableFromJson(json);
+  factory Throwable.fromJson(Map<String, dynamic> json) =>
+      _$ThrowableFromJson(json);
 
   Map<String, dynamic> toJson() => _$ThrowableToJson(this);
 }

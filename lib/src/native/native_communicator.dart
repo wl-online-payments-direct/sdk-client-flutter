@@ -9,21 +9,23 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of session;
+part of '../session.dart';
 
 final class _NativeCommunicator {
   Future<bool> createSession(String request) {
     return _NativeSdkInterface.instance.createSession(request);
   }
 
-  _NativeFuture<PublicKey> listenForPublicKey(PublicKeyResponseListener listener) {
+  _NativeFuture<PublicKey> listenForPublicKey(
+      PublicKeyResponseListener listener) {
     return _NativeFuture(
         _NativeSdkInterface.instance.getPublicKey(),
         (data) => PublicKey.fromJson(data as Map<String, dynamic>),
         _NativeFutureInterface.fromListener(listener));
   }
 
-  _NativeFuture<IinDetailsResponse> listenForIinDetails(IinDetailsRequest request, IinLookupResponseListener listener) {
+  _NativeFuture<IinDetailsResponse> listenForIinDetails(
+      IinDetailsRequest request, IinLookupResponseListener listener) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getIinDetails(requestStr),
@@ -31,7 +33,9 @@ final class _NativeCommunicator {
         _NativeFutureInterface<IinDetailsResponse>.fromListener(listener));
   }
 
-  _NativeFuture<BasicPaymentProducts> listenForBasicPaymentProducts(BasicPaymentProductsRequest request, BasicPaymentProductsResponseListener listener) {
+  _NativeFuture<BasicPaymentProducts> listenForBasicPaymentProducts(
+      BasicPaymentProductsRequest request,
+      BasicPaymentProductsResponseListener listener) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getBasicPaymentProducts(requestStr),
@@ -39,7 +43,8 @@ final class _NativeCommunicator {
         _NativeFutureInterface.fromListener(listener));
   }
 
-  _NativeFuture<PaymentProduct> listenForPaymentProduct(PaymentProductRequest request, PaymentProductResponseListener listener) {
+  _NativeFuture<PaymentProduct> listenForPaymentProduct(
+      PaymentProductRequest request, PaymentProductResponseListener listener) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getPaymentProduct(requestStr),
@@ -47,7 +52,9 @@ final class _NativeCommunicator {
         _NativeFutureInterface.fromListener(listener));
   }
 
-  _NativeFuture<PaymentProductNetworks> listenForPaymentProductNetworks(PaymentProductNetworksRequest request, PaymentProductNetworksResponseListener listener) {
+  _NativeFuture<PaymentProductNetworks> listenForPaymentProductNetworks(
+      PaymentProductNetworksRequest request,
+      PaymentProductNetworksResponseListener listener) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getPaymentProductNetworks(requestStr),
@@ -55,7 +62,19 @@ final class _NativeCommunicator {
         _NativeFutureInterface.fromListener(listener));
   }
 
-  _NativeFuture<SurchargeCalculation> listenForSurchargeCalculation(SurchargeCalculationRequest request, SurchargeCalculationResponseListener listener) {
+  _NativeFuture<CurrencyConversion> listenForCurrencyConversionQuote(
+      CurrencyConversionRequest request,
+      CurrencyConversionResponseListener listener) {
+    final requestStr = jsonEncode(request);
+    return _NativeFuture(
+        _NativeSdkInterface.instance.getCurrencyConversionQuote(requestStr),
+            (data) => CurrencyConversion.fromJson(data as Map<String, dynamic>),
+        _NativeFutureInterface.fromListener(listener));
+  }
+
+  _NativeFuture<SurchargeCalculation> listenForSurchargeCalculation(
+      SurchargeCalculationRequest request,
+      SurchargeCalculationResponseListener listener) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getSurchargeCalculation(requestStr),
@@ -63,11 +82,13 @@ final class _NativeCommunicator {
         _NativeFutureInterface.fromListener(listener));
   }
 
-  _NativeFuture<PreparedPaymentRequest> listenForPreparedPaymentRequest(SdkPreparePaymentRequest request, PaymentRequestPreparedListener listener) {
+  _NativeFuture<PreparedPaymentRequest> listenForPreparedPaymentRequest(
+      SdkPreparePaymentRequest request,
+      PaymentRequestPreparedListener listener) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.preparePaymentRequest(requestStr),
-            (data) => PreparedPaymentRequest.fromJson(data as Map<String, dynamic>),
+        (data) => PreparedPaymentRequest.fromJson(data as Map<String, dynamic>),
         _NativeFutureInterface.fromListener(listener));
   }
 }

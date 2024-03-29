@@ -17,7 +17,6 @@ part 'validation_rule_validation_request.g.dart';
 /// Request used to validate a value with a specific [ValidationRule].
 @JsonSerializable(explicitToJson: true)
 class ValidationRuleValidationRequest {
-
   @JsonKey(required: true)
   final String value;
 
@@ -26,7 +25,9 @@ class ValidationRuleValidationRequest {
 
   ValidationRuleValidationRequest(this.value, this.rule);
 
-  factory ValidationRuleValidationRequest.fromJson(Map<String, dynamic> json) => _$ValidationRuleValidationRequestFromJson(json);
+  factory ValidationRuleValidationRequest.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleValidationRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ValidationRuleValidationRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$ValidationRuleValidationRequestToJson(this);
 }

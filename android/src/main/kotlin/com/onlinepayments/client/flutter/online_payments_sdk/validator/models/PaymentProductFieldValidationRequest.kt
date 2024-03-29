@@ -13,15 +13,14 @@
 package com.onlinepayments.client.flutter.online_payments_sdk.validator.models
 
 import com.onlinepayments.client.flutter.online_payments_sdk.validator.Validator
+import com.onlinepayments.sdk.client.android.model.paymentproduct.PaymentProductField
 import com.onlinepayments.sdk.client.android.model.validation.ValidationErrorMessage
 
 data class PaymentProductFieldValidationRequest(
     val value: String,
-    val fieldId: String
+    val field: PaymentProductField
 ) : ValidationRequest {
     override fun validate(): List<ValidationErrorMessage> {
-        return Validator.paymentProduct?.getPaymentProductFieldById(fieldId)?.validateValue(value) ?: listOf(
-            ValidationErrorMessage("Payment product not loaded or fieldId not found for $this", fieldId, null)
-        )
+        return field.validateValue(value)
     }
 }

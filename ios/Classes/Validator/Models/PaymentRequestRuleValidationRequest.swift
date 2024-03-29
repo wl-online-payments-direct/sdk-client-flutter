@@ -21,15 +21,16 @@ struct PaymentRequestRuleValidationRequest: ValidationRequest {
         paymentRequest = try container.decode(PaymentRequest.self, forKey: .paymentRequest)
         fieldId = try container.decode(String.self, forKey: .fieldId)
 
-        guard let ruleContainer = try? container.nestedContainer(keyedBy: ValidatorHelper.ValidationKeys.self, forKey: .rule) else {
+        guard let ruleContainer = try? container.nestedContainer(keyedBy: ValidatorHelper.ValidationKeys.self, forKey: .rule),
+              let decodedRule = ValidatorHelper.getRule(container: container, ruleContainer: ruleContainer) else {
             return
         }
 
-        rule = ValidatorHelper.getRule(container: container, ruleContainer: ruleContainer)
+        rule = decodedRule
     }
 
     func validate() -> [ValidationError] {
-        guard let paymentProduct = paymentRequest.paymentProduct else {
+        guard paymentRequest.paymentProduct != nil else {
             return [ValidationError(errorMessage: "Payment Product cannot be found.", paymentProductFieldId: fieldId, rule: nil)]
         }
 

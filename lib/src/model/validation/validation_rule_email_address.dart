@@ -17,9 +17,10 @@ part 'validation_rule_email_address.g.dart';
 /// Used for validation of an email address.
 @JsonSerializable()
 class ValidationRuleEmailAddress extends ValidationRule {
-  ValidationRuleEmailAddress(ValidationType validationType, String messageId) : super(validationType, messageId);
+  ValidationRuleEmailAddress(super.validationType, super.messageId);
 
-  factory ValidationRuleEmailAddress.fromJson(Map<String, dynamic> json) => _$ValidationRuleEmailAddressFromJson(json);
+  factory ValidationRuleEmailAddress.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleEmailAddressFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ValidationRuleEmailAddressToJson(this);

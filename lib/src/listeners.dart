@@ -20,5 +20,6 @@ part 'listeners/iin_lookup_response_listener.dart';
 part 'listeners/basic_payment_products_response_listener.dart';
 part 'listeners/payment_product_response_listener.dart';
 part 'listeners/payment_product_networks_response_listener.dart';
+part 'listeners/currency_conversion_response_listener.dart';
 part 'listeners/surcharge_calculation_response_listener.dart';
 part 'listeners/payment_request_prepared_listener.dart';

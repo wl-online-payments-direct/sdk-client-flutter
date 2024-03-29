@@ -9,44 +9,61 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of masker;
+part of '../../masker.dart';
 
 final class PaymentProductFieldMasker {
-  static Future<String> applyMask(PaymentProductField field, String value) async {
-    final applyMaskRequest = PaymentProductFieldMaskRequest.applyMask(field, value);
-    final maskedValue = await _NativeMaskingInterface.instance.applyMaskForPaymentProductField(jsonEncode(applyMaskRequest));
+  static Future<String> applyMask(
+      PaymentProductField field, String value) async {
+    final applyMaskRequest =
+        PaymentProductFieldMaskRequest.applyMask(field, value);
+    final maskedValue = await _NativeMaskingInterface.instance
+        .applyMaskForPaymentProductField(jsonEncode(applyMaskRequest));
     return maskedValue;
   }
 
-  static Future<String> removeMask(PaymentProductField field, String value) async {
-    final removeMaskRequest = PaymentProductFieldMaskRequest.removeMask(field, value);
-    final unmaskedValue = await _NativeMaskingInterface.instance.removeMaskForPaymentProductField(jsonEncode(removeMaskRequest));
+  static Future<String> removeMask(
+      PaymentProductField field, String value) async {
+    final removeMaskRequest =
+        PaymentProductFieldMaskRequest.removeMask(field, value);
+    final unmaskedValue = await _NativeMaskingInterface.instance
+        .removeMaskForPaymentProductField(jsonEncode(removeMaskRequest));
     return unmaskedValue;
   }
 }
 
 final class PaymentProductRequestMasker {
-  static Future<String> maskedValue(PaymentRequest request, String fieldId) async {
-    final maskedValueRequest = PaymentRequestMaskedValueRequest.maskedValue(request, fieldId);
-    final maskedValue = await _NativeMaskingInterface.instance.maskedValueForPaymentRequest(jsonEncode(maskedValueRequest));
+  static Future<String> maskedValue(
+      PaymentRequest request, String fieldId) async {
+    final maskedValueRequest =
+        PaymentRequestMaskedValueRequest.maskedValue(request, fieldId);
+    final maskedValue = await _NativeMaskingInterface.instance
+        .maskedValueForPaymentRequest(jsonEncode(maskedValueRequest));
     return maskedValue;
   }
 
-  static Future<String> unmaskedValue(PaymentRequest request, String fieldId) async {
-    final unmaskedValueRequest = PaymentRequestMaskedValueRequest.unmaskedValue(request, fieldId);
-    final unmaskedValue = await _NativeMaskingInterface.instance.unmaskedValueForPaymentRequest(jsonEncode(unmaskedValueRequest));
+  static Future<String> unmaskedValue(
+      PaymentRequest request, String fieldId) async {
+    final unmaskedValueRequest =
+        PaymentRequestMaskedValueRequest.unmaskedValue(request, fieldId);
+    final unmaskedValue = await _NativeMaskingInterface.instance
+        .unmaskedValueForPaymentRequest(jsonEncode(unmaskedValueRequest));
     return unmaskedValue;
   }
 
   static Future<String?> maskedValues(PaymentRequest request) async {
-    final allMaskedValuesRequest = PaymentRequestAllMaskedValuesRequest.maskedValues(request);
-    final maskedValues = await _NativeMaskingInterface.instance.allMaskedValuesForPaymentRequest(jsonEncode(allMaskedValuesRequest));
+    final allMaskedValuesRequest =
+        PaymentRequestAllMaskedValuesRequest.maskedValues(request);
+    final maskedValues = await _NativeMaskingInterface.instance
+        .allMaskedValuesForPaymentRequest(jsonEncode(allMaskedValuesRequest));
     return maskedValues;
   }
 
   static Future<String?> unmaskedValues(PaymentRequest request) async {
-    final allUnmaskedValuesRequest = PaymentRequestAllMaskedValuesRequest.unmaskedValues(request);
-    final unmaskedValues = await _NativeMaskingInterface.instance.allUnmaskedValuesForPaymentRequest(jsonEncode(allUnmaskedValuesRequest));
+    final allUnmaskedValuesRequest =
+        PaymentRequestAllMaskedValuesRequest.unmaskedValues(request);
+    final unmaskedValues = await _NativeMaskingInterface.instance
+        .allUnmaskedValuesForPaymentRequest(
+            jsonEncode(allUnmaskedValuesRequest));
     return unmaskedValues;
   }
 }
@@ -54,13 +71,18 @@ final class PaymentProductRequestMasker {
 final class AccountOnFileMasker {
   static Future<String> maskedValue(AccountOnFile aof, String fieldId) async {
     final maskedValueRequest = AccountOnFileMaskedValueRequest(aof, fieldId);
-    final maskedValue = await _NativeMaskingInterface.instance.maskedValueForAccountOnFile(jsonEncode(maskedValueRequest));
+    final maskedValue = await _NativeMaskingInterface.instance
+        .maskedValueForAccountOnFile(jsonEncode(maskedValueRequest));
     return maskedValue;
   }
 
-  static Future<String> customMaskedValue(AccountOnFile aof, String fieldId, String mask) async {
-    final customMaskedValueRequest = AccountOnFileCustomMaskedValueRequest(aof, fieldId, mask);
-    final customMaskedValue = await _NativeMaskingInterface.instance.customMaskedValueForAccountOnFile(jsonEncode(customMaskedValueRequest));
+  static Future<String> customMaskedValue(
+      AccountOnFile aof, String fieldId, String mask) async {
+    final customMaskedValueRequest =
+        AccountOnFileCustomMaskedValueRequest(aof, fieldId, mask);
+    final customMaskedValue = await _NativeMaskingInterface.instance
+        .customMaskedValueForAccountOnFile(
+            jsonEncode(customMaskedValueRequest));
     return customMaskedValue;
   }
 }

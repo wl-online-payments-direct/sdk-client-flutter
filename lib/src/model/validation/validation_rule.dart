@@ -11,13 +11,13 @@
  */
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
+import 'package:online_payments_sdk/src/validator.dart';
 
 part 'validation_rule.g.dart';
 
 /// Contains functionality to handle validation.
 @JsonSerializable()
 class ValidationRule implements ValidationRuleFunctions {
-
   @JsonKey(required: true)
   final ValidationType validationType;
 
@@ -26,24 +26,32 @@ class ValidationRule implements ValidationRuleFunctions {
 
   ValidationRule(this.validationType, this.messageId);
 
-  factory ValidationRule.fromJson(Map<String, dynamic> json) => _$ValidationRuleFromJson(json);
+  factory ValidationRule.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleFromJson(json);
 
   Map<String, dynamic> toJson() => _$ValidationRuleToJson(this);
 
   @override
-  Future<List<ValidationErrorMessage>> validateValueForFieldOfPaymentRequest({required String fieldId, required PaymentRequest request}) async {
-    return await ValidationRuleValidator.validateValidationRuleForPaymentRequestAndFieldId(request, fieldId, this);
+  Future<List<ValidationErrorMessage>> validateValueForFieldOfPaymentRequest(
+      {required String fieldId, required PaymentRequest request}) async {
+    return await ValidationRuleValidator
+        .validateValidationRuleForPaymentRequestAndFieldId(
+            request, fieldId, this);
   }
 
   @override
-  Future<List<ValidationErrorMessage>> validateValue({required String value}) async {
-    return await ValidationRuleValidator.validateValueForValidationRule(value, this);
+  Future<List<ValidationErrorMessage>> validateValue(
+      {required String value}) async {
+    return await ValidationRuleValidator.validateValueForValidationRule(
+        value, this);
   }
 }
 
 abstract class ValidationRuleFunctions {
   /// Validates the value of the [PaymentProductField] corresponding to the provided [fieldId] in the provided [request].
-  validateValueForFieldOfPaymentRequest({required String fieldId, required PaymentRequest request});
+  validateValueForFieldOfPaymentRequest(
+      {required String fieldId, required PaymentRequest request});
+
   /// Validates the provided [value].
   validateValue({required String value});
 }

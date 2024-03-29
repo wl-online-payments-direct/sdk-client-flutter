@@ -2,14 +2,14 @@ group 'com.onlinepayments.client.flutter.online_payments_sdk'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.8.0'
+    ext.kotlin_version = '1.9.22'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath 'com.android.tools.build:gradle:8.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -25,11 +25,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace "com.onlinepayments.client.flutter.online_payments_sdk"
     compileSdk 34
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -46,11 +47,11 @@ android {
     }
 
     dependencies {
-        implementation 'com.worldline-solutions:sdk-client-android:2.2.1'
-        implementation 'com.google.code.gson:gson:2.9.0'
+        implementation 'com.worldline-solutions:sdk-client-android:2.3.0'
+        implementation 'com.google.code.gson:gson:2.10.1'
 
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
-        testImplementation 'org.mockito:mockito-core:5.0.0'
+        testImplementation 'org.mockito:mockito-core:5.7.0'
     }
 
     testOptions {

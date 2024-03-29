@@ -17,9 +17,10 @@ part 'validation_rule_iban.g.dart';
 /// Used for validation of an IBAN number.
 @JsonSerializable()
 class ValidationRuleIBAN extends ValidationRule {
-  ValidationRuleIBAN(ValidationType validationType, String messageId) : super(validationType, messageId);
+  ValidationRuleIBAN(super.validationType, super.messageId);
 
-  factory ValidationRuleIBAN.fromJson(Map<String, dynamic> json) => _$ValidationRuleIBANFromJson(json);
+  factory ValidationRuleIBAN.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleIBANFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ValidationRuleIBANToJson(this);

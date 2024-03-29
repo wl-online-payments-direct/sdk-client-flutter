@@ -14,9 +14,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'label_template_element.g.dart';
 
 /// Represents a LabelTemplateElement.
-@JsonSerializable(
-  explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class LabelTemplateElement {
   @JsonKey()
   final String attributeKey;
@@ -25,7 +23,8 @@ class LabelTemplateElement {
 
   LabelTemplateElement({required this.attributeKey, required this.mask});
 
-  factory LabelTemplateElement.fromJson(Map<String, dynamic> json) => _$LabelTemplateElementFromJson(json);
+  factory LabelTemplateElement.fromJson(Map<String, dynamic> json) =>
+      _$LabelTemplateElementFromJson(json);
 
   Map<String, dynamic> toJson() => _$LabelTemplateElementToJson(this);
 }

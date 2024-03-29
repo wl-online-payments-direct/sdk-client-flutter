@@ -9,7 +9,7 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of session;
+part of '../../session.dart';
 
 abstract class _NativeSdkInterface extends PlatformInterface {
   /// Constructs a OnlinepaymentsSdkFlutterPlatform.
@@ -37,22 +37,33 @@ abstract class _NativeSdkInterface extends PlatformInterface {
   }
 
   Future<String> getBasicPaymentProducts(String basicPaymentProductRequest) {
-    throw UnimplementedError('Get Basic Payment Products call has not been implemented');
+    throw UnimplementedError(
+        'Get Basic Payment Products call has not been implemented');
   }
 
   Future<String> getPaymentProduct(String paymentProductRequest) {
-    throw UnimplementedError('Get Payment Product by id has not been implemented');
+    throw UnimplementedError(
+        'Get Payment Product by id has not been implemented');
   }
 
-  Future<String> getPaymentProductNetworks(String paymentProductNetworksRequest) {
-    throw UnimplementedError('Get Payment Product Networks has not been implemented');
+  Future<String> getPaymentProductNetworks(
+      String paymentProductNetworksRequest) {
+    throw UnimplementedError(
+        'Get Payment Product Networks has not been implemented');
+  }
+
+  Future<String> getCurrencyConversionQuote(String currencyConversionRequest) {
+    throw UnimplementedError(
+        'Get Currency Conversion has not been implemented');
   }
 
   Future<String> getSurchargeCalculation(String surchargeCalculationRequest) {
-    throw UnimplementedError('Get Surcharge Calculation has not been implemented');
+    throw UnimplementedError(
+        'Get Surcharge Calculation has not been implemented');
   }
 
   Future<String> preparePaymentRequest(String paymentRequest) {
-    throw UnimplementedError('Prepare Payment Request has not been implemented');
+    throw UnimplementedError(
+        'Prepare Payment Request has not been implemented');
   }
 }

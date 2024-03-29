@@ -36,6 +36,7 @@ class SdkBridgeMethodCallHandler(private val contextReference: WeakReference<Con
             "getBasicPaymentProducts" -> getBasicPaymentProducts(call, result)
             "getPaymentProduct" -> getPaymentProduct(call, result)
             "getPaymentProductNetworks" -> getPaymentProductNetworks(call, result)
+            "getCurrencyConversionQuote" -> getCurrencyConversionQuote(call, result)
             "getSurchargeCalculation" -> getSurchargeCalculation(call, result)
             "preparePaymentRequest" -> preparePaymentRequest(call, result)
             else -> result.notImplemented()
@@ -58,6 +59,28 @@ class SdkBridgeMethodCallHandler(private val contextReference: WeakReference<Con
         bridge.preparePaymentRequest(context, result, request)
     }
 
+    private fun getCurrencyConversionQuote(call: MethodCall, result: MethodChannel.Result) {
+        val context = applicationContext
+        val request = call.getRequestOrReturnError(CurrencyConversionRequest::class.java, result, gson)
+        request ?: return
+
+        if (!bridge.isSessionInitialized()) {
+            return ResultError.notInitialized(result)
+        }
+
+        if (context == null) {
+            return ResultError.missingContext(call, result)
+        }
+
+        if (request.partialCreditCardNumber != null) {
+            bridge.getCurrencyConversionWithPartialCCNumber(context, result, request)
+        } else if (request.token != null) {
+            bridge.getCurrencyConversionWithToken(context, result, request)
+        } else {
+            return ResultError.missingRequestArgument(call, result, null)
+        }
+    }
+
     private fun getSurchargeCalculation(call: MethodCall, result: MethodChannel.Result) {
         val context = applicationContext
         val request = call.getRequestOrReturnError(SurchargeCalculationRequest::class.java, result, gson)
@@ -73,8 +96,10 @@ class SdkBridgeMethodCallHandler(private val contextReference: WeakReference<Con
 
         if (request.partialCreditCardNumber != null) {
             bridge.getSurchargeCalculationWithPartialCCNumber(context, result, request)
-        } else {
+        } else if (request.token != null) {
             bridge.getSurchargeCalculationWithToken(context, result, request)
+        } else {
+            return ResultError.missingRequestArgument(call, result, null)
         }
     }
 

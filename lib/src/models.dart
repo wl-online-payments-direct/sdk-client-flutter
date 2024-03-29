@@ -43,6 +43,13 @@ export 'model/payment_product/payment_product_field/tooltip.dart';
 export 'model/payment_product/specific_data/payment_product_302_specific_data.dart';
 export 'model/payment_product/specific_data/payment_product_320_specific_data.dart';
 
+// payment_product/currency_conversion
+export 'model/payment_product/currency_conversion/currency_conversion.dart';
+export 'model/payment_product/currency_conversion/currency_conversion_result.dart';
+export 'model/payment_product/currency_conversion/conversion_result_type.dart';
+export 'model/payment_product/currency_conversion/dcc_proposal.dart';
+export 'model/payment_product/currency_conversion/rate_details.dart';
+
 // payment_product/surcharge
 export 'model/payment_product/surcharge/surcharge.dart';
 export 'model/payment_product/surcharge/surcharge_calculation.dart';
@@ -51,14 +58,6 @@ export 'model/payment_product/surcharge/surcharge_result.dart';
 
 // payment_product/validation
 export 'model/payment_product/validation/data_restrictions.dart';
-
-// requests
-// requests/masking
-export 'model/requests/masking/account_on_file_custom_masked_value_request.dart';
-export 'model/requests/masking/account_on_file_masked_value_request.dart';
-export 'model/requests/masking/payment_product_field_mask_request.dart';
-export 'model/requests/masking/payment_request_all_masked_values_request.dart';
-export 'model/requests/masking/payment_request_masked_value_request.dart';
 
 // requests/sdk
 export 'model/requests/sdk/basic_payment_products_request.dart';
@@ -69,13 +68,8 @@ export 'model/requests/sdk/sdk_prepare_payment_request.dart';
 export 'model/requests/sdk/sdk_result.dart';
 export 'model/requests/sdk/sdk_result_status.dart';
 export 'model/requests/sdk/sdk_session_request.dart';
+export 'model/requests/sdk/currency_conversion_request.dart';
 export 'model/requests/sdk/surcharge_calculation_request.dart';
-
-// requests/validation
-export 'model/requests/validation/payment_product_field_validation_request.dart';
-export 'model/requests/validation/payment_request_validation_request.dart';
-export 'model/requests/validation/payment_request_rule_validation_request.dart';
-export 'model/requests/validation/validation_rule_validation_request.dart';
 
 // session
 export 'model/session/api_error.dart';

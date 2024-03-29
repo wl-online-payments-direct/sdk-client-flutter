@@ -9,7 +9,7 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of listeners;
+part of '../listeners.dart';
 
 /// Interface for all listeners used for making calls to the API.
 class ApiResponseInterface<T> {

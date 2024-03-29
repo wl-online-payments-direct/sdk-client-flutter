@@ -23,7 +23,8 @@ class FormElement {
 
   FormElement(this.type);
 
-  factory FormElement.fromJson(Map<String, dynamic> json) => _$FormElementFromJson(json);
+  factory FormElement.fromJson(Map<String, dynamic> json) =>
+      _$FormElementFromJson(json);
 
   Map<String, dynamic> toJson() => _$FormElementToJson(this);
 }

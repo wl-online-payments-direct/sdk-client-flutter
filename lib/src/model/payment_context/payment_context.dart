@@ -32,13 +32,21 @@ class PaymentContext {
   @JsonKey(required: true)
   bool forceBasicFlow;
 
-  PaymentContext(this.amountOfMoney, this.countryCode, this.isRecurring, { this.forceBasicFlow = false });
+  PaymentContext(this.amountOfMoney, this.countryCode, this.isRecurring,
+      {this.forceBasicFlow = false});
 
-  factory PaymentContext.fromJson(Map<String, dynamic> json) => _$PaymentContextFromJson(json);
+  factory PaymentContext.fromJson(Map<String, dynamic> json) =>
+      _$PaymentContextFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentContextToJson(this);
 
-  PaymentContext copyWith({AmountOfMoney? amountOfMoney, String? countryCode, bool? isRecurring, bool? forceBasicFlow}) {
-    return PaymentContext(amountOfMoney ?? this.amountOfMoney, countryCode ?? this.countryCode, isRecurring ?? this.isRecurring, forceBasicFlow: forceBasicFlow ?? this.forceBasicFlow);
+  PaymentContext copyWith(
+      {AmountOfMoney? amountOfMoney,
+      String? countryCode,
+      bool? isRecurring,
+      bool? forceBasicFlow}) {
+    return PaymentContext(amountOfMoney ?? this.amountOfMoney,
+        countryCode ?? this.countryCode, isRecurring ?? this.isRecurring,
+        forceBasicFlow: forceBasicFlow ?? this.forceBasicFlow);
   }
 }

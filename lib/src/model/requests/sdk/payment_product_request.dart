@@ -17,16 +17,17 @@ part 'payment_product_request.g.dart';
 /// Request used to retrieve a [PaymentProduct] from the API.
 @JsonSerializable(explicitToJson: true)
 class PaymentProductRequest {
-
   @JsonKey(required: true)
   final String productId;
 
   @JsonKey(required: true)
   final PaymentContext paymentContext;
 
-  PaymentProductRequest({required this.productId, required this.paymentContext});
+  PaymentProductRequest(
+      {required this.productId, required this.paymentContext});
 
-  factory PaymentProductRequest.fromJson(Map<String, dynamic> json) => _$PaymentProductRequestFromJson(json);
+  factory PaymentProductRequest.fromJson(Map<String, dynamic> json) =>
+      _$PaymentProductRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentProductRequestToJson(this);
 }

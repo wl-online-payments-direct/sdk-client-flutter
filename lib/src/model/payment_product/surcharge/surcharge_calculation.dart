@@ -15,17 +15,15 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'surcharge_calculation.g.dart';
 
 /// Represents a SurchargeCalculation object.
-@JsonSerializable(
-    explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class SurchargeCalculation {
-
   @JsonKey(required: true)
   final List<Surcharge> surcharges;
 
   SurchargeCalculation(this.surcharges);
 
-  factory SurchargeCalculation.fromJson(Map<String, dynamic> json) => _$SurchargeCalculationFromJson(json);
+  factory SurchargeCalculation.fromJson(Map<String, dynamic> json) =>
+      _$SurchargeCalculationFromJson(json);
 
   Map<String, dynamic> toJson() => _$SurchargeCalculationToJson(this);
 }

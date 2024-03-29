@@ -14,9 +14,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'account_on_file_attribute.g.dart';
 
 /// Represents an AccountOnFileAttribute object.
-@JsonSerializable(
-  explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class AccountOnFileAttribute {
   @JsonKey()
   String key;
@@ -27,14 +25,15 @@ class AccountOnFileAttribute {
 
   AccountOnFileAttribute({this.key = "", this.value = "", this.status});
 
-  factory AccountOnFileAttribute.fromJson(Map<String, dynamic> json) => _$AccountOnFileAttributeFromJson(json);
+  factory AccountOnFileAttribute.fromJson(Map<String, dynamic> json) =>
+      _$AccountOnFileAttributeFromJson(json);
 
   Map<String, dynamic> toJson() => _$AccountOnFileAttributeToJson(this);
 
+  /// Returns whether an [AccountOnFileAttribute] can be edited based on its [AccountOnFileAttributeStatus].
   bool isEditingAllowed() {
     return status?.isEditingAllowed ?? false;
   }
-
 }
 
 /// Enum containing all the possible statuses for a [AccountOnFileAttribute].

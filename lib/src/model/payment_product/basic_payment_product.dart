@@ -54,15 +54,13 @@ class BasicPaymentProduct implements Comparable {
       this.allowsRecurring,
       this.allowsTokenization,
       this.usesRedirectionTo3rdParty,
-      {
-        this.displayHintsList = const [],
-        this.accountsOnFile = const [],
-        this.paymentProduct320SpecificData,
-        this.paymentProduct302SpecificData
-      }
-  );
+      {this.displayHintsList = const [],
+      this.accountsOnFile = const [],
+      this.paymentProduct320SpecificData,
+      this.paymentProduct302SpecificData});
 
-  factory BasicPaymentProduct.fromJson(Map<String, dynamic> json) => _$BasicPaymentProductFromJson(json);
+  factory BasicPaymentProduct.fromJson(Map<String, dynamic> json) =>
+      _$BasicPaymentProductFromJson(json);
 
   Map<String, dynamic> toJson() => _$BasicPaymentProductToJson(this);
 
@@ -71,6 +69,8 @@ class BasicPaymentProduct implements Comparable {
     if (displayHintsList.isEmpty) {
       return other.displayHintsList.isEmpty ? 0 : -1;
     }
-    return displayHintsList[0].displayOrder.compareTo(other.displayHintsList[0]?.displayOrder);
+    return displayHintsList[0]
+        .displayOrder
+        .compareTo(other.displayHintsList[0]?.displayOrder);
   }
 }

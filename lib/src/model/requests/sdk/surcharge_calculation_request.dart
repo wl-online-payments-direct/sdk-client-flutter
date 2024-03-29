@@ -15,11 +15,8 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'surcharge_calculation_request.g.dart';
 
 /// Request used to retrieve a [SurchargeCalculation] from the API.
-@JsonSerializable(
-    explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class SurchargeCalculationRequest {
-
   @JsonKey(required: true)
   final AmountOfMoney amountOfMoney;
 
@@ -34,10 +31,13 @@ class SurchargeCalculationRequest {
 
   SurchargeCalculationRequest(this.amountOfMoney);
 
-  SurchargeCalculationRequest.withPartialCreditCardNumber(this.amountOfMoney, this.partialCreditCardNumber, {this.paymentProductId});
+  SurchargeCalculationRequest.withPartialCreditCardNumber(
+      this.amountOfMoney, this.partialCreditCardNumber,
+      {this.paymentProductId});
   SurchargeCalculationRequest.withToken(this.amountOfMoney, this.token);
 
-  factory SurchargeCalculationRequest.fromJson(Map<String, dynamic> json) => _$SurchargeCalculationRequestFromJson(json);
+  factory SurchargeCalculationRequest.fromJson(Map<String, dynamic> json) =>
+      _$SurchargeCalculationRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$SurchargeCalculationRequestToJson(this);
 }

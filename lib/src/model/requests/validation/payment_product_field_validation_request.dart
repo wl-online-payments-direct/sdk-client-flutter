@@ -10,22 +10,25 @@
  * Please contact Worldline for questions regarding license and user rights.
  */
 import 'package:json_annotation/json_annotation.dart';
+import 'package:online_payments_sdk/online_payments_sdk.dart';
 
 part 'payment_product_field_validation_request.g.dart';
 
 /// Request used to validate the value of a [PaymentProductField].
 @JsonSerializable(explicitToJson: true)
 class PaymentProductFieldValidationRequest {
-
   @JsonKey(required: true)
   final String value;
 
   @JsonKey(required: true)
-  final String fieldId;
+  final PaymentProductField field;
 
-  PaymentProductFieldValidationRequest(this.value, this.fieldId);
+  PaymentProductFieldValidationRequest(this.value, this.field);
 
-  factory PaymentProductFieldValidationRequest.fromJson(Map<String, dynamic> json) => _$PaymentProductFieldValidationRequestFromJson(json);
+  factory PaymentProductFieldValidationRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentProductFieldValidationRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PaymentProductFieldValidationRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PaymentProductFieldValidationRequestToJson(this);
 }

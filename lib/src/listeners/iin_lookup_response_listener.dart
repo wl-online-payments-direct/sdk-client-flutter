@@ -9,13 +9,14 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of listeners;
+part of '../listeners.dart';
 
 /// Listener used when retrieving a [IinDetailsResponse] from the API.
-final class IinLookupResponseListener extends ApiResponseInterface<IinDetailsResponse> {
-  IinLookupResponseListener({
-    required void Function(IinDetailsResponse response) onSuccess,
-    required void Function(ErrorResponse? apiError) onError,
-    required void Function(NativeException? exception) onException
-  }) : super(onSuccess, onError, onException);
+final class IinLookupResponseListener
+    extends ApiResponseInterface<IinDetailsResponse> {
+  IinLookupResponseListener(
+      {required void Function(IinDetailsResponse response) onSuccess,
+      required void Function(ErrorResponse? apiError) onError,
+      required void Function(NativeException? exception) onException})
+      : super(onSuccess, onError, onException);
 }

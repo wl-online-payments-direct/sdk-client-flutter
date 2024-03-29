@@ -15,4 +15,5 @@ import OnlinePaymentsKit
 struct Result<T: Encodable>: Encodable {
     let data: T?
     let error: ErrorResponse?
+    let throwable: Throwable?
 }

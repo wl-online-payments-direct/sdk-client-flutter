@@ -23,7 +23,8 @@ class PaymentProduct320SpecificData {
 
   PaymentProduct320SpecificData(this.networks, this.gateway);
 
-  factory PaymentProduct320SpecificData.fromJson(Map<String, dynamic> json) => _$PaymentProduct320SpecificDataFromJson(json);
+  factory PaymentProduct320SpecificData.fromJson(Map<String, dynamic> json) =>
+      _$PaymentProduct320SpecificDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentProduct320SpecificDataToJson(this);
 }

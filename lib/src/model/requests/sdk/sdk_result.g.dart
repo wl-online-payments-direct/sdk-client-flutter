@@ -27,6 +27,9 @@ SdkResult<T> _$SdkResultFromJson<T>(
       json['error'] == null
           ? null
           : ErrorResponse.fromJson(json['error'] as Map<String, dynamic>),
+      throwable: json['throwable'] == null
+          ? null
+          : Throwable.fromJson(json['throwable'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SdkResultToJson<T>(
@@ -36,6 +39,7 @@ Map<String, dynamic> _$SdkResultToJson<T>(
     <String, dynamic>{
       'data': _$nullableGenericToJson(instance.data, toJsonT),
       'error': instance.error?.toJson(),
+      'throwable': instance.throwable?.toJson(),
     };
 
 T? _$nullableGenericFromJson<T>(

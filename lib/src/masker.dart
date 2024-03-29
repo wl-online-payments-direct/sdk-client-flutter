@@ -16,6 +16,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:online_payments_sdk/src/models.dart';
+import 'package:online_payments_sdk/src/model/requests/requests.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'dart:async';
 

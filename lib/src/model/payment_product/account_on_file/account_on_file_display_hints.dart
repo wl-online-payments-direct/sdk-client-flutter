@@ -15,16 +15,15 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'account_on_file_display_hints.g.dart';
 
 /// Represents a AccountOnFileDisplayHints object.
-@JsonSerializable(
-  explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class AccountOnFileDisplayHints {
   @JsonKey()
   final List<LabelTemplateElement> labelTemplate;
 
   AccountOnFileDisplayHints(this.labelTemplate);
 
-  factory AccountOnFileDisplayHints.fromJson(Map<String, dynamic> json) => _$AccountOnFileDisplayHintsFromJson(json);
+  factory AccountOnFileDisplayHints.fromJson(Map<String, dynamic> json) =>
+      _$AccountOnFileDisplayHintsFromJson(json);
 
   Map<String, dynamic> toJson() => _$AccountOnFileDisplayHintsToJson(this);
 }

@@ -15,9 +15,7 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'iin_detail.g.dart';
 
 /// Represents a IinDetail object.
-@JsonSerializable(
-  explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class IinDetail {
   @JsonKey(required: true)
   final String paymentProductId;
@@ -30,7 +28,8 @@ class IinDetail {
 
   IinDetail(this.paymentProductId, this.isAllowedInContext, this.cardType);
 
-  factory IinDetail.fromJson(Map<String, dynamic> json) => _$IinDetailFromJson(json);
+  factory IinDetail.fromJson(Map<String, dynamic> json) =>
+      _$IinDetailFromJson(json);
 
   Map<String, dynamic> toJson() => _$IinDetailToJson(this);
 }

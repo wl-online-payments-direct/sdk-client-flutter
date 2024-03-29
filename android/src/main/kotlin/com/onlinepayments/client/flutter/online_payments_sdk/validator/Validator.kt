@@ -21,12 +21,6 @@ object Validator {
     private const val TAG = "AndroidValidator"
     private val gson = Gson()
 
-    var paymentProduct: PaymentProduct? = null
-        private set
-    fun updatePaymentProduct(newPaymentProduct: PaymentProduct?) {
-        paymentProduct = newPaymentProduct
-    }
-
     fun validate(result: MethodChannel.Result, request: ValidationRequest) {
         val errorMessages = request.validate()
         postValidation(errorMessages, result)

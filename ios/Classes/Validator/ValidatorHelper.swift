@@ -12,17 +12,11 @@
 import OnlinePaymentsKit
 
 struct ValidatorHelper {
-    private(set) static var paymentProduct: PaymentProduct?
-
     enum ValidationKeys: CodingKey {
         case value, paymentRequest, fieldId, validationType, rule
     }
 
-    static func updatePaymentProduct(newPaymentProduct: PaymentProduct) {
-        self.paymentProduct = newPaymentProduct
-    }
-
-    static func getRule(container: KeyedDecodingContainer<ValidatorHelper.ValidationKeys>, ruleContainer: KeyedDecodingContainer<ValidatorHelper.ValidationKeys>) -> Validator {
+    static func getRule(container: KeyedDecodingContainer<ValidatorHelper.ValidationKeys>, ruleContainer: KeyedDecodingContainer<ValidatorHelper.ValidationKeys>) -> Validator? {
         guard let typeString = try? ruleContainer.decodeIfPresent(String.self, forKey: .validationType) else {
             return decodeDefaultValidator(container: container)
         }
@@ -51,17 +45,14 @@ struct ValidatorHelper {
         }
     }
     
-    private static func decodeValidator<T: Validator>(validatorType: T.Type, container: KeyedDecodingContainer<ValidatorHelper.ValidationKeys>) -> Validator {
+    private static func decodeValidator<T: Validator>(validatorType: T.Type, container: KeyedDecodingContainer<ValidatorHelper.ValidationKeys>) -> Validator? {
         guard let decodedValidator = try? container.decode(validatorType.self, forKey: .rule) else {
             return decodeDefaultValidator(container: container)
         }
         return decodedValidator
     }
     
-    private static func decodeDefaultValidator(container: KeyedDecodingContainer<ValidatorHelper.ValidationKeys>) -> Validator {
-        guard let decodedDefaultValidator = try? container.decode(Validator.self, forKey: .rule) else {
-            return Validator()
-        }
-        return decodedDefaultValidator
+    private static func decodeDefaultValidator(container: KeyedDecodingContainer<ValidatorHelper.ValidationKeys>) -> Validator? {
+        return try? container.decode(Validator.self, forKey: .rule)
     }
 }

@@ -21,9 +21,13 @@ class ValidationErrorMessage {
   final String paymentProductFieldId;
   final ValidationRule? rule;
 
-  ValidationErrorMessage({required this.errorMessage, required this.paymentProductFieldId, this.rule});
+  ValidationErrorMessage(
+      {required this.errorMessage,
+      required this.paymentProductFieldId,
+      this.rule});
 
-  factory ValidationErrorMessage.fromJson(Map <String, dynamic> json) => _$ValidationErrorMessageFromJson(json);
+  factory ValidationErrorMessage.fromJson(Map<String, dynamic> json) =>
+      _$ValidationErrorMessageFromJson(json);
 
   Map<String, dynamic> toJson() => _$ValidationErrorMessageToJson(this);
 }

@@ -9,7 +9,7 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of masker;
+part of '../../masker.dart';
 
 /// An implementation of [_NativeMaskingInterface] that uses method channels.
 class _MaskingMethodChannel extends _NativeMaskingInterface {
@@ -17,66 +17,67 @@ class _MaskingMethodChannel extends _NativeMaskingInterface {
   final _maskingChannel = const MethodChannel('online_payments_masking');
 
   @override
-  Future<String> applyMaskForPaymentProductField(String applyMaskRequest) async {
-    final result = await _maskingChannel.invokeMethod('applyMaskForPaymentProductField', {
-      "request" : applyMaskRequest
-    });
+  Future<String> applyMaskForPaymentProductField(
+      String applyMaskRequest) async {
+    final result = await _maskingChannel.invokeMethod(
+        'applyMaskForPaymentProductField', {"request": applyMaskRequest});
     return result;
   }
 
   @override
-  Future<String> removeMaskForPaymentProductField(String removeMaskRequest) async {
-    final result = await _maskingChannel.invokeMethod('removeMaskForPaymentProductField', {
-      "request" : removeMaskRequest
-    });
+  Future<String> removeMaskForPaymentProductField(
+      String removeMaskRequest) async {
+    final result = await _maskingChannel.invokeMethod(
+        'removeMaskForPaymentProductField', {"request": removeMaskRequest});
     return result;
   }
 
   @override
   Future<String> maskedValueForPaymentRequest(String maskedValueRequest) async {
-    final result = await _maskingChannel.invokeMethod('maskedValueForPaymentRequest', {
-      "request" : maskedValueRequest
-    });
+    final result = await _maskingChannel.invokeMethod(
+        'maskedValueForPaymentRequest', {"request": maskedValueRequest});
     return result;
   }
 
   @override
-  Future<String> unmaskedValueForPaymentRequest(String unmaskedValueRequest) async {
-    final result = await _maskingChannel.invokeMethod('unmaskedValueForPaymentRequest', {
-      "request" : unmaskedValueRequest
-    });
+  Future<String> unmaskedValueForPaymentRequest(
+      String unmaskedValueRequest) async {
+    final result = await _maskingChannel.invokeMethod(
+        'unmaskedValueForPaymentRequest', {"request": unmaskedValueRequest});
     return result;
   }
 
   @override
-  Future<String?> allMaskedValuesForPaymentRequest(String allMaskedValuesRequest) async {
-    final result = await _maskingChannel.invokeMethod('allMaskedValuesForPaymentRequest', {
-      "request" : allMaskedValuesRequest
-    });
+  Future<String?> allMaskedValuesForPaymentRequest(
+      String allMaskedValuesRequest) async {
+    final result = await _maskingChannel.invokeMethod(
+        'allMaskedValuesForPaymentRequest',
+        {"request": allMaskedValuesRequest});
     return result;
   }
 
   @override
-  Future<String?> allUnmaskedValuesForPaymentRequest(String allUnmaskedValuesRequest) async {
-    final result = await _maskingChannel.invokeMethod('allUnmaskedValuesForPaymentRequest', {
-      "request" : allUnmaskedValuesRequest
-    });
+  Future<String?> allUnmaskedValuesForPaymentRequest(
+      String allUnmaskedValuesRequest) async {
+    final result = await _maskingChannel.invokeMethod(
+        'allUnmaskedValuesForPaymentRequest',
+        {"request": allUnmaskedValuesRequest});
     return result;
   }
 
   @override
   Future<String> maskedValueForAccountOnFile(String maskedValueRequest) async {
-    final result = await _maskingChannel.invokeMethod('maskedValueForAccountOnFile', {
-      "request" : maskedValueRequest
-    });
+    final result = await _maskingChannel.invokeMethod(
+        'maskedValueForAccountOnFile', {"request": maskedValueRequest});
     return result;
   }
 
   @override
-  Future<String> customMaskedValueForAccountOnFile(String customMaskedValueRequest) async {
-    final result = await _maskingChannel.invokeMethod('customMaskedValueForAccountOnFile', {
-      "request" : customMaskedValueRequest
-    });
+  Future<String> customMaskedValueForAccountOnFile(
+      String customMaskedValueRequest) async {
+    final result = await _maskingChannel.invokeMethod(
+        'customMaskedValueForAccountOnFile',
+        {"request": customMaskedValueRequest});
     return result;
   }
 }

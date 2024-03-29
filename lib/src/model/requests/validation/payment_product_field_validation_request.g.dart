@@ -22,11 +22,11 @@ PaymentProductFieldValidationRequest
     _$PaymentProductFieldValidationRequestFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['value', 'fieldId'],
+    requiredKeys: const ['value', 'field'],
   );
   return PaymentProductFieldValidationRequest(
     json['value'] as String,
-    json['fieldId'] as String,
+    PaymentProductField.fromJson(json['field'] as Map<String, dynamic>),
   );
 }
 
@@ -34,5 +34,5 @@ Map<String, dynamic> _$PaymentProductFieldValidationRequestToJson(
         PaymentProductFieldValidationRequest instance) =>
     <String, dynamic>{
       'value': instance.value,
-      'fieldId': instance.fieldId,
+      'field': instance.field.toJson(),
     };

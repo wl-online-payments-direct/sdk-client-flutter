@@ -24,7 +24,8 @@ class PublicKey {
   @JsonKey(required: true)
   String publicKey;
 
-  factory PublicKey.fromJson(Map<String, dynamic> json) => _$PublicKeyFromJson(json);
+  factory PublicKey.fromJson(Map<String, dynamic> json) =>
+      _$PublicKeyFromJson(json);
 
   Map<String, dynamic> toJson() => _$PublicKeyToJson(this);
 }

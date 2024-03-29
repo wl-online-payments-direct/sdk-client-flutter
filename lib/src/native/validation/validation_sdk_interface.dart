@@ -9,14 +9,16 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of validator;
+part of '../../validator.dart';
+
 abstract class _NativeValidationInterface extends PlatformInterface {
   /// Constructs a OnlinepaymentsSdkFlutterPlatform.
   _NativeValidationInterface() : super(token: _token);
 
   static final Object _token = Object();
 
-  static final _NativeValidationInterface _validationChannel = _ValidationMethodChannel();
+  static final _NativeValidationInterface _validationChannel =
+      _ValidationMethodChannel();
 
   /// The default instance of [_NativeValidationInterface] to use.
   ///
@@ -27,7 +29,8 @@ abstract class _NativeValidationInterface extends PlatformInterface {
     throw UnimplementedError("Validate has not been implemented");
   }
 
-  Future<String> validatePaymentProductFieldForPaymentRequest(String validationRequest) {
+  Future<String> validatePaymentProductFieldForPaymentRequest(
+      String validationRequest) {
     throw UnimplementedError("Validate has not been implemented");
   }
 
@@ -39,7 +42,8 @@ abstract class _NativeValidationInterface extends PlatformInterface {
     throw UnimplementedError("Validate has not been implemented");
   }
 
-  Future<String> validatePaymentRequestForValidationRule(String validationRequest) {
+  Future<String> validatePaymentRequestForValidationRule(
+      String validationRequest) {
     throw UnimplementedError("Validate has not been implemented");
   }
 }

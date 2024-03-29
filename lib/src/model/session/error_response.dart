@@ -17,7 +17,6 @@ part 'error_response.g.dart';
 /// Object that contains more information if an API call failed due to an API related error.
 @JsonSerializable(explicitToJson: true)
 class ErrorResponse {
-
   /// The error message.
   @JsonKey(required: true)
   String message;
@@ -32,7 +31,8 @@ class ErrorResponse {
 
   ErrorResponse(this.message, {this.apiError, this.throwable});
 
-  factory ErrorResponse.fromJson(Map<String, dynamic> json) => _$ErrorResponseFromJson(json);
+  factory ErrorResponse.fromJson(Map<String, dynamic> json) =>
+      _$ErrorResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$ErrorResponseToJson(this);
 }

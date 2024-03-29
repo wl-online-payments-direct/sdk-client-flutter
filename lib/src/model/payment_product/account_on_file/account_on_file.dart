@@ -11,13 +11,12 @@
  */
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
+import 'package:online_payments_sdk/src/masker.dart';
 
 part 'account_on_file.g.dart';
 
 /// Represents an AccountOnFile object.
-@JsonSerializable(
-  explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class AccountOnFile {
   @JsonKey(required: true)
   final String id;
@@ -31,9 +30,11 @@ class AccountOnFile {
   @JsonKey()
   final List<AccountOnFileAttribute> attributes;
 
-  AccountOnFile(this.id, this.paymentProductId, {this.displayHints, this.attributes = const []});
+  AccountOnFile(this.id, this.paymentProductId,
+      {this.displayHints, this.attributes = const []});
 
-  factory AccountOnFile.fromJson(Map<String, dynamic> json) => _$AccountOnFileFromJson(json);
+  factory AccountOnFile.fromJson(Map<String, dynamic> json) =>
+      _$AccountOnFileFromJson(json);
 
   Map<String, dynamic> toJson() => _$AccountOnFileToJson(this);
 
@@ -58,8 +59,10 @@ class AccountOnFile {
   }
 
   /// Returns the value for the given payment product [fieldId] with a custom [mask] applied.
-  Future<String> getMaskedValueWithCustomMask(String fieldId, String mask) async {
-    final maskedValue = await AccountOnFileMasker.customMaskedValue(this, fieldId, mask);
+  Future<String> getMaskedValueWithCustomMask(
+      String fieldId, String mask) async {
+    final maskedValue =
+        await AccountOnFileMasker.customMaskedValue(this, fieldId, mask);
     return maskedValue;
   }
 }

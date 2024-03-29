@@ -13,6 +13,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'tooltip.g.dart';
 
+/// Represents a Tooltip object.
+/// Tooltips are [PaymentProduct] specific and are used to show extra information about an input field.
 @JsonSerializable(explicitToJson: true)
 class Tooltip {
   @JsonKey()
@@ -23,7 +25,8 @@ class Tooltip {
 
   Tooltip(this.label, this.imageUrl);
 
-  factory Tooltip.fromJson(Map<String, dynamic> json) => _$TooltipFromJson(json);
+  factory Tooltip.fromJson(Map<String, dynamic> json) =>
+      _$TooltipFromJson(json);
 
   Map<String, dynamic> toJson() => _$TooltipToJson(this);
 }

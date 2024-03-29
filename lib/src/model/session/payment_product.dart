@@ -17,20 +17,34 @@ part 'payment_product.g.dart';
 /// Represents a [BasicPaymentProduct] and its [PaymentProductField]s.
 @JsonSerializable(explicitToJson: true)
 class PaymentProduct extends BasicPaymentProduct {
-
   @JsonKey(required: true)
   List<PaymentProductField> fields;
 
-  PaymentProduct(super.id, super.paymentMethod, super.paymentProductGroup, super.allowsRecurring, super.allowsTokenization, super.usesRedirectionTo3rdParty, { super.displayHintsList, super.accountsOnFile, super.paymentProduct302SpecificData, super.paymentProduct320SpecificData, this.fields = const []}) {
+  PaymentProduct(
+      super.id,
+      super.paymentMethod,
+      super.paymentProductGroup,
+      super.allowsRecurring,
+      super.allowsTokenization,
+      super.usesRedirectionTo3rdParty,
+      {super.displayHintsList,
+      super.accountsOnFile,
+      super.paymentProduct302SpecificData,
+      super.paymentProduct320SpecificData,
+      this.fields = const []}) {
     fields.sort();
   }
 
-  factory PaymentProduct.fromJson(Map<String, dynamic> json) => _$PaymentProductFromJson(json);
+  factory PaymentProduct.fromJson(Map<String, dynamic> json) =>
+      _$PaymentProductFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$PaymentProductToJson(this);
 
-  PaymentProductField? getPaymentProductFieldById(String paymentProductFieldId) {
+  /// If found, returns the [PaymentProductField] corresponding with the provided [paymentProductFieldId].
+  /// If not found, null is returned.
+  PaymentProductField? getPaymentProductFieldById(
+      String paymentProductFieldId) {
     for (PaymentProductField field in fields) {
       if (field.id == paymentProductFieldId) {
         return field;

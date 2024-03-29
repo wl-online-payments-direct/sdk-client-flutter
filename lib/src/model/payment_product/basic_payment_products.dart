@@ -16,9 +16,7 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'basic_payment_products.g.dart';
 
 /// Contains a list of [BasicPaymentProduct], a list of [AccountOnFile] and helper methods to retrieve a specific [BasicPaymentProduct] object.
-@JsonSerializable(
-  explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class BasicPaymentProducts {
   @JsonKey(name: "paymentProducts")
   final List<BasicPaymentProduct> products;
@@ -30,7 +28,8 @@ class BasicPaymentProducts {
     _getAccountsOnFile();
   }
 
-  factory BasicPaymentProducts.fromJson(Map<String, dynamic> json) => _$BasicPaymentProductsFromJson(json);
+  factory BasicPaymentProducts.fromJson(Map<String, dynamic> json) =>
+      _$BasicPaymentProductsFromJson(json);
 
   Map<String, dynamic> toJson() => _$BasicPaymentProductsToJson(this);
 
@@ -48,7 +47,8 @@ class BasicPaymentProducts {
   }
 
   /// Returns the [BasicPaymentProduct] with the corresponding [accountOnFileId], or null if not found.
-  BasicPaymentProduct? getBasicPaymentProductByAccountOnFileId(String accountOnFileId) {
+  BasicPaymentProduct? getBasicPaymentProductByAccountOnFileId(
+      String accountOnFileId) {
     for (BasicPaymentProduct product in products) {
       for (AccountOnFile accountOnFile in product.accountsOnFile) {
         if (accountOnFile.id == accountOnFileId) {

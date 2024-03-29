@@ -9,7 +9,7 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of validator;
+part of '../../validator.dart';
 
 /// An implementation of [NativeSdkInterface] that uses method channels.
 class _ValidationMethodChannel extends _NativeValidationInterface {
@@ -18,41 +18,42 @@ class _ValidationMethodChannel extends _NativeValidationInterface {
 
   @override
   Future<String> validatePaymentRequest(String validationRequest) async {
-    final result = await _validationChannel.invokeMethod('validatePaymentRequest', {
-      "request" : validationRequest
-    });
+    final result = await _validationChannel
+        .invokeMethod('validatePaymentRequest', {"request": validationRequest});
     return result;
   }
 
   @override
-  Future<String> validatePaymentProductFieldForPaymentRequest(String validationRequest) async {
-    final result = await _validationChannel.invokeMethod('validatePaymentProductFieldForPaymentRequest', {
-      "request" : validationRequest
-    });
+  Future<String> validatePaymentProductFieldForPaymentRequest(
+      String validationRequest) async {
+    final result = await _validationChannel.invokeMethod(
+        'validatePaymentProductFieldForPaymentRequest',
+        {"request": validationRequest});
     return result;
   }
 
   @override
-  Future<String> validateValueForPaymentProductField(String validationRequest) async {
-    final result = await _validationChannel.invokeMethod('validateValueForPaymentProductField', {
-      "request" : validationRequest
-    });
+  Future<String> validateValueForPaymentProductField(
+      String validationRequest) async {
+    final result = await _validationChannel.invokeMethod(
+        'validateValueForPaymentProductField', {"request": validationRequest});
     return result;
   }
 
   @override
-  Future<String> validateValueForValidationRule(String validationRequest) async {
-    final result = await _validationChannel.invokeMethod('validateValueForValidationRule', {
-      "request" : validationRequest
-    });
+  Future<String> validateValueForValidationRule(
+      String validationRequest) async {
+    final result = await _validationChannel.invokeMethod(
+        'validateValueForValidationRule', {"request": validationRequest});
     return result;
   }
 
   @override
-  Future<String> validatePaymentRequestForValidationRule(String validationRequest) async {
-    final result = await _validationChannel.invokeMethod('validatePaymentRequestForValidationRule', {
-      "request" : validationRequest
-    });
+  Future<String> validatePaymentRequestForValidationRule(
+      String validationRequest) async {
+    final result = await _validationChannel.invokeMethod(
+        'validatePaymentRequestForValidationRule',
+        {"request": validationRequest});
     return result;
   }
 }

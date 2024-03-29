@@ -37,9 +37,14 @@ class IinDetailsResponse {
   @JsonKey(required: true)
   final CardType cardType;
 
-  IinDetailsResponse(this.status, this.cardType, {required this.paymentProductId, required this.countryCode, required this.isAllowedInContext, this.coBrands = const []});
+  IinDetailsResponse(this.status, this.cardType,
+      {required this.paymentProductId,
+      required this.countryCode,
+      required this.isAllowedInContext,
+      this.coBrands = const []});
 
-  factory IinDetailsResponse.fromJson(Map<String, dynamic> json) => _$IinDetailsResponseFromJson(json);
+  factory IinDetailsResponse.fromJson(Map<String, dynamic> json) =>
+      _$IinDetailsResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$IinDetailsResponseToJson(this);
 }

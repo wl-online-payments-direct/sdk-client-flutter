@@ -17,7 +17,6 @@ part 'payment_request_validation_request.g.dart';
 /// Request used to validate a [PaymentProductField] in a [PaymentRequest].
 @JsonSerializable(explicitToJson: true)
 class PaymentRequestValidationRequest {
-
   @JsonKey(required: true)
   final PaymentRequest paymentRequest;
 
@@ -26,7 +25,9 @@ class PaymentRequestValidationRequest {
 
   PaymentRequestValidationRequest(this.paymentRequest, {this.fieldId});
 
-  factory PaymentRequestValidationRequest.fromJson(Map<String, dynamic> json) => _$PaymentRequestValidationRequestFromJson(json);
+  factory PaymentRequestValidationRequest.fromJson(Map<String, dynamic> json) =>
+      _$PaymentRequestValidationRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PaymentRequestValidationRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PaymentRequestValidationRequestToJson(this);
 }

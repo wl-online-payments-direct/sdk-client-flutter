@@ -17,10 +17,13 @@ part 'validation_rule_terms_and_conditions.g.dart';
 /// Used for validation of terms and conditions.
 @JsonSerializable()
 class ValidationRuleTermsAndConditions extends ValidationRule {
-  ValidationRuleTermsAndConditions(ValidationType validationType, String messageId) : super(validationType, messageId);
-  
-  factory ValidationRuleTermsAndConditions.fromJson(Map<String, dynamic> json) => _$ValidationRuleTermsAndConditionsFromJson(json);
+  ValidationRuleTermsAndConditions(super.validationType, super.messageId);
+
+  factory ValidationRuleTermsAndConditions.fromJson(
+          Map<String, dynamic> json) =>
+      _$ValidationRuleTermsAndConditionsFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$ValidationRuleTermsAndConditionsToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$ValidationRuleTermsAndConditionsToJson(this);
 }

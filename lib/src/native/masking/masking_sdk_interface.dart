@@ -9,7 +9,7 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of masker;
+part of '../../masker.dart';
 
 abstract class _NativeMaskingInterface extends PlatformInterface {
   /// Constructs a OnlinepaymentsSdkFlutterPlatform.
@@ -17,7 +17,8 @@ abstract class _NativeMaskingInterface extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static final _NativeMaskingInterface _maskingChannel = _MaskingMethodChannel();
+  static final _NativeMaskingInterface _maskingChannel =
+      _MaskingMethodChannel();
 
   /// The default instance of [_NativeMaskingInterface] to use.
   ///
@@ -25,34 +26,45 @@ abstract class _NativeMaskingInterface extends PlatformInterface {
   static _NativeMaskingInterface get instance => _maskingChannel;
 
   Future<String> applyMaskForPaymentProductField(String applyMaskRequest) {
-    throw UnimplementedError("applyMaskForPaymentProductField has not been implemented");
+    throw UnimplementedError(
+        "applyMaskForPaymentProductField has not been implemented");
   }
 
   Future<String> removeMaskForPaymentProductField(String removeMaskRequest) {
-    throw UnimplementedError("removeMaskForPaymentProductField has not been implemented");
+    throw UnimplementedError(
+        "removeMaskForPaymentProductField has not been implemented");
   }
 
   Future<String> maskedValueForPaymentRequest(String maskedValueRequest) {
-    throw UnimplementedError("maskedValueForPaymentRequest has not been implemented");
+    throw UnimplementedError(
+        "maskedValueForPaymentRequest has not been implemented");
   }
 
   Future<String> unmaskedValueForPaymentRequest(String unmaskedValueRequest) {
-    throw UnimplementedError("unmaskedValueForPaymentRequest has not been implemented");
+    throw UnimplementedError(
+        "unmaskedValueForPaymentRequest has not been implemented");
   }
 
-  Future<String?> allMaskedValuesForPaymentRequest(String allMaskedValuesRequest) {
-    throw UnimplementedError("allMaskedValuesForPaymentRequest has not been implemented");
+  Future<String?> allMaskedValuesForPaymentRequest(
+      String allMaskedValuesRequest) {
+    throw UnimplementedError(
+        "allMaskedValuesForPaymentRequest has not been implemented");
   }
 
-  Future<String?> allUnmaskedValuesForPaymentRequest(String allUnmaskedValuesRequest) {
-    throw UnimplementedError("allUnmaskedValuesForPaymentRequest has not been implemented");
+  Future<String?> allUnmaskedValuesForPaymentRequest(
+      String allUnmaskedValuesRequest) {
+    throw UnimplementedError(
+        "allUnmaskedValuesForPaymentRequest has not been implemented");
   }
 
   Future<String> maskedValueForAccountOnFile(String maskedValueRequest) {
-    throw UnimplementedError("maskedValueForAccountOnFile has not been implemented");
+    throw UnimplementedError(
+        "maskedValueForAccountOnFile has not been implemented");
   }
 
-  Future<String> customMaskedValueForAccountOnFile(String customMaskedValueRequest) {
-    throw UnimplementedError("customMaskedValueForAccountOnFile has not been implemented");
+  Future<String> customMaskedValueForAccountOnFile(
+      String customMaskedValueRequest) {
+    throw UnimplementedError(
+        "customMaskedValueForAccountOnFile has not been implemented");
   }
 }

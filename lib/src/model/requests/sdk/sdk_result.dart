@@ -16,22 +16,27 @@ part 'sdk_result.g.dart';
 
 /// Result returned from the native SDKs after a call to the API was made.
 /// If successful, SdkResult contains the returned data. If not successful, SdkResult contains an [ErrorResponse].
-@JsonSerializable(
-    explicitToJson: true,
-    genericArgumentFactories: true)
+@JsonSerializable(explicitToJson: true, genericArgumentFactories: true)
 class SdkResult<T> {
-
   @JsonKey(required: false)
   T? data;
 
   @JsonKey(required: false)
   ErrorResponse? error;
 
-  SdkResult(this.data, this.error);
+  @JsonKey(required: false)
+  Throwable? throwable;
 
-  factory SdkResult.fromJson(Map<String, dynamic> json, T Function(Object? json) fromJsonT,) => _$SdkResultFromJson(json, fromJsonT);
+  SdkResult(this.data, this.error, {this.throwable});
 
-  Map<String, dynamic> toJson(Object Function(T value) toJsonT) => _$SdkResultToJson(this, toJsonT);
+  factory SdkResult.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) =>
+      _$SdkResultFromJson(json, fromJsonT);
+
+  Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
+      _$SdkResultToJson(this, toJsonT);
 
   SdkResultStatus status() {
     if (data != null && error == null) {

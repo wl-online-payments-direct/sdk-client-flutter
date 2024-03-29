@@ -17,7 +17,6 @@ part 'prepared_payment_request.g.dart';
 /// Contains all encrypted [PaymentRequest] data required for creating a payment.
 @JsonSerializable(explicitToJson: true)
 class PreparedPaymentRequest {
-
   @JsonKey(required: true)
   final String encryptedFields;
 
@@ -26,7 +25,8 @@ class PreparedPaymentRequest {
 
   PreparedPaymentRequest(this.encryptedFields, this.encodedClientMetaInfo);
 
-  factory PreparedPaymentRequest.fromJson(Map<String, dynamic> json) => _$PreparedPaymentRequestFromJson(json);
+  factory PreparedPaymentRequest.fromJson(Map<String, dynamic> json) =>
+      _$PreparedPaymentRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$PreparedPaymentRequestToJson(this);
 }

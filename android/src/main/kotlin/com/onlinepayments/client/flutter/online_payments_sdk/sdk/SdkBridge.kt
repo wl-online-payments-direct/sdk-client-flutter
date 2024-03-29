@@ -14,7 +14,6 @@ package com.onlinepayments.client.flutter.online_payments_sdk.sdk
 import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
-import com.onlinepayments.client.flutter.online_payments_sdk.validator.Validator
 import com.onlinepayments.client.flutter.online_payments_sdk.sdk.models.*
 import com.onlinepayments.sdk.client.android.exception.EncryptDataException
 import com.onlinepayments.sdk.client.android.listener.BasicPaymentProductsResponseListener
@@ -22,6 +21,7 @@ import com.onlinepayments.sdk.client.android.listener.IinLookupResponseListener
 import com.onlinepayments.sdk.client.android.listener.PaymentProductNetworkResponseListener
 import com.onlinepayments.sdk.client.android.listener.PaymentProductResponseListener
 import com.onlinepayments.sdk.client.android.listener.PublicKeyResponseListener
+import com.onlinepayments.sdk.client.android.listener.CurrencyConversionResponseListener
 import com.onlinepayments.sdk.client.android.listener.SurchargeCalculationResponseListener
 import com.onlinepayments.sdk.client.android.listener.PaymentRequestPreparedListener
 import com.onlinepayments.sdk.client.android.session.Session
@@ -32,6 +32,7 @@ import com.onlinepayments.sdk.client.android.model.iin.IinDetailsResponse
 import com.onlinepayments.sdk.client.android.model.paymentproduct.BasicPaymentProducts
 import com.onlinepayments.sdk.client.android.model.paymentproduct.PaymentProduct
 import com.onlinepayments.sdk.client.android.model.PreparedPaymentRequest
+import com.onlinepayments.sdk.client.android.model.currencyconversion.CurrencyConversionResponse
 import com.onlinepayments.sdk.client.android.model.surcharge.response.SurchargeCalculationResponse
 import io.flutter.plugin.common.MethodChannel
 
@@ -80,7 +81,7 @@ class SdkBridge {
                 result.success(json)
             }
 
-            override fun onApiError(error: ErrorResponse?) {
+            override fun onApiError(error: ErrorResponse) {
                 val sdkResult = Result<PublicKeyResponse>(error = error)
                 val json = gson.toJson(sdkResult)
                 result.success(json)
@@ -105,7 +106,7 @@ class SdkBridge {
                     result.success(json)
                 }
 
-                override fun onApiError(error: ErrorResponse?) {
+                override fun onApiError(error: ErrorResponse) {
                     val sdkResult = Result<IinDetailsResponse>(error = error)
                     val json = gson.toJson(sdkResult)
                     result.success(json)
@@ -132,7 +133,7 @@ class SdkBridge {
                     result.success(json)
                 }
 
-                override fun onApiError(error: ErrorResponse?) {
+                override fun onApiError(error: ErrorResponse) {
                     val sdkResult = Result<BasicPaymentProducts>(error = error)
                     val json = gson.toJson(sdkResult)
                     result.success(json)
@@ -154,13 +155,12 @@ class SdkBridge {
             request.paymentContext,
             object : PaymentProductResponseListener {
                 override fun onSuccess(response: PaymentProduct) {
-                    Validator.updatePaymentProduct(response)
                     val sdkResult = Result(data = response)
                     val json = gson.toJson(sdkResult)
                     result.success(json)
                 }
 
-                override fun onApiError(error: ErrorResponse?) {
+                override fun onApiError(error: ErrorResponse) {
                     val sdkResult = Result<PaymentProduct>(error = error)
                     val json = gson.toJson(sdkResult)
                     result.success(json)
@@ -187,7 +187,7 @@ class SdkBridge {
                     result.success(json)
                 }
 
-                override fun onApiError(error: ErrorResponse?) {
+                override fun onApiError(error: ErrorResponse) {
                     val sdkResult = Result<PaymentProductNetworkResponse>(error = error)
                     val json = gson.toJson(sdkResult)
                     result.success(json)
@@ -202,11 +202,66 @@ class SdkBridge {
         ) ?: ResultError.notInitialized(result)
     }
 
+    fun getCurrencyConversionWithPartialCCNumber(context: Context, result: io.flutter.plugin.common.MethodChannel.Result, request: CurrencyConversionRequest) {
+        session?.getCurrencyConversionQuote(
+            context,
+            request.amountOfMoney,
+            request.partialCreditCardNumber!!,
+            request.paymentProductId,
+            object : CurrencyConversionResponseListener {
+                override fun onSuccess(response: CurrencyConversionResponse) {
+                    val sdkResult = Result(data = response)
+                    val json = gson.toJson(sdkResult)
+                    result.success(json)
+                }
+
+                override fun onApiError(error: ErrorResponse) {
+                    val sdkResult = Result<CurrencyConversionResponse>(error = error)
+                    val json = gson.toJson(sdkResult)
+                    result.success(json)
+                }
+
+                override fun onException(t: Throwable) {
+                    val sdkResult = Result<CurrencyConversionResponse>(throwable = t)
+                    val json = gson.toJson(sdkResult)
+                    result.success(json)
+                }
+            }
+        ) ?: ResultError.notInitialized(result)
+    }
+
+    fun getCurrencyConversionWithToken(context: Context, result: io.flutter.plugin.common.MethodChannel.Result, request: CurrencyConversionRequest) {
+        session?.getCurrencyConversionQuote(
+            context,
+            request.amountOfMoney,
+            request.token!!,
+            object : CurrencyConversionResponseListener {
+                override fun onSuccess(response: CurrencyConversionResponse) {
+                    val sdkResult = Result(data = response)
+                    val json = gson.toJson(sdkResult)
+                    result.success(json)
+                }
+
+                override fun onApiError(error: ErrorResponse) {
+                    val sdkResult = Result<CurrencyConversionResponse>(error = error)
+                    val json = gson.toJson(sdkResult)
+                    result.success(json)
+                }
+
+                override fun onException(t: Throwable) {
+                    val sdkResult = Result<CurrencyConversionResponse>(throwable = t)
+                    val json = gson.toJson(sdkResult)
+                    result.success(json)
+                }
+            }
+        ) ?: ResultError.notInitialized(result)
+    }
+
     fun getSurchargeCalculationWithPartialCCNumber(context: Context, result: io.flutter.plugin.common.MethodChannel.Result, request: SurchargeCalculationRequest) {
         session?.getSurchargeCalculation(
             context,
             request.amountOfMoney,
-            request.partialCreditCardNumber,
+            request.partialCreditCardNumber!!,
             request.paymentProductId,
             object : SurchargeCalculationResponseListener {
                 override fun onSuccess(response: SurchargeCalculationResponse) {
@@ -215,7 +270,7 @@ class SdkBridge {
                     result.success(json)
                 }
 
-                override fun onApiError(error: ErrorResponse?) {
+                override fun onApiError(error: ErrorResponse) {
                     val sdkResult = Result<SurchargeCalculationResponse>(error = error)
                     val json = gson.toJson(sdkResult)
                     result.success(json)
@@ -234,7 +289,7 @@ class SdkBridge {
         session?.getSurchargeCalculation(
             context,
             request.amountOfMoney,
-            request.token,
+            request.token!!,
             object : SurchargeCalculationResponseListener {
                 override fun onSuccess(response: SurchargeCalculationResponse) {
                     val sdkResult = Result(data = response)
@@ -242,7 +297,7 @@ class SdkBridge {
                     result.success(json)
                 }
 
-                override fun onApiError(error: ErrorResponse?) {
+                override fun onApiError(error: ErrorResponse) {
                     val sdkResult = Result<SurchargeCalculationResponse>(error = error)
                     val json = gson.toJson(sdkResult)
                     result.success(json)

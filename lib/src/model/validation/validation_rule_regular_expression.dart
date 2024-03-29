@@ -20,10 +20,13 @@ class ValidationRuleRegularExpression extends ValidationRule {
   @JsonKey(required: true)
   final String regex;
 
-  ValidationRuleRegularExpression(ValidationType validationType, String messageId, this.regex) : super(validationType, messageId);
+  ValidationRuleRegularExpression(
+      super.validationType, super.messageId, this.regex);
 
-  factory ValidationRuleRegularExpression.fromJson(Map<String, dynamic> json) => _$ValidationRuleRegularExpressionFromJson(json);
+  factory ValidationRuleRegularExpression.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleRegularExpressionFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$ValidationRuleRegularExpressionToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$ValidationRuleRegularExpressionToJson(this);
 }

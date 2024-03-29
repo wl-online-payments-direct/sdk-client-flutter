@@ -17,7 +17,6 @@ part 'account_on_file_masked_value_request.g.dart';
 /// Request used to retrieve the masked value of a field in an [AccountOnFile].
 @JsonSerializable(explicitToJson: true)
 class AccountOnFileMaskedValueRequest {
-
   @JsonKey(required: true)
   final AccountOnFile accountOnFile;
 
@@ -26,7 +25,9 @@ class AccountOnFileMaskedValueRequest {
 
   AccountOnFileMaskedValueRequest(this.accountOnFile, this.fieldId);
 
-  factory AccountOnFileMaskedValueRequest.fromJson(Map<String, dynamic> json) => _$AccountOnFileMaskedValueRequestFromJson(json);
+  factory AccountOnFileMaskedValueRequest.fromJson(Map<String, dynamic> json) =>
+      _$AccountOnFileMaskedValueRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AccountOnFileMaskedValueRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$AccountOnFileMaskedValueRequestToJson(this);
 }

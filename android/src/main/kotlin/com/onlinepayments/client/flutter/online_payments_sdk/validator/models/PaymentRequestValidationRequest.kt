@@ -19,6 +19,10 @@ data class PaymentRequestValidationRequest(
     val paymentRequest: PaymentRequest,
 ) : ValidationRequest {
     override fun validate(): List<ValidationErrorMessage> {
-        return paymentRequest.validate() ?: listOf(ValidationErrorMessage("Payment product or Payment Product Fields parsing failed and the field cannot be found on the payment request $this", paymentRequest.paymentProduct.id, null))
+        try {
+            return paymentRequest.validate()
+        } catch (npe: NullPointerException) {
+            return listOf(ValidationErrorMessage("Payment product was not set on the payment request: $this", "payment product", null))
+        }
     }
 }

@@ -15,6 +15,7 @@ package com.onlinepayments.client.flutter.online_payments_sdk.validator.models
 import com.onlinepayments.sdk.client.android.model.PaymentRequest
 import com.onlinepayments.sdk.client.android.model.validation.AbstractValidationRule
 import com.onlinepayments.sdk.client.android.model.validation.ValidationErrorMessage
+import java.security.InvalidParameterException
 
 data class PaymentRequestRuleValidationRequest(
     val paymentRequest: PaymentRequest,
@@ -22,8 +23,12 @@ data class PaymentRequestRuleValidationRequest(
     val rule: AbstractValidationRule
 ) : ValidationRequest {
     override fun validate(): List<ValidationErrorMessage> {
-        return if (rule.validate(paymentRequest, fieldId)) emptyList()else listOf(
-            ValidationErrorMessage(rule.messageId, fieldId, rule)
-        )
+        try {
+            return if (rule.validate(paymentRequest, fieldId)) emptyList() else listOf(
+                ValidationErrorMessage(rule.messageId, fieldId, rule)
+            )
+        } catch (ipe: InvalidParameterException) {
+            return listOf(ValidationErrorMessage(ipe.message, fieldId, rule))
+        }
     }
 }

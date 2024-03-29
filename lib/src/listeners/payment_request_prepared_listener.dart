@@ -9,13 +9,14 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of listeners;
+part of '../listeners.dart';
 
 /// Listener used when preparing a [PaymentRequest] for creating a payment.
-final class PaymentRequestPreparedListener extends ApiResponseInterface<PreparedPaymentRequest> {
-  PaymentRequestPreparedListener({
-    required void Function(PreparedPaymentRequest response) onSuccess,
-    required void Function(ErrorResponse? apiError) onError,
-    required void Function(NativeException? exception) onException
-  }) : super(onSuccess, onError, onException);
+final class PaymentRequestPreparedListener
+    extends ApiResponseInterface<PreparedPaymentRequest> {
+  PaymentRequestPreparedListener(
+      {required void Function(PreparedPaymentRequest response) onSuccess,
+      required void Function(ErrorResponse? apiError) onError,
+      required void Function(NativeException? exception) onException})
+      : super(onSuccess, onError, onException);
 }

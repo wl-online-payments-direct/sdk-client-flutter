@@ -15,9 +15,7 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'iin_details_request.g.dart';
 
 /// Request used to retrieve an [IinDetailsResponse] from the API.
-@JsonSerializable(
-  explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class IinDetailsRequest {
   @JsonKey(required: true)
   final String partialCreditCardNumber;
@@ -25,9 +23,11 @@ class IinDetailsRequest {
   @JsonKey(required: true)
   final PaymentContext paymentContext;
 
-  IinDetailsRequest({required this.partialCreditCardNumber, required this.paymentContext});
+  IinDetailsRequest(
+      {required this.partialCreditCardNumber, required this.paymentContext});
 
-  factory IinDetailsRequest.fromJson(Map<String, dynamic> json) => _$IinDetailsRequestFromJson(json);
+  factory IinDetailsRequest.fromJson(Map<String, dynamic> json) =>
+      _$IinDetailsRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$IinDetailsRequestToJson(this);
 }

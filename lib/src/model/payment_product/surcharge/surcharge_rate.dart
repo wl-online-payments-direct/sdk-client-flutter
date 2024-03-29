@@ -14,11 +14,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'surcharge_rate.g.dart';
 
 /// Represents a SurchargeRate object.
-@JsonSerializable(
-    explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class SurchargeRate {
-
   @JsonKey(required: true)
   final String surchargeProductTypeId;
 
@@ -31,9 +28,11 @@ class SurchargeRate {
   @JsonKey(required: true)
   final int specificRate;
 
-  SurchargeRate(this.surchargeProductTypeId, this.surchargeProductTypeVersion, this.adValoremRate, this.specificRate);
+  SurchargeRate(this.surchargeProductTypeId, this.surchargeProductTypeVersion,
+      this.adValoremRate, this.specificRate);
 
-  factory SurchargeRate.fromJson(Map<String, dynamic> json) => _$SurchargeRateFromJson(json);
+  factory SurchargeRate.fromJson(Map<String, dynamic> json) =>
+      _$SurchargeRateFromJson(json);
 
   Map<String, dynamic> toJson() => _$SurchargeRateToJson(this);
 }

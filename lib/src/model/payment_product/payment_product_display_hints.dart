@@ -25,9 +25,11 @@ class PaymentProductDisplayHints {
   @JsonKey(name: "logo")
   String logoUrl;
 
-  PaymentProductDisplayHints(this.label, {required this.displayOrder, required this.logoUrl});
+  PaymentProductDisplayHints(this.label,
+      {required this.displayOrder, required this.logoUrl});
 
-  factory PaymentProductDisplayHints.fromJson(Map<String, dynamic> json) => _$PaymentProductDisplayHintsFromJson(json);
+  factory PaymentProductDisplayHints.fromJson(Map<String, dynamic> json) =>
+      _$PaymentProductDisplayHintsFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentProductDisplayHintsToJson(this);
 }

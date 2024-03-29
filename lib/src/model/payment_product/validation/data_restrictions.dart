@@ -25,12 +25,13 @@ class DataRestrictions {
 
   DataRestrictions({required this.isRequired, required this.validationRules});
 
-  const DataRestrictions.empty({this.isRequired = false, this.validationRules = const []});
+  const DataRestrictions.empty(
+      {this.isRequired = false, this.validationRules = const []});
 
-  factory DataRestrictions.fromJson(Map<String, dynamic> json) => _$DataRestrictionsFromJson(json);
+  factory DataRestrictions.fromJson(Map<String, dynamic> json) =>
+      _$DataRestrictionsFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataRestrictionsToJson(this);
-
 }
 
 List<ValidationRule> validationRulesFromJson(List<dynamic> json) {

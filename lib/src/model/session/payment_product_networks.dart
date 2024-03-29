@@ -16,13 +16,13 @@ part 'payment_product_networks.g.dart';
 /// Represents a PaymentProductNetworks object.
 @JsonSerializable(explicitToJson: true)
 class PaymentProductNetworks {
-
   @JsonKey(required: true)
   final List<String> networks;
 
   PaymentProductNetworks(this.networks);
 
-  factory PaymentProductNetworks.fromJson(Map<String, dynamic> json) => _$PaymentProductNetworksFromJson(json);
+  factory PaymentProductNetworks.fromJson(Map<String, dynamic> json) =>
+      _$PaymentProductNetworksFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentProductNetworksToJson(this);
 }

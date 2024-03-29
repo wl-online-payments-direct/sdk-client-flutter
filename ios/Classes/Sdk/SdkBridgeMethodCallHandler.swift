@@ -27,6 +27,8 @@ internal class SdkBridgeMethodCallHandler: OnlinePaymentsPlugin {
             getPaymentProduct(call, result)
         case "getPaymentProductNetworks":
             getPaymentProductNetworks(call, result)
+        case "getCurrencyConversionQuote":
+            getCurrencyConversionQuote(call, result)
         case "getSurchargeCalculation":
             getSurchargeCalculation(call, result)
         case "preparePaymentRequest":
@@ -121,6 +123,23 @@ internal class SdkBridgeMethodCallHandler: OnlinePaymentsPlugin {
         }
 
         SdkBridge.shared.getPaymentProductNetworks(request: paymentProductNetworksRequest, result: result)
+    }
+
+    private func getCurrencyConversionQuote(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        if !SdkBridge.shared.isSessionInitialized() {
+            result(ResultError.sessionNotInitialized())
+            return
+        }
+
+        guard let currencyConversionRequest = CurrencyConversionRequest.getRequestObject(for: call, result: result) else {
+            return
+        }
+
+        if currencyConversionRequest.partialCreditCardNumber != nil {
+            SdkBridge.shared.getCurrencyConversionWithPartialCCNumber(request: currencyConversionRequest, result: result)
+        } else {
+            SdkBridge.shared.getCurrencyConversionWithToken(request: currencyConversionRequest, result: result)
+        }
     }
 
     private func getSurchargeCalculation(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {

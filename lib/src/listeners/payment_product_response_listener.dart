@@ -9,13 +9,14 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of listeners;
+part of '../listeners.dart';
 
 /// Listener used when retrieving a [PaymentProduct] from the API.
-final class PaymentProductResponseListener extends ApiResponseInterface<PaymentProduct> {
-  PaymentProductResponseListener({
-    required void Function(PaymentProduct response) onSuccess,
-    required void Function(ErrorResponse? apiError) onError,
-    required void Function(NativeException? exception) onException
-  }) : super(onSuccess, onError, onException);
+final class PaymentProductResponseListener
+    extends ApiResponseInterface<PaymentProduct> {
+  PaymentProductResponseListener(
+      {required void Function(PaymentProduct response) onSuccess,
+      required void Function(ErrorResponse? apiError) onError,
+      required void Function(NativeException? exception) onException})
+      : super(onSuccess, onError, onException);
 }

@@ -15,11 +15,8 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'surcharge.g.dart';
 
 /// Represents a Surcharge object.
-@JsonSerializable(
-    explicitToJson: true
-)
+@JsonSerializable(explicitToJson: true)
 class Surcharge {
-
   @JsonKey(required: true)
   final int paymentProductId;
 
@@ -38,9 +35,12 @@ class Surcharge {
   @JsonKey()
   final SurchargeRate? surchargeRate;
 
-  Surcharge(this.paymentProductId, this.result, this.netAmount, this.surchargeAmount, this.totalAmount, {this.surchargeRate});
+  Surcharge(this.paymentProductId, this.result, this.netAmount,
+      this.surchargeAmount, this.totalAmount,
+      {this.surchargeRate});
 
-  factory Surcharge.fromJson(Map<String, dynamic> json) => _$SurchargeFromJson(json);
+  factory Surcharge.fromJson(Map<String, dynamic> json) =>
+      _$SurchargeFromJson(json);
 
   Map<String, dynamic> toJson() => _$SurchargeToJson(this);
 }

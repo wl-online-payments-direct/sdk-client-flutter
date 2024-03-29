@@ -16,7 +16,6 @@ part 'api_error_item.g.dart';
 /// If an API error occurred during an API call, this object might be available on [ApiError] and contains more information about the error that occurred.
 @JsonSerializable(explicitToJson: true)
 class ApiErrorItem {
-
   @JsonKey(required: true)
   String code;
 
@@ -25,7 +24,8 @@ class ApiErrorItem {
 
   ApiErrorItem(this.code, this.message);
 
-  factory ApiErrorItem.fromJson(Map<String, dynamic> json) => _$ApiErrorItemFromJson(json);
+  factory ApiErrorItem.fromJson(Map<String, dynamic> json) =>
+      _$ApiErrorItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$ApiErrorItemToJson(this);
 }

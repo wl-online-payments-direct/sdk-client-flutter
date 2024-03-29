@@ -29,7 +29,9 @@ class SdkSessionRequest {
   final String assetUrl;
   @JsonKey(required: false, defaultValue: false)
   final bool isEnvironmentProduction;
-  @JsonKey(required: true, defaultValue: "${Constants.appIdentifierPrefix}/UnknownAppId")
+  @JsonKey(
+      required: true,
+      defaultValue: "${Constants.appIdentifierPrefix}/UnknownAppId")
   final String appIdentifier;
   @JsonKey(required: true, defaultValue: false)
   final bool loggingEnabled;
@@ -43,8 +45,8 @@ class SdkSessionRequest {
       this.appIdentifier,
       this.loggingEnabled);
 
-  factory SdkSessionRequest.fromJson(Map<String, dynamic> json) => _$SdkSessionRequestFromJson(json);
+  factory SdkSessionRequest.fromJson(Map<String, dynamic> json) =>
+      _$SdkSessionRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$SdkSessionRequestToJson(this);
-
 }

@@ -13,14 +13,9 @@ import OnlinePaymentsKit
 
 struct PaymentProductFieldValidationRequest: ValidationRequest {
     let value: String
-    let fieldId: String
+    let field: PaymentProductField
 
     func validate() -> [ValidationError] {
-        guard let paymentProduct = ValidatorHelper.paymentProduct,
-              let paymentProductField = paymentProduct.paymentProductField(withId: fieldId) else {
-            return [ValidationError(errorMessage: "Payment Product or Payment Product Field cannot be found.", paymentProductFieldId: fieldId, rule: nil)]
-        }
-
-        return paymentProductField.validateValue(value: value)
+        return field.validateValue(value: value)
     }
 }

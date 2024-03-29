@@ -43,7 +43,7 @@ internal class SdkBridge {
                 self.forwardSuccessResult(object: PublicKeyResponse.self, dataObject: publicKeyResponse, result: result)
             },
             failure: { error in
-                self.forwardFailureResult(object: PublicKeyResponse.self, errorResponse: ErrorResponse(message: error.localizedDescription), result: result)
+                self.forwardFailureResult(object: PublicKeyResponse.self, throwable: Throwable(message: error.localizedDescription), result: result)
             },
             apiFailure: { errorResponse in
                 self.forwardApiFailureResult(object: PublicKeyResponse.self, errorResponse: errorResponse, result: result)
@@ -59,7 +59,7 @@ internal class SdkBridge {
                 self.forwardSuccessResult(object: IINDetailsResponse.self, dataObject: iiNDetailsResponse, result: result)
             },
             failure: { error in
-                self.forwardFailureResult(object: IINDetailsResponse.self, errorResponse: ErrorResponse(message: error.localizedDescription), result: result)
+                self.forwardFailureResult(object: IINDetailsResponse.self, throwable: Throwable(message: error.localizedDescription), result: result)
             },
             apiFailure: { errorResponse in
                 self.forwardApiFailureResult(object: IINDetailsResponse.self, errorResponse: errorResponse, result: result)
@@ -74,7 +74,7 @@ internal class SdkBridge {
                 self.forwardSuccessResult(object: BasicPaymentProducts.self, dataObject: basicPaymentProducts, result: result)
             },
             failure: { error in
-                self.forwardFailureResult(object: BasicPaymentProducts.self, errorResponse: ErrorResponse(message: error.localizedDescription), result: result)
+                self.forwardFailureResult(object: BasicPaymentProducts.self, throwable: Throwable(message: error.localizedDescription), result: result)
             },
             apiFailure: { errorResponse in
                 self.forwardApiFailureResult(object: BasicPaymentProducts.self, errorResponse: errorResponse, result: result)
@@ -87,11 +87,10 @@ internal class SdkBridge {
             withId: request.productId,
             context: request.paymentContext,
             success: { paymentProduct in
-                ValidatorHelper.updatePaymentProduct(newPaymentProduct: paymentProduct)
                 self.forwardSuccessResult(object: PaymentProduct.self, dataObject: paymentProduct, result: result)
             },
             failure: { error in
-                self.forwardFailureResult(object: PaymentProduct.self, errorResponse: ErrorResponse(message: error.localizedDescription), result: result)
+                self.forwardFailureResult(object: PaymentProduct.self, throwable: Throwable(message: error.localizedDescription), result: result)
             },
             apiFailure: { errorResponse in
                 self.forwardApiFailureResult(object: PaymentProduct.self, errorResponse: errorResponse, result: result)
@@ -107,13 +106,56 @@ internal class SdkBridge {
                 self.forwardSuccessResult(object: PaymentProductNetworks.self, dataObject: paymentProductNetworks, result: result)
             },
             failure: { error in
-                self.forwardFailureResult(object: PaymentProductNetworks.self, errorResponse: ErrorResponse(message: error.localizedDescription), result: result)
+                self.forwardFailureResult(object: PaymentProductNetworks.self, throwable: Throwable(message: error.localizedDescription), result: result)
             },
             apiFailure: { errorResponse in
                 self.forwardApiFailureResult(object: PaymentProductNetworks.self, errorResponse: errorResponse, result: result)
             }
         ) ?? result(ResultError.sessionNotInitialized())
     }
+
+    func getCurrencyConversionWithPartialCCNumber(request: CurrencyConversionRequest, result: @escaping FlutterResult) {
+            guard let partialCreditCardNumber = request.partialCreditCardNumber else {
+                result(ResultError.invalidParameter(parameter: "partialCreditCardNumber"))
+                return
+            }
+
+            session?.currencyConversionQuote(
+                amountOfMoney: request.amountOfMoney,
+                partialCreditCardNumber: partialCreditCardNumber,
+                paymentProductId: request.paymentProductId as NSNumber?,
+                success: { currencyConversionResponse in
+                    self.forwardSuccessResult(object: CurrencyConversionResponse.self, dataObject: currencyConversionResponse, result: result)
+                },
+                failure: { error in
+                    self.forwardFailureResult(object: CurrencyConversionResponse.self, throwable: Throwable(message: error.localizedDescription), result: result)
+                },
+                apiFailure: { errorResponse in
+                    self.forwardApiFailureResult(object: CurrencyConversionResponse.self, errorResponse: errorResponse, result: result)
+                }
+            ) ?? result(ResultError.sessionNotInitialized())
+        }
+
+        func getCurrencyConversionWithToken(request: CurrencyConversionRequest, result: @escaping FlutterResult) {
+            guard let token = request.token else {
+                result(ResultError.invalidParameter(parameter: "token"))
+                return
+            }
+
+            session?.currencyConversionQuote(
+                amountOfMoney: request.amountOfMoney,
+                token: token,
+                success: { currencyConversionResponse in
+                    self.forwardSuccessResult(object: CurrencyConversionResponse.self, dataObject: currencyConversionResponse, result: result)
+                },
+                failure: { error in
+                    self.forwardFailureResult(object: CurrencyConversionResponse.self, throwable: Throwable(message: error.localizedDescription), result: result)
+                },
+                apiFailure: { errorResponse in
+                    self.forwardApiFailureResult(object: CurrencyConversionResponse.self, errorResponse: errorResponse, result: result)
+                }
+            ) ?? result(ResultError.sessionNotInitialized())
+        }
 
     func getSurchargeCalculationWithPartialCCNumber(request: SurchargeCalculationRequest, result: @escaping FlutterResult) {
         guard let partialCreditCardNumber = request.partialCreditCardNumber else {
@@ -129,7 +171,7 @@ internal class SdkBridge {
                 self.forwardSuccessResult(object: SurchargeCalculationResponse.self, dataObject: surchargeCalculationResponse, result: result)
             },
             failure: { error in
-                self.forwardFailureResult(object: SurchargeCalculationResponse.self, errorResponse: ErrorResponse(message: error.localizedDescription), result: result)
+                self.forwardFailureResult(object: SurchargeCalculationResponse.self, throwable: Throwable(message: error.localizedDescription), result: result)
             },
             apiFailure: { errorResponse in
                 self.forwardApiFailureResult(object: SurchargeCalculationResponse.self, errorResponse: errorResponse, result: result)
@@ -150,7 +192,7 @@ internal class SdkBridge {
                 self.forwardSuccessResult(object: SurchargeCalculationResponse.self, dataObject: surchargeCalculationResponse, result: result)
             },
             failure: { error in
-                self.forwardFailureResult(object: SurchargeCalculationResponse.self, errorResponse: ErrorResponse(message: error.localizedDescription), result: result)
+                self.forwardFailureResult(object: SurchargeCalculationResponse.self, throwable: Throwable(message: error.localizedDescription), result: result)
             },
             apiFailure: { errorResponse in
                 self.forwardApiFailureResult(object: SurchargeCalculationResponse.self, errorResponse: errorResponse, result: result)
@@ -165,7 +207,7 @@ internal class SdkBridge {
                 self.forwardSuccessResult(object: PreparedPaymentRequest.self, dataObject: preparedPaymentRequest, result: result)
             },
             failure: { error in
-                self.forwardFailureResult(object: PreparedPaymentRequest.self, errorResponse: ErrorResponse(message: error.localizedDescription), result: result)
+                self.forwardFailureResult(object: PreparedPaymentRequest.self, throwable: Throwable(message: error.localizedDescription), result: result)
             },
             apiFailure: { errorResponse in
                 self.forwardApiFailureResult(object: PreparedPaymentRequest.self, errorResponse: errorResponse, result: result)
@@ -174,17 +216,17 @@ internal class SdkBridge {
     }
 
     private func forwardSuccessResult<T: Encodable>(object: T.Type, dataObject: T, result: @escaping FlutterResult) {
-        let sdkResult = Result<T>(data: dataObject, error: nil)
+        let sdkResult = Result<T>(data: dataObject, error: nil, throwable: nil)
         sdkResult.forwardResultAsString(encodingErrorType: .success, result: result)
     }
 
-    private func forwardFailureResult<T: Encodable>(object: T.Type, errorResponse: ErrorResponse, result: @escaping FlutterResult) {
-        let sdkResult = Result<T>(data: nil, error: errorResponse)
+    private func forwardFailureResult<T: Encodable>(object: T.Type, throwable: Throwable, result: @escaping FlutterResult) {
+        let sdkResult = Result<T>(data: nil, error: nil, throwable: throwable)
         sdkResult.forwardResultAsString(encodingErrorType: .failure, result: result)
     }
 
     private func forwardApiFailureResult<T: Encodable>(object: T.Type, errorResponse: ErrorResponse, result: @escaping FlutterResult) {
-        let sdkResult = Result<T>(data: nil, error: errorResponse)
+        let sdkResult = Result<T>(data: nil, error: errorResponse, throwable: nil)
         sdkResult.forwardResultAsString(encodingErrorType: .apiFailure, result: result)
     }
 }

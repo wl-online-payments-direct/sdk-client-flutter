@@ -17,13 +17,14 @@ part 'validation_rule_fixed_list.g.dart';
 /// Used for validation of a fixed list.
 @JsonSerializable()
 class ValidationRuleFixedList extends ValidationRule {
-
-  @JsonKey(required:true)
+  @JsonKey(required: true)
   final List<String> allowedValues;
 
-  ValidationRuleFixedList(ValidationType validationType, String messageId, this.allowedValues) : super(validationType, messageId);
+  ValidationRuleFixedList(
+      super.validationType, super.messageId, this.allowedValues);
 
-  factory ValidationRuleFixedList.fromJson(Map<String, dynamic> json) => _$ValidationRuleFixedListFromJson(json);
+  factory ValidationRuleFixedList.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleFixedListFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ValidationRuleFixedListToJson(this);

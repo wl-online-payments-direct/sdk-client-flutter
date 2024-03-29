@@ -17,9 +17,10 @@ part 'validation_rule_luhn.g.dart';
 /// Used for validation of the Luhn check.
 @JsonSerializable()
 class ValidationRuleLuhn extends ValidationRule {
-  ValidationRuleLuhn(ValidationType validationType, String messageId) : super(validationType, messageId);
+  ValidationRuleLuhn(super.validationType, super.messageId);
 
-  factory ValidationRuleLuhn.fromJson(Map<String, dynamic> json) => _$ValidationRuleLuhnFromJson(json);
+  factory ValidationRuleLuhn.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleLuhnFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$ValidationRuleLuhnToJson(this);

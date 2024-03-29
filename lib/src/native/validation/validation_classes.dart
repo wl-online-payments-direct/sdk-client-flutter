@@ -9,50 +9,67 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of validator;
+part of '../../validator.dart';
 
 final class PaymentRequestValidator {
-  static Future<List<ValidationErrorMessage>> validatePaymentRequest(PaymentRequest request) async {
+  static Future<List<ValidationErrorMessage>> validatePaymentRequest(
+      PaymentRequest request) async {
     final validationRequest = PaymentRequestValidationRequest(request);
-    final validationResultStr = await _NativeValidationInterface.instance.validatePaymentRequest(jsonEncode(validationRequest));
+    final validationResultStr = await _NativeValidationInterface.instance
+        .validatePaymentRequest(jsonEncode(validationRequest));
     return _parseValidationErrorMessages(validationResultStr);
   }
 
-  static Future<List<ValidationErrorMessage>> validatePaymentProductFieldForPaymentRequest(String fieldId, PaymentRequest paymentRequest) async {
-    final validationRequest = PaymentRequestValidationRequest(paymentRequest, fieldId: fieldId);
-    final validationResultStr = await _NativeValidationInterface.instance.validatePaymentProductFieldForPaymentRequest(jsonEncode(validationRequest));
+  static Future<List<ValidationErrorMessage>>
+      validatePaymentProductFieldForPaymentRequest(
+          String fieldId, PaymentRequest paymentRequest) async {
+    final validationRequest =
+        PaymentRequestValidationRequest(paymentRequest, fieldId: fieldId);
+    final validationResultStr = await _NativeValidationInterface.instance
+        .validatePaymentProductFieldForPaymentRequest(
+            jsonEncode(validationRequest));
     return _parseValidationErrorMessages(validationResultStr);
   }
 }
 
 final class PaymentProductFieldValidator {
-  static Future<List<ValidationErrorMessage>> validateValueForPaymentProductField(String value, String fieldId) async {
-    final validationRequest = PaymentProductFieldValidationRequest(value, fieldId);
-    final validationResultStr = await _NativeValidationInterface.instance.validateValueForPaymentProductField(jsonEncode(validationRequest));
+  static Future<List<ValidationErrorMessage>>
+      validateValueForPaymentProductField(
+          String value, PaymentProductField field) async {
+    final validationRequest =
+        PaymentProductFieldValidationRequest(value, field);
+    final validationResultStr = await _NativeValidationInterface.instance
+        .validateValueForPaymentProductField(jsonEncode(validationRequest));
     return _parseValidationErrorMessages(validationResultStr);
   }
 }
 
 final class ValidationRuleValidator {
-  static Future<List<ValidationErrorMessage>> validateValueForValidationRule(String value, ValidationRule rule) async {
+  static Future<List<ValidationErrorMessage>> validateValueForValidationRule(
+      String value, ValidationRule rule) async {
     final validationRequest = ValidationRuleValidationRequest(value, rule);
-    final validationResultStr = await _NativeValidationInterface.instance.validateValueForValidationRule(jsonEncode(validationRequest));
+    final validationResultStr = await _NativeValidationInterface.instance
+        .validateValueForValidationRule(jsonEncode(validationRequest));
     return _parseValidationErrorMessages(validationResultStr);
   }
 
-  static Future<List<ValidationErrorMessage>> validateValidationRuleForPaymentRequestAndFieldId(PaymentRequest request, String fieldId, ValidationRule rule) async {
-    final validationRequest = PaymentRequestRuleValidationRequest(request, fieldId, rule);
-    final validationResultStr = await _NativeValidationInterface.instance.validatePaymentRequestForValidationRule(jsonEncode(validationRequest));
+  static Future<List<ValidationErrorMessage>>
+      validateValidationRuleForPaymentRequestAndFieldId(
+          PaymentRequest request, String fieldId, ValidationRule rule) async {
+    final validationRequest =
+        PaymentRequestRuleValidationRequest(request, fieldId, rule);
+    final validationResultStr = await _NativeValidationInterface.instance
+        .validatePaymentRequestForValidationRule(jsonEncode(validationRequest));
     return _parseValidationErrorMessages(validationResultStr);
   }
 }
 
-List<ValidationErrorMessage> _parseValidationErrorMessages(String validationResultStr) {
+List<ValidationErrorMessage> _parseValidationErrorMessages(
+    String validationResultStr) {
   List<dynamic> json = jsonDecode(validationResultStr);
 
-  final validationResult = json.map((vem) =>
-      ValidationErrorMessage.fromJson(vem)
-  );
+  final validationResult =
+      json.map((vem) => ValidationErrorMessage.fromJson(vem));
   final result = validationResult.toList(growable: false);
   return result;
 }

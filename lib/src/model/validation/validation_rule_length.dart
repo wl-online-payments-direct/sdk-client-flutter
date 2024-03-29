@@ -17,16 +17,19 @@ part 'validation_rule_length.g.dart';
 /// Used for validation of the length of an input.
 @JsonSerializable()
 class ValidationRuleLength extends ValidationRule {
-  @JsonKey(required:true)
+  @JsonKey(required: true)
   final int minLength;
 
-  @JsonKey(required:true)
+  @JsonKey(required: true)
   final int maxLength;
 
-  ValidationRuleLength(ValidationType validationType, String messageId, this.minLength, this.maxLength) : super(validationType, messageId);
+  ValidationRuleLength(
+      super.validationType, super.messageId, this.minLength, this.maxLength);
 
-  factory ValidationRuleLength.fromJson(Map<String, dynamic> json) => _$ValidationRuleLengthFromJson(json);
+  factory ValidationRuleLength.fromJson(Map<String, dynamic> json) =>
+      _$ValidationRuleLengthFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$ValidationRuleLengthToJson(this)..addAll({'messageId' : "length"});
+  Map<String, dynamic> toJson() =>
+      _$ValidationRuleLengthToJson(this)..addAll({'messageId': "length"});
 }

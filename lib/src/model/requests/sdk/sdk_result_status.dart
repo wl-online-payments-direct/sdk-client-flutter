@@ -11,8 +11,4 @@
  */
 
 /// Enum containing all the possible [SdkResult] statuses.
-enum SdkResultStatus {
-  success,
-  apiError,
-  exception
-}
+enum SdkResultStatus { success, apiError, exception }

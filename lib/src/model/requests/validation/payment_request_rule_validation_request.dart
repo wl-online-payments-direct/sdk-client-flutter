@@ -14,11 +14,9 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 
 part 'payment_request_rule_validation_request.g.dart';
 
-
 /// Request used to validate a [PaymentProductField] in a [PaymentRequest] with a specific [ValidationRule].
 @JsonSerializable(explicitToJson: true)
 class PaymentRequestRuleValidationRequest {
-
   @JsonKey(required: true)
   final PaymentRequest paymentRequest;
 
@@ -28,10 +26,13 @@ class PaymentRequestRuleValidationRequest {
   @JsonKey(required: true)
   final ValidationRule rule;
 
-  PaymentRequestRuleValidationRequest(this.paymentRequest, this.fieldId, this.rule);
+  PaymentRequestRuleValidationRequest(
+      this.paymentRequest, this.fieldId, this.rule);
 
+  factory PaymentRequestRuleValidationRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentRequestRuleValidationRequestFromJson(json);
 
-  factory PaymentRequestRuleValidationRequest.fromJson(Map<String, dynamic> json) => _$PaymentRequestRuleValidationRequestFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PaymentRequestRuleValidationRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PaymentRequestRuleValidationRequestToJson(this);
 }

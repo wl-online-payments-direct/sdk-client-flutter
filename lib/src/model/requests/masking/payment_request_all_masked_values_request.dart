@@ -17,7 +17,6 @@ part 'payment_request_all_masked_values_request.g.dart';
 /// Request used to retrieve all the masked or unmasked values of a [PaymentRequest].
 @JsonSerializable(explicitToJson: true)
 class PaymentRequestAllMaskedValuesRequest {
-
   @JsonKey(required: true)
   final PaymentRequest request;
 
@@ -25,7 +24,10 @@ class PaymentRequestAllMaskedValuesRequest {
   PaymentRequestAllMaskedValuesRequest.maskedValues(this.request);
   PaymentRequestAllMaskedValuesRequest.unmaskedValues(this.request);
 
-  factory PaymentRequestAllMaskedValuesRequest.fromJson(Map<String, dynamic> json) => _$PaymentRequestAllMaskedValuesRequestFromJson(json);
+  factory PaymentRequestAllMaskedValuesRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaymentRequestAllMaskedValuesRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PaymentRequestAllMaskedValuesRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PaymentRequestAllMaskedValuesRequestToJson(this);
 }

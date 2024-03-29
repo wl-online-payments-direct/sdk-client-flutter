@@ -32,6 +32,8 @@ class PaymentProductFieldDisplayHints {
   @JsonKey()
   final String placeholderLabel;
 
+  @Deprecated(
+      "In a future release, this field will be removed since it is not returned form the API.")
   @JsonKey()
   final String? link;
 
@@ -47,20 +49,49 @@ class PaymentProductFieldDisplayHints {
   @JsonKey()
   final FormElement? formElement;
 
-  PaymentProductFieldDisplayHints(this.alwaysShow, this.obfuscate, this.displayOrder, this.label, this.placeholderLabel, this.link, this.mask, this.preferredInputType, this.tooltip, this.formElement);
+  @Deprecated(
+      "In a future release, link will be removed from this constructor. This object should not be initialized, it is initialized automatically when returned from the API.")
+  PaymentProductFieldDisplayHints(
+      this.alwaysShow,
+      this.obfuscate,
+      this.displayOrder,
+      this.label,
+      this.placeholderLabel,
+      @Deprecated("In a future release, this field will be removed.") this.link,
+      this.mask,
+      this.preferredInputType,
+      this.tooltip,
+      this.formElement);
+
+  PaymentProductFieldDisplayHints.init(
+      this.alwaysShow,
+      this.obfuscate,
+      this.displayOrder,
+      this.label,
+      this.placeholderLabel,
+      this.mask,
+      this.preferredInputType,
+      this.tooltip,
+      this.formElement,
+      {@Deprecated("In a future release, this field will be removed.")
+      this.link = ""});
+
   const PaymentProductFieldDisplayHints.empty(
       {this.alwaysShow = false,
       this.obfuscate = false,
       this.displayOrder = 0,
       this.label = "",
       this.placeholderLabel = "",
+      @Deprecated("In a future release, this field will be removed.")
       this.link = "",
       this.mask = "",
       this.preferredInputType,
       this.tooltip,
       this.formElement});
 
-  factory PaymentProductFieldDisplayHints.fromJson(Map<String, dynamic> json) => _$PaymentProductFieldDisplayHintsFromJson(json);
+  factory PaymentProductFieldDisplayHints.fromJson(Map<String, dynamic> json) =>
+      _$PaymentProductFieldDisplayHintsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PaymentProductFieldDisplayHintsToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PaymentProductFieldDisplayHintsToJson(this);
 }

@@ -17,13 +17,13 @@ part 'sdk_prepare_payment_request.g.dart';
 /// Request used to encrypt a [PaymentRequest].
 @JsonSerializable(explicitToJson: true)
 class SdkPreparePaymentRequest {
-
   @JsonKey(required: true)
   final PaymentRequest paymentRequest;
 
   SdkPreparePaymentRequest(this.paymentRequest);
 
-  factory SdkPreparePaymentRequest.fromJson(Map<String, dynamic> json) => _$SdkPreparePaymentRequestFromJson(json);
+  factory SdkPreparePaymentRequest.fromJson(Map<String, dynamic> json) =>
+      _$SdkPreparePaymentRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$SdkPreparePaymentRequestToJson(this);
 }

@@ -9,18 +9,27 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of session;
+part of '../session.dart';
 
 class _NativeFutureInterface<T> {
   late void Function(T response) onSuccess;
   late void Function(ErrorResponse? apiError) onApiError;
-  late void Function(Throwable? throwable) onException;
+  late void Function(NativeException? e) onException;
   // Use in case you want to add stuff before/after call the api listener (calling api listener needs to be done manually)
-  _NativeFutureInterface({required this.onSuccess, required this.onApiError, required this.onException});
+  _NativeFutureInterface(
+      {required this.onSuccess,
+      required this.onApiError,
+      required this.onException});
   // Use for simple bridge between NativeFutureListener and ApiResponseListener
   _NativeFutureInterface.fromListener(ApiResponseInterface<T> listener) {
-    onSuccess = (response) { listener.onSuccess(response); };
-    onApiError = (apiError) { listener.onApiError(apiError); };
-    onException = (t) { listener.onException(NativeException.fromThrowable(t)); };
+    onSuccess = (response) {
+      listener.onSuccess(response);
+    };
+    onApiError = (apiError) {
+      listener.onApiError(apiError);
+    };
+    onException = (e) {
+      listener.onException(e);
+    };
   }
 }

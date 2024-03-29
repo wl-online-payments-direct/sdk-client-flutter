@@ -19,11 +19,12 @@ struct RuleValidationRequest: ValidationRequest {
         let container = try decoder.container(keyedBy: ValidatorHelper.ValidationKeys.self)
         value = try container.decode(String.self, forKey: .value)
 
-        guard let ruleContainer = try? container.nestedContainer(keyedBy: ValidatorHelper.ValidationKeys.self, forKey: .rule) else {
+        guard let ruleContainer = try? container.nestedContainer(keyedBy: ValidatorHelper.ValidationKeys.self, forKey: .rule),
+              let decodedRule = ValidatorHelper.getRule(container: container, ruleContainer: ruleContainer) else {
             return
         }
 
-        rule = ValidatorHelper.getRule(container: container, ruleContainer: ruleContainer)
+        rule = decodedRule
     }
 
     func validate() -> [ValidationError] {
