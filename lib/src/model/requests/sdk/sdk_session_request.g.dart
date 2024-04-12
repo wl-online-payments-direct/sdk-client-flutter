@@ -50,4 +50,5 @@ Map<String, dynamic> _$SdkSessionRequestToJson(SdkSessionRequest instance) =>
       'isEnvironmentProduction': instance.isEnvironmentProduction,
       'appIdentifier': instance.appIdentifier,
       'loggingEnabled': instance.loggingEnabled,
+      'sdkIdentifier': instance._sdkIdentifier,
     };

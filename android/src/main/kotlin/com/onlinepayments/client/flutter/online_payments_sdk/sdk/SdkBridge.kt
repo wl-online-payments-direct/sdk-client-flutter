@@ -69,7 +69,8 @@ class SdkBridge {
                 request.assetUrl,
                 request.isEnvironmentProduction,
                 request.appIdentifier,
-                request.loggingEnabled
+                request.loggingEnabled,
+                request.sdkIdentifier
             )
     }
 

@@ -35,6 +35,8 @@ class SdkSessionRequest {
   final String appIdentifier;
   @JsonKey(required: true, defaultValue: false)
   final bool loggingEnabled;
+  @JsonKey(includeToJson: true, name: "sdkIdentifier")
+  final String _sdkIdentifier = "FlutterClientSDK/v1.1.1";
 
   SdkSessionRequest(
       this.clientSessionId,

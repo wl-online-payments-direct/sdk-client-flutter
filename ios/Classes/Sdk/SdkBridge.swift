@@ -33,7 +33,8 @@ internal class SdkBridge {
                 baseURL: request.clientApiUrl,
                 assetBaseURL: request.assetUrl,
                 appIdentifier: request.appIdentifier,
-                loggingEnabled: request.loggingEnabled
+                loggingEnabled: request.loggingEnabled,
+                sdkIdentifier: request.sdkIdentifier
             )
     }
 

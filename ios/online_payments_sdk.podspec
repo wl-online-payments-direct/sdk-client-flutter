@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'online_payments_sdk'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'Online Payments Flutter SDK iOS Plugin'
   s.description      = <<-DESC
         iOS Plugin for the Online Payments Flutter SDK.
@@ -15,6 +15,8 @@ Pod::Spec.new do |s|
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.dependency 'Alamofire'
+  s.dependency 'CryptoSwift'
   s.vendored_framework = 'Frameworks/OnlinePaymentsKit.xcframework'
   s.platform = :ios, '12.0'
 

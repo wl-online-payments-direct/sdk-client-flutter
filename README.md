@@ -51,6 +51,23 @@ Add a dependency to the SDK in your app's `pubspec.yaml` file, where `x.y.z` is 
 Afterwards, run the following command:
 `flutter pub get`
 
+### Android
+
+Make sure you enable multidex support in your `build.gradle` file if `minSdkVersion` is set to 20 or lower:
+```gradle
+defaultConfig {
+    ...
+    multiDexEnabled true
+    ...
+}
+
+dependencies {
+    ...
+    implementation 'androidx.multidex:multidex:2.0.1'
+    ...
+}
+```
+
 ## Getting started
 
 To accept your first payment using the SDK, complete the steps below. Also see the section [Payment Steps](#payment-steps) for more details on these steps.

@@ -11,11 +11,28 @@
  */
 import OnlinePaymentsKit
 
-struct InitializeSessionRequest: Decodable {
+class InitializeSessionRequest: Decodable {
     let clientSessionId: String
     let customerId: String
     let clientApiUrl: String
     let assetUrl: String
     let appIdentifier: String
     var loggingEnabled: Bool = false
+    let sdkIdentifier: String
+
+    private enum CodingKeys: String, CodingKey {
+        case clientSessionId, customerId, clientApiUrl, assetUrl, appIdentifier, loggingEnabled, sdkIdentifier
+    }
+
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.clientSessionId = try container.decode(String.self, forKey: .clientSessionId)
+        self.customerId = try container.decode(String.self, forKey: .customerId)
+        self.clientApiUrl = try container.decode(String.self, forKey: .clientApiUrl)
+        self.assetUrl = try container.decode(String.self, forKey: .assetUrl)
+        self.appIdentifier = try container.decode(String.self, forKey: .appIdentifier)
+        self.loggingEnabled = try container.decode(Bool.self, forKey: .loggingEnabled)
+        self.sdkIdentifier = try container.decode(String.self, forKey: .sdkIdentifier)
+    }
 }

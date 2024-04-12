@@ -19,5 +19,6 @@ data class InitializeSessionRequest(
     val assetUrl: String,
     val isEnvironmentProduction: Boolean = false,
     val appIdentifier: String,
-    val loggingEnabled: Boolean = false
+    val loggingEnabled: Boolean = false,
+    val sdkIdentifier: String
 )

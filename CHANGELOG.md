@@ -1,3 +1,7 @@
+## 1.1.1
+### Fixed
+- Fixed an issue where the iOS implementation of the Flutter SDK could not build due to missing transitive dependencies. These are now declared in the podspec so they will be downloaded upon `pod install`.
+- Fixed an issue where the metadata in the network calls did not indicate the Flutter SDK correctly. 
 ## 1.1.0
 ## Added
 - Return an error result when attempting to make a Surcharge API call without required arguments.
