@@ -14,9 +14,9 @@ part of '../listeners.dart';
 /// Listener used when preparing a [PaymentRequest] for creating a payment.
 final class PaymentRequestPreparedListener
     extends ApiResponseInterface<PreparedPaymentRequest> {
-  PaymentRequestPreparedListener(
-      {required void Function(PreparedPaymentRequest response) onSuccess,
-      required void Function(ErrorResponse? apiError) onError,
-      required void Function(NativeException? exception) onException})
-      : super(onSuccess, onError, onException);
+  PaymentRequestPreparedListener({
+    required void Function(PreparedPaymentRequest response) onSuccess,
+    required void Function(ErrorResponse? apiError) onError,
+    required void Function(NativeException? exception) onException,
+  }) : super(onSuccess, onError, onException);
 }

@@ -14,9 +14,9 @@ part of '../listeners.dart';
 /// Listener used when retrieving a [CurrencyConversion] from the API.
 final class CurrencyConversionResponseListener
     extends ApiResponseInterface<CurrencyConversion> {
-  CurrencyConversionResponseListener(
-      {required void Function(CurrencyConversion response) onSuccess,
-        required void Function(ErrorResponse? apiError) onError,
-        required void Function(NativeException? exception) onException})
-      : super(onSuccess, onError, onException);
+  CurrencyConversionResponseListener({
+    required void Function(CurrencyConversion response) onSuccess,
+    required void Function(ErrorResponse? apiError) onError,
+    required void Function(NativeException? exception) onException,
+  }) : super(onSuccess, onError, onException);
 }

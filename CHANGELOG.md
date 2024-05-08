@@ -1,3 +1,9 @@
+## 1.1.2
+### Changed 
+- Updated dependencies.
+
+### Fixed
+- Fixed an issue where a `ValidationErrorMessage` with an `ValidationRule` would miss additional `ValidationRule` properties such as `minLength` and `maxLength` for `ValidationRuleLength`.
 ## 1.1.1
 ### Fixed
 - Fixed an issue where the iOS implementation of the Flutter SDK could not build due to missing transitive dependencies. These are now declared in the podspec so they will be downloaded upon `pod install`.

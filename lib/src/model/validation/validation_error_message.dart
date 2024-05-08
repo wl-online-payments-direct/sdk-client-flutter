@@ -19,6 +19,7 @@ part 'validation_error_message.g.dart';
 class ValidationErrorMessage {
   final String errorMessage;
   final String paymentProductFieldId;
+  @JsonKey(fromJson: validationRuleFromJson)
   final ValidationRule? rule;
 
   ValidationErrorMessage(
@@ -30,4 +31,35 @@ class ValidationErrorMessage {
       _$ValidationErrorMessageFromJson(json);
 
   Map<String, dynamic> toJson() => _$ValidationErrorMessageToJson(this);
+}
+
+ValidationRule? validationRuleFromJson(dynamic json) {
+  String? validationType = json?["validationType"];
+
+  if (validationType == null) {
+    return null;
+  }
+
+  switch (validationType) {
+    case ValidationType.expirationDateKey:
+      return ValidationRuleExpirationDate.fromJson(json);
+    case ValidationType.emailAddressKey:
+      return ValidationRuleEmailAddress.fromJson(json);
+    case ValidationType.fixedListKey:
+      return ValidationRuleFixedList.fromJson(json);
+    case ValidationType.ibanKey:
+      return ValidationRuleIBAN.fromJson(json);
+    case ValidationType.lengthKey:
+      return ValidationRuleLength.fromJson(json);
+    case ValidationType.luhnKey:
+      return ValidationRuleLuhn.fromJson(json);
+    case ValidationType.rangeKey:
+      return ValidationRuleRange.fromJson(json);
+    case ValidationType.regularExpressionKey:
+      return ValidationRuleRegularExpression.fromJson(json);
+    case ValidationType.termsAndConditionsKey:
+      return ValidationRuleTermsAndConditions.fromJson(json);
+    default:
+      return ValidationRule(ValidationType.type, "validationRule");
+  }
 }

@@ -23,9 +23,7 @@ ValidationErrorMessage _$ValidationErrorMessageFromJson(
     ValidationErrorMessage(
       errorMessage: json['errorMessage'] as String,
       paymentProductFieldId: json['paymentProductFieldId'] as String,
-      rule: json['rule'] == null
-          ? null
-          : ValidationRule.fromJson(json['rule'] as Map<String, dynamic>),
+      rule: validationRuleFromJson(json['rule']),
     );
 
 Map<String, dynamic> _$ValidationErrorMessageToJson(

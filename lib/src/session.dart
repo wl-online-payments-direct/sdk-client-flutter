@@ -92,63 +92,70 @@ final class Session {
   }
 
   /// Retrieves the IinDetails as a [IinDetailsResponse] object from the Online Payments gateway with the use of a [IinDetailsRequest].
-  getIinDetails(
-      {required IinDetailsRequest request,
-      required IinLookupResponseListener listener}) {
+  getIinDetails({
+    required IinDetailsRequest request,
+    required IinLookupResponseListener listener,
+  }) {
     return _nativeSdkCommunicator
         .listenForIinDetails(request, listener)
         .awaitJob();
   }
 
   /// Retrieves the basic payment products as a [BasicPaymentProducts] object from the Online Payments gateway with the use of a [BasicPaymentProductsRequest].
-  getBasicPaymentProducts(
-      {required BasicPaymentProductsRequest request,
-      required BasicPaymentProductsResponseListener listener}) {
+  getBasicPaymentProducts({
+    required BasicPaymentProductsRequest request,
+    required BasicPaymentProductsResponseListener listener,
+  }) {
     return _nativeSdkCommunicator
         .listenForBasicPaymentProducts(request, listener)
         .awaitJob();
   }
 
   /// Retrieves a payment product as a [PaymentProduct] object from the Online Payments gateway with the use of a [PaymentProductRequest].
-  getPaymentProduct(
-      {required PaymentProductRequest request,
-      required PaymentProductResponseListener listener}) {
+  getPaymentProduct({
+    required PaymentProductRequest request,
+    required PaymentProductResponseListener listener,
+  }) {
     return _nativeSdkCommunicator
         .listenForPaymentProduct(request, listener)
         .awaitJob();
   }
 
   /// Retrieves payment product networks as a [PaymentProductNetworks] object from the Online Payments gateway with the use of a [PaymentProductNetworksRequest].
-  getPaymentProductNetworks(
-      {required PaymentProductNetworksRequest request,
-      required PaymentProductNetworksResponseListener listener}) {
+  getPaymentProductNetworks({
+    required PaymentProductNetworksRequest request,
+    required PaymentProductNetworksResponseListener listener,
+  }) {
     return _nativeSdkCommunicator
         .listenForPaymentProductNetworks(request, listener)
         .awaitJob();
   }
 
   /// Retrieves a currency conversion quote as a [CurrencyConversion] object from the Online Payments gateway with the use of a [CurrencyConversionRequest].
-  getCurrencyConversionQuote(
-      {required CurrencyConversionRequest request,
-        required CurrencyConversionResponseListener listener}) {
+  getCurrencyConversionQuote({
+    required CurrencyConversionRequest request,
+    required CurrencyConversionResponseListener listener,
+  }) {
     return _nativeSdkCommunicator
         .listenForCurrencyConversionQuote(request, listener)
         .awaitJob();
   }
 
   /// Retrieves a surcharge calculation as a [SurchargeCalculation] object from the Online Payments gateway with the use of a [SurchargeCalculationRequest].
-  getSurchargeCalculation(
-      {required SurchargeCalculationRequest request,
-      required SurchargeCalculationResponseListener listener}) {
+  getSurchargeCalculation({
+    required SurchargeCalculationRequest request,
+    required SurchargeCalculationResponseListener listener,
+  }) {
     return _nativeSdkCommunicator
         .listenForSurchargeCalculation(request, listener)
         .awaitJob();
   }
 
   /// Prepares a payment request - supplied as a [SdkPreparePaymentRequest] - used for creating a payment via the Online Payments gateway, it is returned as a [PreparedPaymentRequest].
-  preparePaymentRequest(
-      {required SdkPreparePaymentRequest request,
-      required PaymentRequestPreparedListener listener}) {
+  preparePaymentRequest({
+    required SdkPreparePaymentRequest request,
+    required PaymentRequestPreparedListener listener,
+  }) {
     return _nativeSdkCommunicator
         .listenForPreparedPaymentRequest(request, listener)
         .awaitJob();

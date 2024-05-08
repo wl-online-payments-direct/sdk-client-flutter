@@ -22,8 +22,7 @@ class CurrencyConversionResult {
 
   final String? resultReason;
 
-  CurrencyConversionResult(this.result,
-      {this.resultReason});
+  CurrencyConversionResult(this.result, {this.resultReason});
 
   factory CurrencyConversionResult.fromJson(Map<String, dynamic> json) =>
       _$CurrencyConversionResultFromJson(json);

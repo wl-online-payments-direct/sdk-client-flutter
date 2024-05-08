@@ -13,9 +13,9 @@ part of '../listeners.dart';
 
 /// Listener used when retrieving a [PublicKey] from the API.
 final class PublicKeyResponseListener extends ApiResponseInterface<PublicKey> {
-  PublicKeyResponseListener(
-      {required void Function(PublicKey response) onSuccess,
-      required void Function(ErrorResponse? apiError) onError,
-      required void Function(NativeException? exception) onException})
-      : super(onSuccess, onError, onException);
+  PublicKeyResponseListener({
+    required void Function(PublicKey response) onSuccess,
+    required void Function(ErrorResponse? apiError) onError,
+    required void Function(NativeException? exception) onException,
+  }) : super(onSuccess, onError, onException);
 }

@@ -14,9 +14,9 @@ part of '../listeners.dart';
 /// Listener used when retrieving a [IinDetailsResponse] from the API.
 final class IinLookupResponseListener
     extends ApiResponseInterface<IinDetailsResponse> {
-  IinLookupResponseListener(
-      {required void Function(IinDetailsResponse response) onSuccess,
-      required void Function(ErrorResponse? apiError) onError,
-      required void Function(NativeException? exception) onException})
-      : super(onSuccess, onError, onException);
+  IinLookupResponseListener({
+    required void Function(IinDetailsResponse response) onSuccess,
+    required void Function(ErrorResponse? apiError) onError,
+    required void Function(NativeException? exception) onException,
+  }) : super(onSuccess, onError, onException);
 }

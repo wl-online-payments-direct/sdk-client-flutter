@@ -14,9 +14,9 @@ part of '../listeners.dart';
 /// Listener used when retrieving a [Surcharge] from the API.
 final class SurchargeCalculationResponseListener
     extends ApiResponseInterface<SurchargeCalculation> {
-  SurchargeCalculationResponseListener(
-      {required void Function(SurchargeCalculation response) onSuccess,
-      required void Function(ErrorResponse? apiError) onError,
-      required void Function(NativeException? exception) onException})
-      : super(onSuccess, onError, onException);
+  SurchargeCalculationResponseListener({
+    required void Function(SurchargeCalculation response) onSuccess,
+    required void Function(ErrorResponse? apiError) onError,
+    required void Function(NativeException? exception) onException,
+  }) : super(onSuccess, onError, onException);
 }

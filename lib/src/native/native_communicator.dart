@@ -68,7 +68,7 @@ final class _NativeCommunicator {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getCurrencyConversionQuote(requestStr),
-            (data) => CurrencyConversion.fromJson(data as Map<String, dynamic>),
+        (data) => CurrencyConversion.fromJson(data as Map<String, dynamic>),
         _NativeFutureInterface.fromListener(listener));
   }
 

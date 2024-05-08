@@ -14,9 +14,9 @@ part of '../listeners.dart';
 /// Listener used when retrieving [PaymentProductNetworks] from the API.
 final class PaymentProductNetworksResponseListener
     extends ApiResponseInterface<PaymentProductNetworks> {
-  PaymentProductNetworksResponseListener(
-      {required void Function(PaymentProductNetworks response) onSuccess,
-      required void Function(ErrorResponse? apiError) onError,
-      required void Function(NativeException? exception) onException})
-      : super(onSuccess, onError, onException);
+  PaymentProductNetworksResponseListener({
+    required void Function(PaymentProductNetworks response) onSuccess,
+    required void Function(ErrorResponse? apiError) onError,
+    required void Function(NativeException? exception) onException,
+  }) : super(onSuccess, onError, onException);
 }
