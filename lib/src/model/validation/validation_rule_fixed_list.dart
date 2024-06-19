@@ -21,7 +21,10 @@ class ValidationRuleFixedList extends ValidationRule {
   final List<String> allowedValues;
 
   ValidationRuleFixedList(
-      super.validationType, super.messageId, this.allowedValues);
+    super.validationType,
+    super.messageId,
+    this.allowedValues,
+  );
 
   factory ValidationRuleFixedList.fromJson(Map<String, dynamic> json) =>
       _$ValidationRuleFixedListFromJson(json);

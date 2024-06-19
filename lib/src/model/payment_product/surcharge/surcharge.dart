@@ -35,9 +35,14 @@ class Surcharge {
   @JsonKey()
   final SurchargeRate? surchargeRate;
 
-  Surcharge(this.paymentProductId, this.result, this.netAmount,
-      this.surchargeAmount, this.totalAmount,
-      {this.surchargeRate});
+  Surcharge(
+    this.paymentProductId,
+    this.result,
+    this.netAmount,
+    this.surchargeAmount,
+    this.totalAmount, {
+    this.surchargeRate,
+  });
 
   factory Surcharge.fromJson(Map<String, dynamic> json) =>
       _$SurchargeFromJson(json);

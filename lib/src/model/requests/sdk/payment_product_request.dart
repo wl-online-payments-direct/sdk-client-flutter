@@ -23,8 +23,10 @@ class PaymentProductRequest {
   @JsonKey(required: true)
   final PaymentContext paymentContext;
 
-  PaymentProductRequest(
-      {required this.productId, required this.paymentContext});
+  PaymentProductRequest({
+    required this.productId,
+    required this.paymentContext,
+  });
 
   factory PaymentProductRequest.fromJson(Map<String, dynamic> json) =>
       _$PaymentProductRequestFromJson(json);

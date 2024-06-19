@@ -48,16 +48,17 @@ class BasicPaymentProduct implements Comparable {
   final PaymentProduct320SpecificData? paymentProduct320SpecificData;
 
   BasicPaymentProduct(
-      this.id,
-      this.paymentMethod,
-      this.paymentProductGroup,
-      this.allowsRecurring,
-      this.allowsTokenization,
-      this.usesRedirectionTo3rdParty,
-      {this.displayHintsList = const [],
-      this.accountsOnFile = const [],
-      this.paymentProduct320SpecificData,
-      this.paymentProduct302SpecificData});
+    this.id,
+    this.paymentMethod,
+    this.paymentProductGroup,
+    this.allowsRecurring,
+    this.allowsTokenization,
+    this.usesRedirectionTo3rdParty, {
+    this.displayHintsList = const [],
+    this.accountsOnFile = const [],
+    this.paymentProduct320SpecificData,
+    this.paymentProduct302SpecificData,
+  });
 
   factory BasicPaymentProduct.fromJson(Map<String, dynamic> json) =>
       _$BasicPaymentProductFromJson(json);

@@ -26,8 +26,8 @@ ValidationRuleRange _$ValidationRuleRangeFromJson(Map<String, dynamic> json) {
   return ValidationRuleRange(
     $enumDecode(_$ValidationTypeEnumMap, json['validationType']),
     json['messageId'] as String,
-    json['minValue'] as int,
-    json['maxValue'] as int,
+    (json['minValue'] as num).toInt(),
+    (json['maxValue'] as num).toInt(),
   );
 }
 

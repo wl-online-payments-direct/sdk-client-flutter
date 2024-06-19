@@ -315,4 +315,46 @@ void main() {
     expect(deserializedPreparedPaymentRequest.encodedClientMetaInfo,
         "A1B2C3encodedClientMetaInfoD4E5F6");
   });
+
+  test('deserializeCompleteApiErrorItem', () async {
+    final ApiErrorItem deserializedApiErrorItem =
+    ApiErrorItem.fromJson(
+        await jsonMap("test/mock_responses/apiErrorItemComplete.json"));
+
+    expect(deserializedApiErrorItem.errorCode,
+        "123456");
+    expect(deserializedApiErrorItem.category,
+        "PAYMENT_PLATFORM_ERROR");
+    expect(deserializedApiErrorItem.code,
+        "123456");
+    expect(deserializedApiErrorItem.httpStatusCode,
+        404);
+    expect(deserializedApiErrorItem.id,
+        "1");
+    expect(deserializedApiErrorItem.message,
+        "The product could not be found");
+    expect(deserializedApiErrorItem.retriable,
+        false);
+  });
+
+  test('deserializeMissingOptionalPropertiesApiErrorItem', () async {
+    final ApiErrorItem deserializedApiErrorItem =
+    ApiErrorItem.fromJson(
+        await jsonMap("test/mock_responses/apiErrorItemMissingOptionalProperties.json"));
+
+    expect(deserializedApiErrorItem.errorCode,
+        "123456");
+    expect(deserializedApiErrorItem.category,
+        null);
+    expect(deserializedApiErrorItem.code,
+        "This error does not contain a code");
+    expect(deserializedApiErrorItem.httpStatusCode,
+        null);
+    expect(deserializedApiErrorItem.id,
+        null);
+    expect(deserializedApiErrorItem.message,
+        "This error does not contain a message");
+    expect(deserializedApiErrorItem.retriable,
+        true);
+  });
 }

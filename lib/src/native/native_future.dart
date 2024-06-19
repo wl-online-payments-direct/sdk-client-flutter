@@ -19,30 +19,52 @@ class _NativeFuture<T> {
   _NativeFuture(this._job, this._fromJson, this._listener);
 
   awaitJob() async {
-    return await _job.then((value) {
-      final result = _parseResult(value);
-      final resultStatus = result.status();
-      switch (resultStatus) {
-        case SdkResultStatus.success:
-          final data = result.data;
-          data == null
-              ? _listener.onException(NativeException.fromThrowable(Throwable(
-                  "No data available for successful call",
-                  throwable: null)))
-              : _listener.onSuccess(data);
-        case SdkResultStatus.apiError:
-          _listener.onApiError(result.error);
-        case SdkResultStatus.exception:
-          _listener.onException(NativeException.fromThrowable(
-              result.throwable ??
-                  Throwable("Exception status without throwable",
-                      throwable: null)));
-      }
-    }).onError((error, stackTrace) {
-      _listener.onException(NativeException.fromThrowable(Throwable(
-          error.toString(),
-          throwable: Throwable(stackTrace.toString(), throwable: null))));
-    });
+    return await _job.then(
+      (value) {
+        final result = _parseResult(value);
+        final resultStatus = result.status();
+        switch (resultStatus) {
+          case SdkResultStatus.success:
+            final data = result.data;
+            data == null
+                ? _listener.onException(
+                    NativeException.fromThrowable(
+                      Throwable(
+                        "No data available for successful call",
+                        throwable: null,
+                      ),
+                    ),
+                  )
+                : _listener.onSuccess(data);
+          case SdkResultStatus.apiError:
+            _listener.onApiError(result.error);
+          case SdkResultStatus.exception:
+            _listener.onException(
+              NativeException.fromThrowable(
+                result.throwable ??
+                    Throwable(
+                      "Exception status without throwable",
+                      throwable: null,
+                    ),
+              ),
+            );
+        }
+      },
+    ).onError(
+      (error, stackTrace) {
+        _listener.onException(
+          NativeException.fromThrowable(
+            Throwable(
+              error.toString(),
+              throwable: Throwable(
+                stackTrace.toString(),
+                throwable: null,
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   SdkResult<T> _parseResult(String response) {

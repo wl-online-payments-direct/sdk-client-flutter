@@ -30,7 +30,7 @@ Surcharge _$SurchargeFromJson(Map<String, dynamic> json) {
     ],
   );
   return Surcharge(
-    json['paymentProductId'] as int,
+    (json['paymentProductId'] as num).toInt(),
     $enumDecode(_$SurchargeResultEnumMap, json['result']),
     AmountOfMoney.fromJson(json['netAmount'] as Map<String, dynamic>),
     AmountOfMoney.fromJson(json['surchargeAmount'] as Map<String, dynamic>),

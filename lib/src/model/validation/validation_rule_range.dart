@@ -23,7 +23,11 @@ class ValidationRuleRange extends ValidationRule {
   final int maxValue;
 
   ValidationRuleRange(
-      super.validationType, super.messageId, this.minValue, this.maxValue);
+    super.validationType,
+    super.messageId,
+    this.minValue,
+    this.maxValue,
+  );
 
   factory ValidationRuleRange.fromJson(Map<String, dynamic> json) =>
       _$ValidationRuleRangeFromJson(json);

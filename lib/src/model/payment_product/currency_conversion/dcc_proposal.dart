@@ -30,8 +30,13 @@ class DccProposal {
 
   final String? disclaimerDisplay;
 
-  DccProposal(this.baseAmount, this.targetAmount, this.rate,
-      {this.disclaimerReceipt, this.disclaimerDisplay});
+  DccProposal(
+    this.baseAmount,
+    this.targetAmount,
+    this.rate, {
+    this.disclaimerReceipt,
+    this.disclaimerDisplay,
+  });
 
   factory DccProposal.fromJson(Map<String, dynamic> json) =>
       _$DccProposalFromJson(json);

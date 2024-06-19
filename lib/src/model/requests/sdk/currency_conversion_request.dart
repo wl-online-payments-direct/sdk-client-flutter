@@ -32,8 +32,10 @@ class CurrencyConversionRequest {
   CurrencyConversionRequest(this.amountOfMoney);
 
   CurrencyConversionRequest.withPartialCreditCardNumber(
-      this.amountOfMoney, this.partialCreditCardNumber,
-      {this.paymentProductId});
+    this.amountOfMoney,
+    this.partialCreditCardNumber, {
+    this.paymentProductId,
+  });
   CurrencyConversionRequest.withToken(this.amountOfMoney, this.token);
 
   factory CurrencyConversionRequest.fromJson(Map<String, dynamic> json) =>

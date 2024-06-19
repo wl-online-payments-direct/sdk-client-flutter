@@ -29,10 +29,11 @@ class PaymentRequest {
   @JsonKey(required: true)
   bool tokenize = false;
 
-  PaymentRequest(
-      {required this.paymentProduct,
-      this.tokenize = false,
-      this.accountOnFile});
+  PaymentRequest({
+    required this.paymentProduct,
+    this.tokenize = false,
+    this.accountOnFile,
+  });
 
   factory PaymentRequest.fromJson(Map<String, dynamic> json) =>
       _$PaymentRequestFromJson(json);

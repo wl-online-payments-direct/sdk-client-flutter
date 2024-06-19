@@ -17,7 +17,8 @@ final class _NativeCommunicator {
   }
 
   _NativeFuture<PublicKey> listenForPublicKey(
-      PublicKeyResponseListener listener) {
+    PublicKeyResponseListener listener,
+  ) {
     return _NativeFuture(
         _NativeSdkInterface.instance.getPublicKey(),
         (data) => PublicKey.fromJson(data as Map<String, dynamic>),
@@ -25,7 +26,9 @@ final class _NativeCommunicator {
   }
 
   _NativeFuture<IinDetailsResponse> listenForIinDetails(
-      IinDetailsRequest request, IinLookupResponseListener listener) {
+    IinDetailsRequest request,
+    IinLookupResponseListener listener,
+  ) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getIinDetails(requestStr),
@@ -34,8 +37,9 @@ final class _NativeCommunicator {
   }
 
   _NativeFuture<BasicPaymentProducts> listenForBasicPaymentProducts(
-      BasicPaymentProductsRequest request,
-      BasicPaymentProductsResponseListener listener) {
+    BasicPaymentProductsRequest request,
+    BasicPaymentProductsResponseListener listener,
+  ) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getBasicPaymentProducts(requestStr),
@@ -44,7 +48,9 @@ final class _NativeCommunicator {
   }
 
   _NativeFuture<PaymentProduct> listenForPaymentProduct(
-      PaymentProductRequest request, PaymentProductResponseListener listener) {
+    PaymentProductRequest request,
+    PaymentProductResponseListener listener,
+  ) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getPaymentProduct(requestStr),
@@ -53,8 +59,9 @@ final class _NativeCommunicator {
   }
 
   _NativeFuture<PaymentProductNetworks> listenForPaymentProductNetworks(
-      PaymentProductNetworksRequest request,
-      PaymentProductNetworksResponseListener listener) {
+    PaymentProductNetworksRequest request,
+    PaymentProductNetworksResponseListener listener,
+  ) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getPaymentProductNetworks(requestStr),
@@ -63,8 +70,9 @@ final class _NativeCommunicator {
   }
 
   _NativeFuture<CurrencyConversion> listenForCurrencyConversionQuote(
-      CurrencyConversionRequest request,
-      CurrencyConversionResponseListener listener) {
+    CurrencyConversionRequest request,
+    CurrencyConversionResponseListener listener,
+  ) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getCurrencyConversionQuote(requestStr),
@@ -73,8 +81,9 @@ final class _NativeCommunicator {
   }
 
   _NativeFuture<SurchargeCalculation> listenForSurchargeCalculation(
-      SurchargeCalculationRequest request,
-      SurchargeCalculationResponseListener listener) {
+    SurchargeCalculationRequest request,
+    SurchargeCalculationResponseListener listener,
+  ) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.getSurchargeCalculation(requestStr),
@@ -83,8 +92,9 @@ final class _NativeCommunicator {
   }
 
   _NativeFuture<PreparedPaymentRequest> listenForPreparedPaymentRequest(
-      SdkPreparePaymentRequest request,
-      PaymentRequestPreparedListener listener) {
+    SdkPreparePaymentRequest request,
+    PaymentRequestPreparedListener listener,
+  ) {
     final requestStr = jsonEncode(request);
     return _NativeFuture(
         _NativeSdkInterface.instance.preparePaymentRequest(requestStr),

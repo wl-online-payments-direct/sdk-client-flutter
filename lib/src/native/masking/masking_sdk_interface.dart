@@ -46,13 +46,15 @@ abstract class _NativeMaskingInterface extends PlatformInterface {
   }
 
   Future<String?> allMaskedValuesForPaymentRequest(
-      String allMaskedValuesRequest) {
+    String allMaskedValuesRequest,
+  ) {
     throw UnimplementedError(
         "allMaskedValuesForPaymentRequest has not been implemented");
   }
 
   Future<String?> allUnmaskedValuesForPaymentRequest(
-      String allUnmaskedValuesRequest) {
+    String allUnmaskedValuesRequest,
+  ) {
     throw UnimplementedError(
         "allUnmaskedValuesForPaymentRequest has not been implemented");
   }
@@ -63,7 +65,8 @@ abstract class _NativeMaskingInterface extends PlatformInterface {
   }
 
   Future<String> customMaskedValueForAccountOnFile(
-      String customMaskedValueRequest) {
+    String customMaskedValueRequest,
+  ) {
     throw UnimplementedError(
         "customMaskedValueForAccountOnFile has not been implemented");
   }

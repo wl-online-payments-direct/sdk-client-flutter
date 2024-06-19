@@ -21,7 +21,10 @@ class ValidationRuleRegularExpression extends ValidationRule {
   final String regex;
 
   ValidationRuleRegularExpression(
-      super.validationType, super.messageId, this.regex);
+    super.validationType,
+    super.messageId,
+    this.regex,
+  );
 
   factory ValidationRuleRegularExpression.fromJson(Map<String, dynamic> json) =>
       _$ValidationRuleRegularExpressionFromJson(json);

@@ -20,10 +20,20 @@ class Tooltip {
   @JsonKey()
   final String label;
 
+  @Deprecated(
+    "In a future release, this field will be removed since it is not returned from the API.",
+  )
   @JsonKey(name: "image")
   final String? imageUrl;
 
-  Tooltip(this.label, this.imageUrl);
+  @Deprecated(
+    "In a future release, imageUrl will be removed from this constructor. This object should not be initialized, it is initialized automatically when returned from the API.",
+  )
+  Tooltip(
+    this.label,
+    @Deprecated("In a future release, this field will be removed.")
+    this.imageUrl,
+  );
 
   factory Tooltip.fromJson(Map<String, dynamic> json) =>
       _$TooltipFromJson(json);

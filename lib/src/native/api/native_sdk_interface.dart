@@ -47,7 +47,8 @@ abstract class _NativeSdkInterface extends PlatformInterface {
   }
 
   Future<String> getPaymentProductNetworks(
-      String paymentProductNetworksRequest) {
+    String paymentProductNetworksRequest,
+  ) {
     throw UnimplementedError(
         'Get Payment Product Networks has not been implemented');
   }

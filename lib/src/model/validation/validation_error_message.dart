@@ -22,10 +22,11 @@ class ValidationErrorMessage {
   @JsonKey(fromJson: validationRuleFromJson)
   final ValidationRule? rule;
 
-  ValidationErrorMessage(
-      {required this.errorMessage,
-      required this.paymentProductFieldId,
-      this.rule});
+  ValidationErrorMessage({
+    required this.errorMessage,
+    required this.paymentProductFieldId,
+    this.rule,
+  });
 
   factory ValidationErrorMessage.fromJson(Map<String, dynamic> json) =>
       _$ValidationErrorMessageFromJson(json);

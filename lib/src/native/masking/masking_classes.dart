@@ -13,7 +13,9 @@ part of '../../masker.dart';
 
 final class PaymentProductFieldMasker {
   static Future<String> applyMask(
-      PaymentProductField field, String value) async {
+    PaymentProductField field,
+    String value,
+  ) async {
     final applyMaskRequest =
         PaymentProductFieldMaskRequest.applyMask(field, value);
     final maskedValue = await _NativeMaskingInterface.instance
@@ -22,7 +24,9 @@ final class PaymentProductFieldMasker {
   }
 
   static Future<String> removeMask(
-      PaymentProductField field, String value) async {
+    PaymentProductField field,
+    String value,
+  ) async {
     final removeMaskRequest =
         PaymentProductFieldMaskRequest.removeMask(field, value);
     final unmaskedValue = await _NativeMaskingInterface.instance
@@ -33,7 +37,9 @@ final class PaymentProductFieldMasker {
 
 final class PaymentProductRequestMasker {
   static Future<String> maskedValue(
-      PaymentRequest request, String fieldId) async {
+    PaymentRequest request,
+    String fieldId,
+  ) async {
     final maskedValueRequest =
         PaymentRequestMaskedValueRequest.maskedValue(request, fieldId);
     final maskedValue = await _NativeMaskingInterface.instance
@@ -42,7 +48,9 @@ final class PaymentProductRequestMasker {
   }
 
   static Future<String> unmaskedValue(
-      PaymentRequest request, String fieldId) async {
+    PaymentRequest request,
+    String fieldId,
+  ) async {
     final unmaskedValueRequest =
         PaymentRequestMaskedValueRequest.unmaskedValue(request, fieldId);
     final unmaskedValue = await _NativeMaskingInterface.instance
@@ -77,7 +85,10 @@ final class AccountOnFileMasker {
   }
 
   static Future<String> customMaskedValue(
-      AccountOnFile aof, String fieldId, String mask) async {
+    AccountOnFile aof,
+    String fieldId,
+    String mask,
+  ) async {
     final customMaskedValueRequest =
         AccountOnFileCustomMaskedValueRequest(aof, fieldId, mask);
     final customMaskedValue = await _NativeMaskingInterface.instance

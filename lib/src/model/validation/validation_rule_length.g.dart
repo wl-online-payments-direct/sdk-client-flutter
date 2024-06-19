@@ -31,8 +31,8 @@ ValidationRuleLength _$ValidationRuleLengthFromJson(Map<String, dynamic> json) {
   return ValidationRuleLength(
     $enumDecode(_$ValidationTypeEnumMap, json['validationType']),
     json['messageId'] as String,
-    json['minLength'] as int,
-    json['maxLength'] as int,
+    (json['minLength'] as num).toInt(),
+    (json['maxLength'] as num).toInt(),
   );
 }
 

@@ -21,17 +21,18 @@ class PaymentProduct extends BasicPaymentProduct {
   List<PaymentProductField> fields;
 
   PaymentProduct(
-      super.id,
-      super.paymentMethod,
-      super.paymentProductGroup,
-      super.allowsRecurring,
-      super.allowsTokenization,
-      super.usesRedirectionTo3rdParty,
-      {super.displayHintsList,
-      super.accountsOnFile,
-      super.paymentProduct302SpecificData,
-      super.paymentProduct320SpecificData,
-      this.fields = const []}) {
+    super.id,
+    super.paymentMethod,
+    super.paymentProductGroup,
+    super.allowsRecurring,
+    super.allowsTokenization,
+    super.usesRedirectionTo3rdParty, {
+    super.displayHintsList,
+    super.accountsOnFile,
+    super.paymentProduct302SpecificData,
+    super.paymentProduct320SpecificData,
+    this.fields = const [],
+  }) {
     fields.sort();
   }
 
@@ -44,7 +45,8 @@ class PaymentProduct extends BasicPaymentProduct {
   /// If found, returns the [PaymentProductField] corresponding with the provided [paymentProductFieldId].
   /// If not found, null is returned.
   PaymentProductField? getPaymentProductFieldById(
-      String paymentProductFieldId) {
+    String paymentProductFieldId,
+  ) {
     for (PaymentProductField field in fields) {
       if (field.id == paymentProductFieldId) {
         return field;

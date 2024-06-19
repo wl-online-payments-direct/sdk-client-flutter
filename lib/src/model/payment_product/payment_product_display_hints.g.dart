@@ -22,7 +22,7 @@ PaymentProductDisplayHints _$PaymentProductDisplayHintsFromJson(
         Map<String, dynamic> json) =>
     PaymentProductDisplayHints(
       json['label'] as String,
-      displayOrder: json['displayOrder'] as int,
+      displayOrder: (json['displayOrder'] as num).toInt(),
       logoUrl: json['logo'] as String,
     );
 

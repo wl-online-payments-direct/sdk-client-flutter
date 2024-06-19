@@ -24,7 +24,11 @@ class ValidationRuleLength extends ValidationRule {
   final int maxLength;
 
   ValidationRuleLength(
-      super.validationType, super.messageId, this.minLength, this.maxLength);
+    super.validationType,
+    super.messageId,
+    this.minLength,
+    this.maxLength,
+  );
 
   factory ValidationRuleLength.fromJson(Map<String, dynamic> json) =>
       _$ValidationRuleLengthFromJson(json);

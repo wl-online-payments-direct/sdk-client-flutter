@@ -27,7 +27,10 @@ class PaymentRequestRuleValidationRequest {
   final ValidationRule rule;
 
   PaymentRequestRuleValidationRequest(
-      this.paymentRequest, this.fieldId, this.rule);
+    this.paymentRequest,
+    this.fieldId,
+    this.rule,
+  );
 
   factory PaymentRequestRuleValidationRequest.fromJson(
           Map<String, dynamic> json) =>

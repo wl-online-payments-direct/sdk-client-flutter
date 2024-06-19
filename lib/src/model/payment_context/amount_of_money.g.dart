@@ -24,7 +24,7 @@ AmountOfMoney _$AmountOfMoneyFromJson(Map<String, dynamic> json) {
     requiredKeys: const ['amount', 'currencyCode'],
   );
   return AmountOfMoney(
-    json['amount'] as int,
+    (json['amount'] as num).toInt(),
     json['currencyCode'] as String,
   );
 }

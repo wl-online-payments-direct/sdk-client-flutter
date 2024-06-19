@@ -18,24 +18,29 @@ part 'native_exception.g.dart';
 
 /// Contains information about a native SDK error if it occurred while executing API calls.
 @JsonSerializable(
-    explicitToJson: true, includeIfNull: true, genericArgumentFactories: true)
+  explicitToJson: true,
+  includeIfNull: true,
+  genericArgumentFactories: true,
+)
 class NativeException {
   @JsonKey()
   String error = "";
 
   @Deprecated(
-      "In a future release, this field will be removed. Use throwable instead.")
+    "In a future release, this field will be removed. Use throwable instead.",
+  )
   @JsonKey(includeFromJson: false, includeToJson: false)
   StackTrace? stackTrace;
 
   @JsonKey()
   Throwable? throwable;
 
-  NativeException(
-      {this.error = "",
-      @Deprecated("In a future release, this field will be removed.")
-      this.stackTrace,
-      this.throwable});
+  NativeException({
+    this.error = "",
+    @Deprecated("In a future release, this field will be removed.")
+    this.stackTrace,
+    this.throwable,
+  });
 
   static NativeException fromThrowable(Throwable? throwable) {
     return NativeException(

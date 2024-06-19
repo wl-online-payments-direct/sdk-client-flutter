@@ -30,8 +30,16 @@ class AccountOnFile {
   @JsonKey()
   final List<AccountOnFileAttribute> attributes;
 
-  AccountOnFile(this.id, this.paymentProductId,
-      {this.displayHints, this.attributes = const []});
+  @JsonKey()
+  final String label;
+
+  AccountOnFile(
+    this.id,
+    this.paymentProductId, {
+    this.displayHints,
+    this.attributes = const [],
+    this.label = "",
+  });
 
   factory AccountOnFile.fromJson(Map<String, dynamic> json) =>
       _$AccountOnFileFromJson(json);
@@ -60,7 +68,9 @@ class AccountOnFile {
 
   /// Returns the value for the given payment product [fieldId] with a custom [mask] applied.
   Future<String> getMaskedValueWithCustomMask(
-      String fieldId, String mask) async {
+    String fieldId,
+    String mask,
+  ) async {
     final maskedValue =
         await AccountOnFileMasker.customMaskedValue(this, fieldId, mask);
     return maskedValue;

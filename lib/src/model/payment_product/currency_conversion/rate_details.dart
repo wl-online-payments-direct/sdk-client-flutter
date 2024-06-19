@@ -31,8 +31,13 @@ class RateDetails {
   @JsonKey(required: true)
   final String source;
 
-  RateDetails(this.exchangeRate, this.invertedExchangeRate, this.markUpRate,
-      this.quotationDateTime, this.source);
+  RateDetails(
+    this.exchangeRate,
+    this.invertedExchangeRate,
+    this.markUpRate,
+    this.quotationDateTime,
+    this.source,
+  );
 
   factory RateDetails.fromJson(Map<String, dynamic> json) =>
       _$RateDetailsFromJson(json);

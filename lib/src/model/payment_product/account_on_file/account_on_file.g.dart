@@ -35,6 +35,7 @@ AccountOnFile _$AccountOnFileFromJson(Map<String, dynamic> json) {
                 AccountOnFileAttribute.fromJson(e as Map<String, dynamic>))
             .toList() ??
         const [],
+    label: json['label'] as String? ?? "",
   );
 }
 
@@ -44,4 +45,5 @@ Map<String, dynamic> _$AccountOnFileToJson(AccountOnFile instance) =>
       'paymentProductId': instance.paymentProductId,
       'displayHints': instance.displayHints?.toJson(),
       'attributes': instance.attributes.map((e) => e.toJson()).toList(),
+      'label': instance.label,
     };

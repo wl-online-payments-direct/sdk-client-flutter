@@ -46,25 +46,29 @@ final class Session {
   bool loggingEnabled = false;
 
   SdkSessionRequest get _initSessionRequest => SdkSessionRequest(
-      _clientSessionId,
-      _customerId,
-      _clientApiUrl,
-      _assetUrl,
-      isEnvironmentProduction,
-      _getAppIdentifier(),
-      loggingEnabled);
+        _clientSessionId,
+        _customerId,
+        _clientApiUrl,
+        _assetUrl,
+        isEnvironmentProduction,
+        _getAppIdentifier(),
+        loggingEnabled,
+      );
 
   String _getAppIdentifier() {
     return "${Constants.appIdentifierPrefix}/$appIdentifier";
   }
 
   /// Creates a Session object. Use this object to perform Client API requests such as get Payment Products or get IIN Details.
-  Session(this._clientSessionId, this._customerId, this._clientApiUrl,
-      this._assetUrl,
-      {this.isEnvironmentProduction = false,
-      this.appIdentifier = "${Constants.appIdentifierPrefix}/UnknownAppId",
-      this.loggingEnabled = false})
-      : assert(_clientSessionId.isNotEmpty, "Missing clientSessionId"),
+  Session(
+    this._clientSessionId,
+    this._customerId,
+    this._clientApiUrl,
+    this._assetUrl, {
+    this.isEnvironmentProduction = false,
+    this.appIdentifier = "${Constants.appIdentifierPrefix}/UnknownAppId",
+    this.loggingEnabled = false,
+  })  : assert(_clientSessionId.isNotEmpty, "Missing clientSessionId"),
         assert(_customerId.isNotEmpty, "Missing customerId"),
         assert(_clientApiUrl.isNotEmpty, "Missing clientApiUrl"),
         assert(_assetUrl.isNotEmpty, "Missing assetUrl") {

@@ -33,7 +33,7 @@ class PaymentProductFieldDisplayHints {
   final String placeholderLabel;
 
   @Deprecated(
-      "In a future release, this field will be removed since it is not returned form the API.")
+      "In a future release, this field will be removed since it is not returned from the API.")
   @JsonKey()
   final String? link;
 
@@ -52,42 +52,45 @@ class PaymentProductFieldDisplayHints {
   @Deprecated(
       "In a future release, link will be removed from this constructor. This object should not be initialized, it is initialized automatically when returned from the API.")
   PaymentProductFieldDisplayHints(
-      this.alwaysShow,
-      this.obfuscate,
-      this.displayOrder,
-      this.label,
-      this.placeholderLabel,
-      @Deprecated("In a future release, this field will be removed.") this.link,
-      this.mask,
-      this.preferredInputType,
-      this.tooltip,
-      this.formElement);
+    this.alwaysShow,
+    this.obfuscate,
+    this.displayOrder,
+    this.label,
+    this.placeholderLabel,
+    @Deprecated("In a future release, this field will be removed.") this.link,
+    this.mask,
+    this.preferredInputType,
+    this.tooltip,
+    this.formElement,
+  );
 
   PaymentProductFieldDisplayHints.init(
-      this.alwaysShow,
-      this.obfuscate,
-      this.displayOrder,
-      this.label,
-      this.placeholderLabel,
-      this.mask,
-      this.preferredInputType,
-      this.tooltip,
-      this.formElement,
-      {@Deprecated("In a future release, this field will be removed.")
-      this.link = ""});
+    this.alwaysShow,
+    this.obfuscate,
+    this.displayOrder,
+    this.label,
+    this.placeholderLabel,
+    this.mask,
+    this.preferredInputType,
+    this.tooltip,
+    this.formElement, {
+    @Deprecated("In a future release, this field will be removed.")
+    this.link = "",
+  });
 
-  const PaymentProductFieldDisplayHints.empty(
-      {this.alwaysShow = false,
-      this.obfuscate = false,
-      this.displayOrder = 0,
-      this.label = "",
-      this.placeholderLabel = "",
-      @Deprecated("In a future release, this field will be removed.")
-      this.link = "",
-      this.mask = "",
-      this.preferredInputType,
-      this.tooltip,
-      this.formElement});
+  const PaymentProductFieldDisplayHints.empty({
+    this.alwaysShow = false,
+    this.obfuscate = false,
+    this.displayOrder = 0,
+    this.label = "",
+    this.placeholderLabel = "",
+    @Deprecated("In a future release, this field will be removed.")
+    this.link = "",
+    this.mask = "",
+    this.preferredInputType,
+    this.tooltip,
+    this.formElement,
+  });
 
   factory PaymentProductFieldDisplayHints.fromJson(Map<String, dynamic> json) =>
       _$PaymentProductFieldDisplayHintsFromJson(json);

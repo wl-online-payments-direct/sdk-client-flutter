@@ -32,16 +32,19 @@ class ValidationRule implements ValidationRuleFunctions {
   Map<String, dynamic> toJson() => _$ValidationRuleToJson(this);
 
   @override
-  Future<List<ValidationErrorMessage>> validateValueForFieldOfPaymentRequest(
-      {required String fieldId, required PaymentRequest request}) async {
+  Future<List<ValidationErrorMessage>> validateValueForFieldOfPaymentRequest({
+    required String fieldId,
+    required PaymentRequest request,
+  }) async {
     return await ValidationRuleValidator
         .validateValidationRuleForPaymentRequestAndFieldId(
             request, fieldId, this);
   }
 
   @override
-  Future<List<ValidationErrorMessage>> validateValue(
-      {required String value}) async {
+  Future<List<ValidationErrorMessage>> validateValue({
+    required String value,
+  }) async {
     return await ValidationRuleValidator.validateValueForValidationRule(
         value, this);
   }
@@ -49,8 +52,10 @@ class ValidationRule implements ValidationRuleFunctions {
 
 abstract class ValidationRuleFunctions {
   /// Validates the value of the [PaymentProductField] corresponding to the provided [fieldId] in the provided [request].
-  validateValueForFieldOfPaymentRequest(
-      {required String fieldId, required PaymentRequest request});
+  validateValueForFieldOfPaymentRequest({
+    required String fieldId,
+    required PaymentRequest request,
+  });
 
   /// Validates the provided [value].
   validateValue({required String value});

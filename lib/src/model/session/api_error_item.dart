@@ -17,12 +17,46 @@ part 'api_error_item.g.dart';
 @JsonSerializable(explicitToJson: true)
 class ApiErrorItem {
   @JsonKey(required: true)
+  String errorCode;
+
+  @JsonKey(required: false)
+  String? category;
+
+  @Deprecated(
+    "In a future release, this field will be removed. Use errorCode instead.",
+  )
+  @JsonKey(required: false)
   String code;
 
-  @JsonKey(required: true)
+  @JsonKey(required: false)
+  int? httpStatusCode;
+
+  @JsonKey(required: false)
+  String? id;
+
+  @JsonKey(required: false)
   String message;
 
-  ApiErrorItem(this.code, this.message);
+  @JsonKey(required: false)
+  String? propertyName;
+
+  @JsonKey(required: false)
+  bool? retriable;
+
+  @Deprecated(
+    "In a future release, code will be removed from this constructor. This object should not be initialized, it is initialized automatically when returned from the API.",
+  )
+  ApiErrorItem({
+    required this.errorCode,
+    this.category,
+    @Deprecated("In a future release, this field will be removed.")
+    this.code = "This error does not contain a code",
+    this.httpStatusCode,
+    this.id,
+    this.message = "This error does not contain a message",
+    this.propertyName,
+    this.retriable = true,
+  });
 
   factory ApiErrorItem.fromJson(Map<String, dynamic> json) =>
       _$ApiErrorItemFromJson(json);

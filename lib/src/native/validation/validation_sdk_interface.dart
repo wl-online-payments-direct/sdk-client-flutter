@@ -30,7 +30,8 @@ abstract class _NativeValidationInterface extends PlatformInterface {
   }
 
   Future<String> validatePaymentProductFieldForPaymentRequest(
-      String validationRequest) {
+    String validationRequest,
+  ) {
     throw UnimplementedError("Validate has not been implemented");
   }
 
@@ -43,7 +44,8 @@ abstract class _NativeValidationInterface extends PlatformInterface {
   }
 
   Future<String> validatePaymentRequestForValidationRule(
-      String validationRequest) {
+    String validationRequest,
+  ) {
     throw UnimplementedError("Validate has not been implemented");
   }
 }

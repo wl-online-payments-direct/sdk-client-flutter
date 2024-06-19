@@ -48,7 +48,8 @@ class BasicPaymentProducts {
 
   /// Returns the [BasicPaymentProduct] with the corresponding [accountOnFileId], or null if not found.
   BasicPaymentProduct? getBasicPaymentProductByAccountOnFileId(
-      String accountOnFileId) {
+    String accountOnFileId,
+  ) {
     for (BasicPaymentProduct product in products) {
       for (AccountOnFile accountOnFile in product.accountsOnFile) {
         if (accountOnFile.id == accountOnFileId) {

@@ -18,50 +18,65 @@ class _MaskingMethodChannel extends _NativeMaskingInterface {
 
   @override
   Future<String> applyMaskForPaymentProductField(
-      String applyMaskRequest) async {
+    String applyMaskRequest,
+  ) async {
     final result = await _maskingChannel.invokeMethod(
-        'applyMaskForPaymentProductField', {"request": applyMaskRequest});
+      'applyMaskForPaymentProductField',
+      {"request": applyMaskRequest},
+    );
     return result;
   }
 
   @override
   Future<String> removeMaskForPaymentProductField(
-      String removeMaskRequest) async {
+    String removeMaskRequest,
+  ) async {
     final result = await _maskingChannel.invokeMethod(
-        'removeMaskForPaymentProductField', {"request": removeMaskRequest});
+      'removeMaskForPaymentProductField',
+      {"request": removeMaskRequest},
+    );
     return result;
   }
 
   @override
   Future<String> maskedValueForPaymentRequest(String maskedValueRequest) async {
     final result = await _maskingChannel.invokeMethod(
-        'maskedValueForPaymentRequest', {"request": maskedValueRequest});
+      'maskedValueForPaymentRequest',
+      {"request": maskedValueRequest},
+    );
     return result;
   }
 
   @override
   Future<String> unmaskedValueForPaymentRequest(
-      String unmaskedValueRequest) async {
+    String unmaskedValueRequest,
+  ) async {
     final result = await _maskingChannel.invokeMethod(
-        'unmaskedValueForPaymentRequest', {"request": unmaskedValueRequest});
+      'unmaskedValueForPaymentRequest',
+      {"request": unmaskedValueRequest},
+    );
     return result;
   }
 
   @override
   Future<String?> allMaskedValuesForPaymentRequest(
-      String allMaskedValuesRequest) async {
+    String allMaskedValuesRequest,
+  ) async {
     final result = await _maskingChannel.invokeMethod(
-        'allMaskedValuesForPaymentRequest',
-        {"request": allMaskedValuesRequest});
+      'allMaskedValuesForPaymentRequest',
+      {"request": allMaskedValuesRequest},
+    );
     return result;
   }
 
   @override
   Future<String?> allUnmaskedValuesForPaymentRequest(
-      String allUnmaskedValuesRequest) async {
+    String allUnmaskedValuesRequest,
+  ) async {
     final result = await _maskingChannel.invokeMethod(
-        'allUnmaskedValuesForPaymentRequest',
-        {"request": allUnmaskedValuesRequest});
+      'allUnmaskedValuesForPaymentRequest',
+      {"request": allUnmaskedValuesRequest},
+    );
     return result;
   }
 
@@ -74,7 +89,8 @@ class _MaskingMethodChannel extends _NativeMaskingInterface {
 
   @override
   Future<String> customMaskedValueForAccountOnFile(
-      String customMaskedValueRequest) async {
+    String customMaskedValueRequest,
+  ) async {
     final result = await _maskingChannel.invokeMethod(
         'customMaskedValueForAccountOnFile',
         {"request": customMaskedValueRequest});

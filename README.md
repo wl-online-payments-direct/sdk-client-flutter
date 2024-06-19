@@ -16,6 +16,7 @@ The native SDKs establish a secure channel between your app and our server. This
 - [Online Payments - Flutter SDK](#online-payments---flutter-sdk)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
+  - [Example apps](#example-apps)
   - [Getting started](#getting-started)
   - [Type definitions](#type-definitions)
     - [Session](#session)
@@ -67,6 +68,10 @@ dependencies {
     ...
 }
 ```
+
+## Example apps
+
+A basic example app has been bundled within the SDK inside the `example` folder. This example only shows how to initialize a Session and how to make a Payment Product call. A more extensive example - which shows the complete flow of how to create a payment - can be found [here](https://github.com/wl-online-payments-direct/sdk-client-flutter-example).
 
 ## Getting started
 
@@ -278,7 +283,7 @@ for(AccountOnFile aof in basicPaymentProduct.accountsOnFile) {
 
 // Shows a mask based formatted value for the obfuscated cardNumber.
 // The mask that is used is defined in the displayHints of this accountOnFile
-// If the mask for the "cardNumber" field is {{9999}} {{9999}} {{9999}} {{9999}} {{999}}, then the result would be **** **** **** 7412
+// If the mask for the "cardNumber" field is {{9999}} {{9999}} {{9999}} {{9999}}, then the result would be **** **** **** 7412
 String maskedValue = await accountOnFile.getMaskedValue("cardNumber");
 ```
 

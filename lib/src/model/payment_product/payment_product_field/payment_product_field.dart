@@ -34,9 +34,12 @@ class PaymentProductField implements Comparable {
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<ValidationErrorMessage> errorMessageIds = [];
 
-  PaymentProductField(this.id, this.type,
-      {this.displayHints = const PaymentProductFieldDisplayHints.empty(),
-      this.dataRestrictions = const DataRestrictions.empty()});
+  PaymentProductField(
+    this.id,
+    this.type, {
+    this.displayHints = const PaymentProductFieldDisplayHints.empty(),
+    this.dataRestrictions = const DataRestrictions.empty(),
+  });
 
   factory PaymentProductField.fromJson(Map<String, dynamic> json) =>
       _$PaymentProductFieldFromJson(json);
@@ -48,7 +51,9 @@ class PaymentProductField implements Comparable {
   Future<List<ValidationErrorMessage>> validateValue(String value) async {
     final errorMessages =
         await PaymentProductFieldValidator.validateValueForPaymentProductField(
-            value, this);
+      value,
+      this,
+    );
     errorMessageIds = errorMessages;
     return errorMessages;
   }
@@ -56,7 +61,8 @@ class PaymentProductField implements Comparable {
   /// Returns a list of [ValidationErrorMessage] for the field's value in the supplied [request].
   /// If the list is empty, you can assume that the field value is a valid value.
   Future<List<ValidationErrorMessage>> validateValueForPaymentRequest(
-      PaymentRequest request) async {
+    PaymentRequest request,
+  ) async {
     final errorMessages = await PaymentRequestValidator
         .validatePaymentProductFieldForPaymentRequest(id, request);
     errorMessageIds = errorMessages;

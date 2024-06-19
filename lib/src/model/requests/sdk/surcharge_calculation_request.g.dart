@@ -28,7 +28,7 @@ SurchargeCalculationRequest _$SurchargeCalculationRequestFromJson(
     AmountOfMoney.fromJson(json['amountOfMoney'] as Map<String, dynamic>),
   )
     ..partialCreditCardNumber = json['partialCreditCardNumber'] as String?
-    ..paymentProductId = json['paymentProductId'] as int?
+    ..paymentProductId = (json['paymentProductId'] as num?)?.toInt()
     ..token = json['token'] as String?;
 }
 

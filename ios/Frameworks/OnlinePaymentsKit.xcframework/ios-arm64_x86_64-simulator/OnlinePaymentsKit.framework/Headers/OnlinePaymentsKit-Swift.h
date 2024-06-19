@@ -393,11 +393,20 @@ SWIFT_CLASS_NAMED("ApiError")
 @property (nonatomic, readonly, copy) NSArray<OPApiErrorItem *> * _Nonnull errors;
 @end
 
+@class NSNumber;
 
 SWIFT_CLASS_NAMED("ApiErrorItem")
 @interface OPApiErrorItem : NSObject
-@property (nonatomic, readonly, copy) NSString * _Nonnull code;
+@property (nonatomic, readonly, copy) NSString * _Nonnull errorCode;
+@property (nonatomic, readonly, copy) NSString * _Nullable category;
+@property (nonatomic, readonly, copy) NSString * _Nonnull code SWIFT_DEPRECATED_MSG("In a future release, this property will be removed. Use errorCode instead.");
+@property (nonatomic, readonly, strong) NSNumber * _Nullable httpStatusCode;
+@property (nonatomic, readonly, copy) NSString * _Nullable id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull message;
+@property (nonatomic, readonly, copy) NSString * _Nullable propertyName;
+@property (nonatomic, readonly) BOOL retriable;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class OPPaymentItemDisplayHints;
@@ -925,7 +934,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSNumber;
 @class OPSurchargeCalculationResponse;
 
 SWIFT_CLASS_NAMED("Session")
@@ -1692,11 +1700,20 @@ SWIFT_CLASS_NAMED("ApiError")
 @property (nonatomic, readonly, copy) NSArray<OPApiErrorItem *> * _Nonnull errors;
 @end
 
+@class NSNumber;
 
 SWIFT_CLASS_NAMED("ApiErrorItem")
 @interface OPApiErrorItem : NSObject
-@property (nonatomic, readonly, copy) NSString * _Nonnull code;
+@property (nonatomic, readonly, copy) NSString * _Nonnull errorCode;
+@property (nonatomic, readonly, copy) NSString * _Nullable category;
+@property (nonatomic, readonly, copy) NSString * _Nonnull code SWIFT_DEPRECATED_MSG("In a future release, this property will be removed. Use errorCode instead.");
+@property (nonatomic, readonly, strong) NSNumber * _Nullable httpStatusCode;
+@property (nonatomic, readonly, copy) NSString * _Nullable id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull message;
+@property (nonatomic, readonly, copy) NSString * _Nullable propertyName;
+@property (nonatomic, readonly) BOOL retriable;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class OPPaymentItemDisplayHints;
@@ -2224,7 +2241,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class NSNumber;
 @class OPSurchargeCalculationResponse;
 
 SWIFT_CLASS_NAMED("Session")

@@ -129,6 +129,7 @@ class SdkBridge {
             request.paymentContext,
             object : BasicPaymentProductsResponseListener {
                 override fun onSuccess(response: BasicPaymentProducts) {
+                    response.accountsOnFile.forEach { aof -> aof.label }
                     val sdkResult = Result(data = response)
                     val json = gson.toJson(sdkResult)
                     result.success(json)
@@ -156,6 +157,7 @@ class SdkBridge {
             request.paymentContext,
             object : PaymentProductResponseListener {
                 override fun onSuccess(response: PaymentProduct) {
+                    response.accountsOnFile.forEach { aof -> aof.label }
                     val sdkResult = Result(data = response)
                     val json = gson.toJson(sdkResult)
                     result.success(json)

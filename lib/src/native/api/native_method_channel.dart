@@ -38,7 +38,8 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
 
   @override
   Future<String> getBasicPaymentProducts(
-      String basicPaymentProductRequest) async {
+    String basicPaymentProductRequest,
+  ) async {
     final result = await _methodChannel.invokeMethod(
         'getBasicPaymentProducts', {"request": basicPaymentProductRequest});
     return result;
@@ -53,7 +54,8 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
 
   @override
   Future<String> getPaymentProductNetworks(
-      String paymentProductNetworksRequest) async {
+    String paymentProductNetworksRequest,
+  ) async {
     final result = await _methodChannel.invokeMethod(
         'getPaymentProductNetworks',
         {"request": paymentProductNetworksRequest});
@@ -62,7 +64,8 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
 
   @override
   Future<String> getCurrencyConversionQuote(
-      String currencyConversionRequest) async {
+    String currencyConversionRequest,
+  ) async {
     final result = await _methodChannel.invokeMethod(
         'getCurrencyConversionQuote', {"request": currencyConversionRequest});
     return result;
@@ -70,7 +73,8 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
 
   @override
   Future<String> getSurchargeCalculation(
-      String surchargeCalculationRequest) async {
+    String surchargeCalculationRequest,
+  ) async {
     final result = await _methodChannel.invokeMethod(
         'getSurchargeCalculation', {"request": surchargeCalculationRequest});
     return result;

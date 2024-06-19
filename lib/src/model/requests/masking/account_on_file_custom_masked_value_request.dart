@@ -27,7 +27,10 @@ class AccountOnFileCustomMaskedValueRequest {
   final String mask;
 
   AccountOnFileCustomMaskedValueRequest(
-      this.accountOnFile, this.fieldId, this.mask);
+    this.accountOnFile,
+    this.fieldId,
+    this.mask,
+  );
 
   factory AccountOnFileCustomMaskedValueRequest.fromJson(
           Map<String, dynamic> json) =>

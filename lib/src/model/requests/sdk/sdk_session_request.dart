@@ -30,22 +30,24 @@ class SdkSessionRequest {
   @JsonKey(required: false, defaultValue: false)
   final bool isEnvironmentProduction;
   @JsonKey(
-      required: true,
-      defaultValue: "${Constants.appIdentifierPrefix}/UnknownAppId")
+    required: true,
+    defaultValue: "${Constants.appIdentifierPrefix}/UnknownAppId",
+  )
   final String appIdentifier;
   @JsonKey(required: true, defaultValue: false)
   final bool loggingEnabled;
   @JsonKey(includeToJson: true, name: "sdkIdentifier")
-  final String _sdkIdentifier = "FlutterClientSDK/v1.1.2";
+  final String _sdkIdentifier = "FlutterClientSDK/v1.2.0";
 
   SdkSessionRequest(
-      this.clientSessionId,
-      this.customerId,
-      this.clientApiUrl,
-      this.assetUrl,
-      this.isEnvironmentProduction,
-      this.appIdentifier,
-      this.loggingEnabled);
+    this.clientSessionId,
+    this.customerId,
+    this.clientApiUrl,
+    this.assetUrl,
+    this.isEnvironmentProduction,
+    this.appIdentifier,
+    this.loggingEnabled,
+  );
 
   factory SdkSessionRequest.fromJson(Map<String, dynamic> json) =>
       _$SdkSessionRequestFromJson(json);

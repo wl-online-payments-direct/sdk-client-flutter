@@ -16,10 +16,11 @@ class _NativeFutureInterface<T> {
   late void Function(ErrorResponse? apiError) onApiError;
   late void Function(NativeException? e) onException;
   // Use in case you want to add stuff before/after call the api listener (calling api listener needs to be done manually)
-  _NativeFutureInterface(
-      {required this.onSuccess,
-      required this.onApiError,
-      required this.onException});
+  _NativeFutureInterface({
+    required this.onSuccess,
+    required this.onApiError,
+    required this.onException,
+  });
   // Use for simple bridge between NativeFutureListener and ApiResponseListener
   _NativeFutureInterface.fromListener(ApiResponseInterface<T> listener) {
     onSuccess = (response) {

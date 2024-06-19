@@ -25,7 +25,8 @@ class _ValidationMethodChannel extends _NativeValidationInterface {
 
   @override
   Future<String> validatePaymentProductFieldForPaymentRequest(
-      String validationRequest) async {
+    String validationRequest,
+  ) async {
     final result = await _validationChannel.invokeMethod(
         'validatePaymentProductFieldForPaymentRequest',
         {"request": validationRequest});
@@ -34,7 +35,8 @@ class _ValidationMethodChannel extends _NativeValidationInterface {
 
   @override
   Future<String> validateValueForPaymentProductField(
-      String validationRequest) async {
+    String validationRequest,
+  ) async {
     final result = await _validationChannel.invokeMethod(
         'validateValueForPaymentProductField', {"request": validationRequest});
     return result;
@@ -42,7 +44,8 @@ class _ValidationMethodChannel extends _NativeValidationInterface {
 
   @override
   Future<String> validateValueForValidationRule(
-      String validationRequest) async {
+    String validationRequest,
+  ) async {
     final result = await _validationChannel.invokeMethod(
         'validateValueForValidationRule', {"request": validationRequest});
     return result;
@@ -50,7 +53,8 @@ class _ValidationMethodChannel extends _NativeValidationInterface {
 
   @override
   Future<String> validatePaymentRequestForValidationRule(
-      String validationRequest) async {
+    String validationRequest,
+  ) async {
     final result = await _validationChannel.invokeMethod(
         'validatePaymentRequestForValidationRule',
         {"request": validationRequest});

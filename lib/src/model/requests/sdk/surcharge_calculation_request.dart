@@ -32,8 +32,10 @@ class SurchargeCalculationRequest {
   SurchargeCalculationRequest(this.amountOfMoney);
 
   SurchargeCalculationRequest.withPartialCreditCardNumber(
-      this.amountOfMoney, this.partialCreditCardNumber,
-      {this.paymentProductId});
+    this.amountOfMoney,
+    this.partialCreditCardNumber, {
+    this.paymentProductId,
+  });
   SurchargeCalculationRequest.withToken(this.amountOfMoney, this.token);
 
   factory SurchargeCalculationRequest.fromJson(Map<String, dynamic> json) =>

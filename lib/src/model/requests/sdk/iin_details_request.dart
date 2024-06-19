@@ -23,8 +23,10 @@ class IinDetailsRequest {
   @JsonKey(required: true)
   final PaymentContext paymentContext;
 
-  IinDetailsRequest(
-      {required this.partialCreditCardNumber, required this.paymentContext});
+  IinDetailsRequest({
+    required this.partialCreditCardNumber,
+    required this.paymentContext,
+  });
 
   factory IinDetailsRequest.fromJson(Map<String, dynamic> json) =>
       _$IinDetailsRequestFromJson(json);
