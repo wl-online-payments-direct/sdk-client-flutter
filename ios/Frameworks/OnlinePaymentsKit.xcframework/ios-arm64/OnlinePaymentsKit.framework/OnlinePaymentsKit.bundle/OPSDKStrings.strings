@@ -1,0 +1,178 @@
+// App messages
+"app.clipboard.feedback" = "The text has been copied.";
+"app.loading.body" = "Please wait..";
+"app.loading.title" = "Loading";
+"app.paymentProcessing.bodyText" = "We are processing your payment. Please wait. It may take several seconds to process your payment.";
+"app.paymentProcessing.title" = "We are processing your payment.";
+"app.securePaymentText" = "Secure payment";
+"app.shoppingCart.itemsIfMultiple" = "items";
+"app.shoppingCart.itemsIfOne" = "item";
+"app.shoppingCart.shippingCost" = "Shipping cost";
+"app.shoppingCart.subtotal" = "Subtotal";
+"app.shoppingCart.title" = "Your order";
+"app.shoppingCart.total" = "Total";
+"app.cancelButton" = "Cancel";
+"app.privacy.title" = "Privacy policy";
+"app.result.failed.bodyText" = "We have not been able to process your payment. To continue with this purchase please select an alternative payment method.";
+"app.result.failed.title" = "Your payment failed";
+"app.result.selectOther" = "Try other method";
+"app.result.success.bodyText" = "Your payment is successful.";
+"app.result.success.title" = "Your payment status";
+"app.preparing" = "This should only take a few seconds";
+"app.processing" = "Please wait, you will be able to continue your checkout within a few seconds";
+
+// Payment Product Messages
+"paymentProductDetails.payButton" = "Pay";
+"paymentProductDetails.rememberMe" = "Remember my details for future purchases";
+"paymentProductDetails.rememberMe.tooltip" = "If you check this box your payment information will be stored for future purchases.";
+
+// Product Selection
+"paymentProductSelection.accountsOnFileTitle" = "Previously used accounts";
+"paymentProductSelection.pageTitle" = "Select payment product";
+"paymentProductSelection.paymentProductsTitle" = "Other payment products";
+
+// CoBrands
+"cobrands.detected" = "Multiple payment options detected.";
+"cobrands.fullText" = "Some cards use multiple brands to process your payment. You can choose your preferred card brand.";
+"cobrands.introText" = "This card has multiple payment options, please choose your preferred option.";
+"cobrands.readmore" = "What are multiple payment options?";
+"cobrands.selectbrand" = "Select your preferred option.";
+"cobrands.toggleCobrands" = "Multiple payment options detected.";
+
+// Payment Product Fields Messages
+"paymentProductFields.accountHolderName.label" = "Account holder name";
+"paymentProductFields.accountHolderName.placeholder" = "John Doe";
+"paymentProductFields.accountNumber.label" = "Account number";
+"paymentProductFields.accountNumber.placeholder" = "Account number";
+"paymentProductFields.additionalInfo.label" = "Additional address information";
+"paymentProductFields.additionalInfo.placeholder" = "Additional address information";
+"paymentProductFields.bankCode.label" = "Bank code";
+"paymentProductFields.bankCode.placeholder" = "Bank code";
+"paymentProductFields.bic.label" = "BIC / Swift code";
+"paymentProductFields.bic.placeholder" = "BIC / Swift code";
+"paymentProductFields.cardNumber.label" = "Card number";
+"paymentProductFields.cardNumber.placeholder" = "**** **** **** ****";
+"paymentProductFields.cardholderName.label" = "Cardholder name";
+"paymentProductFields.cardholderName.placeholder" = "John Doe";
+"paymentProductFields.city.label" = "City";
+"paymentProductFields.city.placeholder" = "City";
+"paymentProductFields.companyName.label" = "Company name";
+"paymentProductFields.companyName.placeholder" = "Company name";
+"paymentProductFields.countryCode.label" = "Country";
+"paymentProductFields.countryCode.placeholder" = "Country";
+"paymentProductFields.cvv.label" = "CVV";
+"paymentProductFields.cvv.placeholder" = "123";
+"paymentProductFields.dateOfBirth.label" = "Date of birth";
+"paymentProductFields.dateOfBirth.placeholder" = "dd-mm-yyyy";
+"paymentProductFields.emailAddress.label" = "E-mail address";
+"paymentProductFields.emailAddress.placeholder" = "you@domain.com";
+"paymentProductFields.expiryDate.label" = "Expiry date";
+"paymentProductFields.expiryDate.placeholder" = "MM/YY";
+"paymentProductFields.firstName.label" = "First name";
+"paymentProductFields.firstName.placeholder" = "First name";
+"paymentProductFields.fiscalNumber.label" = "Fiscal number";
+"paymentProductFields.fiscalNumber.placeholder" = "Fiscal number";
+"paymentProductFields.houseNumber.label" = "House number";
+"paymentProductFields.houseNumber.placeholder" = "House number";
+"paymentProductFields.iban.label" = "IBAN";
+"paymentProductFields.iban.placeholder" = "IBAN";
+"paymentProductFields.issuerId.label" = "Select your bank";
+"paymentProductFields.issuerId.placeholder" = "Select your bank";
+"paymentProductFields.phoneNumber.label" = "Phone number";
+"paymentProductFields.phoneNumber.placeholder" = "Phone number";
+"paymentProductFields.residentIdName.label" = "Resident name ";
+"paymentProductFields.residentIdName.placeholder" = "Resident name ";
+"paymentProductFields.residentMobilePhoneNumber.label" = "Cell phone number";
+"paymentProductFields.residentMobilePhoneNumber.placeholder" = "+ 86*** **** ****";
+"paymentProductFields.stateCode.label" = "State code";
+"paymentProductFields.stateCode.placeholder" = "State code";
+"paymentProductFields.street.label" = "Street";
+"paymentProductFields.street.placeholder" = "Street";
+"paymentProductFields.surname.label" = "Surname";
+"paymentProductFields.surname.placeholder" = "Surname";
+"paymentProductFields.termsAndConditions.label" = "Accept {link}";
+"paymentProductFields.termsAndConditions.link.label" = "Terms and conditions";
+"paymentProductFields.title.label" = "Title";
+"paymentProductFields.title.placeholder" = "Title";
+"paymentProductFields.zip.label" = "Zip code";
+"paymentProductFields.zip.placeholder" = "Zip code";
+
+// Overriden placeholders
+"paymentProducts.2.paymentProductFields.cvv.placeholder" = "1234";
+"paymentProducts.2.paymentProductFields.cardNumber.placeholder" = "**** ****** *****";
+
+// ApplyPay overrides
+"paymentProducts.302.error" = "Paying with Apple Pay is currently not possible. We apologise for the inconvenience.";
+"paymentProducts.302.header" = "Preparing Apple Pay";
+"paymentProducts.302.javaScriptOff" = "JavaScript is currently turned off in your browser. Paying with Apple Pay is not possible with JavaScript off. Please turn on JavaScript and refresh this page.";
+
+
+// Instruction fields
+"instructionFields.ACCOUNTHOLDER.label" = "Account holder";
+"instructionFields.ACCOUNTNUMBER.label" = "Account number";
+"instructionFields.AMOUNT.label" = "Amount";
+"instructionFields.BANKACCOUNTNUMBER.label" = "Bank account number";
+"instructionFields.BANKCODE.label" = "Bank code";
+"instructionFields.BANKNAME.label" = "Bank name";
+"instructionFields.BARCODE.altText" = "Barcode image to show at the location where you are paying.";
+"instructionFields.BARCODE.label" = "Barcode";
+"instructionFields.CARDHOLDERINFO.label" = "Additional information from your bank";
+"instructionFields.CARDHOLDERINFO.title" = "Additional information";
+"instructionFields.CITY.label" = "City";
+"instructionFields.CONTRACTNUMBER.label" = "Contract number";
+"instructionFields.COUNTRY.label" = "Country";
+"instructionFields.COUNTRYDESCRIPTION.label" = "Country description";
+"instructionFields.CURRENCYCODE.label" = "Currency code";
+"instructionFields.EXPIRATIONDATE.label" = "Expiration date";
+"instructionFields.IBAN.label" = "IBAN";
+"instructionFields.ORDERID.label" = "Order ID";
+"instructionFields.PAYMENTREFERENCE.label" = "Your payment reference is";
+"instructionFields.REFERENCENUMBER.label" = "Reference number";
+"instructionFields.SPECIALID.label" = "Special ID";
+"instructionFields.SWIFTCODE.label" = "Swift code";
+
+// App Error Messages
+"app.errors.noInternetConnection.bodytext" = "It seems there is no connection to the internet, please verify that you have an active internet connection and try again.";
+"app.errors.general.button" = "OK";
+"app.errors.noInternetConnection.title" = "Internet connection error";
+"app.errors.noPaymentProducts.bodyText" = "There are no payment products available at this time.";
+"app.errors.noPaymentProducts.title" = "No payment products available";
+"app.errors.spendingLimitExceeded.bodyText" = "You have exceeded the spending limit for this payment. Please try another payment method, or change your order.";
+"app.errors.spendingLimitExceeded.button.changeOrder" = "Change order";
+"app.errors.spendingLimitExceeded.button.tryOtherMethod" = "Try other method";
+"app.errors.spendingLimitExceeded.title" = "Spending limit exceeded";
+
+// General Error Messages
+"errors.clientDateTime" = "Please validate whether the date and time of the device you use to make this payment are set correctly.";
+"errors.generalError" = "Something went wrong";
+"errors.image.altText" = "Warning";
+"errors.incorrectMerchantId" = "A technical error occurred that prevented us from showing you the right instructions to finalise your payment: incorrect Merchant ID. Please try another payment method or contact the company you are buying from.";
+"errors.renderingProblem" = "A technical error occurred while we were trying to show the instructions to finalise your payment. Please try again or try another payment method.";
+"errors.invalidSubdomain" = "A technical error occurred due to a configuration error: the subdomain is not valid. Please try again or try another payment method.";
+"errors.mandates.technicalProblem" = "A technical error occurred while we were trying to process your mandate. Please try again.";
+"errors.mandates.title" = "Your mandate status";
+"errors.productUnavailable" = "The product you selected is currently not available, please select another one.";
+"errors.techicalProblem" = "A technical error occurred while we were trying to process your payment. Please try again or try another payment method.";
+"errors.title" = "Payment failure";
+"errors.transactionResults.renderingProblem" = "A technical error occurred while we were trying to display the information your bank returned to us.";
+
+// Validation Error Messages
+"validationErrors.allowedInContext" = "The card you entered is not supported. Please enter another card or try another payment method.";
+"validationErrors.cardholderName" = "Please provide the name as exactly written on your card";
+"validationErrors.emailAddress" = "Please provide a valid email address";
+"validationErrors.expirationDate" = "Please provide a valid expiration date";
+"validationErrors.fixedList" = "Please select one of the values from the list";
+"validationErrors.iban" = "Please enter a valid IBAN";
+"validationErrors.iin" = "Please provide a valid card number";
+"validationErrors.invalidContent" = "Please provide a value of the correct format";
+"validationErrors.length.between" = "Please provide a value between {minLength} and {maxLength} characters";
+"validationErrors.length.exact" = "Please provide a value of exactly {maxLength} characters";
+"validationErrors.length" = "Please provide a value of maximum of {maxLength} characters";
+"validationErrors.length.max" = "Please provide a value of maximum of {maxLength} characters";
+"validationErrors.luhn" = "Please provide a valid card number";
+"validationErrors.range" = "Please provide a value between {minValue} and {maxValue}";
+"validationErrors.regularExpression" = "Please provide a value of the correct format";
+"validationErrors.required" = "Please provide a value";
+"validationErrors.residentIdName" = "Please provide the exact name as written on your Resident Identity Card";
+"validationErrors.residentIdNumber" = "Please provide the exact number as written on your Resident Identity Card";
+"validationErrors.termsAndConditions" = "Please accept the terms and conditions";

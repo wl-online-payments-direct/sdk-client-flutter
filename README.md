@@ -22,7 +22,7 @@ The native SDKs establish a secure channel between your app and our server. This
     - [Session](#session)
       - [Logging of requests and responses](#logging-of-requests-and-responses)
     - [PaymentContext](#paymentcontext)
-    - [PaymentItems](#paymentitems)
+    - [BasicPaymentProducts](#basicpaymentproducts)
     - [BasicPaymentProduct](#basicpaymentproduct)
     - [AccountOnFile](#accountonfile)
     - [PaymentProduct](#paymentproduct)
@@ -103,11 +103,11 @@ PaymentContext paymentContext = PaymentContext(
     false // true, if it is a recurring payment
 );
 ```
-4. Retrieve the available Payment Products. To handle retrieving the Payment Products and any possible errors, you will have to use the `BasicPaymentProductsResponseListener`. After successfully retrieving the Payment Products, display the `BasicPaymentItem` and `AccountOnFile` lists and request your customer to select one.
+4. Retrieve the available Payment Products. To handle retrieving the Payment Products and any possible errors, you will have to use the `BasicPaymentProductsResponseListener`. After successfully retrieving the Payment Products, display the `BasicPaymentProduct` and `AccountOnFile` lists and request your customer to select one.
 ```dart
 BasicPaymentProductsResponseListener basicPaymentProductsResponseListener = BasicPaymentProductsResponseListener (
     onSuccess: (response) {
-      // Display the contents of basicPaymentItems & accountsOnFile to your customer
+      // Display the contents of basicPaymentProducts & accountsOnFile to your customer
     },
     onError: (apiError) {
       // Inform the customer that something went wrong while retrieving the available Payment Products
@@ -197,10 +197,7 @@ Session session = Session(
 Almost all methods that are offered by `Session` are simple wrappers around the Client API. They make the request and convert the response to Dart objects that may contain convenience functions.
 
 #### Logging of requests and responses
-You are able to log requests made to the server and responses received from the server. By default logging is disabled, and it is important to always disable it in production. You are able to enable the logging in two ways. Either by setting its value when creating a Session - as shown in the code fragment above - or by setting its value after the Session was already created.
-```dart
-session.loggingEnabled = true;
-```
+You are able to log requests made to the server and responses received from the server. By default logging is disabled, and it is important to always disable it in production. You can enable logging by setting the value while creating the Session. The value cannot be changed after the Session is initialized, so changing the value requires initializing a new Session object.
 
 ### PaymentContext
 
@@ -219,16 +216,16 @@ class PaymentContext {
 }
 ```
 
-### PaymentItems
-This object contains the available Payment Items for the current payment. Use the `session.getBasicPaymentItems` function to request the data. To handle retrieving the Payment Products and any possible errors, you will have to use the `BasicPaymentProductsResponseListener`. You can either let your class implement this listener or declare the listener as a property of your class.
+### BasicPaymentProducts
+This object contains the available Payment Items for the current payment. Use the `session.getBasicPaymentProducts` function to request the data. To handle retrieving the Payment Products and any possible errors, you will have to use the `BasicPaymentProductsResponseListener`. You can either let your class implement this listener or declare the listener as a property of your class.
 
-The object you will receive is `BasicPaymentItems`, which contains two lists. One for all available `BasicPaymentItem`s and one for all available `AccountOnFile`s.
+The object you will receive is `BasicPaymentProducts`, which contains two lists. One for all available `BasicPaymentProduct`s and one for all available `AccountOnFile`s.
 
-The code fragment below shows how to get the `BasicPaymentItems` instance.
+The code fragment below shows how to get the `BasicPaymentProducts` instance.
 ```dart
 BasicPaymentProductsResponseListener basicPaymentProductsResponseListener = BasicPaymentProductsResponseListener (
     onSuccess: (response) {
-      // Display the contents of basicPaymentItems & accountsOnFile to your customer
+      // Display the contents of basicPaymentProducts & accountsOnFile to your customer
     },
     onError: (apiError) {
       // Inform the customer that something went wrong while retrieving the available Payment Products
@@ -291,7 +288,7 @@ String maskedValue = await accountOnFile.getMaskedValue("cardNumber");
 
 `BasicPaymentProduct` only contains the information required by a customer to distinguish one payment product from another. However, once a payment product or an account on file has been selected, the customer must provide additional information, such as a bank account number, a credit card number, or an expiry date, before a payment can be processed. Each payment product can have several fields that need to be completed to process a payment. Instances of `BasicPaymentProduct` do not contain any information about these fields.
 
-Information about the fields of payment products are represented by instances of `PaymentProductField`, which are contained in instances of `PaymentProduct`. The class `PaymentProductField` is described further down below. To handle retrieving the desired `PaymentProduct` and any possible errors, you will have to use the `PaymentProductsResponseListener`. You can either let your class implement this listener or declare the listener as a property of your class.
+Information about the fields of payment products are represented by instances of `PaymentProductField`, which are contained in instances of `PaymentProduct`. The class `PaymentProductField` is described further down below. To handle retrieving the desired `PaymentProduct` and any possible errors, you will have to use the `PaymentProductResponseListener`. You can either let your class implement this listener or declare the listener as a property of your class.
 
 The `Session` instance can be used to retrieve instances of `PaymentProduct`, as shown in the following code fragment.
 ```dart
@@ -392,14 +389,14 @@ if (errorMessages.isEmpty) {
 
 The validations are the `Validator`s linked to the `PaymentProductField` and are returned as a `ValidationErrorMessage`, for example:
 ```dart
-for (ValidationErrorMessage validationResult in errorMessages) {
-    // do something with the error, like displaying it to the user
+for (ValidationErrorMessage errorMessage in errorMessages) {
+    // do something with the errorMessage, like displaying it to the user
 }
 ```
 
 #### Encrypt payment request
 
-The `PaymentRequest` is ready for encryption once the `PaymentProduct` is set, the `PaymentProductField` values have been provided and validated, and potentially the selected `AccountOnFile` or `tokenize` properties have been set. The `PaymentRequest` encryption is done by using `session.prepare`. To handle the result of the encrypted `PaymentRequest`, you will have to use the `PaymentRequestPreparedListener`. After successfully encrypting the `PaymentRequest`, you will have access to the encrypted version, `PreparedPaymentRequest` which contains the encrypted payment request fields and encoded client meta info.
+The `PaymentRequest` is ready for encryption once the `PaymentProduct` is set, the `PaymentProductField` values have been provided and validated, and potentially the selected `AccountOnFile` or `tokenize` properties have been set. The `PaymentRequest` encryption is done by using `session.preparePaymentRequest`. To handle the result of the encrypted `PaymentRequest`, you will have to use the `PaymentRequestPreparedListener`. After successfully encrypting the `PaymentRequest`, you will have access to the encrypted version, `PreparedPaymentRequest` which contains the encrypted payment request fields and encoded client meta info.
 ```dart
 PaymentRequestPreparedListener paymentRequestPreparedListener = PaymentRequestPreparedListener(
     onSuccess: (response) {
@@ -462,7 +459,7 @@ Some cards are dual branded and could be processed as either a local card _(with
 
 ### Masking 
 
-To help in formatting field values based on masks, the SDK offers functionality on `AccountOnFile`, `PaymetRequest` and `PaymentProductField`. It allows you to format field values and apply and unapply masks on a string.
+To help in formatting field values based on masks, the SDK offers a masking functionality on `AccountOnFile`, `PaymetRequest` and `PaymentProductField`. It allows you to format field values and apply and unapply masks on a string.
 
 ```dart
 // apply masked value
@@ -517,7 +514,7 @@ Retrieve the payment products and accounts on file that can be used for this pay
 ```dart
 BasicPaymentProductsResponseListener basicPaymentProductsResponseListener = BasicPaymentProductsResponseListener (
     onSuccess: (response) {
-      // Display the contents of basicPaymentItems & accountsOnFile to your customer
+      // Display the contents of basicPaymentProducts & accountsOnFile to your customer
     },
     onError: (apiError) {
       // Inform the customer that something went wrong while retrieving the available Payment Products

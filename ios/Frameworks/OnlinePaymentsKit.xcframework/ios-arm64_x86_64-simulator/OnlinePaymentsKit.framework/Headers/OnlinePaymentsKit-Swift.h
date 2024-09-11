@@ -922,15 +922,13 @@ SWIFT_CLASS_NAMED("RateDetails")
 
 SWIFT_CLASS_NAMED("SDKConstants")
 @interface OPSDKConstants : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPSDKLocalizable;)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPSDKLocalizable SWIFT_DEPRECATED_MSG("In a future release, this constant will be removed, please use kSDKStrings instead.");)
 + (NSString * _Nonnull)kOPSDKLocalizable SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPSDKStrings;)
++ (NSString * _Nonnull)kOPSDKStrings SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable kOPSDKBundlePath;)
 + (NSString * _Nullable)kOPSDKBundlePath SWIFT_WARN_UNUSED_RESULT;
 + (void)setKOPSDKBundlePath:(NSString * _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPCountryCodes SWIFT_DEPRECATED_MSG("\n            In a future release, this property will be removed.\n            Instead use the ISO 3166-1 alpha-2 standard to determine valid values.\n            See https://www.iso.org/iso-3166-country-codes.html .\n            ");)
-+ (NSString * _Nonnull)kOPCountryCodes SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPCurrencyCodes SWIFT_DEPRECATED_MSG("\n            In a future release, this property will be removed.\n            Instead use the ISO 4217 standard to determine valid values.\n            See https://www.iso.org/iso-4217-currency-codes.html .\n            ");)
-+ (NSString * _Nonnull)kOPCurrencyCodes SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2229,15 +2227,13 @@ SWIFT_CLASS_NAMED("RateDetails")
 
 SWIFT_CLASS_NAMED("SDKConstants")
 @interface OPSDKConstants : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPSDKLocalizable;)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPSDKLocalizable SWIFT_DEPRECATED_MSG("In a future release, this constant will be removed, please use kSDKStrings instead.");)
 + (NSString * _Nonnull)kOPSDKLocalizable SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPSDKStrings;)
++ (NSString * _Nonnull)kOPSDKStrings SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable kOPSDKBundlePath;)
 + (NSString * _Nullable)kOPSDKBundlePath SWIFT_WARN_UNUSED_RESULT;
 + (void)setKOPSDKBundlePath:(NSString * _Nullable)value;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPCountryCodes SWIFT_DEPRECATED_MSG("\n            In a future release, this property will be removed.\n            Instead use the ISO 3166-1 alpha-2 standard to determine valid values.\n            See https://www.iso.org/iso-3166-country-codes.html .\n            ");)
-+ (NSString * _Nonnull)kOPCountryCodes SWIFT_WARN_UNUSED_RESULT;
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPCurrencyCodes SWIFT_DEPRECATED_MSG("\n            In a future release, this property will be removed.\n            Instead use the ISO 4217 standard to determine valid values.\n            See https://www.iso.org/iso-4217-currency-codes.html .\n            ");)
-+ (NSString * _Nonnull)kOPCurrencyCodes SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

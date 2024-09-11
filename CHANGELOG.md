@@ -1,3 +1,9 @@
+## 1.2.1
+## Changed: 
+- Updated the `README`. 
+- Updated the Swift dependency. 
+
+
 ## 1.2.0
 ### Added: 
 - Added a simple example application that showcases how you can implement a Payment Product call using the SDK 
