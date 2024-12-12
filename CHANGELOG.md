@@ -1,7 +1,12 @@
+## 1.2.2
+## Changed:
+- Updated the Swift dependency. This fixes the compatibility issue with the latest Xcode.
+
+
 ## 1.2.1
-## Changed: 
-- Updated the `README`. 
-- Updated the Swift dependency. 
+## Changed:
+- Updated the `README`.
+- Updated the Swift dependency.
 
 
 ## 1.2.0
