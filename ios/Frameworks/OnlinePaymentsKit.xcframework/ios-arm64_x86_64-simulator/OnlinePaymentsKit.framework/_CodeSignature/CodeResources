@@ -6,19 +6,19 @@
 	<dict>
 		<key>Headers/OnlinePaymentsKit-Swift.h</key>
 		<data>
-		YyhtVbZH1y4gkhPdnYfJaq1O340=
+		DfqT8ggFRhS0sAnUmXdpZEOLru4=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Hp5glDYpJ74FAwkX7kB/TD0mXJc=
+		R4LnJzv8gMu5s2OzeajeYykwC1E=
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		F07sJaVGwnJLRrh6U5yjwGQ0ykc=
+		ddJa/rVwCQOtL/0/dIZ70SRGYIk=
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		VM/DHoFBmh8JWO+2K6npehcLm6c=
+		Af2arDSi60h5lFT2E4EOKAXqdFE=
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		dJSh4/FUaoUVuiYNaxLPjN3db4g=
+		uQV61RiIjp2e/95hktKc25FUddo=
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		+WLmZWXoMoRqqDvcskmhqv/3u70=
+		5oPPluP02YsK9yspZjNWMpQZa6s=
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		1aj69fTdN5XSKmkN5c0gTXWx+iQ=
+		6fHGQDdqJ/D5CTM6JSnKiwSLWpM=
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		IYldmSVaSjfLAMiMQU3N8pA8v2E=
+		I6vu01ZLsgQZ0UaIfUiCgsgerko=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -151,21 +151,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			X67KSSpk391drR8WkJiGLRLNbdj+DeKDe4q9dbzfsHI=
+			GiTcj3xN8e6plEaOrKaUr4rzI14DtssaXkbKlZFJWdk=
 			</data>
 		</dict>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mzWH5VdgSQLwafBp2ShcAtnGeKpmkrQUQiVDCkD9C0g=
+			Gn/fPbBX/pGUoQ9yx9VTLBaJfFk56uIBM2sIOzl/DMo=
 			</data>
 		</dict>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			T4aSOpmbIDvplfFpJS1PbD1goXpb/nZ5yAmze9nKODg=
+			yvrDzr6+bf/oxQozJuR1D2stRzX8WL99TW55TLW5Mao=
 			</data>
 		</dict>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -179,14 +179,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fwWwg7oetXu+3fPmQiED1ck1ijw1n1WoeiAceLhcOTw=
+			FdDsgCSfZ/fBHVi0VZFIWK3CfORqzq8f5JzJRRuv698=
 			</data>
 		</dict>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DvGq5sZ2oKTKE3bAwPKS2OGuO1yi5uKNfjinJI2q/oY=
+			fyOFQy+/1mqRp8Wg9sgRsnJEslIP5xB9EZtq288vAzI=
 			</data>
 		</dict>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -200,14 +200,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+ntyJNhjU/yvxGG3KPbipunKNCt8y+mC77pUwZDCZTk=
+			HDpR/DB4mfmfvVuteWpqM0/nplp5l7lii0npRfVl87Y=
 			</data>
 		</dict>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3CbosOEm3v0ohu2kjsG7PWXbev7iy5FzuObLTe+kfj0=
+			xoy4wuOpYUgPrav+eNNFqRl8qnsZi9RYHaDCzyDKq9A=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

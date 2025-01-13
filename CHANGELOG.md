@@ -1,3 +1,7 @@
+## 1.2.3
+## Changed:
+- Updated the Swift dependency to support iOS 18.2.
+
 ## 1.2.2
 ## Changed:
 - Updated the Swift dependency. This fixes the compatibility issue with the latest Xcode.
