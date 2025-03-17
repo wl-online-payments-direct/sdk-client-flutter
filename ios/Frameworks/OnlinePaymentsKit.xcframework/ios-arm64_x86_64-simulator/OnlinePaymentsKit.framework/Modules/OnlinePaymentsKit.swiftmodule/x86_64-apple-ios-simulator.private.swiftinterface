@@ -1,0 +1,865 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios15.6-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name OnlinePaymentsKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import Alamofire
+import CryptoSwift
+import Foundation
+import PassKit
+import Security
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc(OPApiErrorItem) public class ApiErrorItem : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let errorCode: Swift.String
+  @objc final public let category: Swift.String?
+  @objc final public let httpStatusCode: Foundation.NSNumber?
+  @objc final public let id: Swift.String?
+  @objc final public let message: Swift.String
+  @objc final public let propertyName: Swift.String?
+  @objc final public let retriable: Swift.Bool
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorLength) public class ValidatorLength : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  @objc public var minLength: Swift.Int
+  @objc public var maxLength: Swift.Int
+  required public init(from decoder: any Swift.Decoder) throws
+  override public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@objc(OPIINStatus) public enum IINStatus : Swift.Int, Swift.Codable {
+  @objc(OPSupported) case supported
+  @available(*, deprecated, message: "In a future release, this status will be removed.")
+  @objc(OPUnsupported) case unsupported
+  @objc(OPUnknown) case unknown
+  @objc(OPNotEnoughDigits) case notEnoughDigits
+  @available(*, deprecated, message: "In a future release, this status will be removed.")
+  @objc(OPPending) case pending
+  @objc(OPExistingButNotAllowed) case existingButNotAllowed
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPBasicPaymentProducts) public class BasicPaymentProducts : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var paymentProducts: [OnlinePaymentsKit.BasicPaymentProduct]
+  @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
+    @objc get
+    @objc set
+  }
+  @objc public var hasAccountsOnFile: Swift.Bool {
+    @objc get
+  }
+  @objc public var accountsOnFile: [OnlinePaymentsKit.AccountOnFile] {
+    @objc get
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc public func logoPath(forPaymentProduct identifier: Swift.String) -> Swift.String?
+  @objc public func paymentProduct(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.BasicPaymentProduct?
+  @objc public func sort()
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@objc(OPPaymentItem) public protocol PaymentItem : OnlinePaymentsKit.BasicPaymentItem {
+  @objc var fields: OnlinePaymentsKit.PaymentProductFields { get set }
+  @objc func paymentProductField(withId paymentProductFieldId: Swift.String) -> OnlinePaymentsKit.PaymentProductField?
+}
+@objc(OPPaymentProductNetworks) public class PaymentProductNetworks : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var paymentProductNetworks: [PassKit.PKPaymentNetwork]
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@objc(OPFormElementType) public enum FormElementType : Swift.Int {
+  @objc(OPTextType) case textType
+  @objc(OPListType) case listType
+  @objc(OPCurrencyType) case currencyType
+  @objc(OPBoolType) case boolType
+  @objc(OPDateType) case dateType
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorRange) public class ValidatorRange : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  @objc public var minValue: Swift.Int
+  @objc public var maxValue: Swift.Int
+  @objc public var formatter: Foundation.NumberFormatter
+  override public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@objc(OPCardType) public enum CardType : Swift.Int {
+  @objc(OPCredit) case credit
+  @objc(OPDebit) case debit
+  @objc(OPPrepaid) case prepaid
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPValidators) public class Validators : ObjectiveC.NSObject, Swift.Decodable {
+  @objc public var validators: [OnlinePaymentsKit.Validator]
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@objc(OPSurchargeResult) public enum SurchargeResult : Swift.Int, Swift.Codable {
+  @objc(OPOk) case ok
+  @objc(OPNoSurcharge) case noSurcharge
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(OPValidationError) public class ValidationError : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var errorMessage: Swift.String
+  @objc public var paymentProductFieldId: Swift.String?
+  @objc public var rule: OnlinePaymentsKit.Validator?
+  @objc override dynamic public init()
+  @objc public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorAllowed) public class ValidationErrorAllowed : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorEmailAddress) public class ValidationErrorEmailAddress : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorExpirationDate) public class ValidationErrorExpirationDate : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorFixedList) public class ValidationErrorFixedList : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @available(*, deprecated, message: "In a future release, this class will be removed.")
+@objc(OPValidationErrorInteger) public class ValidationErrorInteger : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorIsRequired) public class ValidationErrorIsRequired : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorLuhn) public class ValidationErrorLuhn : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @available(*, deprecated, message: "In a future release, this class will be removed.")
+@objc(OPValidationErrorNumericString) public class ValidationErrorNumericString : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorRegularExpression) public class ValidationErrorRegularExpression : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorTermsAndConditions) public class ValidationErrorTermsAndConditions : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorIBAN) public class ValidationErrorIBAN : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorLength) public class ValidationErrorLength : OnlinePaymentsKit.ValidationError {
+  @objc public var minLength: Swift.Int
+  @objc public var maxLength: Swift.Int
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorRange) public class ValidationErrorRange : OnlinePaymentsKit.ValidationError {
+  @objc public var minValue: Swift.Int
+  @objc public var maxValue: Swift.Int
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPValidationErrorPaymentProductMissing) public class ValidationErrorInvalidPaymentProduct : OnlinePaymentsKit.ValidationError {
+  @objc override dynamic public init()
+  @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+}
+@objc(OPSurchargeRate) public class SurchargeRate : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var surchargeProductTypeId: Swift.String
+  @objc public var surchargeProductTypeVersion: Swift.String
+  @objc public var adValoremRate: Swift.Double
+  @objc public var specificRate: Swift.Int
+  @available(*, deprecated, message: "Do not use this initializer, it is only for internal SDK use and will be removed in a future release.")
+  @objc required public init?(json: [Swift.String : Any])
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public enum SessionError : Swift.Error {
+  case RuntimeError(Swift.String)
+}
+@objc(OPErrorResponse) public class ErrorResponse : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let message: Swift.String
+  @objc final public let apiError: OnlinePaymentsKit.ApiError?
+  public init(message: Swift.String, apiError: OnlinePaymentsKit.ApiError? = nil)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorExpirationDate) public class ValidatorExpirationDate : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  @objc public var dateFormatter: Foundation.DateFormatter
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorLuhn) public class ValidatorLuhn : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@objc(OPApiError) public class ApiError : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let errorId: Swift.String
+  @objc final public let errors: [OnlinePaymentsKit.ApiErrorItem]
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc(OPFormElement) public class FormElement : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var type: OnlinePaymentsKit.FormElementType
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(OPPaymentItems) public class PaymentItems : ObjectiveC.NSObject {
+  @objc public var paymentItems: [any OnlinePaymentsKit.BasicPaymentItem]
+  @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter?
+  @objc public var allPaymentItems: [any OnlinePaymentsKit.BasicPaymentItem]
+  @objc public var hasAccountsOnFile: Swift.Bool {
+    @objc get
+  }
+  @objc public var accountsOnFile: [OnlinePaymentsKit.AccountOnFile] {
+    @objc get
+  }
+  @objc(createPaymentItemsFromProducts:groups:) public func createPaymentItemsFromProducts(products: OnlinePaymentsKit.BasicPaymentProducts, groups: OnlinePaymentsKit.BasicPaymentProductGroups?) -> [any OnlinePaymentsKit.BasicPaymentItem]
+  @objc(logoPathForPaymentItem:) public func logoPath(forItem identifier: Swift.String) -> Swift.String?
+  @objc public func paymentItem(withIdentifier identifier: Swift.String) -> (any OnlinePaymentsKit.BasicPaymentItem)?
+  @objc public func sort()
+  @objc deinit
+}
+public enum EncryptorError : Swift.Error {
+  case encryptionFailed(any Swift.Error)
+  case decryptionFailed(any Swift.Error)
+}
+extension OnlinePaymentsKit.EncryptorError {
+  public var asNSError: Foundation.NSError {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorIBAN) public class ValidatorIBAN : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@objc(OPDccProposal) public class DccProposal : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var baseAmount: OnlinePaymentsKit.AmountOfMoney
+  @objc public var targetAmount: OnlinePaymentsKit.AmountOfMoney
+  @objc public var rate: OnlinePaymentsKit.RateDetails
+  @objc public var disclaimerReceipt: Swift.String?
+  @objc public var disclaimerDisplay: Swift.String?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPAccountOnFileAttributes) public class AccountOnFileAttributes : ObjectiveC.NSObject {
+  @objc public var attributes: [OnlinePaymentsKit.AccountOnFileAttribute]
+  @objc public func value(forField paymentProductFieldId: Swift.String) -> Swift.String
+  @objc public func hasValue(forField paymentProductFieldId: Swift.String) -> Swift.Bool
+  @objc(fieldIsReadOnly:) public func isReadOnly(field paymentProductFieldId: Swift.String?) -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPPaymentProduct) public class PaymentProduct : OnlinePaymentsKit.BasicPaymentProduct, OnlinePaymentsKit.PaymentItem {
+  @objc public var fields: OnlinePaymentsKit.PaymentProductFields
+  required public init(from decoder: any Swift.Decoder) throws
+  override public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func paymentProductField(withId: Swift.String) -> OnlinePaymentsKit.PaymentProductField?
+  @objc deinit
+}
+@objc(OPAmountOfMoney) public class AmountOfMoney : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var totalAmount: Swift.Int
+  @objc public var currencyCode: Swift.String
+  @objc(initWithTotalAmount:currencyCode:) public init(totalAmount: Swift.Int, currencyCode: Swift.String)
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPLabelTemplate) public class LabelTemplate : ObjectiveC.NSObject {
+  @objc public var labelTemplateItems: [OnlinePaymentsKit.LabelTemplateItem]
+  @objc public func mask(forAttributeKey key: Swift.String) -> Swift.String?
+  @objc deinit
+}
+@objc(OPTooltip) public class ToolTip : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var label: Swift.String?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@objc(OPLabelTemplateItem) public class LabelTemplateItem : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var attributeKey: Swift.String
+  @objc public var mask: Swift.String?
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc(OPPreparedPaymentRequest) public class PreparedPaymentRequest : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var encryptedFields: Swift.String
+  @objc public var encodedClientMetaInfo: Swift.String
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc(OPAccountOnFile) public class AccountOnFile : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var identifier: Swift.String
+  @objc public var paymentProductIdentifier: Swift.String
+  @objc public var displayHints: OnlinePaymentsKit.AccountOnFileDisplayHints
+  @objc public var attributes: OnlinePaymentsKit.AccountOnFileAttributes
+  @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func maskedValue(forField paymentProductFieldId: Swift.String) -> Swift.String
+  @objc public func maskedValue(forField paymentProductFieldId: Swift.String, mask: Swift.String?) -> Swift.String
+  @objc public func hasValue(forField paymentProductFieldId: Swift.String) -> Swift.Bool
+  @objc(fieldIsReadOnly:) public func isReadOnly(field paymentProductFieldId: Swift.String) -> Swift.Bool
+  @objc public var label: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorTermsAndConditions) public class ValidatorTermsAndConditions : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@objc(OPPaymentProductFieldDisplayHints) public class PaymentProductFieldDisplayHints : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var alwaysShow: Swift.Bool
+  @objc public var displayOrder: Swift.Int
+  @objc public var formElement: OnlinePaymentsKit.FormElement
+  @objc public var mask: Swift.String?
+  @objc public var obfuscate: Swift.Bool
+  @objc public var tooltip: OnlinePaymentsKit.ToolTip?
+  @objc public var label: Swift.String?
+  @objc public var placeholderLabel: Swift.String?
+  @objc public var preferredInputType: OnlinePaymentsKit.PreferredInputType
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@objc(OPCurrencyConversionResponse) public class CurrencyConversionResponse : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var dccSessionId: Swift.String
+  @objc public var result: OnlinePaymentsKit.CurrencyConversionResult
+  @objc public var proposal: OnlinePaymentsKit.DccProposal
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc(OPSession) public class Session : ObjectiveC.NSObject {
+  @objc public var loggingEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public init(clientSessionId: Swift.String, customerId: Swift.String, baseURL: Swift.String, assetBaseURL: Swift.String, appIdentifier: Swift.String, loggingEnabled: Swift.Bool = false, sdkIdentifier: Swift.String)
+  @objc convenience public init(clientSessionId: Swift.String, customerId: Swift.String, baseURL: Swift.String, assetBaseURL: Swift.String, appIdentifier: Swift.String, loggingEnabled: Swift.Bool = false)
+  @objc public static func session(clientSessionId: Swift.String, customerId: Swift.String, baseURL: Swift.String, assetBaseURL: Swift.String, appIdentifier: Swift.String, loggingEnabled: Swift.Bool = false) -> OnlinePaymentsKit.Session
+  @objc(paymentProductsForContext:success:failure:apiFailure:) public func paymentProducts(for context: OnlinePaymentsKit.PaymentContext, success: ((_ paymentProducts: OnlinePaymentsKit.BasicPaymentProducts) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc public func paymentProductNetworks(forProductId paymentProductId: Swift.String, context: OnlinePaymentsKit.PaymentContext, success: ((_ paymentProductNetworks: OnlinePaymentsKit.PaymentProductNetworks) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc(paymentItemsForContext:success:failure:apiFailure:) public func paymentItems(for context: OnlinePaymentsKit.PaymentContext, success: ((_ paymentItems: OnlinePaymentsKit.PaymentItems) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc public func paymentProduct(withId paymentProductId: Swift.String, context: OnlinePaymentsKit.PaymentContext, success: ((_ paymentProduct: OnlinePaymentsKit.PaymentProduct) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc(IINDetailsForPartialCreditCardNumber:context:success:failure:apiFailure:) public func iinDetails(forPartialCreditCardNumber partialCreditCardNumber: Swift.String, context: OnlinePaymentsKit.PaymentContext?, success: ((_ iinDetailsResponse: OnlinePaymentsKit.IINDetailsResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc(publicKeyWithSuccess:failure:apiFailure:) public func publicKey(success: ((_ publicKeyResponse: OnlinePaymentsKit.PublicKeyResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc(preparePaymentRequest:success:failure:apiFailure:) public func prepare(_ paymentRequest: OnlinePaymentsKit.PaymentRequest, success: ((_ preparedPaymentRequest: OnlinePaymentsKit.PreparedPaymentRequest) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc public func currencyConversionQuote(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, partialCreditCardNumber: Swift.String, paymentProductId: Foundation.NSNumber? = nil, success: ((_ currencyConversionResponse: OnlinePaymentsKit.CurrencyConversionResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc public func currencyConversionQuote(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, token: Swift.String, success: ((_ currencyConversionResponse: OnlinePaymentsKit.CurrencyConversionResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc public func surchargeCalculation(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, partialCreditCardNumber: Swift.String, paymentProductId: Foundation.NSNumber? = nil, success: ((_ surchargeCalculationResponse: OnlinePaymentsKit.SurchargeCalculationResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc public func surchargeCalculation(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, token: Swift.String, success: ((_ surchargeCalculationResponse: OnlinePaymentsKit.SurchargeCalculationResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  @objc deinit
+}
+@objc(OPPaymentProductGroup) public class PaymentProductGroup : ObjectiveC.NSObject, Swift.Codable, OnlinePaymentsKit.PaymentItem {
+  @objc public var identifier: Swift.String
+  @objc public var displayHints: [OnlinePaymentsKit.PaymentItemDisplayHints]
+  @objc public var accountsOnFile: OnlinePaymentsKit.AccountsOnFile
+  @objc public var allowsTokenization: Swift.Bool
+  @objc public var allowsRecurring: Swift.Bool
+  @objc public var fields: OnlinePaymentsKit.PaymentProductFields
+  @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
+    @objc get
+    @objc set
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func accountOnFile(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.AccountOnFile?
+  @objc public func paymentProductField(withId paymentProductFieldId: Swift.String) -> OnlinePaymentsKit.PaymentProductField?
+  @objc deinit
+}
+@objc(OPPreferredInputType) public enum PreferredInputType : Swift.Int {
+  @objc(OPStringKeyboard) case stringKeyboard
+  @objc(OPIntegerKeyboard) case integerKeyboard
+  @objc(OPEmailAddressKeyboard) case emailAddressKeyboard
+  @objc(OPPhoneNumberKeyboard) case phoneNumberKeyboard
+  @objc(OPDateKeyboard) case dateKeyboard
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(OPPublicKeyResponse) public class PublicKeyResponse : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var keyId: Swift.String
+  @objc public var encodedPublicKey: Swift.String
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@objc(OPAccountOnFileAttribute) public class AccountOnFileAttribute : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var key: Swift.String
+  @objc public var value: Swift.String?
+  @objc public var status: OnlinePaymentsKit.AccountOnFileAttributeStatus
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public func isEditingAllowed() -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPBasicPaymentProductGroups) public class BasicPaymentProductGroups : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var paymentProductGroups: [OnlinePaymentsKit.BasicPaymentProductGroup]
+  @objc public var hasAccountsOnFile: Swift.Bool {
+    @objc get
+  }
+  @objc public var accountsOnFile: [OnlinePaymentsKit.AccountOnFile] {
+    @objc get
+  }
+  @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
+    @objc get
+    @objc set
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc(logoPathForPaymentProductGroup:) public func logoPath(forProductGroup identifier: Swift.String) -> Swift.String?
+  @objc public func paymentProductGroup(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.BasicPaymentProductGroup?
+  @objc public func sort()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@objc(OPPaymentContext) public class PaymentContext : ObjectiveC.NSObject, Swift.Decodable {
+  @objc public var countryCode: Swift.String
+  @objc public var locale: Swift.String
+  @objc public var amountOfMoney: OnlinePaymentsKit.AmountOfMoney
+  @objc public var isRecurring: Swift.Bool
+  @objc(initWithAmountOfMoney:isRecurring:countryCode:) public init(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, isRecurring: Swift.Bool, countryCode: Swift.String)
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
+@objc(OPBasicPaymentItem) public protocol BasicPaymentItem {
+  @objc var identifier: Swift.String { get set }
+  @objc var displayHints: [OnlinePaymentsKit.PaymentItemDisplayHints] { get set }
+  @objc var accountsOnFile: OnlinePaymentsKit.AccountsOnFile { get set }
+}
+@objc(OPValidationType) public enum ValidationType : Swift.Int {
+  @objc(OPValidationTypeExpirationDate) case expirationDate
+  @objc(OPValidationTypeEmailAddress) case emailAddress
+  @objc(OPValidationTypeFixedList) case fixedList
+  @objc(OPValidationTypeIBAN) case iban
+  @objc(OPValidationTypeLength) case length
+  @objc(OPValidationTypeLuhn) case luhn
+  @objc(OPValidationTypeRange) case range
+  @objc(OPValidationTypeRegularExpression) case regularExpression
+  @objc(OPValidationTypeRequired) case required
+  @objc(OPValidationTypeType) case type
+  @objc(OPValidationTypeTermsAndConditions) case termsAndConditions
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(OPConversionResultType) public enum ConversionResultType : Swift.Int, Swift.Codable {
+  @objc(OPAllowed) case allowed
+  @objc(OPInvalidCard) case invalidCard
+  @objc(OPInvalidMerchant) case invalidMerchant
+  @objc(OPNoRate) case noRate
+  @objc(OPNotAvailable) case notAvailable
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(OPEncryptDataError) public enum EncryptDataError : Swift.Int, Swift.Error {
+  case publicKeyDecodeError
+  case rsaKeyNotFound
+  case algorithmNotSupported
+  case hmacGenerationFailed
+  case badPublicKeyFormat
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public static var _nsErrorDomain: Swift.String {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(OPIINDetail) public class IINDetail : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var paymentProductId: Swift.String
+  @objc(isAllowedInContext) public var allowedInContext: Swift.Bool
+  @objc public var cardType: OnlinePaymentsKit.CardType
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPBasicPaymentProduct) public class BasicPaymentProduct : ObjectiveC.NSObject, OnlinePaymentsKit.BasicPaymentItem, Swift.Codable {
+  @objc public var identifier: Swift.String
+  @objc public var displayHints: [OnlinePaymentsKit.PaymentItemDisplayHints]
+  @objc public var accountsOnFile: OnlinePaymentsKit.AccountsOnFile
+  @objc public var allowsTokenization: Swift.Bool
+  @objc public var allowsRecurring: Swift.Bool
+  @objc public var paymentMethod: Swift.String
+  @objc public var paymentProductGroup: Swift.String?
+  @objc public var paymentProduct302SpecificData: OnlinePaymentsKit.PaymentProduct302SpecificData?
+  @objc public var paymentProduct320SpecificData: OnlinePaymentsKit.PaymentProduct320SpecificData?
+  @objc public var usesRedirectionTo3rdParty: Swift.Bool
+  @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
+    @objc get
+    @objc set
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func accountOnFile(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.AccountOnFile?
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPDataRestrictions) public class DataRestrictions : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var isRequired: Swift.Bool
+  @objc public var validators: OnlinePaymentsKit.Validators
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPSDKConstants) public class SDKConstants : ObjectiveC.NSObject {
+  @objc(kOPSDKBundlePath) public static var kSDKBundlePath: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(OPPaymentProductField) public class PaymentProductField : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var identifier: Swift.String
+  @objc public var dataRestrictions: OnlinePaymentsKit.DataRestrictions
+  @objc public var displayHints: OnlinePaymentsKit.PaymentProductFieldDisplayHints
+  @objc public var type: OnlinePaymentsKit.FieldType
+  @objc public var errorMessageIds: [OnlinePaymentsKit.ValidationError]
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc(validateValue:) public func validateValue(value: Swift.String) -> [OnlinePaymentsKit.ValidationError]
+  @objc(validateValueforPaymentRequest:) public func validateValue(for request: OnlinePaymentsKit.PaymentRequest) -> [OnlinePaymentsKit.ValidationError]
+  @objc public func applyMask(value: Swift.String) -> Swift.String
+  @objc public func removeMask(value: Swift.String) -> Swift.String
+  @objc deinit
+}
+@objc(OPBasicPaymentProductGroup) public class BasicPaymentProductGroup : ObjectiveC.NSObject, Swift.Codable, OnlinePaymentsKit.BasicPaymentItem {
+  @objc public var identifier: Swift.String
+  @objc public var displayHints: [OnlinePaymentsKit.PaymentItemDisplayHints]
+  @objc public var accountsOnFile: OnlinePaymentsKit.AccountsOnFile
+  @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
+    @objc get
+    @objc set
+  }
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func accountOnFile(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.AccountOnFile?
+  @objc deinit
+}
+@objc public protocol ValidationRule {
+  @objc func validate(value: Swift.String) -> Swift.Bool
+  @objc func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+}
+@_inheritsConvenienceInitializers @objc(OPStringFormatter) public class StringFormatter : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc(formatString:withMask:) public func formatString(string: Swift.String, mask: Swift.String) -> Swift.String
+  @objc(formatString:withMask:cursorPosition:) public func formatString(string: Swift.String, mask: Swift.String, cursorPosition: Swift.UnsafeMutablePointer<ObjectiveC.NSInteger>) -> Swift.String
+  @objc(unformatString:withMask:) public func unformatString(string: Swift.String, mask: Swift.String) -> Swift.String
+  @objc(processMatch:string:stringIndex:mask:copyFromMask:appendRestOfMask:cursorPosition:) public func processMatch(match: Swift.String, string: Swift.String, stringIndex: Swift.UnsafeMutablePointer<Swift.Int>, mask: Swift.String, copyFromMask: Swift.UnsafeMutablePointer<Swift.Bool>, appendRestOfMask: Swift.UnsafeMutablePointer<Swift.Bool>, cursorPosition: Swift.UnsafeMutablePointer<Swift.Int>) -> Swift.String
+  @objc(splitMask:) public func parts(ofMask mask: Swift.String) -> [Swift.String]
+  @objc(relaxMask:) public func relaxMask(mask: Swift.String) -> Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorFixedList) public class ValidatorFixedList : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  @objc public var allowedValues: [Swift.String]
+  override public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPSurchargeCalculationResponse) public class SurchargeCalculationResponse : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var surcharges: [OnlinePaymentsKit.Surcharge]
+  @objc override dynamic public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc(OPAccountOnFileAttributeStatus) public enum AccountOnFileAttributeStatus : Swift.Int {
+  @objc(OPReadOnly) case readOnly
+  @objc(OPCanWrite) case canWrite
+  @objc(OPMustWrite) case mustWrite
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorEmailAddress) public class ValidatorEmailAddress : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  @objc public var expression: Foundation.NSRegularExpression
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPAccountsOnFile) public class AccountsOnFile : ObjectiveC.NSObject {
+  @objc public var accountsOnFile: [OnlinePaymentsKit.AccountOnFile]
+  @objc public func accountOnFile(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.AccountOnFile?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(OPValidatorRegularExpression) public class ValidatorRegularExpression : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
+  @objc public var regularExpression: Foundation.NSRegularExpression
+  override public func encode(to encoder: any Swift.Encoder) throws
+  @objc public func validate(field fieldId: Swift.String, in request: OnlinePaymentsKit.PaymentRequest) -> Swift.Bool
+  @objc public func validate(value: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(OPPaymentRequest) public class PaymentRequest : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var paymentProduct: OnlinePaymentsKit.PaymentProduct?
+  @objc public var errorMessageIds: [OnlinePaymentsKit.ValidationError]
+  @objc public var tokenize: Swift.Bool
+  @objc public var fieldValues: [Swift.String : Swift.String]
+  @objc public var formatter: OnlinePaymentsKit.StringFormatter
+  @objc public var accountOnFile: OnlinePaymentsKit.AccountOnFile?
+  @objc override dynamic public init()
+  @objc public init(paymentProduct: OnlinePaymentsKit.PaymentProduct, accountOnFile: OnlinePaymentsKit.AccountOnFile? = nil, tokenize: Swift.Bool = false)
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc(setValueForField:value:) public func setValue(forField paymentProductFieldId: Swift.String, value: Swift.String)
+  @objc(valueForField:) public func getValue(forField paymentProductFieldId: Swift.String) -> Swift.String?
+  @objc public func maskedValue(forField paymentProductFieldId: Swift.String) -> Swift.String?
+  @objc public func unmaskedValue(forField paymentProductFieldId: Swift.String) -> Swift.String?
+  @objc(fieldIsPartOfAccountOnFile:) public func isPartOfAccountOnFile(field paymentProductFieldId: Swift.String) -> Swift.Bool
+  @objc(fieldIsReadOnly:) public func isReadOnly(field paymentProductFieldId: Swift.String) -> Swift.Bool
+  @objc public func mask(forField paymentProductFieldId: Swift.String) -> Swift.String?
+  @objc public func validate() -> [OnlinePaymentsKit.ValidationError]
+  @objc public var maskedFieldValues: [Swift.String : Swift.String]? {
+    @objc get
+  }
+  @objc public var unmaskedFieldValues: [Swift.String : Swift.String]? {
+    @objc get
+  }
+  @objc public func removeValue(forField paymentProductFieldId: Swift.String)
+  @objc deinit
+}
+@objc(OPRateDetails) public class RateDetails : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var exchangeRate: Swift.Double
+  @objc public var invertedExchangeRate: Swift.Double
+  @objc public var markUpRate: Swift.Double
+  @objc public var quotationDateTime: Swift.String
+  @objc public var source: Swift.String
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPIINDetailsResponse) public class IINDetailsResponse : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var paymentProductId: Swift.String?
+  @objc public var status: OnlinePaymentsKit.IINStatus
+  @objc public var coBrands: [OnlinePaymentsKit.IINDetail]
+  @objc public var countryCode: Swift.String?
+  @objc public var allowedInContext: Swift.Bool
+  @objc public var cardType: OnlinePaymentsKit.CardType
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@objc(OPType) public enum FieldType : Swift.Int {
+  @objc(OPString) case string
+  @objc(OPInteger) case integer
+  @objc(OPExpirationDate) case expirationDate
+  @objc(OPNumericString) case numericString
+  @objc(OPBooleanString) case boolString
+  @objc(OPDateString) case dateString
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(OPPaymentProduct320SpecificData) public class PaymentProduct320SpecificData : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var gateway: Swift.String
+  @objc public var networks: [Swift.String]
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPPaymentProductFields) public class PaymentProductFields : ObjectiveC.NSObject {
+  @objc public var paymentProductFields: [OnlinePaymentsKit.PaymentProductField]
+  @objc public func sort()
+  @objc deinit
+}
+@objc(OPCurrencyConversionResult) public class CurrencyConversionResult : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var result: OnlinePaymentsKit.ConversionResultType
+  @objc public var resultReason: Swift.String?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPPaymentItemDisplayHints) public class PaymentItemDisplayHints : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var displayOrder: Swift.Int
+  @objc public var label: Swift.String?
+  @objc public var logoPath: Swift.String
+  @objc public var logoImage: UIKit.UIImage?
+  @available(*, deprecated, message: "In a future release, this initializer will be removed.")
+  @objc required public init?(json: [Swift.String : Any])
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPAccountOnFileDisplayHints) public class AccountOnFileDisplayHints : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var labelTemplate: OnlinePaymentsKit.LabelTemplate
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@available(*, deprecated, message: "In a future release, this enum will be removed since it is not returned from the API.")
+@objc public enum DisplayElementType : Swift.Int {
+  @objc(OPDisplayElementTypeString) case string
+  @objc(OPDisplayElementTypeInteger) case integer
+  @objc(OPDisplayElementTypeCurrency) case currency
+  @objc(OPDisplayElementTypePercentage) case percentage
+  @objc(OPDisplayElementTypeURI) case uri
+  public init?(rawValue: Swift.Int)
+  @available(*, deprecated, message: "In a future release, this enum will be removed since it is not returned from the API.")
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @available(*, deprecated, message: "In a future release, this class will be removed.")
+@objc public class DisplayElementTypeEnumHandler : ObjectiveC.NSObject {
+  @objc public func displayElementTypeFor(type: Swift.String) -> OnlinePaymentsKit.DisplayElementType
+  @objc public func textFor(displayElementType: OnlinePaymentsKit.DisplayElementType) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(OPPaymentProduct302SpecificData) public class PaymentProduct302SpecificData : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var networks: [Swift.String]
+  @available(*, deprecated, message: "In a future release, this initializer will be removed.")
+  @objc required public init?(json: [Swift.String : Any])
+  required public init(from decoder: any Swift.Decoder) throws
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@objc(OPSurcharge) public class Surcharge : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var paymentProductId: Swift.Int
+  @objc public var result: OnlinePaymentsKit.SurchargeResult
+  @objc public var netAmount: OnlinePaymentsKit.AmountOfMoney
+  @objc public var surchargeAmount: OnlinePaymentsKit.AmountOfMoney
+  @objc public var totalAmount: OnlinePaymentsKit.AmountOfMoney
+  @objc public var surchargeRate: OnlinePaymentsKit.SurchargeRate?
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPValidator) public class Validator : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var errors: [OnlinePaymentsKit.ValidationError]
+  @objc public var messageId: Swift.String
+  @objc public var validationType: OnlinePaymentsKit.ValidationType
+  required public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+extension OnlinePaymentsKit.IINStatus : Swift.Equatable {}
+extension OnlinePaymentsKit.IINStatus : Swift.Hashable {}
+extension OnlinePaymentsKit.IINStatus : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.FormElementType : Swift.Equatable {}
+extension OnlinePaymentsKit.FormElementType : Swift.Hashable {}
+extension OnlinePaymentsKit.FormElementType : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.CardType : Swift.Equatable {}
+extension OnlinePaymentsKit.CardType : Swift.Hashable {}
+extension OnlinePaymentsKit.CardType : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.SurchargeResult : Swift.Equatable {}
+extension OnlinePaymentsKit.SurchargeResult : Swift.Hashable {}
+extension OnlinePaymentsKit.SurchargeResult : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.PreferredInputType : Swift.Equatable {}
+extension OnlinePaymentsKit.PreferredInputType : Swift.Hashable {}
+extension OnlinePaymentsKit.PreferredInputType : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.ValidationType : Swift.Equatable {}
+extension OnlinePaymentsKit.ValidationType : Swift.Hashable {}
+extension OnlinePaymentsKit.ValidationType : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.ConversionResultType : Swift.Equatable {}
+extension OnlinePaymentsKit.ConversionResultType : Swift.Hashable {}
+extension OnlinePaymentsKit.ConversionResultType : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.EncryptDataError : Swift.Equatable {}
+extension OnlinePaymentsKit.EncryptDataError : Swift.Hashable {}
+extension OnlinePaymentsKit.EncryptDataError : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.AccountOnFileAttributeStatus : Swift.Equatable {}
+extension OnlinePaymentsKit.AccountOnFileAttributeStatus : Swift.Hashable {}
+extension OnlinePaymentsKit.AccountOnFileAttributeStatus : Swift.RawRepresentable {}
+extension OnlinePaymentsKit.FieldType : Swift.Equatable {}
+extension OnlinePaymentsKit.FieldType : Swift.Hashable {}
+extension OnlinePaymentsKit.FieldType : Swift.RawRepresentable {}
+@available(*, deprecated, message: "In a future release, this enum will be removed since it is not returned from the API.")
+extension OnlinePaymentsKit.DisplayElementType : Swift.Equatable {}
+@available(*, deprecated, message: "In a future release, this enum will be removed since it is not returned from the API.")
+extension OnlinePaymentsKit.DisplayElementType : Swift.Hashable {}
+@available(*, deprecated, message: "In a future release, this enum will be removed since it is not returned from the API.")
+extension OnlinePaymentsKit.DisplayElementType : Swift.RawRepresentable {}

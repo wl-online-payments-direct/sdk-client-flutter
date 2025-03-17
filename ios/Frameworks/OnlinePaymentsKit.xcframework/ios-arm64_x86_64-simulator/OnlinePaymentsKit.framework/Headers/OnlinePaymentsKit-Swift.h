@@ -316,7 +316,6 @@ SWIFT_CLASS_NAMED("AccountOnFile")
 @property (nonatomic, strong) OPAccountOnFileDisplayHints * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountOnFileAttributes * _Nonnull attributes;
 @property (nonatomic, strong) OPStringFormatter * _Nonnull stringFormatter;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (NSString * _Nonnull)maskedValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)maskedValueForField:(NSString * _Nonnull)paymentProductFieldId mask:(NSString * _Nullable)mask SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)hasValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
@@ -333,13 +332,11 @@ SWIFT_CLASS_NAMED("AccountOnFileAttribute")
 @property (nonatomic, copy) NSString * _Nonnull key;
 @property (nonatomic, copy) NSString * _Nullable value;
 @property (nonatomic) enum OPAccountOnFileAttributeStatus status;
-@property (nonatomic, copy) NSString * _Nullable mustWriteReason SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPAccountOnFileAttributeStatus, "AccountOnFileAttributeStatus", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPAccountOnFileAttributeStatus, "AccountOnFileAttributeStatus", open) {
   OPReadOnly SWIFT_COMPILE_NAME("readOnly") = 0,
   OPCanWrite SWIFT_COMPILE_NAME("canWrite") = 1,
   OPMustWrite SWIFT_COMPILE_NAME("mustWrite") = 2,
@@ -349,7 +346,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, OPAccountOnFileAttributeStatus, "AccountOnFi
 SWIFT_CLASS_NAMED("AccountOnFileAttributes")
 @interface OPAccountOnFileAttributes : NSObject
 @property (nonatomic, copy) NSArray<OPAccountOnFileAttribute *> * _Nonnull attributes;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nonnull)valueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)hasValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)fieldIsReadOnly:(NSString * _Nullable)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
@@ -360,7 +358,8 @@ SWIFT_CLASS_NAMED("AccountOnFileAttributes")
 SWIFT_CLASS_NAMED("AccountOnFileDisplayHints")
 @interface OPAccountOnFileDisplayHints : NSObject
 @property (nonatomic, strong) OPLabelTemplate * _Nonnull labelTemplate;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -368,7 +367,8 @@ SWIFT_CLASS_NAMED("AccountsOnFile")
 @interface OPAccountsOnFile : NSObject
 @property (nonatomic, copy) NSArray<OPAccountOnFile *> * _Nonnull accountsOnFile;
 - (OPAccountOnFile * _Nullable)accountOnFileWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -376,7 +376,6 @@ SWIFT_CLASS_NAMED("AmountOfMoney")
 @interface OPAmountOfMoney : NSObject
 @property (nonatomic) NSInteger totalAmount;
 @property (nonatomic, copy) NSString * _Nonnull currencyCode;
-@property (nonatomic, copy) NSString * _Nonnull currencyCodeString SWIFT_DEPRECATED_MSG("In a future release this property will be removed. Use currencyCode instead.");
 /// AmountOfMoney, contains an amount and Currency Code.
 /// \param totalAmount The amount, in the smallest possible denominator of the provided currency.
 ///
@@ -403,7 +402,6 @@ SWIFT_CLASS_NAMED("ApiErrorItem")
 @interface OPApiErrorItem : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull errorCode;
 @property (nonatomic, readonly, copy) NSString * _Nullable category;
-@property (nonatomic, readonly, copy) NSString * _Nonnull code SWIFT_DEPRECATED_MSG("In a future release, this property will be removed. Use errorCode instead.");
 @property (nonatomic, readonly, strong) NSNumber * _Nullable httpStatusCode;
 @property (nonatomic, readonly, copy) NSString * _Nullable id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull message;
@@ -418,8 +416,7 @@ SWIFT_CLASS_NAMED("ApiErrorItem")
 SWIFT_PROTOCOL_NAMED("BasicPaymentItem")
 @protocol OPBasicPaymentItem
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) OPPaymentItemDisplayHints * _Nonnull displayHints SWIFT_DEPRECATED_MSG("In the next major release, the type of displayHints will change to List.");
-@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHintsList;
+@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountsOnFile * _Nonnull accountsOnFile;
 @end
 
@@ -429,8 +426,7 @@ SWIFT_PROTOCOL_NAMED("BasicPaymentItem")
 SWIFT_CLASS_NAMED("BasicPaymentProduct")
 @interface OPBasicPaymentProduct : NSObject <OPBasicPaymentItem>
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) OPPaymentItemDisplayHints * _Nonnull displayHints SWIFT_DEPRECATED_MSG("In the next major release, the type of displayHints will change to List.");
-@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHintsList;
+@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountsOnFile * _Nonnull accountsOnFile;
 @property (nonatomic) BOOL allowsTokenization;
 @property (nonatomic) BOOL allowsRecurring;
@@ -440,8 +436,8 @@ SWIFT_CLASS_NAMED("BasicPaymentProduct")
 @property (nonatomic, strong) OPPaymentProduct320SpecificData * _Nullable paymentProduct320SpecificData;
 @property (nonatomic) BOOL usesRedirectionTo3rdParty;
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (OPAccountOnFile * _Nullable)accountOnFileWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -450,11 +446,9 @@ SWIFT_CLASS_NAMED("BasicPaymentProduct")
 SWIFT_CLASS_NAMED("BasicPaymentProductGroup")
 @interface OPBasicPaymentProductGroup : NSObject <OPBasicPaymentItem>
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) OPPaymentItemDisplayHints * _Nonnull displayHints SWIFT_DEPRECATED_MSG("In the next major release, the type of displayHints will change to List.");
-@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHintsList;
+@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountsOnFile * _Nonnull accountsOnFile;
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (OPAccountOnFile * _Nullable)accountOnFileWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -467,8 +461,8 @@ SWIFT_CLASS_NAMED("BasicPaymentProductGroups")
 @property (nonatomic, readonly) BOOL hasAccountsOnFile;
 @property (nonatomic, readonly, copy) NSArray<OPAccountOnFile *> * _Nonnull accountsOnFile;
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)logoPathForPaymentProductGroup:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (OPBasicPaymentProductGroup * _Nullable)paymentProductGroupWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (void)sort;
@@ -481,41 +475,21 @@ SWIFT_CLASS_NAMED("BasicPaymentProducts")
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
 @property (nonatomic, readonly) BOOL hasAccountsOnFile;
 @property (nonatomic, readonly, copy) NSArray<OPAccountOnFile *> * _Nonnull accountsOnFile;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)logoPathForPaymentProduct:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (OPBasicPaymentProduct * _Nullable)paymentProductWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (void)sort;
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @end
 
-
-SWIFT_CLASS("_TtC17OnlinePaymentsKit4Card")
-@interface Card : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC17OnlinePaymentsKit10CardSource")
-@interface CardSource : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, OPCardType, "CardType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPCardType, "CardType", open) {
   OPCredit SWIFT_COMPILE_NAME("credit") = 0,
   OPDebit SWIFT_COMPILE_NAME("debit") = 1,
   OPPrepaid SWIFT_COMPILE_NAME("prepaid") = 2,
 };
 
-
-SWIFT_CLASS("_TtC17OnlinePaymentsKit19CardTypeEnumHandler")
-@interface CardTypeEnumHandler : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, OPConversionResultType, "ConversionResultType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPConversionResultType, "ConversionResultType", open) {
   OPAllowed SWIFT_COMPILE_NAME("allowed") = 0,
   OPInvalidCard SWIFT_COMPILE_NAME("invalidCard") = 1,
   OPInvalidMerchant SWIFT_COMPILE_NAME("invalidMerchant") = 2,
@@ -548,8 +522,8 @@ SWIFT_CLASS_NAMED("DataRestrictions")
 @interface OPDataRestrictions : NSObject
 @property (nonatomic) BOOL isRequired;
 @property (nonatomic, strong) OPValidators * _Nonnull validators;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will become removed.");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class OPRateDetails;
@@ -563,20 +537,7 @@ SWIFT_CLASS_NAMED("DccProposal")
 @property (nonatomic, copy) NSString * _Nullable disclaimerDisplay;
 @end
 
-enum DisplayElementType : NSInteger;
-
-SWIFT_CLASS_NAMED("DisplayElement") SWIFT_DEPRECATED_MSG("In a future release, this class will be removed since it is not returned from the API.")
-@interface OPDisplayElement : NSObject
-@property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic) enum DisplayElementType type;
-@property (nonatomic, copy) NSString * _Nonnull value;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id type:(enum DisplayElementType)type value:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM(NSInteger, DisplayElementType, closed) {
+typedef SWIFT_ENUM(NSInteger, DisplayElementType, open) {
   OPDisplayElementTypeString SWIFT_COMPILE_NAME("string") = 0,
   OPDisplayElementTypeInteger SWIFT_COMPILE_NAME("integer") = 1,
   OPDisplayElementTypeCurrency SWIFT_COMPILE_NAME("currency") = 2,
@@ -593,9 +554,12 @@ SWIFT_CLASS("_TtC17OnlinePaymentsKit29DisplayElementTypeEnumHandler") SWIFT_DEPR
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPEncryptDataError, "EncryptDataError", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPEncryptDataError, "EncryptDataError", open) {
   OPEncryptDataErrorPublicKeyDecodeError = 0,
   OPEncryptDataErrorRsaKeyNotFound = 1,
+  OPEncryptDataErrorAlgorithmNotSupported = 2,
+  OPEncryptDataErrorHmacGenerationFailed = 3,
+  OPEncryptDataErrorBadPublicKeyFormat = 4,
 };
 static NSString * _Nonnull const OPEncryptDataErrorDomain = @"OnlinePaymentsKit.EncryptDataError";
 
@@ -608,7 +572,7 @@ SWIFT_CLASS_NAMED("ErrorResponse")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPType, "FieldType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPType, "FieldType", open) {
   OPString SWIFT_COMPILE_NAME("string") = 0,
   OPInteger SWIFT_COMPILE_NAME("integer") = 1,
   OPExpirationDate SWIFT_COMPILE_NAME("expirationDate") = 2,
@@ -618,18 +582,15 @@ typedef SWIFT_ENUM_NAMED(NSInteger, OPType, "FieldType", closed) {
 };
 
 enum OPFormElementType : NSInteger;
-@class OPValueMappingItem;
 
 SWIFT_CLASS_NAMED("FormElement")
 @interface OPFormElement : NSObject
 @property (nonatomic) enum OPFormElementType type;
-@property (nonatomic, copy) NSArray<OPValueMappingItem *> * _Nonnull valueMapping SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPFormElementType, "FormElementType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPFormElementType, "FormElementType", open) {
   OPTextType SWIFT_COMPILE_NAME("textType") = 0,
   OPListType SWIFT_COMPILE_NAME("listType") = 1,
   OPCurrencyType SWIFT_COMPILE_NAME("currencyType") = 2,
@@ -643,7 +604,6 @@ SWIFT_CLASS_NAMED("IINDetail")
 @property (nonatomic, copy) NSString * _Nonnull paymentProductId;
 @property (nonatomic) BOOL isAllowedInContext;
 @property (nonatomic) enum OPCardType cardType;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -656,15 +616,13 @@ SWIFT_CLASS_NAMED("IINDetailsResponse")
 @property (nonatomic) enum OPIINStatus status;
 @property (nonatomic, copy) NSArray<OPIINDetail *> * _Nonnull coBrands;
 @property (nonatomic, copy) NSString * _Nullable countryCode;
-@property (nonatomic, copy) NSString * _Nullable countryCodeString SWIFT_DEPRECATED_MSG("In a future release this property will be removed. Use countryCode instead.");
 @property (nonatomic) BOOL allowedInContext;
 @property (nonatomic) enum OPCardType cardType;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will become internal to the SDK.");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPIINStatus, "IINStatus", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPIINStatus, "IINStatus", open) {
   OPSupported SWIFT_COMPILE_NAME("supported") = 0,
   OPUnsupported SWIFT_COMPILE_NAME("unsupported") = 1,
   OPUnknown SWIFT_COMPILE_NAME("unknown") = 2,
@@ -678,7 +636,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, OPIINStatus, "IINStatus", closed) {
 SWIFT_CLASS_NAMED("LabelTemplate")
 @interface OPLabelTemplate : NSObject
 @property (nonatomic, copy) NSArray<OPLabelTemplateItem *> * _Nonnull labelTemplateItems;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)maskForAttributeKey:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -687,16 +646,12 @@ SWIFT_CLASS_NAMED("LabelTemplateItem")
 @interface OPLabelTemplateItem : NSObject
 @property (nonatomic, copy) NSString * _Nonnull attributeKey;
 @property (nonatomic, copy) NSString * _Nullable mask;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("PaymentContext")
 @interface OPPaymentContext : NSObject
 @property (nonatomic, copy) NSString * _Nonnull countryCode;
-@property (nonatomic, copy) NSString * _Nonnull countryCodeString SWIFT_DEPRECATED_MSG("In a future release this property will be removed. Use countryCode instead.");
 @property (nonatomic, copy) NSString * _Nonnull locale;
 @property (nonatomic, strong) OPAmountOfMoney * _Nonnull amountOfMoney;
 @property (nonatomic) BOOL isRecurring;
@@ -733,7 +688,8 @@ SWIFT_CLASS_NAMED("PaymentItemDisplayHints")
 @property (nonatomic, copy) NSString * _Nonnull logoPath;
 @property (nonatomic, strong) UIImage * _Nullable logoImage;
 - (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -756,8 +712,6 @@ SWIFT_CLASS_NAMED("PaymentItems")
 SWIFT_CLASS_NAMED("PaymentProduct")
 @interface OPPaymentProduct : OPBasicPaymentProduct <OPPaymentItem>
 @property (nonatomic, strong) OPPaymentProductFields * _Nonnull fields;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (OPPaymentProductField * _Nullable)paymentProductFieldWithId:(NSString * _Nonnull)withId SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -780,25 +734,17 @@ SWIFT_CLASS_NAMED("PaymentProduct320SpecificData")
 @end
 
 @class OPPaymentProductFieldDisplayHints;
-@class NSNumberFormatter;
-@class NSRegularExpression;
 @class OPValidationError;
 @class OPPaymentRequest;
 
 SWIFT_CLASS_NAMED("PaymentProductField")
 @interface OPPaymentProductField : NSObject
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic) BOOL usedForLookup SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
 @property (nonatomic, strong) OPDataRestrictions * _Nonnull dataRestrictions;
 @property (nonatomic, strong) OPPaymentProductFieldDisplayHints * _Nonnull displayHints;
 @property (nonatomic) enum OPType type;
-@property (nonatomic, strong) NSNumberFormatter * _Nonnull numberFormatter SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
-@property (nonatomic, strong) NSRegularExpression * _Nonnull numericStringCheck SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
 @property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errorMessageIds;
-@property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errors SWIFT_DEPRECATED_MSG("In a future release, this property will be removed. Use errorMessageIds instead.");
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (NSArray<OPValidationError *> * _Nonnull)validateValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (NSArray<OPValidationError *> * _Nonnull)validateValue:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("\n            In a future release, this function will be removed.\n            Please use validateValue(value:) or validateValue(for:) instead.\n            ");
 - (NSArray<OPValidationError *> * _Nonnull)validateValueforPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)applyMaskWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)removeMaskWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
@@ -807,7 +753,6 @@ SWIFT_CLASS_NAMED("PaymentProductField")
 @end
 
 @class OPTooltip;
-@class NSURL;
 enum OPPreferredInputType : NSInteger;
 
 SWIFT_CLASS_NAMED("PaymentProductFieldDisplayHints")
@@ -820,9 +765,7 @@ SWIFT_CLASS_NAMED("PaymentProductFieldDisplayHints")
 @property (nonatomic, strong) OPTooltip * _Nullable tooltip;
 @property (nonatomic, copy) NSString * _Nullable label;
 @property (nonatomic, copy) NSString * _Nullable placeholderLabel;
-@property (nonatomic, copy) NSURL * _Nullable link SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
 @property (nonatomic) enum OPPreferredInputType preferredInputType;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -831,7 +774,8 @@ SWIFT_CLASS_NAMED("PaymentProductFieldDisplayHints")
 SWIFT_CLASS_NAMED("PaymentProductFields")
 @interface OPPaymentProductFields : NSObject
 @property (nonatomic, copy) NSArray<OPPaymentProductField *> * _Nonnull paymentProductFields;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)sort;
 @end
 
@@ -839,14 +783,12 @@ SWIFT_CLASS_NAMED("PaymentProductFields")
 SWIFT_CLASS_NAMED("PaymentProductGroup")
 @interface OPPaymentProductGroup : NSObject <OPPaymentItem>
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) OPPaymentItemDisplayHints * _Nonnull displayHints SWIFT_DEPRECATED_MSG("In the next major release, the type of displayHints will change to List.");
-@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHintsList;
+@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountsOnFile * _Nonnull accountsOnFile;
 @property (nonatomic) BOOL allowsTokenization;
 @property (nonatomic) BOOL allowsRecurring;
 @property (nonatomic, strong) OPPaymentProductFields * _Nonnull fields;
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (OPAccountOnFile * _Nullable)accountOnFileWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (OPPaymentProductField * _Nullable)paymentProductFieldWithId:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -866,7 +808,6 @@ SWIFT_CLASS_NAMED("PaymentRequest")
 @interface OPPaymentRequest : NSObject
 @property (nonatomic, strong) OPPaymentProduct * _Nullable paymentProduct;
 @property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errorMessageIds;
-@property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errors SWIFT_DEPRECATED_MSG("In a future release, this property will be removed. Use errorMessageIds instead.");
 @property (nonatomic) BOOL tokenize;
 @property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull fieldValues;
 @property (nonatomic, strong) OPStringFormatter * _Nonnull formatter;
@@ -886,13 +827,12 @@ SWIFT_CLASS_NAMED("PaymentRequest")
 - (void)removeValueForField:(NSString * _Nonnull)paymentProductFieldId;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPPreferredInputType, "PreferredInputType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPPreferredInputType, "PreferredInputType", open) {
   OPStringKeyboard SWIFT_COMPILE_NAME("stringKeyboard") = 0,
   OPIntegerKeyboard SWIFT_COMPILE_NAME("integerKeyboard") = 1,
   OPEmailAddressKeyboard SWIFT_COMPILE_NAME("emailAddressKeyboard") = 2,
   OPPhoneNumberKeyboard SWIFT_COMPILE_NAME("phoneNumberKeyboard") = 3,
   OPDateKeyboard SWIFT_COMPILE_NAME("dateKeyboard") = 4,
-  OPNoKeyboard SWIFT_COMPILE_NAME("noKeyboard") = 5,
 };
 
 
@@ -926,8 +866,6 @@ SWIFT_CLASS_NAMED("RateDetails")
 
 SWIFT_CLASS_NAMED("SDKConstants")
 @interface OPSDKConstants : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPSDKLocalizable SWIFT_DEPRECATED_MSG("In a future release this constant will be removed. Translations are no longer supported from the SDK.");)
-+ (NSString * _Nonnull)kOPSDKLocalizable SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable kOPSDKBundlePath;)
 + (NSString * _Nullable)kOPSDKBundlePath SWIFT_WARN_UNUSED_RESULT;
 + (void)setKOPSDKBundlePath:(NSString * _Nullable)value;
@@ -938,14 +876,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable kOP
 
 SWIFT_CLASS_NAMED("Session")
 @interface OPSession : NSObject
-@property (nonatomic, readonly, copy) NSString * _Nonnull clientSessionId SWIFT_DEPRECATED_MSG("In a future release, this property will become internal to the SDK.");
 @property (nonatomic) BOOL loggingEnabled;
 - (nonnull instancetype)initWithClientSessionId:(NSString * _Nonnull)clientSessionId customerId:(NSString * _Nonnull)customerId baseURL:(NSString * _Nonnull)baseURL assetBaseURL:(NSString * _Nonnull)assetBaseURL appIdentifier:(NSString * _Nonnull)appIdentifier loggingEnabled:(BOOL)loggingEnabled sdkIdentifier:(NSString * _Nonnull)sdkIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithClientSessionId:(NSString * _Nonnull)clientSessionId customerId:(NSString * _Nonnull)customerId baseURL:(NSString * _Nonnull)baseURL assetBaseURL:(NSString * _Nonnull)assetBaseURL appIdentifier:(NSString * _Nonnull)appIdentifier loggingEnabled:(BOOL)loggingEnabled;
 + (OPSession * _Nonnull)sessionWithClientSessionId:(NSString * _Nonnull)clientSessionId customerId:(NSString * _Nonnull)customerId baseURL:(NSString * _Nonnull)baseURL assetBaseURL:(NSString * _Nonnull)assetBaseURL appIdentifier:(NSString * _Nonnull)appIdentifier loggingEnabled:(BOOL)loggingEnabled SWIFT_WARN_UNUSED_RESULT;
 - (void)paymentProductsForContext:(OPPaymentContext * _Nonnull)context success:(void (^ _Nullable)(OPBasicPaymentProducts * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)paymentProductNetworksForProductId:(NSString * _Nonnull)paymentProductId context:(OPPaymentContext * _Nonnull)context success:(void (^ _Nullable)(OPPaymentProductNetworks * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
-- (void)paymentItemsForContext:(OPPaymentContext * _Nonnull)context groupPaymentProducts:(BOOL)groupPaymentProducts success:(void (^ _Nullable)(OPPaymentItems * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
+- (void)paymentItemsForContext:(OPPaymentContext * _Nonnull)context success:(void (^ _Nullable)(OPPaymentItems * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)paymentProductWithId:(NSString * _Nonnull)paymentProductId context:(OPPaymentContext * _Nonnull)context success:(void (^ _Nullable)(OPPaymentProduct * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)IINDetailsForPartialCreditCardNumber:(NSString * _Nonnull)partialCreditCardNumber context:(OPPaymentContext * _Nullable)context success:(void (^ _Nullable)(OPIINDetailsResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)publicKeyWithSuccess:(void (^ _Nullable)(OPPublicKeyResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
@@ -954,15 +891,6 @@ SWIFT_CLASS_NAMED("Session")
 - (void)currencyConversionQuoteWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney token:(NSString * _Nonnull)token success:(void (^ _Nullable)(OPCurrencyConversionResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)surchargeCalculationWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney partialCreditCardNumber:(NSString * _Nonnull)partialCreditCardNumber paymentProductId:(NSNumber * _Nullable)paymentProductId success:(void (^ _Nullable)(OPSurchargeCalculationResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)surchargeCalculationWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney token:(NSString * _Nonnull)token success:(void (^ _Nullable)(OPSurchargeCalculationResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
-- (void)paymentProductsFor:(OPPaymentContext * _Nonnull)context success:(void (^ _Nonnull)(OPBasicPaymentProducts * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use paymentProductsForContext:success:failure:apiFailure: instead.");
-- (void)paymentProductNetworksForProductId:(NSString * _Nonnull)paymentProductId context:(OPPaymentContext * _Nonnull)context success:(void (^ _Nonnull)(OPPaymentProductNetworks * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use paymentProductNetworksForProductId:context:success:failure:apiFailure: instead.");
-- (void)paymentItemsForContext:(OPPaymentContext * _Nonnull)context groupPaymentProducts:(BOOL)groupPaymentProducts success:(void (^ _Nonnull)(OPPaymentItems * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("paymentItemsForContext:groupPaymentProducts:success:failure:apiFailure: instead.");
-- (void)paymentProductWithId:(NSString * _Nonnull)paymentProductId context:(OPPaymentContext * _Nonnull)context success:(void (^ _Nonnull)(OPPaymentProduct * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use paymentProductWithId:context:success:failure:apiFailure: instead.");
-- (void)IINDetailsForPartialCreditCardNumber:(NSString * _Nonnull)partialCreditCardNumber context:(OPPaymentContext * _Nullable)context success:(void (^ _Nonnull)(OPIINDetailsResponse * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use IINDetailsForPartialCreditCardNumber:context:success:failure:apiFailure: instead.");
-- (void)publicKeyWithSuccess:(void (^ _Nonnull)(OPPublicKeyResponse * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use publicKeyWithSuccess:failure:apiFailure: instead.");
-- (void)preparePaymentRequest:(OPPaymentRequest * _Nonnull)paymentRequest success:(void (^ _Nonnull)(OPPreparedPaymentRequest * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use preparePaymentRequest:success:failure:apiFailure: instead.");
-- (void)surchargeCalculationWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney partialCreditCardNumber:(NSString * _Nonnull)partialCreditCardNumber paymentProductId:(NSNumber * _Nullable)paymentProductId success:(void (^ _Nonnull)(OPSurchargeCalculationResponse * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("\n        Use\n        surchargeCalculation:amountOfMoney:partialCreditCardNumber:paymentProductId:success:failure:apiFailure:\n        instead.\n        ");
-- (void)surchargeCalculationWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney token:(NSString * _Nonnull)token success:(void (^ _Nonnull)(OPSurchargeCalculationResponse * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use surchargeCalculation:amountOfMoney:token:success:failure:apiFailure: instead.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -970,9 +898,6 @@ SWIFT_CLASS_NAMED("Session")
 
 SWIFT_CLASS_NAMED("StringFormatter")
 @interface OPStringFormatter : NSObject
-@property (nonatomic, strong) NSRegularExpression * _Nonnull decimalRegex SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
-@property (nonatomic, strong) NSRegularExpression * _Nonnull lowerAlphaRegex SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
-@property (nonatomic, strong) NSRegularExpression * _Nonnull upperAlphaRegex SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)formatString:(NSString * _Nonnull)string withMask:(NSString * _Nonnull)mask SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)formatString:(NSString * _Nonnull)string withMask:(NSString * _Nonnull)mask cursorPosition:(NSInteger * _Nonnull)cursorPosition SWIFT_WARN_UNUSED_RESULT;
@@ -993,7 +918,6 @@ SWIFT_CLASS_NAMED("Surcharge")
 @property (nonatomic, strong) OPAmountOfMoney * _Nonnull surchargeAmount;
 @property (nonatomic, strong) OPAmountOfMoney * _Nonnull totalAmount;
 @property (nonatomic, strong) OPSurchargeRate * _Nullable surchargeRate;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("Do not use this initializer, it is only for internal SDK use and will be removed in a future release.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1002,9 +926,7 @@ SWIFT_CLASS_NAMED("Surcharge")
 SWIFT_CLASS_NAMED("SurchargeCalculationResponse")
 @interface OPSurchargeCalculationResponse : NSObject
 @property (nonatomic, copy) NSArray<OPSurcharge *> * _Nonnull surcharges;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("Do not use this initializer, it is only for internal SDK use and will be removed in a future release.");
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1019,7 +941,7 @@ SWIFT_CLASS_NAMED("SurchargeRate")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPSurchargeResult, "SurchargeResult", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPSurchargeResult, "SurchargeResult", open) {
   OPOk SWIFT_COMPILE_NAME("ok") = 0,
   OPNoSurcharge SWIFT_COMPILE_NAME("noSurcharge") = 1,
 };
@@ -1027,10 +949,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, OPSurchargeResult, "SurchargeResult", closed
 
 SWIFT_CLASS_NAMED("ToolTip")
 @interface OPTooltip : NSObject
-@property (nonatomic, copy) NSString * _Nullable imagePath SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
-@property (nonatomic, strong) UIImage * _Nullable image SWIFT_DEPRECATED_MSG("In a future release, this property will be removed.");
 @property (nonatomic, copy) NSString * _Nullable label;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1155,7 +1074,7 @@ SWIFT_PROTOCOL("_TtP17OnlinePaymentsKit14ValidationRule_")
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPValidationType, "ValidationType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPValidationType, "ValidationType", open) {
   OPValidationTypeExpirationDate SWIFT_COMPILE_NAME("expirationDate") = 0,
   OPValidationTypeEmailAddress SWIFT_COMPILE_NAME("emailAddress") = 1,
   OPValidationTypeFixedList SWIFT_COMPILE_NAME("fixedList") = 2,
@@ -1175,16 +1094,15 @@ SWIFT_CLASS_NAMED("Validator")
 @property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errors;
 @property (nonatomic, copy) NSString * _Nonnull messageId;
 @property (nonatomic) enum OPValidationType validationType;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)for_ SWIFT_DEPRECATED_MSG("In a future release, this function will be removed.");
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class NSRegularExpression;
 
 SWIFT_CLASS_NAMED("ValidatorEmailAddress")
 @interface OPValidatorEmailAddress : OPValidator <ValidationRule>
 @property (nonatomic, strong) NSRegularExpression * _Nonnull expression;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -1194,8 +1112,6 @@ SWIFT_CLASS_NAMED("ValidatorEmailAddress")
 SWIFT_CLASS_NAMED("ValidatorExpirationDate")
 @interface OPValidatorExpirationDate : OPValidator <ValidationRule>
 @property (nonatomic, strong) NSDateFormatter * _Nonnull dateFormatter;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -1204,19 +1120,13 @@ SWIFT_CLASS_NAMED("ValidatorExpirationDate")
 SWIFT_CLASS_NAMED("ValidatorFixedList")
 @interface OPValidatorFixedList : OPValidator <ValidationRule>
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull allowedValues;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("ValidatorIBAN")
 @interface OPValidatorIBAN : OPValidator <ValidationRule>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -1226,54 +1136,39 @@ SWIFT_CLASS_NAMED("ValidatorLength")
 @interface OPValidatorLength : OPValidator <ValidationRule>
 @property (nonatomic) NSInteger minLength;
 @property (nonatomic) NSInteger maxLength;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("ValidatorLuhn")
 @interface OPValidatorLuhn : OPValidator <ValidationRule>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class NSNumberFormatter;
 
 SWIFT_CLASS_NAMED("ValidatorRange")
 @interface OPValidatorRange : OPValidator <ValidationRule>
 @property (nonatomic) NSInteger minValue;
 @property (nonatomic) NSInteger maxValue;
 @property (nonatomic, strong) NSNumberFormatter * _Nonnull formatter;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("ValidatorRegularExpression")
 @interface OPValidatorRegularExpression : OPValidator <ValidationRule>
 @property (nonatomic, strong) NSRegularExpression * _Nonnull regularExpression;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("ValidatorTermsAndConditions")
 @interface OPValidatorTermsAndConditions : OPValidator <ValidationRule>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -1281,18 +1176,7 @@ SWIFT_CLASS_NAMED("ValidatorTermsAndConditions")
 
 SWIFT_CLASS_NAMED("Validators")
 @interface OPValidators : NSObject
-@property (nonatomic) BOOL variableRequiredness;
 @property (nonatomic, copy) NSArray<OPValidator *> * _Nonnull validators;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS_NAMED("ValueMappingItem") SWIFT_DEPRECATED_MSG("In a future release, this class will be removed since it is not returned from the API.")
-@interface OPValueMappingItem : NSObject
-@property (nonatomic, copy) NSString * _Nullable displayName;
-@property (nonatomic, copy) NSArray<OPDisplayElement *> * _Nonnull displayElements;
-@property (nonatomic, copy) NSString * _Nonnull value;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1623,7 +1507,6 @@ SWIFT_CLASS_NAMED("AccountOnFile")
 @property (nonatomic, strong) OPAccountOnFileDisplayHints * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountOnFileAttributes * _Nonnull attributes;
 @property (nonatomic, strong) OPStringFormatter * _Nonnull stringFormatter;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (NSString * _Nonnull)maskedValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)maskedValueForField:(NSString * _Nonnull)paymentProductFieldId mask:(NSString * _Nullable)mask SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)hasValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
@@ -1640,13 +1523,11 @@ SWIFT_CLASS_NAMED("AccountOnFileAttribute")
 @property (nonatomic, copy) NSString * _Nonnull key;
 @property (nonatomic, copy) NSString * _Nullable value;
 @property (nonatomic) enum OPAccountOnFileAttributeStatus status;
-@property (nonatomic, copy) NSString * _Nullable mustWriteReason SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPAccountOnFileAttributeStatus, "AccountOnFileAttributeStatus", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPAccountOnFileAttributeStatus, "AccountOnFileAttributeStatus", open) {
   OPReadOnly SWIFT_COMPILE_NAME("readOnly") = 0,
   OPCanWrite SWIFT_COMPILE_NAME("canWrite") = 1,
   OPMustWrite SWIFT_COMPILE_NAME("mustWrite") = 2,
@@ -1656,7 +1537,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, OPAccountOnFileAttributeStatus, "AccountOnFi
 SWIFT_CLASS_NAMED("AccountOnFileAttributes")
 @interface OPAccountOnFileAttributes : NSObject
 @property (nonatomic, copy) NSArray<OPAccountOnFileAttribute *> * _Nonnull attributes;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nonnull)valueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)hasValueForField:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)fieldIsReadOnly:(NSString * _Nullable)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
@@ -1667,7 +1549,8 @@ SWIFT_CLASS_NAMED("AccountOnFileAttributes")
 SWIFT_CLASS_NAMED("AccountOnFileDisplayHints")
 @interface OPAccountOnFileDisplayHints : NSObject
 @property (nonatomic, strong) OPLabelTemplate * _Nonnull labelTemplate;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -1675,7 +1558,8 @@ SWIFT_CLASS_NAMED("AccountsOnFile")
 @interface OPAccountsOnFile : NSObject
 @property (nonatomic, copy) NSArray<OPAccountOnFile *> * _Nonnull accountsOnFile;
 - (OPAccountOnFile * _Nullable)accountOnFileWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -1683,7 +1567,6 @@ SWIFT_CLASS_NAMED("AmountOfMoney")
 @interface OPAmountOfMoney : NSObject
 @property (nonatomic) NSInteger totalAmount;
 @property (nonatomic, copy) NSString * _Nonnull currencyCode;
-@property (nonatomic, copy) NSString * _Nonnull currencyCodeString SWIFT_DEPRECATED_MSG("In a future release this property will be removed. Use currencyCode instead.");
 /// AmountOfMoney, contains an amount and Currency Code.
 /// \param totalAmount The amount, in the smallest possible denominator of the provided currency.
 ///
@@ -1710,7 +1593,6 @@ SWIFT_CLASS_NAMED("ApiErrorItem")
 @interface OPApiErrorItem : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull errorCode;
 @property (nonatomic, readonly, copy) NSString * _Nullable category;
-@property (nonatomic, readonly, copy) NSString * _Nonnull code SWIFT_DEPRECATED_MSG("In a future release, this property will be removed. Use errorCode instead.");
 @property (nonatomic, readonly, strong) NSNumber * _Nullable httpStatusCode;
 @property (nonatomic, readonly, copy) NSString * _Nullable id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull message;
@@ -1725,8 +1607,7 @@ SWIFT_CLASS_NAMED("ApiErrorItem")
 SWIFT_PROTOCOL_NAMED("BasicPaymentItem")
 @protocol OPBasicPaymentItem
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) OPPaymentItemDisplayHints * _Nonnull displayHints SWIFT_DEPRECATED_MSG("In the next major release, the type of displayHints will change to List.");
-@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHintsList;
+@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountsOnFile * _Nonnull accountsOnFile;
 @end
 
@@ -1736,8 +1617,7 @@ SWIFT_PROTOCOL_NAMED("BasicPaymentItem")
 SWIFT_CLASS_NAMED("BasicPaymentProduct")
 @interface OPBasicPaymentProduct : NSObject <OPBasicPaymentItem>
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) OPPaymentItemDisplayHints * _Nonnull displayHints SWIFT_DEPRECATED_MSG("In the next major release, the type of displayHints will change to List.");
-@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHintsList;
+@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountsOnFile * _Nonnull accountsOnFile;
 @property (nonatomic) BOOL allowsTokenization;
 @property (nonatomic) BOOL allowsRecurring;
@@ -1747,8 +1627,8 @@ SWIFT_CLASS_NAMED("BasicPaymentProduct")
 @property (nonatomic, strong) OPPaymentProduct320SpecificData * _Nullable paymentProduct320SpecificData;
 @property (nonatomic) BOOL usesRedirectionTo3rdParty;
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (OPAccountOnFile * _Nullable)accountOnFileWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -1757,11 +1637,9 @@ SWIFT_CLASS_NAMED("BasicPaymentProduct")
 SWIFT_CLASS_NAMED("BasicPaymentProductGroup")
 @interface OPBasicPaymentProductGroup : NSObject <OPBasicPaymentItem>
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) OPPaymentItemDisplayHints * _Nonnull displayHints SWIFT_DEPRECATED_MSG("In the next major release, the type of displayHints will change to List.");
-@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHintsList;
+@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountsOnFile * _Nonnull accountsOnFile;
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (OPAccountOnFile * _Nullable)accountOnFileWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -1774,8 +1652,8 @@ SWIFT_CLASS_NAMED("BasicPaymentProductGroups")
 @property (nonatomic, readonly) BOOL hasAccountsOnFile;
 @property (nonatomic, readonly, copy) NSArray<OPAccountOnFile *> * _Nonnull accountsOnFile;
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)logoPathForPaymentProductGroup:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (OPBasicPaymentProductGroup * _Nullable)paymentProductGroupWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (void)sort;
@@ -1788,41 +1666,21 @@ SWIFT_CLASS_NAMED("BasicPaymentProducts")
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
 @property (nonatomic, readonly) BOOL hasAccountsOnFile;
 @property (nonatomic, readonly, copy) NSArray<OPAccountOnFile *> * _Nonnull accountsOnFile;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)logoPathForPaymentProduct:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (OPBasicPaymentProduct * _Nullable)paymentProductWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (void)sort;
 - (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
 @end
 
-
-SWIFT_CLASS("_TtC17OnlinePaymentsKit4Card")
-@interface Card : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC17OnlinePaymentsKit10CardSource")
-@interface CardSource : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, OPCardType, "CardType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPCardType, "CardType", open) {
   OPCredit SWIFT_COMPILE_NAME("credit") = 0,
   OPDebit SWIFT_COMPILE_NAME("debit") = 1,
   OPPrepaid SWIFT_COMPILE_NAME("prepaid") = 2,
 };
 
-
-SWIFT_CLASS("_TtC17OnlinePaymentsKit19CardTypeEnumHandler")
-@interface CardTypeEnumHandler : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-typedef SWIFT_ENUM_NAMED(NSInteger, OPConversionResultType, "ConversionResultType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPConversionResultType, "ConversionResultType", open) {
   OPAllowed SWIFT_COMPILE_NAME("allowed") = 0,
   OPInvalidCard SWIFT_COMPILE_NAME("invalidCard") = 1,
   OPInvalidMerchant SWIFT_COMPILE_NAME("invalidMerchant") = 2,
@@ -1855,8 +1713,8 @@ SWIFT_CLASS_NAMED("DataRestrictions")
 @interface OPDataRestrictions : NSObject
 @property (nonatomic) BOOL isRequired;
 @property (nonatomic, strong) OPValidators * _Nonnull validators;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will become removed.");
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class OPRateDetails;
@@ -1870,20 +1728,7 @@ SWIFT_CLASS_NAMED("DccProposal")
 @property (nonatomic, copy) NSString * _Nullable disclaimerDisplay;
 @end
 
-enum DisplayElementType : NSInteger;
-
-SWIFT_CLASS_NAMED("DisplayElement") SWIFT_DEPRECATED_MSG("In a future release, this class will be removed since it is not returned from the API.")
-@interface OPDisplayElement : NSObject
-@property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic) enum DisplayElementType type;
-@property (nonatomic, copy) NSString * _Nonnull value;
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id type:(enum DisplayElementType)type value:(NSString * _Nonnull)value OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-typedef SWIFT_ENUM(NSInteger, DisplayElementType, closed) {
+typedef SWIFT_ENUM(NSInteger, DisplayElementType, open) {
   OPDisplayElementTypeString SWIFT_COMPILE_NAME("string") = 0,
   OPDisplayElementTypeInteger SWIFT_COMPILE_NAME("integer") = 1,
   OPDisplayElementTypeCurrency SWIFT_COMPILE_NAME("currency") = 2,
@@ -1900,9 +1745,12 @@ SWIFT_CLASS("_TtC17OnlinePaymentsKit29DisplayElementTypeEnumHandler") SWIFT_DEPR
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPEncryptDataError, "EncryptDataError", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPEncryptDataError, "EncryptDataError", open) {
   OPEncryptDataErrorPublicKeyDecodeError = 0,
   OPEncryptDataErrorRsaKeyNotFound = 1,
+  OPEncryptDataErrorAlgorithmNotSupported = 2,
+  OPEncryptDataErrorHmacGenerationFailed = 3,
+  OPEncryptDataErrorBadPublicKeyFormat = 4,
 };
 static NSString * _Nonnull const OPEncryptDataErrorDomain = @"OnlinePaymentsKit.EncryptDataError";
 
@@ -1915,7 +1763,7 @@ SWIFT_CLASS_NAMED("ErrorResponse")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPType, "FieldType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPType, "FieldType", open) {
   OPString SWIFT_COMPILE_NAME("string") = 0,
   OPInteger SWIFT_COMPILE_NAME("integer") = 1,
   OPExpirationDate SWIFT_COMPILE_NAME("expirationDate") = 2,
@@ -1925,18 +1773,15 @@ typedef SWIFT_ENUM_NAMED(NSInteger, OPType, "FieldType", closed) {
 };
 
 enum OPFormElementType : NSInteger;
-@class OPValueMappingItem;
 
 SWIFT_CLASS_NAMED("FormElement")
 @interface OPFormElement : NSObject
 @property (nonatomic) enum OPFormElementType type;
-@property (nonatomic, copy) NSArray<OPValueMappingItem *> * _Nonnull valueMapping SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPFormElementType, "FormElementType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPFormElementType, "FormElementType", open) {
   OPTextType SWIFT_COMPILE_NAME("textType") = 0,
   OPListType SWIFT_COMPILE_NAME("listType") = 1,
   OPCurrencyType SWIFT_COMPILE_NAME("currencyType") = 2,
@@ -1950,7 +1795,6 @@ SWIFT_CLASS_NAMED("IINDetail")
 @property (nonatomic, copy) NSString * _Nonnull paymentProductId;
 @property (nonatomic) BOOL isAllowedInContext;
 @property (nonatomic) enum OPCardType cardType;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1963,15 +1807,13 @@ SWIFT_CLASS_NAMED("IINDetailsResponse")
 @property (nonatomic) enum OPIINStatus status;
 @property (nonatomic, copy) NSArray<OPIINDetail *> * _Nonnull coBrands;
 @property (nonatomic, copy) NSString * _Nullable countryCode;
-@property (nonatomic, copy) NSString * _Nullable countryCodeString SWIFT_DEPRECATED_MSG("In a future release this property will be removed. Use countryCode instead.");
 @property (nonatomic) BOOL allowedInContext;
 @property (nonatomic) enum OPCardType cardType;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will become internal to the SDK.");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPIINStatus, "IINStatus", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPIINStatus, "IINStatus", open) {
   OPSupported SWIFT_COMPILE_NAME("supported") = 0,
   OPUnsupported SWIFT_COMPILE_NAME("unsupported") = 1,
   OPUnknown SWIFT_COMPILE_NAME("unknown") = 2,
@@ -1985,7 +1827,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, OPIINStatus, "IINStatus", closed) {
 SWIFT_CLASS_NAMED("LabelTemplate")
 @interface OPLabelTemplate : NSObject
 @property (nonatomic, copy) NSArray<OPLabelTemplateItem *> * _Nonnull labelTemplateItems;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)maskForAttributeKey:(NSString * _Nonnull)key SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -1994,16 +1837,12 @@ SWIFT_CLASS_NAMED("LabelTemplateItem")
 @interface OPLabelTemplateItem : NSObject
 @property (nonatomic, copy) NSString * _Nonnull attributeKey;
 @property (nonatomic, copy) NSString * _Nullable mask;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("PaymentContext")
 @interface OPPaymentContext : NSObject
 @property (nonatomic, copy) NSString * _Nonnull countryCode;
-@property (nonatomic, copy) NSString * _Nonnull countryCodeString SWIFT_DEPRECATED_MSG("In a future release this property will be removed. Use countryCode instead.");
 @property (nonatomic, copy) NSString * _Nonnull locale;
 @property (nonatomic, strong) OPAmountOfMoney * _Nonnull amountOfMoney;
 @property (nonatomic) BOOL isRecurring;
@@ -2040,7 +1879,8 @@ SWIFT_CLASS_NAMED("PaymentItemDisplayHints")
 @property (nonatomic, copy) NSString * _Nonnull logoPath;
 @property (nonatomic, strong) UIImage * _Nullable logoImage;
 - (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -2063,8 +1903,6 @@ SWIFT_CLASS_NAMED("PaymentItems")
 SWIFT_CLASS_NAMED("PaymentProduct")
 @interface OPPaymentProduct : OPBasicPaymentProduct <OPPaymentItem>
 @property (nonatomic, strong) OPPaymentProductFields * _Nonnull fields;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (OPPaymentProductField * _Nullable)paymentProductFieldWithId:(NSString * _Nonnull)withId SWIFT_WARN_UNUSED_RESULT;
 @end
 
@@ -2087,25 +1925,17 @@ SWIFT_CLASS_NAMED("PaymentProduct320SpecificData")
 @end
 
 @class OPPaymentProductFieldDisplayHints;
-@class NSNumberFormatter;
-@class NSRegularExpression;
 @class OPValidationError;
 @class OPPaymentRequest;
 
 SWIFT_CLASS_NAMED("PaymentProductField")
 @interface OPPaymentProductField : NSObject
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic) BOOL usedForLookup SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
 @property (nonatomic, strong) OPDataRestrictions * _Nonnull dataRestrictions;
 @property (nonatomic, strong) OPPaymentProductFieldDisplayHints * _Nonnull displayHints;
 @property (nonatomic) enum OPType type;
-@property (nonatomic, strong) NSNumberFormatter * _Nonnull numberFormatter SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
-@property (nonatomic, strong) NSRegularExpression * _Nonnull numericStringCheck SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
 @property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errorMessageIds;
-@property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errors SWIFT_DEPRECATED_MSG("In a future release, this property will be removed. Use errorMessageIds instead.");
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (NSArray<OPValidationError *> * _Nonnull)validateValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (NSArray<OPValidationError *> * _Nonnull)validateValue:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("\n            In a future release, this function will be removed.\n            Please use validateValue(value:) or validateValue(for:) instead.\n            ");
 - (NSArray<OPValidationError *> * _Nonnull)validateValueforPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)applyMaskWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)removeMaskWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
@@ -2114,7 +1944,6 @@ SWIFT_CLASS_NAMED("PaymentProductField")
 @end
 
 @class OPTooltip;
-@class NSURL;
 enum OPPreferredInputType : NSInteger;
 
 SWIFT_CLASS_NAMED("PaymentProductFieldDisplayHints")
@@ -2127,9 +1956,7 @@ SWIFT_CLASS_NAMED("PaymentProductFieldDisplayHints")
 @property (nonatomic, strong) OPTooltip * _Nullable tooltip;
 @property (nonatomic, copy) NSString * _Nullable label;
 @property (nonatomic, copy) NSString * _Nullable placeholderLabel;
-@property (nonatomic, copy) NSURL * _Nullable link SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
 @property (nonatomic) enum OPPreferredInputType preferredInputType;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2138,7 +1965,8 @@ SWIFT_CLASS_NAMED("PaymentProductFieldDisplayHints")
 SWIFT_CLASS_NAMED("PaymentProductFields")
 @interface OPPaymentProductFields : NSObject
 @property (nonatomic, copy) NSArray<OPPaymentProductField *> * _Nonnull paymentProductFields;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)sort;
 @end
 
@@ -2146,14 +1974,12 @@ SWIFT_CLASS_NAMED("PaymentProductFields")
 SWIFT_CLASS_NAMED("PaymentProductGroup")
 @interface OPPaymentProductGroup : NSObject <OPPaymentItem>
 @property (nonatomic, copy) NSString * _Nonnull identifier;
-@property (nonatomic, strong) OPPaymentItemDisplayHints * _Nonnull displayHints SWIFT_DEPRECATED_MSG("In the next major release, the type of displayHints will change to List.");
-@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHintsList;
+@property (nonatomic, copy) NSArray<OPPaymentItemDisplayHints *> * _Nonnull displayHints;
 @property (nonatomic, strong) OPAccountsOnFile * _Nonnull accountsOnFile;
 @property (nonatomic) BOOL allowsTokenization;
 @property (nonatomic) BOOL allowsRecurring;
 @property (nonatomic, strong) OPPaymentProductFields * _Nonnull fields;
 @property (nonatomic, strong) OPStringFormatter * _Nullable stringFormatter;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (OPAccountOnFile * _Nullable)accountOnFileWithIdentifier:(NSString * _Nonnull)identifier SWIFT_WARN_UNUSED_RESULT;
 - (OPPaymentProductField * _Nullable)paymentProductFieldWithId:(NSString * _Nonnull)paymentProductFieldId SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -2173,7 +1999,6 @@ SWIFT_CLASS_NAMED("PaymentRequest")
 @interface OPPaymentRequest : NSObject
 @property (nonatomic, strong) OPPaymentProduct * _Nullable paymentProduct;
 @property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errorMessageIds;
-@property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errors SWIFT_DEPRECATED_MSG("In a future release, this property will be removed. Use errorMessageIds instead.");
 @property (nonatomic) BOOL tokenize;
 @property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull fieldValues;
 @property (nonatomic, strong) OPStringFormatter * _Nonnull formatter;
@@ -2193,13 +2018,12 @@ SWIFT_CLASS_NAMED("PaymentRequest")
 - (void)removeValueForField:(NSString * _Nonnull)paymentProductFieldId;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPPreferredInputType, "PreferredInputType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPPreferredInputType, "PreferredInputType", open) {
   OPStringKeyboard SWIFT_COMPILE_NAME("stringKeyboard") = 0,
   OPIntegerKeyboard SWIFT_COMPILE_NAME("integerKeyboard") = 1,
   OPEmailAddressKeyboard SWIFT_COMPILE_NAME("emailAddressKeyboard") = 2,
   OPPhoneNumberKeyboard SWIFT_COMPILE_NAME("phoneNumberKeyboard") = 3,
   OPDateKeyboard SWIFT_COMPILE_NAME("dateKeyboard") = 4,
-  OPNoKeyboard SWIFT_COMPILE_NAME("noKeyboard") = 5,
 };
 
 
@@ -2233,8 +2057,6 @@ SWIFT_CLASS_NAMED("RateDetails")
 
 SWIFT_CLASS_NAMED("SDKConstants")
 @interface OPSDKConstants : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull kOPSDKLocalizable SWIFT_DEPRECATED_MSG("In a future release this constant will be removed. Translations are no longer supported from the SDK.");)
-+ (NSString * _Nonnull)kOPSDKLocalizable SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable kOPSDKBundlePath;)
 + (NSString * _Nullable)kOPSDKBundlePath SWIFT_WARN_UNUSED_RESULT;
 + (void)setKOPSDKBundlePath:(NSString * _Nullable)value;
@@ -2245,14 +2067,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, copy) NSString * _Nullable kOP
 
 SWIFT_CLASS_NAMED("Session")
 @interface OPSession : NSObject
-@property (nonatomic, readonly, copy) NSString * _Nonnull clientSessionId SWIFT_DEPRECATED_MSG("In a future release, this property will become internal to the SDK.");
 @property (nonatomic) BOOL loggingEnabled;
 - (nonnull instancetype)initWithClientSessionId:(NSString * _Nonnull)clientSessionId customerId:(NSString * _Nonnull)customerId baseURL:(NSString * _Nonnull)baseURL assetBaseURL:(NSString * _Nonnull)assetBaseURL appIdentifier:(NSString * _Nonnull)appIdentifier loggingEnabled:(BOOL)loggingEnabled sdkIdentifier:(NSString * _Nonnull)sdkIdentifier OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithClientSessionId:(NSString * _Nonnull)clientSessionId customerId:(NSString * _Nonnull)customerId baseURL:(NSString * _Nonnull)baseURL assetBaseURL:(NSString * _Nonnull)assetBaseURL appIdentifier:(NSString * _Nonnull)appIdentifier loggingEnabled:(BOOL)loggingEnabled;
 + (OPSession * _Nonnull)sessionWithClientSessionId:(NSString * _Nonnull)clientSessionId customerId:(NSString * _Nonnull)customerId baseURL:(NSString * _Nonnull)baseURL assetBaseURL:(NSString * _Nonnull)assetBaseURL appIdentifier:(NSString * _Nonnull)appIdentifier loggingEnabled:(BOOL)loggingEnabled SWIFT_WARN_UNUSED_RESULT;
 - (void)paymentProductsForContext:(OPPaymentContext * _Nonnull)context success:(void (^ _Nullable)(OPBasicPaymentProducts * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)paymentProductNetworksForProductId:(NSString * _Nonnull)paymentProductId context:(OPPaymentContext * _Nonnull)context success:(void (^ _Nullable)(OPPaymentProductNetworks * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
-- (void)paymentItemsForContext:(OPPaymentContext * _Nonnull)context groupPaymentProducts:(BOOL)groupPaymentProducts success:(void (^ _Nullable)(OPPaymentItems * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
+- (void)paymentItemsForContext:(OPPaymentContext * _Nonnull)context success:(void (^ _Nullable)(OPPaymentItems * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)paymentProductWithId:(NSString * _Nonnull)paymentProductId context:(OPPaymentContext * _Nonnull)context success:(void (^ _Nullable)(OPPaymentProduct * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)IINDetailsForPartialCreditCardNumber:(NSString * _Nonnull)partialCreditCardNumber context:(OPPaymentContext * _Nullable)context success:(void (^ _Nullable)(OPIINDetailsResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)publicKeyWithSuccess:(void (^ _Nullable)(OPPublicKeyResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
@@ -2261,15 +2082,6 @@ SWIFT_CLASS_NAMED("Session")
 - (void)currencyConversionQuoteWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney token:(NSString * _Nonnull)token success:(void (^ _Nullable)(OPCurrencyConversionResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)surchargeCalculationWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney partialCreditCardNumber:(NSString * _Nonnull)partialCreditCardNumber paymentProductId:(NSNumber * _Nullable)paymentProductId success:(void (^ _Nullable)(OPSurchargeCalculationResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
 - (void)surchargeCalculationWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney token:(NSString * _Nonnull)token success:(void (^ _Nullable)(OPSurchargeCalculationResponse * _Nonnull))success failure:(void (^ _Nullable)(NSError * _Nonnull))failure apiFailure:(void (^ _Nullable)(OPErrorResponse * _Nonnull))apiFailure;
-- (void)paymentProductsFor:(OPPaymentContext * _Nonnull)context success:(void (^ _Nonnull)(OPBasicPaymentProducts * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use paymentProductsForContext:success:failure:apiFailure: instead.");
-- (void)paymentProductNetworksForProductId:(NSString * _Nonnull)paymentProductId context:(OPPaymentContext * _Nonnull)context success:(void (^ _Nonnull)(OPPaymentProductNetworks * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use paymentProductNetworksForProductId:context:success:failure:apiFailure: instead.");
-- (void)paymentItemsForContext:(OPPaymentContext * _Nonnull)context groupPaymentProducts:(BOOL)groupPaymentProducts success:(void (^ _Nonnull)(OPPaymentItems * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("paymentItemsForContext:groupPaymentProducts:success:failure:apiFailure: instead.");
-- (void)paymentProductWithId:(NSString * _Nonnull)paymentProductId context:(OPPaymentContext * _Nonnull)context success:(void (^ _Nonnull)(OPPaymentProduct * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use paymentProductWithId:context:success:failure:apiFailure: instead.");
-- (void)IINDetailsForPartialCreditCardNumber:(NSString * _Nonnull)partialCreditCardNumber context:(OPPaymentContext * _Nullable)context success:(void (^ _Nonnull)(OPIINDetailsResponse * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use IINDetailsForPartialCreditCardNumber:context:success:failure:apiFailure: instead.");
-- (void)publicKeyWithSuccess:(void (^ _Nonnull)(OPPublicKeyResponse * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use publicKeyWithSuccess:failure:apiFailure: instead.");
-- (void)preparePaymentRequest:(OPPaymentRequest * _Nonnull)paymentRequest success:(void (^ _Nonnull)(OPPreparedPaymentRequest * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use preparePaymentRequest:success:failure:apiFailure: instead.");
-- (void)surchargeCalculationWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney partialCreditCardNumber:(NSString * _Nonnull)partialCreditCardNumber paymentProductId:(NSNumber * _Nullable)paymentProductId success:(void (^ _Nonnull)(OPSurchargeCalculationResponse * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("\n        Use\n        surchargeCalculation:amountOfMoney:partialCreditCardNumber:paymentProductId:success:failure:apiFailure:\n        instead.\n        ");
-- (void)surchargeCalculationWithAmountOfMoney:(OPAmountOfMoney * _Nonnull)amountOfMoney token:(NSString * _Nonnull)token success:(void (^ _Nonnull)(OPSurchargeCalculationResponse * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_DEPRECATED_MSG("Use surchargeCalculation:amountOfMoney:token:success:failure:apiFailure: instead.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2277,9 +2089,6 @@ SWIFT_CLASS_NAMED("Session")
 
 SWIFT_CLASS_NAMED("StringFormatter")
 @interface OPStringFormatter : NSObject
-@property (nonatomic, strong) NSRegularExpression * _Nonnull decimalRegex SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
-@property (nonatomic, strong) NSRegularExpression * _Nonnull lowerAlphaRegex SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
-@property (nonatomic, strong) NSRegularExpression * _Nonnull upperAlphaRegex SWIFT_DEPRECATED_MSG("In a future release, this property will become private to this class.");
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (NSString * _Nonnull)formatString:(NSString * _Nonnull)string withMask:(NSString * _Nonnull)mask SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)formatString:(NSString * _Nonnull)string withMask:(NSString * _Nonnull)mask cursorPosition:(NSInteger * _Nonnull)cursorPosition SWIFT_WARN_UNUSED_RESULT;
@@ -2300,7 +2109,6 @@ SWIFT_CLASS_NAMED("Surcharge")
 @property (nonatomic, strong) OPAmountOfMoney * _Nonnull surchargeAmount;
 @property (nonatomic, strong) OPAmountOfMoney * _Nonnull totalAmount;
 @property (nonatomic, strong) OPSurchargeRate * _Nullable surchargeRate;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("Do not use this initializer, it is only for internal SDK use and will be removed in a future release.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2309,9 +2117,7 @@ SWIFT_CLASS_NAMED("Surcharge")
 SWIFT_CLASS_NAMED("SurchargeCalculationResponse")
 @interface OPSurchargeCalculationResponse : NSObject
 @property (nonatomic, copy) NSArray<OPSurcharge *> * _Nonnull surcharges;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("Do not use this initializer, it is only for internal SDK use and will be removed in a future release.");
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -2326,7 +2132,7 @@ SWIFT_CLASS_NAMED("SurchargeRate")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPSurchargeResult, "SurchargeResult", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPSurchargeResult, "SurchargeResult", open) {
   OPOk SWIFT_COMPILE_NAME("ok") = 0,
   OPNoSurcharge SWIFT_COMPILE_NAME("noSurcharge") = 1,
 };
@@ -2334,10 +2140,7 @@ typedef SWIFT_ENUM_NAMED(NSInteger, OPSurchargeResult, "SurchargeResult", closed
 
 SWIFT_CLASS_NAMED("ToolTip")
 @interface OPTooltip : NSObject
-@property (nonatomic, copy) NSString * _Nullable imagePath SWIFT_DEPRECATED_MSG("In a future release, this property will be removed since it is not returned from the API.");
-@property (nonatomic, strong) UIImage * _Nullable image SWIFT_DEPRECATED_MSG("In a future release, this property will be removed.");
 @property (nonatomic, copy) NSString * _Nullable label;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2462,7 +2265,7 @@ SWIFT_PROTOCOL("_TtP17OnlinePaymentsKit14ValidationRule_")
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 @end
 
-typedef SWIFT_ENUM_NAMED(NSInteger, OPValidationType, "ValidationType", closed) {
+typedef SWIFT_ENUM_NAMED(NSInteger, OPValidationType, "ValidationType", open) {
   OPValidationTypeExpirationDate SWIFT_COMPILE_NAME("expirationDate") = 0,
   OPValidationTypeEmailAddress SWIFT_COMPILE_NAME("emailAddress") = 1,
   OPValidationTypeFixedList SWIFT_COMPILE_NAME("fixedList") = 2,
@@ -2482,16 +2285,15 @@ SWIFT_CLASS_NAMED("Validator")
 @property (nonatomic, copy) NSArray<OPValidationError *> * _Nonnull errors;
 @property (nonatomic, copy) NSString * _Nonnull messageId;
 @property (nonatomic) enum OPValidationType validationType;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)for_ SWIFT_DEPRECATED_MSG("In a future release, this function will be removed.");
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class NSRegularExpression;
 
 SWIFT_CLASS_NAMED("ValidatorEmailAddress")
 @interface OPValidatorEmailAddress : OPValidator <ValidationRule>
 @property (nonatomic, strong) NSRegularExpression * _Nonnull expression;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -2501,8 +2303,6 @@ SWIFT_CLASS_NAMED("ValidatorEmailAddress")
 SWIFT_CLASS_NAMED("ValidatorExpirationDate")
 @interface OPValidatorExpirationDate : OPValidator <ValidationRule>
 @property (nonatomic, strong) NSDateFormatter * _Nonnull dateFormatter;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -2511,19 +2311,13 @@ SWIFT_CLASS_NAMED("ValidatorExpirationDate")
 SWIFT_CLASS_NAMED("ValidatorFixedList")
 @interface OPValidatorFixedList : OPValidator <ValidationRule>
 @property (nonatomic, copy) NSArray<NSString *> * _Nonnull allowedValues;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("ValidatorIBAN")
 @interface OPValidatorIBAN : OPValidator <ValidationRule>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -2533,54 +2327,39 @@ SWIFT_CLASS_NAMED("ValidatorLength")
 @interface OPValidatorLength : OPValidator <ValidationRule>
 @property (nonatomic) NSInteger minLength;
 @property (nonatomic) NSInteger maxLength;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("ValidatorLuhn")
 @interface OPValidatorLuhn : OPValidator <ValidationRule>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class NSNumberFormatter;
 
 SWIFT_CLASS_NAMED("ValidatorRange")
 @interface OPValidatorRange : OPValidator <ValidationRule>
 @property (nonatomic) NSInteger minValue;
 @property (nonatomic) NSInteger maxValue;
 @property (nonatomic, strong) NSNumberFormatter * _Nonnull formatter;
-- (nonnull instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("ValidatorRegularExpression")
 @interface OPValidatorRegularExpression : OPValidator <ValidationRule>
 @property (nonatomic, strong) NSRegularExpression * _Nonnull regularExpression;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
 SWIFT_CLASS_NAMED("ValidatorTermsAndConditions")
 @interface OPValidatorTermsAndConditions : OPValidator <ValidationRule>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)validate:(NSString * _Nonnull)value forPaymentRequest:(OPPaymentRequest * _Nonnull)request SWIFT_DEPRECATED_MSG("In a future release, this function will be removed. Please use validate(field:in:) instead.");
 - (BOOL)validateWithField:(NSString * _Nonnull)fieldId in:(OPPaymentRequest * _Nonnull)request SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)validateWithValue:(NSString * _Nonnull)value SWIFT_WARN_UNUSED_RESULT;
 @end
@@ -2588,18 +2367,7 @@ SWIFT_CLASS_NAMED("ValidatorTermsAndConditions")
 
 SWIFT_CLASS_NAMED("Validators")
 @interface OPValidators : NSObject
-@property (nonatomic) BOOL variableRequiredness;
 @property (nonatomic, copy) NSArray<OPValidator *> * _Nonnull validators;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS_NAMED("ValueMappingItem") SWIFT_DEPRECATED_MSG("In a future release, this class will be removed since it is not returned from the API.")
-@interface OPValueMappingItem : NSObject
-@property (nonatomic, copy) NSString * _Nullable displayName;
-@property (nonatomic, copy) NSArray<OPDisplayElement *> * _Nonnull displayElements;
-@property (nonatomic, copy) NSString * _Nonnull value;
-- (nullable instancetype)initWithJson:(NSDictionary<NSString *, id> * _Nonnull)json OBJC_DESIGNATED_INITIALIZER SWIFT_DEPRECATED_MSG("In a future release, this initializer will be removed.");
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

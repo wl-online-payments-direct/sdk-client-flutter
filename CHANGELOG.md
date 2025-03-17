@@ -1,3 +1,7 @@
+## 1.3.0
+## Changed:
+- Changed the `AccountOnFile.id` property to type `string`.
+
 ## 1.2.3
 ## Changed:
 - Updated the Swift dependency to support iOS 18.2.
