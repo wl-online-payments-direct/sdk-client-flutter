@@ -1,0 +1,1 @@
+-keep class com.onlinepayments.client.flutter.online_payments_sdk.** { *; }

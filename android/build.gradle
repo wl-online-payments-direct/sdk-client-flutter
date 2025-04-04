@@ -40,6 +40,7 @@ android {
 
     defaultConfig {
         minSdkVersion 19
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     dependencies {

@@ -1,3 +1,8 @@
+## 1.3.1
+## Added:
+- Added consumerProguardFiles 'proguard-rules.pro' to the library’s Gradle config, ensuring classes are 
+preserved when minification is enabled.
+
 ## 1.3.0
 ## Changed:
 - Changed the `AccountOnFile.id` property to type `string`.
