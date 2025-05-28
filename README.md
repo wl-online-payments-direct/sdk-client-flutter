@@ -457,7 +457,7 @@ await session.getIinDetails(
 
 Some cards are dual branded and could be processed as either a local card _(with a local brand)_ or an international card _(with an international brand)_. In case you are not setup to process these local cards, this API call will not return that card type in its response.
 
-### Masking 
+### Masking
 
 To help in formatting field values based on masks, the SDK offers a masking functionality on `AccountOnFile`, `PaymetRequest` and `PaymentProductField`. It allows you to format field values and apply and unapply masks on a string.
 

@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'online_payments_sdk'
-  s.version          = '1.3.1'
+  s.version          = '1.3.2'
   s.summary          = 'Online Payments Flutter SDK iOS Plugin'
   s.description      = <<-DESC
         iOS Plugin for the Online Payments Flutter SDK.

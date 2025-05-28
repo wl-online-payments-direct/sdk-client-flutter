@@ -1,15 +1,23 @@
+## 1.3.2
+## Changed:
+- Updated the Swift dependency to support iOS encryption update.
+
+
 ## 1.3.1
 ## Added:
-- Added consumerProguardFiles 'proguard-rules.pro' to the library’s Gradle config, ensuring classes are 
-preserved when minification is enabled.
+- Added consumerProguardFiles 'proguard-rules.pro' to the library’s Gradle config, ensuring classes are
+  preserved when minification is enabled.
+
 
 ## 1.3.0
 ## Changed:
 - Changed the `AccountOnFile.id` property to type `string`.
 
+
 ## 1.2.3
 ## Changed:
 - Updated the Swift dependency to support iOS 18.2.
+
 
 ## 1.2.2
 ## Changed:
