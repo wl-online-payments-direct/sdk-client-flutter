@@ -37586,833 +37586,833 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorLength.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorLength.swift",
       "kind": "IntegerLiteral",
       "offset": 332,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorLength.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorLength.swift",
       "kind": "IntegerLiteral",
       "offset": 367,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
       "kind": "IntegerLiteral",
       "offset": 432,
       "length": 11,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
       "kind": "IntegerLiteral",
       "offset": 470,
       "length": 7,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
       "kind": "IntegerLiteral",
       "offset": 512,
       "length": 15,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
       "kind": "IntegerLiteral",
       "offset": 646,
       "length": 7,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/IINStatus.swift",
       "kind": "IntegerLiteral",
       "offset": 694,
       "length": 21,
       "value": "5"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProducts.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProducts.swift",
       "kind": "IntegerLiteral",
       "offset": 871,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProducts.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProducts.swift",
       "kind": "BooleanLiteral",
       "offset": 898,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProducts.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProducts.swift",
       "kind": "BooleanLiteral",
       "offset": 929,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FormElementType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FormElementType.swift",
       "kind": "IntegerLiteral",
       "offset": 338,
       "length": 8,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FormElementType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FormElementType.swift",
       "kind": "IntegerLiteral",
       "offset": 377,
       "length": 12,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FormElementType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FormElementType.swift",
       "kind": "IntegerLiteral",
       "offset": 417,
       "length": 8,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FormElementType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FormElementType.swift",
       "kind": "IntegerLiteral",
       "offset": 453,
       "length": 8,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorRange.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorRange.swift",
       "kind": "IntegerLiteral",
       "offset": 329,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorRange.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorRange.swift",
       "kind": "IntegerLiteral",
       "offset": 363,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/CardType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/CardType.swift",
       "kind": "IntegerLiteral",
       "offset": 322,
       "length": 5,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/CardType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/CardType.swift",
       "kind": "IntegerLiteral",
       "offset": 354,
       "length": 7,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/Validators.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/Validators.swift",
       "kind": "BooleanLiteral",
       "offset": 320,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Surcharge\/SurchargeResult.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Surcharge\/SurchargeResult.swift",
       "kind": "IntegerLiteral",
       "offset": 424,
       "length": 11,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
       "kind": "StringLiteral",
       "offset": 335,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
       "kind": "IntegerLiteral",
       "offset": 2037,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
       "kind": "IntegerLiteral",
       "offset": 2072,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
       "kind": "IntegerLiteral",
       "offset": 2192,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/ValidationErrors\/ValidationErrors.swift",
       "kind": "IntegerLiteral",
       "offset": 2226,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/C2SCommunicatorConfiguration.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/C2SCommunicatorConfiguration.swift",
       "kind": "BooleanLiteral",
       "offset": 456,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/C2SCommunicatorConfiguration.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/C2SCommunicatorConfiguration.swift",
       "kind": "BooleanLiteral",
       "offset": 853,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/C2SCommunicator.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/C2SCommunicator.swift",
       "kind": "BooleanLiteral",
       "offset": 22409,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/C2SCommunicator.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/C2SCommunicator.swift",
       "kind": "BooleanLiteral",
       "offset": 22443,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentItems.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentItems.swift",
       "kind": "IntegerLiteral",
       "offset": 593,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentItems.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentItems.swift",
       "kind": "BooleanLiteral",
       "offset": 616,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentItems.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentItems.swift",
       "kind": "BooleanLiteral",
       "offset": 646,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptorError.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptorError.swift",
       "kind": "StringLiteral",
       "offset": 347,
       "length": 34,
       "value": "\"com.onlinepayments.sdk.encryptor\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AmountOfMoney.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AmountOfMoney.swift",
       "kind": "IntegerLiteral",
       "offset": 326,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AmountOfMoney.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AmountOfMoney.swift",
       "kind": "StringLiteral",
       "offset": 1740,
       "length": 32,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AmountOfMoney.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AmountOfMoney.swift",
       "kind": "StringLiteral",
       "offset": 1755,
       "length": 1,
       "value": "\"-\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AmountOfMoney.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AmountOfMoney.swift",
       "kind": "StringLiteral",
       "offset": 1771,
       "length": 1,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AccountOnFile\/AccountOnFile.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/AccountOnFile\/AccountOnFile.swift",
       "kind": "StringLiteral",
       "offset": 3338,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductFieldDisplayHints.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductFieldDisplayHints.swift",
       "kind": "BooleanLiteral",
       "offset": 358,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductFieldDisplayHints.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductFieldDisplayHints.swift",
       "kind": "BooleanLiteral",
       "offset": 517,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Cryptography\/JOSEEncryptor.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Cryptography\/JOSEEncryptor.swift",
       "kind": "IntegerLiteral",
       "offset": 278,
       "length": 2,
       "value": "32"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Cryptography\/JOSEEncryptor.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Cryptography\/JOSEEncryptor.swift",
       "kind": "IntegerLiteral",
       "offset": 308,
       "length": 2,
       "value": "16"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Cryptography\/JOSEEncryptor.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Cryptography\/JOSEEncryptor.swift",
       "kind": "IntegerLiteral",
       "offset": 340,
       "length": 2,
       "value": "32"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Essentials\/Session.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Essentials\/Session.swift",
       "kind": "BooleanLiteral",
       "offset": 707,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Essentials\/Session.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Essentials\/Session.swift",
       "kind": "BooleanLiteral",
       "offset": 1474,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Essentials\/Session.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Essentials\/Session.swift",
       "kind": "BooleanLiteral",
       "offset": 2474,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Essentials\/Session.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Essentials\/Session.swift",
       "kind": "BooleanLiteral",
       "offset": 3033,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductGroup.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductGroup.swift",
       "kind": "BooleanLiteral",
       "offset": 514,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductGroup.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductGroup.swift",
       "kind": "BooleanLiteral",
       "offset": 559,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/PreferredInputType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/PreferredInputType.swift",
       "kind": "IntegerLiteral",
       "offset": 364,
       "length": 15,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/PreferredInputType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/PreferredInputType.swift",
       "kind": "IntegerLiteral",
       "offset": 419,
       "length": 20,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/PreferredInputType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/PreferredInputType.swift",
       "kind": "IntegerLiteral",
       "offset": 478,
       "length": 19,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/PreferredInputType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/PreferredInputType.swift",
       "kind": "IntegerLiteral",
       "offset": 529,
       "length": 12,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProductGroups.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProductGroups.swift",
       "kind": "IntegerLiteral",
       "offset": 539,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProductGroups.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProductGroups.swift",
       "kind": "BooleanLiteral",
       "offset": 562,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProductGroups.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProductGroups.swift",
       "kind": "BooleanLiteral",
       "offset": 593,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
       "kind": "StringLiteral",
       "offset": 2568,
       "length": 75,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
       "kind": "StringLiteral",
       "offset": 2597,
       "length": 1,
       "value": "\"-\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
       "kind": "StringLiteral",
       "offset": 2612,
       "length": 1,
       "value": "\"-\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
       "kind": "StringLiteral",
       "offset": 2629,
       "length": 5,
       "value": "\"YES\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
       "kind": "StringLiteral",
       "offset": 2637,
       "length": 4,
       "value": "\"NO\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/C2SPaymentProductContext\/PaymentContext.swift",
       "kind": "StringLiteral",
       "offset": 2642,
       "length": 1,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 385,
       "length": 12,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 440,
       "length": 9,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 487,
       "length": 4,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 531,
       "length": 6,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 575,
       "length": 4,
       "value": "5"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 618,
       "length": 5,
       "value": "6"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 674,
       "length": 17,
       "value": "7"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 733,
       "length": 8,
       "value": "8"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 779,
       "length": 4,
       "value": "9"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidationType.swift",
       "kind": "IntegerLiteral",
       "offset": 835,
       "length": 18,
       "value": "10"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/CurrencyConversion\/ConversionResultType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/CurrencyConversion\/ConversionResultType.swift",
       "kind": "IntegerLiteral",
       "offset": 363,
       "length": 11,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/CurrencyConversion\/ConversionResultType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/CurrencyConversion\/ConversionResultType.swift",
       "kind": "IntegerLiteral",
       "offset": 409,
       "length": 15,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/CurrencyConversion\/ConversionResultType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/CurrencyConversion\/ConversionResultType.swift",
       "kind": "IntegerLiteral",
       "offset": 450,
       "length": 6,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/CurrencyConversion\/ConversionResultType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/CurrencyConversion\/ConversionResultType.swift",
       "kind": "IntegerLiteral",
       "offset": 488,
       "length": 12,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptDataError.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptDataError.swift",
       "kind": "IntegerLiteral",
       "offset": 327,
       "length": 14,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptDataError.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptDataError.swift",
       "kind": "IntegerLiteral",
       "offset": 351,
       "length": 21,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptDataError.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptDataError.swift",
       "kind": "IntegerLiteral",
       "offset": 382,
       "length": 20,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptDataError.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/Errors\/EncryptDataError.swift",
       "kind": "IntegerLiteral",
       "offset": 412,
       "length": 18,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/IINDetails\/IINDetail.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/IINDetails\/IINDetail.swift",
       "kind": "BooleanLiteral",
       "offset": 391,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProduct.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProduct.swift",
       "kind": "BooleanLiteral",
       "offset": 533,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProduct.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/BasicPaymentProduct.swift",
       "kind": "BooleanLiteral",
       "offset": 578,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/DataRestrictions.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/DataRestrictions.swift",
       "kind": "BooleanLiteral",
       "offset": 328,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
       "kind": "StringLiteral",
       "offset": 336,
       "length": 5,
       "value": "\"302\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
       "kind": "StringLiteral",
       "offset": 378,
       "length": 9,
       "value": "\"client\/\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
       "kind": "StringLiteral",
       "offset": 429,
       "length": 23,
       "value": "\"SwiftClientSDK\/v4.1.0\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
       "kind": "StringLiteral",
       "offset": 947,
       "length": 38,
       "value": "\"com.onlinepayments.OnlinePaymentsKit\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
       "kind": "StringLiteral",
       "offset": 1134,
       "length": 19,
       "value": "\"OnlinePaymentsKit\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Constants\/SDKConstants.swift",
       "kind": "StringLiteral",
       "offset": 1163,
       "length": 8,
       "value": "\"bundle\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductField.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProductField.swift",
       "kind": "Array",
       "offset": 681,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorFixedList.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/ValidatorFixedList.swift",
       "kind": "Array",
       "offset": 352,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Surcharge\/SurchargeCalculationResponse.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Surcharge\/SurchargeCalculationResponse.swift",
       "kind": "Array",
       "offset": 367,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/AccountOnFileAttributeStatus.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/AccountOnFileAttributeStatus.swift",
       "kind": "IntegerLiteral",
       "offset": 364,
       "length": 8,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/AccountOnFileAttributeStatus.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/AccountOnFileAttributeStatus.swift",
       "kind": "IntegerLiteral",
       "offset": 401,
       "length": 9,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
       "kind": "Array",
-      "offset": 401,
+      "offset": 400,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
       "kind": "BooleanLiteral",
-      "offset": 436,
+      "offset": 435,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
       "kind": "BooleanLiteral",
-      "offset": 746,
+      "offset": 741,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
       "kind": "StringLiteral",
-      "offset": 6529,
+      "offset": 6537,
       "length": 25,
       "value": "\"Invalid payment product\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
       "kind": "StringLiteral",
-      "offset": 6581,
+      "offset": 6589,
       "length": 28,
       "value": "\"Payment product is invalid\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
       "kind": "StringLiteral",
-      "offset": 7150,
+      "offset": 7166,
       "length": 25,
       "value": "\"Invalid payment product\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentRequests\/PaymentRequest.swift",
       "kind": "StringLiteral",
-      "offset": 7202,
+      "offset": 7218,
       "length": 28,
       "value": "\"Payment product is invalid\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/IINDetails\/IINDetailsResponse.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/IINDetails\/IINDetailsResponse.swift",
       "kind": "BooleanLiteral",
       "offset": 525,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
       "kind": "IntegerLiteral",
       "offset": 317,
       "length": 7,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
       "kind": "IntegerLiteral",
       "offset": 358,
       "length": 14,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
       "kind": "IntegerLiteral",
       "offset": 405,
       "length": 13,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
       "kind": "IntegerLiteral",
       "offset": 451,
       "length": 10,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/FieldType.swift",
       "kind": "IntegerLiteral",
       "offset": 491,
       "length": 10,
       "value": "5"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProduct320SpecificData.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProduct320SpecificData.swift",
       "kind": "StringLiteral",
       "offset": 362,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProduct320SpecificData.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProduct320SpecificData.swift",
       "kind": "Array",
       "offset": 407,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/ApiVersion.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/ApiVersion.swift",
       "kind": "StringLiteral",
       "offset": 306,
       "length": 5,
       "value": "\"v1\/\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/ApiVersion.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/ApiVersion.swift",
       "kind": "StringLiteral",
       "offset": 326,
       "length": 5,
       "value": "\"v2\/\""
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/DisplayElementType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/DisplayElementType.swift",
       "kind": "IntegerLiteral",
       "offset": 492,
       "length": 7,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/DisplayElementType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/DisplayElementType.swift",
       "kind": "IntegerLiteral",
       "offset": 545,
       "length": 8,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/DisplayElementType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/DisplayElementType.swift",
       "kind": "IntegerLiteral",
       "offset": 601,
       "length": 10,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/DisplayElementType.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Enumerations\/DisplayElementType.swift",
       "kind": "IntegerLiteral",
       "offset": 652,
       "length": 3,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProduct302SpecificData.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/PaymentProducts\/PaymentProduct302SpecificData.swift",
       "kind": "Array",
       "offset": 361,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/Validator.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/Validator.swift",
       "kind": "Array",
       "offset": 329,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/kostandindimitrijevic\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/Validator.swift",
+      "filePath": "\/Users\/kostandin\/Projects\/Worldline\/logeecom-wl-direct\/swift-sdk\/OnlinePaymentsKit\/Models\/Validators\/Validator.swift",
       "kind": "StringLiteral",
       "offset": 373,
       "length": 2,
