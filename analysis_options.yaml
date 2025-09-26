@@ -5,3 +5,6 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     - deprecated_consistency
+
+formatter:
+  page_width: 120

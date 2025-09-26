@@ -32,3 +32,6 @@ build/
 # Kotlin data
 android/.kotlin/
 example/android/.kotlin
+
+# environment
+*.local.json

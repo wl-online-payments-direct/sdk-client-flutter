@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2024 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -118,9 +118,9 @@ class _DataRestrictionsInfo extends StatelessWidget {
                 textColor: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
-              for (final validationRule in dataRestrictions.validationRules)
+              for (final validationRule in dataRestrictions.validators.keys)
                 DefaultText(
-                  "- ${validationRule.messageId}",
+                  "- $validationRule",
                   textColor: Colors.white,
                 ),
             ],

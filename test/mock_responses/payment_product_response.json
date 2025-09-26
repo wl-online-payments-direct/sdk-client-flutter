@@ -1,32 +1,41 @@
 {
-  "accountsOnFile": [ {
-    "attributes" : [ {
-      "key" : "cardholderName",
-      "value" : "Wile E. Coyote",
-      "status" : "READ_ONLY"
-    }, {
-      "key" : "cardNumber",
-      "value" : "************1111",
-      "status" : "READ_ONLY"
-    }, {
-      "key" : "cvv",
-      "value" : "111",
-      "status" : "CAN_WRITE"
-    }, {
-      "key" : "expiryDate",
-      "value" : "0120",
-      "status" : "CAN_WRITE"
-    } ],
-    "displayHints" : {
-      "labelTemplate" : [ {
-        "attributeKey" : "alias",
-        "mask" : "{{9999}} {{9999}} {{9999}} {{9999}} {{999}}"
-      } ],
-      "logo" : "aof_logo"
-    },
-    "id" : "0",
-    "paymentProductId" : "3"
-  } ],
+  "accountsOnFile": [
+    {
+      "attributes": [
+        {
+          "key": "cardholderName",
+          "value": "Wile E. Coyote",
+          "status": "READ_ONLY"
+        },
+        {
+          "key": "cardNumber",
+          "value": "************1111",
+          "status": "READ_ONLY"
+        },
+        {
+          "key": "cvv",
+          "value": "111",
+          "status": "CAN_WRITE"
+        },
+        {
+          "key": "expiryDate",
+          "value": "0120",
+          "status": "CAN_WRITE"
+        }
+      ],
+      "displayHints": {
+        "labelTemplate": [
+          {
+            "attributeKey": "alias",
+            "mask": "{{9999}} {{9999}} {{9999}} {{9999}} {{999}}"
+          }
+        ],
+        "logo": "aof_logo"
+      },
+      "id": "0",
+      "paymentProductId": "3"
+    }
+  ],
   "allowsRecurring": true,
   "allowsTokenization": true,
   "displayHints": {
@@ -45,19 +54,16 @@
     {
       "dataRestrictions": {
         "isRequired": true,
-        "validationRules": [ {
-          "validationType": "LENGTH",
-          "messageId": "length",
-          "maxLength": 19,
-          "minLength": 13
-        }, {
-          "validationType": "LUHN",
-          "messageId": "luhn"
-        }, {
-          "validationType": "REGULAREXPRESSION",
-          "messageId": "regularExpression",
-          "regex": "^[0-9]*$"
-        } ]
+        "validators": {
+          "length": {
+            "maxLength": 19,
+            "minLength": 13
+          },
+          "luhn": {},
+          "regularExpression": {
+            "regularExpression": "^[0-9]*$"
+          }
+        }
       },
       "displayHints": {
         "alwaysShow": false,
@@ -80,16 +86,15 @@
     {
       "dataRestrictions": {
         "isRequired": true,
-        "validationRules": [ {
-          "validationType": "LENGTH",
-          "messageId": "length",
-          "maxLength": 50,
-          "minLength": 2
-        }, {
-          "validationType": "REGULAREXPRESSION",
-          "messageId": "regularExpression",
-          "regex": "^[a-zA-ZàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßẞŠšŽžŸÿčęĘ0-9 +_.=,:\\-\\[\\]\\/\\(\\)']*$"
-        } ]
+        "validators": {
+          "length": {
+            "maxLength": 50,
+            "minLength": 2
+          },
+          "regularExpression": {
+            "regularExpression": "^[a-zA-ZàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßẞŠšŽžŸÿčČďĎěĚľĽĺĹňŇřŘšťŠŤůŮžŽęĘłŁśŚźŹżŻąĄčČęĘėĖįĮšŠųŲūŪžŽäÄöÖõÕüÜāĀčČēĒģĢīĪķĶļĻņŅōŌŗŖšŠūŪžŽ0-9 +_.=,:\\-\\[\\]\\/\\(\\)']*$"
+          }
+        }
       },
       "displayHints": {
         "alwaysShow": false,
@@ -111,22 +116,21 @@
     {
       "dataRestrictions": {
         "isRequired": true,
-        "validationRules": [ {
-          "validationType": "EXPIRATIONDATE",
-          "messageId": "expirationDate"
-        }, {
-          "validationType": "REGULAREXPRESSION",
-          "messageId": "regularExpression",
-          "regex": "^(0[1-9]|1[0-2])\\d\\d$"
-        } ]
+        "validators": {
+          "expirationDate": {},
+          "regularExpression": {
+            "regularExpression": "^(0[1-9]|1[0-2])(\\d{2})$"
+          }
+        }
       },
       "displayHints": {
         "alwaysShow": false,
         "displayOrder": 2,
         "formElement": {
-          "type": "list"
+          "type": "text"
         },
         "label": "Expiry date",
+        "mask": "{{99}}/{{99}}",
         "obfuscate": false,
         "placeholderLabel": "",
         "preferredInputType": "StringKeyboard",
@@ -140,25 +144,24 @@
     {
       "dataRestrictions": {
         "isRequired": true,
-        "validationRules": [ {
-          "validationType": "LENGTH",
-          "messageId": "length",
-          "maxLength": 3,
-          "minLength": 3
-        }, {
-          "validationType": "REGULAREXPRESSION",
-          "messageId": "regularExpression",
-          "regex": "^[0-9]*$"
-        } ]
+        "validators": {
+          "length": {
+            "maxLength": 3,
+            "minLength": 3
+          },
+          "regularExpression": {
+            "regularExpression": "^[0-9]*$"
+          }
+        }
       },
       "displayHints": {
         "alwaysShow": false,
-        "displayOrder": 4,
+        "displayOrder": 3,
         "formElement": {
           "type": "text"
         },
         "label": "Card verification code",
-        "mask": "{{9999}}",
+        "mask": "{{999}}",
         "obfuscate": false,
         "placeholderLabel": "",
         "preferredInputType": "StringKeyboard",
@@ -173,5 +176,6 @@
   "id": "3",
   "paymentMethod": "card",
   "paymentProductGroup": "Cards",
-  "usesRedirectionTo3rdParty": false
+  "usesRedirectionTo3rdParty": false,
+  "allowsAuthentication": true
 }

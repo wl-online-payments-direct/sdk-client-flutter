@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -20,25 +20,53 @@ class DataRestrictions {
   @JsonKey(required: true)
   final bool isRequired;
 
-  @JsonKey(fromJson: validationRulesFromJson)
-  final List<ValidationRule> validationRules;
+  @JsonKey()
+  final Map<String, dynamic> validators;
 
-  DataRestrictions({required this.isRequired, required this.validationRules});
+  DataRestrictions({required this.isRequired, required this.validators});
 
   const DataRestrictions.empty({
     this.isRequired = false,
-    this.validationRules = const [],
+    this.validators = const {},
   });
 
-  factory DataRestrictions.fromJson(Map<String, dynamic> json) =>
-      _$DataRestrictionsFromJson(json);
+  factory DataRestrictions.fromJson(Map<String, dynamic> json) {
+    // If API data has validationRules, convert to validators format
+    if (json.containsKey('validationRules') && json['validationRules'] != null && json['validators'] == null) {
+      final rules = validationRulesFromJson(json['validationRules'] as List);
+      final validatorsMap = <String, dynamic>{};
+
+      for (final rule in rules) {
+        final ruleJson = rule.toJson();
+        final validatorKey = rule.messageId;
+        final validatorValue = <String, dynamic>{};
+
+        // Extract rule-specific properties, excluding type and messageId
+        ruleJson.forEach((key, value) {
+          if (key != 'type' && key != 'messageId') {
+            validatorValue[key] = value;
+          }
+        });
+
+        validatorsMap[validatorKey] = validatorValue;
+      }
+
+      return DataRestrictions(
+        isRequired: json['isRequired'] as bool,
+        validators: validatorsMap,
+      );
+    }
+
+    // Otherwise use standard deserialization for validators format
+    return _$DataRestrictionsFromJson(json);
+  }
 
   Map<String, dynamic> toJson() => _$DataRestrictionsToJson(this);
 }
 
 List<ValidationRule> validationRulesFromJson(List<dynamic> json) {
   return json.map((e) {
-    String validationType = e["validationType"];
+    String validationType = e["type"];
     switch (validationType) {
       case ValidationType.expirationDateKey:
         return ValidationRuleExpirationDate.fromJson(e);

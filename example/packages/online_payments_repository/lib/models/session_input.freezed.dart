@@ -22,7 +22,9 @@ mixin _$SessionInput {
   String? get customerId => throw _privateConstructorUsedError;
   String? get paymentProductId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionInputCopyWith<SessionInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$SessionInputCopyWithImpl<$Res, $Val extends SessionInput>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$SessionInputImplCopyWithImpl<$Res>
       _$SessionInputImpl _value, $Res Function(_$SessionInputImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -190,7 +196,9 @@ class _$SessionInputImpl implements _SessionInput {
   int get hashCode => Object.hash(runtimeType, assetUrl, clientApiUrl,
       clientSessionId, customerId, paymentProductId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionInputImplCopyWith<_$SessionInputImpl> get copyWith =>
@@ -215,8 +223,11 @@ abstract class _SessionInput implements SessionInput {
   String? get customerId;
   @override
   String? get paymentProductId;
+
+  /// Create a copy of SessionInput
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionInputImplCopyWith<_$SessionInputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,9 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target arm64-apple-ios15.6 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name OnlinePaymentsKit
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
-import Alamofire
-import CryptoSwift
+// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-module-flags: -target arm64-apple-ios15.6 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name OnlinePaymentsKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
 import Foundation
 import PassKit
 import Security
@@ -42,7 +40,9 @@ import _SwiftConcurrencyShims
   @available(*, deprecated, message: "In a future release, this status will be removed.")
   @objc(OPPending) case pending
   @objc(OPExistingButNotAllowed) case existingButNotAllowed
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -50,10 +50,12 @@ import _SwiftConcurrencyShims
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPBasicPaymentProducts) public class BasicPaymentProducts : ObjectiveC.NSObject, Swift.Codable {
   @objc public var paymentProducts: [OnlinePaymentsKit.BasicPaymentProduct]
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
     @objc get
     @objc set
   }
+  #endif
   @objc public var hasAccountsOnFile: Swift.Bool {
     @objc get
   }
@@ -61,16 +63,24 @@ import _SwiftConcurrencyShims
     @objc get
   }
   required public init(from decoder: any Swift.Decoder) throws
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func logoPath(forPaymentProduct identifier: Swift.String) -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func paymentProduct(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.BasicPaymentProduct?
+  #endif
   @objc public func sort()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
 }
 @objc(OPPaymentItem) public protocol PaymentItem : OnlinePaymentsKit.BasicPaymentItem {
   @objc var fields: OnlinePaymentsKit.PaymentProductFields { get set }
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc func paymentProductField(withId paymentProductFieldId: Swift.String) -> OnlinePaymentsKit.PaymentProductField?
+  #endif
 }
 @objc(OPPaymentProductNetworks) public class PaymentProductNetworks : ObjectiveC.NSObject, Swift.Codable {
   @objc public var paymentProductNetworks: [PassKit.PKPaymentNetwork]
@@ -84,7 +94,9 @@ import _SwiftConcurrencyShims
   @objc(OPCurrencyType) case currencyType
   @objc(OPBoolType) case boolType
   @objc(OPDateType) case dateType
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -103,7 +115,9 @@ import _SwiftConcurrencyShims
   @objc(OPCredit) case credit
   @objc(OPDebit) case debit
   @objc(OPPrepaid) case prepaid
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -117,7 +131,9 @@ import _SwiftConcurrencyShims
 @objc(OPSurchargeResult) public enum SurchargeResult : Swift.Int, Swift.Codable {
   @objc(OPOk) case ok
   @objc(OPNoSurcharge) case noSurcharge
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -128,76 +144,100 @@ import _SwiftConcurrencyShims
   @objc public var paymentProductFieldId: Swift.String?
   @objc public var rule: OnlinePaymentsKit.Validator?
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorAllowed) public class ValidationErrorAllowed : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorEmailAddress) public class ValidationErrorEmailAddress : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorExpirationDate) public class ValidationErrorExpirationDate : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorFixedList) public class ValidationErrorFixedList : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @available(*, deprecated, message: "In a future release, this class will be removed.")
 @objc(OPValidationErrorInteger) public class ValidationErrorInteger : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorIsRequired) public class ValidationErrorIsRequired : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorLuhn) public class ValidationErrorLuhn : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @available(*, deprecated, message: "In a future release, this class will be removed.")
 @objc(OPValidationErrorNumericString) public class ValidationErrorNumericString : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorRegularExpression) public class ValidationErrorRegularExpression : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorTermsAndConditions) public class ValidationErrorTermsAndConditions : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorIBAN) public class ValidationErrorIBAN : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
@@ -205,7 +245,9 @@ import _SwiftConcurrencyShims
   @objc public var minLength: Swift.Int
   @objc public var maxLength: Swift.Int
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
@@ -213,13 +255,17 @@ import _SwiftConcurrencyShims
   @objc public var minValue: Swift.Int
   @objc public var maxValue: Swift.Int
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(OPValidationErrorPaymentProductMissing) public class ValidationErrorInvalidPaymentProduct : OnlinePaymentsKit.ValidationError {
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override public init(errorMessage: Swift.String, paymentProductFieldId: Swift.String?, rule: OnlinePaymentsKit.Validator?)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
 }
@@ -228,8 +274,10 @@ import _SwiftConcurrencyShims
   @objc public var surchargeProductTypeVersion: Swift.String
   @objc public var adValoremRate: Swift.Double
   @objc public var specificRate: Swift.Int
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, deprecated, message: "Do not use this initializer, it is only for internal SDK use and will be removed in a future release.")
   @objc required public init?(json: [Swift.String : Any])
+  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -240,7 +288,9 @@ public enum SessionError : Swift.Error {
 @objc(OPErrorResponse) public class ErrorResponse : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let message: Swift.String
   @objc final public let apiError: OnlinePaymentsKit.ApiError?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(message: Swift.String, apiError: OnlinePaymentsKit.ApiError? = nil)
+  #endif
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -280,9 +330,15 @@ public enum SessionError : Swift.Error {
   @objc public var accountsOnFile: [OnlinePaymentsKit.AccountOnFile] {
     @objc get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(createPaymentItemsFromProducts:groups:) public func createPaymentItemsFromProducts(products: OnlinePaymentsKit.BasicPaymentProducts, groups: OnlinePaymentsKit.BasicPaymentProductGroups?) -> [any OnlinePaymentsKit.BasicPaymentItem]
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(logoPathForPaymentItem:) public func logoPath(forItem identifier: Swift.String) -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func paymentItem(withIdentifier identifier: Swift.String) -> (any OnlinePaymentsKit.BasicPaymentItem)?
+  #endif
   @objc public func sort()
   @objc deinit
 }
@@ -315,14 +371,18 @@ extension OnlinePaymentsKit.EncryptorError {
   @objc public var attributes: [OnlinePaymentsKit.AccountOnFileAttribute]
   @objc public func value(forField paymentProductFieldId: Swift.String) -> Swift.String
   @objc public func hasValue(forField paymentProductFieldId: Swift.String) -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(fieldIsReadOnly:) public func isReadOnly(field paymentProductFieldId: Swift.String?) -> Swift.Bool
+  #endif
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPPaymentProduct) public class PaymentProduct : OnlinePaymentsKit.BasicPaymentProduct, OnlinePaymentsKit.PaymentItem {
   @objc public var fields: OnlinePaymentsKit.PaymentProductFields
   required public init(from decoder: any Swift.Decoder) throws
   override public func encode(to encoder: any Swift.Encoder) throws
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func paymentProductField(withId: Swift.String) -> OnlinePaymentsKit.PaymentProductField?
+  #endif
   @objc deinit
 }
 @objc(OPAmountOfMoney) public class AmountOfMoney : ObjectiveC.NSObject, Swift.Codable {
@@ -338,7 +398,9 @@ extension OnlinePaymentsKit.EncryptorError {
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPLabelTemplate) public class LabelTemplate : ObjectiveC.NSObject {
   @objc public var labelTemplateItems: [OnlinePaymentsKit.LabelTemplateItem]
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func mask(forAttributeKey key: Swift.String) -> Swift.String?
+  #endif
   @objc deinit
 }
 @objc(OPTooltip) public class ToolTip : ObjectiveC.NSObject, Swift.Codable {
@@ -370,7 +432,9 @@ extension OnlinePaymentsKit.EncryptorError {
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
   @objc public func maskedValue(forField paymentProductFieldId: Swift.String) -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func maskedValue(forField paymentProductFieldId: Swift.String, mask: Swift.String?) -> Swift.String
+  #endif
   @objc public func hasValue(forField paymentProductFieldId: Swift.String) -> Swift.Bool
   @objc(fieldIsReadOnly:) public func isReadOnly(field paymentProductFieldId: Swift.String) -> Swift.Bool
   @objc public var label: Swift.String {
@@ -413,17 +477,39 @@ extension OnlinePaymentsKit.EncryptorError {
   @objc public init(clientSessionId: Swift.String, customerId: Swift.String, baseURL: Swift.String, assetBaseURL: Swift.String, appIdentifier: Swift.String, loggingEnabled: Swift.Bool = false, sdkIdentifier: Swift.String)
   @objc convenience public init(clientSessionId: Swift.String, customerId: Swift.String, baseURL: Swift.String, assetBaseURL: Swift.String, appIdentifier: Swift.String, loggingEnabled: Swift.Bool = false)
   @objc public static func session(clientSessionId: Swift.String, customerId: Swift.String, baseURL: Swift.String, assetBaseURL: Swift.String, appIdentifier: Swift.String, loggingEnabled: Swift.Bool = false) -> OnlinePaymentsKit.Session
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(paymentProductsForContext:success:failure:apiFailure:) public func paymentProducts(for context: OnlinePaymentsKit.PaymentContext, success: ((_ paymentProducts: OnlinePaymentsKit.BasicPaymentProducts) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func paymentProductNetworks(forProductId paymentProductId: Swift.String, context: OnlinePaymentsKit.PaymentContext, success: ((_ paymentProductNetworks: OnlinePaymentsKit.PaymentProductNetworks) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(paymentItemsForContext:success:failure:apiFailure:) public func paymentItems(for context: OnlinePaymentsKit.PaymentContext, success: ((_ paymentItems: OnlinePaymentsKit.PaymentItems) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func paymentProduct(withId paymentProductId: Swift.String, context: OnlinePaymentsKit.PaymentContext, success: ((_ paymentProduct: OnlinePaymentsKit.PaymentProduct) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(IINDetailsForPartialCreditCardNumber:context:success:failure:apiFailure:) public func iinDetails(forPartialCreditCardNumber partialCreditCardNumber: Swift.String, context: OnlinePaymentsKit.PaymentContext?, success: ((_ iinDetailsResponse: OnlinePaymentsKit.IINDetailsResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(publicKeyWithSuccess:failure:apiFailure:) public func publicKey(success: ((_ publicKeyResponse: OnlinePaymentsKit.PublicKeyResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(preparePaymentRequest:success:failure:apiFailure:) public func prepare(_ paymentRequest: OnlinePaymentsKit.PaymentRequest, success: ((_ preparedPaymentRequest: OnlinePaymentsKit.PreparedPaymentRequest) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func currencyConversionQuote(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, partialCreditCardNumber: Swift.String, paymentProductId: Foundation.NSNumber? = nil, success: ((_ currencyConversionResponse: OnlinePaymentsKit.CurrencyConversionResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func currencyConversionQuote(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, token: Swift.String, success: ((_ currencyConversionResponse: OnlinePaymentsKit.CurrencyConversionResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func surchargeCalculation(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, partialCreditCardNumber: Swift.String, paymentProductId: Foundation.NSNumber? = nil, success: ((_ surchargeCalculationResponse: OnlinePaymentsKit.SurchargeCalculationResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func surchargeCalculation(amountOfMoney: OnlinePaymentsKit.AmountOfMoney, token: Swift.String, success: ((_ surchargeCalculationResponse: OnlinePaymentsKit.SurchargeCalculationResponse) -> Swift.Void)? = nil, failure: ((_ error: any Swift.Error) -> Swift.Void)? = nil, apiFailure: ((_ errorResponse: OnlinePaymentsKit.ErrorResponse) -> Swift.Void)? = nil)
+  #endif
   @objc deinit
 }
 @objc(OPPaymentProductGroup) public class PaymentProductGroup : ObjectiveC.NSObject, Swift.Codable, OnlinePaymentsKit.PaymentItem {
@@ -433,14 +519,20 @@ extension OnlinePaymentsKit.EncryptorError {
   @objc public var allowsTokenization: Swift.Bool
   @objc public var allowsRecurring: Swift.Bool
   @objc public var fields: OnlinePaymentsKit.PaymentProductFields
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
     @objc get
     @objc set
   }
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func accountOnFile(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.AccountOnFile?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func paymentProductField(withId paymentProductFieldId: Swift.String) -> OnlinePaymentsKit.PaymentProductField?
+  #endif
   @objc deinit
 }
 @objc(OPPreferredInputType) public enum PreferredInputType : Swift.Int {
@@ -449,7 +541,9 @@ extension OnlinePaymentsKit.EncryptorError {
   @objc(OPEmailAddressKeyboard) case emailAddressKeyboard
   @objc(OPPhoneNumberKeyboard) case phoneNumberKeyboard
   @objc(OPDateKeyboard) case dateKeyboard
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -479,19 +573,26 @@ extension OnlinePaymentsKit.EncryptorError {
   @objc public var accountsOnFile: [OnlinePaymentsKit.AccountOnFile] {
     @objc get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
     @objc get
     @objc set
   }
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(logoPathForPaymentProductGroup:) public func logoPath(forProductGroup identifier: Swift.String) -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func paymentProductGroup(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.BasicPaymentProductGroup?
+  #endif
   @objc public func sort()
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
 }
 @objc(OPPaymentContext) public class PaymentContext : ObjectiveC.NSObject, Swift.Decodable {
   @objc public var countryCode: Swift.String
+  @available(*, deprecated, message: "The 'locale' property is deprecated. Do not use it (no replacement needed).")
   @objc public var locale: Swift.String
   @objc public var amountOfMoney: OnlinePaymentsKit.AmountOfMoney
   @objc public var isRecurring: Swift.Bool
@@ -519,7 +620,9 @@ extension OnlinePaymentsKit.EncryptorError {
   @objc(OPValidationTypeRequired) case required
   @objc(OPValidationTypeType) case type
   @objc(OPValidationTypeTermsAndConditions) case termsAndConditions
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -531,7 +634,9 @@ extension OnlinePaymentsKit.EncryptorError {
   @objc(OPInvalidMerchant) case invalidMerchant
   @objc(OPNoRate) case noRate
   @objc(OPNotAvailable) case notAvailable
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -543,7 +648,9 @@ extension OnlinePaymentsKit.EncryptorError {
   case algorithmNotSupported
   case hmacGenerationFailed
   case badPublicKeyFormat
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
     get
@@ -553,9 +660,11 @@ extension OnlinePaymentsKit.EncryptorError {
   }
 }
 extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
+  #if compiler(>=5.3) && $NonescapableTypes
   public var errorDescription: Swift.String? {
     get
   }
+  #endif
 }
 @_hasMissingDesignatedInitializers @objc(OPIINDetail) public class IINDetail : ObjectiveC.NSObject, Swift.Codable {
   @objc public var paymentProductId: Swift.String
@@ -576,14 +685,20 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
   @objc public var paymentProduct302SpecificData: OnlinePaymentsKit.PaymentProduct302SpecificData?
   @objc public var paymentProduct320SpecificData: OnlinePaymentsKit.PaymentProduct320SpecificData?
   @objc public var usesRedirectionTo3rdParty: Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
     @objc get
     @objc set
   }
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func accountOnFile(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.AccountOnFile?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  #endif
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPDataRestrictions) public class DataRestrictions : ObjectiveC.NSObject, Swift.Codable {
@@ -616,13 +731,17 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
   @objc public var identifier: Swift.String
   @objc public var displayHints: [OnlinePaymentsKit.PaymentItemDisplayHints]
   @objc public var accountsOnFile: OnlinePaymentsKit.AccountsOnFile
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public var stringFormatter: OnlinePaymentsKit.StringFormatter? {
     @objc get
     @objc set
   }
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func accountOnFile(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.AccountOnFile?
+  #endif
   @objc deinit
 }
 @objc public protocol ValidationRule {
@@ -657,7 +776,9 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
   @objc(OPReadOnly) case readOnly
   @objc(OPCanWrite) case canWrite
   @objc(OPMustWrite) case mustWrite
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -671,7 +792,9 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPAccountsOnFile) public class AccountsOnFile : ObjectiveC.NSObject {
   @objc public var accountsOnFile: [OnlinePaymentsKit.AccountOnFile]
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func accountOnFile(withIdentifier identifier: Swift.String) -> OnlinePaymentsKit.AccountOnFile?
+  #endif
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc(OPValidatorRegularExpression) public class ValidatorRegularExpression : OnlinePaymentsKit.Validator, OnlinePaymentsKit.ValidationRule {
@@ -689,23 +812,37 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
   @objc public var formatter: OnlinePaymentsKit.StringFormatter
   @objc public var accountOnFile: OnlinePaymentsKit.AccountOnFile?
   @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(paymentProduct: OnlinePaymentsKit.PaymentProduct, accountOnFile: OnlinePaymentsKit.AccountOnFile? = nil, tokenize: Swift.Bool = false)
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
   @objc(setValueForField:value:) public func setValue(forField paymentProductFieldId: Swift.String, value: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc(valueForField:) public func getValue(forField paymentProductFieldId: Swift.String) -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func maskedValue(forField paymentProductFieldId: Swift.String) -> Swift.String?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func unmaskedValue(forField paymentProductFieldId: Swift.String) -> Swift.String?
+  #endif
   @objc(fieldIsPartOfAccountOnFile:) public func isPartOfAccountOnFile(field paymentProductFieldId: Swift.String) -> Swift.Bool
   @objc(fieldIsReadOnly:) public func isReadOnly(field paymentProductFieldId: Swift.String) -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public func mask(forField paymentProductFieldId: Swift.String) -> Swift.String?
+  #endif
   @objc public func validate() -> [OnlinePaymentsKit.ValidationError]
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public var maskedFieldValues: [Swift.String : Swift.String]? {
     @objc get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public var unmaskedFieldValues: [Swift.String : Swift.String]? {
     @objc get
   }
+  #endif
   @objc public func removeValue(forField paymentProductFieldId: Swift.String)
   @objc deinit
 }
@@ -737,7 +874,9 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
   @objc(OPNumericString) case numericString
   @objc(OPBooleanString) case boolString
   @objc(OPDateString) case dateString
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -767,8 +906,10 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
   @objc public var label: Swift.String?
   @objc public var logoPath: Swift.String
   @objc public var logoImage: UIKit.UIImage?
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, deprecated, message: "In a future release, this initializer will be removed.")
   @objc required public init?(json: [Swift.String : Any])
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit
@@ -786,7 +927,9 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
   @objc(OPDisplayElementTypeCurrency) case currency
   @objc(OPDisplayElementTypePercentage) case percentage
   @objc(OPDisplayElementTypeURI) case uri
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   @available(*, deprecated, message: "In a future release, this enum will be removed since it is not returned from the API.")
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -802,8 +945,10 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
 }
 @objc(OPPaymentProduct302SpecificData) public class PaymentProduct302SpecificData : ObjectiveC.NSObject, Swift.Codable {
   @objc public var networks: [Swift.String]
+  #if compiler(>=5.3) && $NonescapableTypes
   @available(*, deprecated, message: "In a future release, this initializer will be removed.")
   @objc required public init?(json: [Swift.String : Any])
+  #endif
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
@@ -822,7 +967,7 @@ extension OnlinePaymentsKit.EncryptDataError : Foundation.LocalizedError {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(OPValidator) public class Validator : ObjectiveC.NSObject, Swift.Codable {
   @objc public var errors: [OnlinePaymentsKit.ValidationError]
   @objc public var messageId: Swift.String
-  @objc public var validationType: OnlinePaymentsKit.ValidationType
+  @objc public var type: OnlinePaymentsKit.ValidationType
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
   @objc deinit

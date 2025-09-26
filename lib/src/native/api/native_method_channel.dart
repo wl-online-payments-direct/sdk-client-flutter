@@ -3,16 +3,18 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of '../../session.dart';
+
+import 'package:flutter/services.dart';
+import 'package:online_payments_sdk/src/native/api/native_sdk_interface.dart';
 
 /// An implementation of [_NativeSdkInterface] that uses method channels.
-class _NativeApiMethodChannel extends _NativeSdkInterface {
+class NativeApiMethodChannel extends NativeSdkInterface {
   /// The method channel used to interact with the native platform.
   final _methodChannel = const MethodChannel('online_payments_sdk');
 
@@ -24,15 +26,13 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
 
   @override
   Future<bool> createSession(String createSessionRequest) async {
-    final result = await _methodChannel
-        .invokeMethod('createSession', {"request": createSessionRequest});
+    final result = await _methodChannel.invokeMethod('createSession', {"request": createSessionRequest});
     return result;
   }
 
   @override
   Future<String> getIinDetails(String iinDetailsRequest) async {
-    final result = await _methodChannel
-        .invokeMethod('getIinDetails', {"request": iinDetailsRequest});
+    final result = await _methodChannel.invokeMethod('getIinDetails', {"request": iinDetailsRequest});
     return result;
   }
 
@@ -40,15 +40,14 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
   Future<String> getBasicPaymentProducts(
     String basicPaymentProductRequest,
   ) async {
-    final result = await _methodChannel.invokeMethod(
-        'getBasicPaymentProducts', {"request": basicPaymentProductRequest});
+    final result =
+        await _methodChannel.invokeMethod('getBasicPaymentProducts', {"request": basicPaymentProductRequest});
     return result;
   }
 
   @override
   Future<String> getPaymentProduct(String paymentProductRequest) async {
-    final result = await _methodChannel
-        .invokeMethod('getPaymentProduct', {"request": paymentProductRequest});
+    final result = await _methodChannel.invokeMethod('getPaymentProduct', {"request": paymentProductRequest});
     return result;
   }
 
@@ -56,9 +55,8 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
   Future<String> getPaymentProductNetworks(
     String paymentProductNetworksRequest,
   ) async {
-    final result = await _methodChannel.invokeMethod(
-        'getPaymentProductNetworks',
-        {"request": paymentProductNetworksRequest});
+    final result =
+        await _methodChannel.invokeMethod('getPaymentProductNetworks', {"request": paymentProductNetworksRequest});
     return result;
   }
 
@@ -66,8 +64,8 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
   Future<String> getCurrencyConversionQuote(
     String currencyConversionRequest,
   ) async {
-    final result = await _methodChannel.invokeMethod(
-        'getCurrencyConversionQuote', {"request": currencyConversionRequest});
+    final result =
+        await _methodChannel.invokeMethod('getCurrencyConversionQuote', {"request": currencyConversionRequest});
     return result;
   }
 
@@ -75,15 +73,14 @@ class _NativeApiMethodChannel extends _NativeSdkInterface {
   Future<String> getSurchargeCalculation(
     String surchargeCalculationRequest,
   ) async {
-    final result = await _methodChannel.invokeMethod(
-        'getSurchargeCalculation', {"request": surchargeCalculationRequest});
+    final result =
+        await _methodChannel.invokeMethod('getSurchargeCalculation', {"request": surchargeCalculationRequest});
     return result;
   }
 
   @override
   Future<String> preparePaymentRequest(String paymentRequest) async {
-    final result = await _methodChannel
-        .invokeMethod('preparePaymentRequest', {"request": paymentRequest});
+    final result = await _methodChannel.invokeMethod('preparePaymentRequest', {"request": paymentRequest});
     return result;
   }
 }

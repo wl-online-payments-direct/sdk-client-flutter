@@ -1,5 +1,5 @@
 group 'com.onlinepayments.client.flutter.online_payments_sdk'
-version '1.0-SNAPSHOT'
+version '2.0.0'
 
 buildscript {
     ext.kotlin_version = '2.0.0'
@@ -32,7 +32,8 @@ java {
 
 android {
     namespace "com.onlinepayments.client.flutter.online_payments_sdk"
-    compileSdk 34
+    compileSdk = 36
+    ndkVersion = "26.3.11579264"
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -42,13 +43,11 @@ android {
         minSdkVersion 19
         consumerProguardFiles 'proguard-rules.pro'
     }
-
-    dependencies {
-        implementation 'com.worldline-solutions:sdk-client-android:3.1.0'
-        implementation 'com.google.code.gson:gson:2.10.1'
-    }
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation-jvm:1.8.0'
+    implementation 'com.worldline-solutions:sdk-client-android:4.1.1'
+    implementation 'com.google.code.gson:gson:2.13.1'
+    implementation 'androidx.annotation:annotation-jvm:1.9.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
 }

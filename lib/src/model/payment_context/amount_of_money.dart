@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -26,8 +26,7 @@ class AmountOfMoney {
 
   AmountOfMoney(this.amount, this.currencyCode);
 
-  factory AmountOfMoney.fromJson(Map<String, dynamic> json) =>
-      _$AmountOfMoneyFromJson(json);
+  factory AmountOfMoney.fromJson(Map<String, dynamic> json) => _$AmountOfMoneyFromJson(json);
 
   Map<String, dynamic> toJson() => _$AmountOfMoneyToJson(this);
 }

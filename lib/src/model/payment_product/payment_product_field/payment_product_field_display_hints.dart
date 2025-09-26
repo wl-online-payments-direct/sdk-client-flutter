@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -32,11 +32,6 @@ class PaymentProductFieldDisplayHints {
   @JsonKey()
   final String placeholderLabel;
 
-  @Deprecated(
-      "In a future release, this field will be removed since it is not returned from the API.")
-  @JsonKey()
-  final String? link;
-
   @JsonKey()
   final String? mask;
 
@@ -49,15 +44,12 @@ class PaymentProductFieldDisplayHints {
   @JsonKey()
   final FormElement? formElement;
 
-  @Deprecated(
-      "In a future release, link will be removed from this constructor. This object should not be initialized, it is initialized automatically when returned from the API.")
   PaymentProductFieldDisplayHints(
     this.alwaysShow,
     this.obfuscate,
     this.displayOrder,
     this.label,
     this.placeholderLabel,
-    @Deprecated("In a future release, this field will be removed.") this.link,
     this.mask,
     this.preferredInputType,
     this.tooltip,
@@ -73,10 +65,8 @@ class PaymentProductFieldDisplayHints {
     this.mask,
     this.preferredInputType,
     this.tooltip,
-    this.formElement, {
-    @Deprecated("In a future release, this field will be removed.")
-    this.link = "",
-  });
+    this.formElement,
+  );
 
   const PaymentProductFieldDisplayHints.empty({
     this.alwaysShow = false,
@@ -84,8 +74,6 @@ class PaymentProductFieldDisplayHints {
     this.displayOrder = 0,
     this.label = "",
     this.placeholderLabel = "",
-    @Deprecated("In a future release, this field will be removed.")
-    this.link = "",
     this.mask = "",
     this.preferredInputType,
     this.tooltip,
@@ -95,6 +83,5 @@ class PaymentProductFieldDisplayHints {
   factory PaymentProductFieldDisplayHints.fromJson(Map<String, dynamic> json) =>
       _$PaymentProductFieldDisplayHintsFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$PaymentProductFieldDisplayHintsToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentProductFieldDisplayHintsToJson(this);
 }

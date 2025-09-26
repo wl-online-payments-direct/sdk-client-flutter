@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -18,18 +18,22 @@ part 'validation_rule_regular_expression.g.dart';
 @JsonSerializable()
 class ValidationRuleRegularExpression extends ValidationRule {
   @JsonKey(required: true)
-  final String regex;
+  final String pattern;
 
   ValidationRuleRegularExpression(
-    super.validationType,
+    super.type,
     super.messageId,
-    this.regex,
+    this.pattern,
   );
 
   factory ValidationRuleRegularExpression.fromJson(Map<String, dynamic> json) =>
       _$ValidationRuleRegularExpressionFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$ValidationRuleRegularExpressionToJson(this);
+  Map<String, dynamic> toJson() {
+    final json = _$ValidationRuleRegularExpressionToJson(this);
+    // Cross-platform compatibility: include both pattern (Android) and regularExpression (iOS)
+    json['regularExpression'] = pattern;
+    return json;
+  }
 }

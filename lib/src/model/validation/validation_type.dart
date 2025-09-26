@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -13,28 +13,29 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
 
 /// Enum containing all possible [ValidationRule] types.
+@JsonEnum()
 enum ValidationType {
-  @JsonValue(expirationDateKey)
+  @JsonValue("EXPIRATIONDATE")
   expirationDate,
-  @JsonValue(emailAddressKey)
+  @JsonValue("EMAILADDRESS")
   emailAddress,
-  @JsonValue(fixedListKey)
+  @JsonValue("FIXEDLIST")
   fixedList,
-  @JsonValue(ibanKey)
+  @JsonValue("IBAN")
   iban,
-  @JsonValue(lengthKey)
+  @JsonValue("LENGTH")
   length,
-  @JsonValue(luhnKey)
+  @JsonValue("LUHN")
   luhn,
-  @JsonValue(rangeKey)
+  @JsonValue("RANGE")
   range,
-  @JsonValue(regularExpressionKey)
+  @JsonValue("REGULAREXPRESSION")
   regularExpression,
-  @JsonValue(requiredKey)
+  @JsonValue("REQUIRED")
   required,
-  @JsonValue(typeKey)
+  @JsonValue("TYPE")
   type,
-  @JsonValue(termsAndConditionsKey)
+  @JsonValue("TERMSANDCONDITIONS")
   termsAndConditions;
 
   static const expirationDateKey = "EXPIRATIONDATE";

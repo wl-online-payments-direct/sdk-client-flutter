@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -39,18 +39,14 @@ class PaymentContext {
     this.forceBasicFlow = false,
   });
 
-  factory PaymentContext.fromJson(Map<String, dynamic> json) =>
-      _$PaymentContextFromJson(json);
+  factory PaymentContext.fromJson(Map<String, dynamic> json) => _$PaymentContextFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentContextToJson(this);
 
   PaymentContext copyWith(
-      {AmountOfMoney? amountOfMoney,
-      String? countryCode,
-      bool? isRecurring,
-      bool? forceBasicFlow}) {
-    return PaymentContext(amountOfMoney ?? this.amountOfMoney,
-        countryCode ?? this.countryCode, isRecurring ?? this.isRecurring,
+      {AmountOfMoney? amountOfMoney, String? countryCode, bool? isRecurring, bool? forceBasicFlow}) {
+    return PaymentContext(
+        amountOfMoney ?? this.amountOfMoney, countryCode ?? this.countryCode, isRecurring ?? this.isRecurring,
         forceBasicFlow: forceBasicFlow ?? this.forceBasicFlow);
   }
 }

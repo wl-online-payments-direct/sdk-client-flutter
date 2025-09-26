@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2024 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -33,6 +33,7 @@ const String paymentProductIdLabel = "Payment product ID";
 const String paymentProductIdTooltip =
     "The id of the Payment Product which should be retrieved.";
 const String retrievePaymentProductButtonLabel = "Retrieve payment product";
+const String pasteSessionDataButtonLabel = "Paste Session Data";
 
 /// Payment Product page
 const String productIdLabel = "Payment product ID:";

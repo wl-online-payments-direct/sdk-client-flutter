@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -21,13 +21,20 @@ class ValidationRuleFixedList extends ValidationRule {
   final List<String> allowedValues;
 
   ValidationRuleFixedList(
-    super.validationType,
+    super.type,
     super.messageId,
     this.allowedValues,
   );
 
-  factory ValidationRuleFixedList.fromJson(Map<String, dynamic> json) =>
-      _$ValidationRuleFixedListFromJson(json);
+  /// Custom fromJson that handles both iOS and Android property names
+  factory ValidationRuleFixedList.fromJson(Map<String, dynamic> json) {
+    if (json.containsKey('listValues')) {
+      // Android uses 'listValues'
+      json['allowedValues'] = json['listValues'];
+    }
+
+    return _$ValidationRuleFixedListFromJson(json);
+  }
 
   @override
   Map<String, dynamic> toJson() => _$ValidationRuleFixedListToJson(this);

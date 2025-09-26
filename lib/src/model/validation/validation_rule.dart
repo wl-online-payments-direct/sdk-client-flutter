@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -11,23 +11,22 @@
  */
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
-import 'package:online_payments_sdk/src/validator.dart';
+import 'package:online_payments_sdk/src/native/validation/validator.dart';
 
 part 'validation_rule.g.dart';
 
 /// Contains functionality to handle validation.
 @JsonSerializable()
 class ValidationRule implements ValidationRuleFunctions {
-  @JsonKey(required: true)
-  final ValidationType validationType;
+  @JsonKey(required: true, name: "type")
+  final ValidationType type;
 
   @JsonKey(required: true)
   final String messageId;
 
-  ValidationRule(this.validationType, this.messageId);
+  ValidationRule(this.type, this.messageId);
 
-  factory ValidationRule.fromJson(Map<String, dynamic> json) =>
-      _$ValidationRuleFromJson(json);
+  factory ValidationRule.fromJson(Map<String, dynamic> json) => _$ValidationRuleFromJson(json);
 
   Map<String, dynamic> toJson() => _$ValidationRuleToJson(this);
 
@@ -36,17 +35,14 @@ class ValidationRule implements ValidationRuleFunctions {
     required String fieldId,
     required PaymentRequest request,
   }) async {
-    return await ValidationRuleValidator
-        .validateValidationRuleForPaymentRequestAndFieldId(
-            request, fieldId, this);
+    return await ValidationRuleValidator.validateValidationRuleForPaymentRequestAndFieldId(request, fieldId, this);
   }
 
   @override
   Future<List<ValidationErrorMessage>> validateValue({
     required String value,
   }) async {
-    return await ValidationRuleValidator.validateValueForValidationRule(
-        value, this);
+    return await ValidationRuleValidator.validateValueForValidationRule(value, this);
   }
 }
 

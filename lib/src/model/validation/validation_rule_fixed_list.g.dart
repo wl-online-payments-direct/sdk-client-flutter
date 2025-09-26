@@ -1,15 +1,3 @@
-/*
- * Do not remove or alter the notices in this preamble.
- *
- * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
- *
- * Copyright © 2023 Worldline and/or its affiliates.
- *
- * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
- *
- * Please contact Worldline for questions regarding license and user rights.
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'validation_rule_fixed_list.dart';
@@ -22,10 +10,10 @@ ValidationRuleFixedList _$ValidationRuleFixedListFromJson(
     Map<String, dynamic> json) {
   $checkKeys(
     json,
-    requiredKeys: const ['validationType', 'messageId', 'allowedValues'],
+    requiredKeys: const ['type', 'messageId', 'allowedValues'],
   );
   return ValidationRuleFixedList(
-    $enumDecode(_$ValidationTypeEnumMap, json['validationType']),
+    $enumDecode(_$ValidationTypeEnumMap, json['type']),
     json['messageId'] as String,
     (json['allowedValues'] as List<dynamic>).map((e) => e as String).toList(),
   );
@@ -34,7 +22,7 @@ ValidationRuleFixedList _$ValidationRuleFixedListFromJson(
 Map<String, dynamic> _$ValidationRuleFixedListToJson(
         ValidationRuleFixedList instance) =>
     <String, dynamic>{
-      'validationType': _$ValidationTypeEnumMap[instance.validationType]!,
+      'type': _$ValidationTypeEnumMap[instance.type]!,
       'messageId': instance.messageId,
       'allowedValues': instance.allowedValues,
     };

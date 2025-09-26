@@ -3,17 +3,18 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-part of '../listeners.dart';
+import 'package:online_payments_sdk/src/model/models.dart';
+
+import 'api_response_listener_interface.dart';
 
 /// Listener used when preparing a [PaymentRequest] for creating a payment.
-final class PaymentRequestPreparedListener
-    extends ApiResponseInterface<PreparedPaymentRequest> {
+final class PaymentRequestPreparedListener extends ApiResponseInterface<PreparedPaymentRequest> {
   PaymentRequestPreparedListener({
     required void Function(PreparedPaymentRequest response) onSuccess,
     required void Function(ErrorResponse? apiError) onError,

@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -24,13 +24,13 @@ class PaymentRequestMaskedValueRequest {
   final String fieldId;
 
   PaymentRequestMaskedValueRequest(this.request, this.fieldId);
+
   PaymentRequestMaskedValueRequest.maskedValue(this.request, this.fieldId);
+
   PaymentRequestMaskedValueRequest.unmaskedValue(this.request, this.fieldId);
 
-  factory PaymentRequestMaskedValueRequest.fromJson(
-          Map<String, dynamic> json) =>
+  factory PaymentRequestMaskedValueRequest.fromJson(Map<String, dynamic> json) =>
       _$PaymentRequestMaskedValueRequestFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$PaymentRequestMaskedValueRequestToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentRequestMaskedValueRequestToJson(this);
 }

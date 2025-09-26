@@ -1,19 +1,19 @@
 {
-  "status" : "SUPPORTED",
-  "coBrands" : [
+  "status": "SUPPORTED",
+  "coBrands": [
     {
-      "isAllowedInContext" : true,
+      "isAllowedInContext": true,
       "cardType": "Debit",
-      "paymentProductId" : "3"
+      "paymentProductId": "3"
     },
     {
-      "isAllowedInContext" : false,
+      "isAllowedInContext": false,
       "cardType": "Prepaid",
-      "paymentProductId" : "119"
+      "paymentProductId": "119"
     }
   ],
-  "countryCode" : "US",
-  "isAllowedInContext" : true,
-  "paymentProductId" : "3",
+  "countryCode": "US",
+  "isAllowedInContext": true,
+  "paymentProductId": "3",
   "cardType": "Credit"
 }

@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -12,15 +12,20 @@
 
 package com.onlinepayments.client.flutter.online_payments_sdk.validator.models
 
-import com.onlinepayments.client.flutter.online_payments_sdk.validator.Validator
+import com.onlinepayments.sdk.client.android.model.PaymentRequest
 import com.onlinepayments.sdk.client.android.model.paymentproduct.PaymentProductField
 import com.onlinepayments.sdk.client.android.model.validation.ValidationErrorMessage
+import com.onlinepayments.sdk.client.android.model.paymentproduct.PaymentProduct
 
 data class PaymentProductFieldValidationRequest(
     val value: String,
-    val field: PaymentProductField
+    val field: PaymentProductField,
+    val paymentProduct: PaymentProduct
 ) : ValidationRequest {
     override fun validate(): List<ValidationErrorMessage> {
-        return field.validateValue(value)
+        val paymentRequest = PaymentRequest(paymentProduct)
+        paymentRequest.setValue(field.id, value)
+
+        return field.validateValue(paymentRequest)
     }
 }

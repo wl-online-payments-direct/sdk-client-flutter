@@ -4,7 +4,7 @@ PODS:
   - Flutter (1.0.0)
   - integration_test (0.0.1):
     - Flutter
-  - online_payments_sdk (1.1.2):
+  - online_payments_sdk (2.0.0):
     - Alamofire
     - CryptoSwift
     - Flutter
@@ -30,10 +30,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 02b772c9910e8eba1a079227c32fbd9e46c90a24
   CryptoSwift: b9c701d6f5011df23794dbf7f2e480a77835d83d
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  integration_test: ce0a3ffa1de96d1a89ca0ac26fca7ea18a749ef4
-  online_payments_sdk: 2a699b8411561f338cf9929cf404ad24f9906d6b
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
+  online_payments_sdk: 5ad9c59840f2ded04c2aa0edbd8bc867080843c0
 
-PODFILE CHECKSUM: 7be2f5f74864d463a8ad433546ed1de7e0f29aef
+PODFILE CHECKSUM: 83f6a08c58d4b249cda5d50acce1e33fac59623c
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

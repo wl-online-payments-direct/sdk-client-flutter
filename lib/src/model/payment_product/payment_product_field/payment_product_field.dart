@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -11,8 +11,8 @@
  */
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
-import 'package:online_payments_sdk/src/masker.dart';
-import 'package:online_payments_sdk/src/validator.dart';
+import 'package:online_payments_sdk/src/native/masking/masking_util.dart';
+import 'package:online_payments_sdk/src/native/validation/validator.dart';
 
 part 'payment_product_field.g.dart';
 
@@ -41,19 +41,15 @@ class PaymentProductField implements Comparable {
     this.dataRestrictions = const DataRestrictions.empty(),
   });
 
-  factory PaymentProductField.fromJson(Map<String, dynamic> json) =>
-      _$PaymentProductFieldFromJson(json);
+  factory PaymentProductField.fromJson(Map<String, dynamic> json) => _$PaymentProductFieldFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentProductFieldToJson(this);
 
   /// Returns a list of [ValidationErrorMessage] for the supplied [value].
   /// If the list is empty, you can assume that the supplied [value] is a valid value.
-  Future<List<ValidationErrorMessage>> validateValue(String value) async {
+  Future<List<ValidationErrorMessage>> validateValue(String value, PaymentProduct paymentProduct) async {
     final errorMessages =
-        await PaymentProductFieldValidator.validateValueForPaymentProductField(
-      value,
-      this,
-    );
+        await PaymentProductFieldValidator.validateValueForPaymentProductField(value, this, paymentProduct);
     errorMessageIds = errorMessages;
     return errorMessages;
   }
@@ -63,8 +59,7 @@ class PaymentProductField implements Comparable {
   Future<List<ValidationErrorMessage>> validateValueForPaymentRequest(
     PaymentRequest request,
   ) async {
-    final errorMessages = await PaymentRequestValidator
-        .validatePaymentProductFieldForPaymentRequest(id, request);
+    final errorMessages = await PaymentRequestValidator.validatePaymentProductFieldForPaymentRequest(id, request);
     errorMessageIds = errorMessages;
     return errorMessages;
   }
@@ -77,15 +72,12 @@ class PaymentProductField implements Comparable {
 
   /// Returns the unmasked [value] of the [PaymentProductField].
   Future<String> removeMask(String value) async {
-    final unmaskedValue =
-        await PaymentProductFieldMasker.removeMask(this, value);
+    final unmaskedValue = await PaymentProductFieldMasker.removeMask(this, value);
     return unmaskedValue;
   }
 
   @override
   int compareTo(other) {
-    return displayHints?.displayOrder
-            .compareTo(other.displayHints?.displayOrder) ??
-        1;
+    return displayHints?.displayOrder.compareTo(other.displayHints?.displayOrder) ?? 1;
   }
 }

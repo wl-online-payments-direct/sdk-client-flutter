@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -11,7 +11,7 @@
  */
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
-import 'package:online_payments_sdk/src/masker.dart';
+import 'package:online_payments_sdk/src/native/masking/masking_util.dart';
 
 part 'account_on_file.g.dart';
 
@@ -41,8 +41,7 @@ class AccountOnFile {
     this.label = "",
   });
 
-  factory AccountOnFile.fromJson(Map<String, dynamic> json) =>
-      _$AccountOnFileFromJson(json);
+  factory AccountOnFile.fromJson(Map<String, dynamic> json) => _$AccountOnFileFromJson(json);
 
   Map<String, dynamic> toJson() => _$AccountOnFileToJson(this);
 
@@ -71,8 +70,7 @@ class AccountOnFile {
     String fieldId,
     String mask,
   ) async {
-    final maskedValue =
-        await AccountOnFileMasker.customMaskedValue(this, fieldId, mask);
+    final maskedValue = await AccountOnFileMasker.customMaskedValue(this, fieldId, mask);
     return maskedValue;
   }
 }

@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -11,6 +11,7 @@
  */
 
 import 'dart:convert';
+
 import 'package:json_annotation/json_annotation.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
 
@@ -26,19 +27,11 @@ class NativeException {
   @JsonKey()
   String error = "";
 
-  @Deprecated(
-    "In a future release, this field will be removed. Use throwable instead.",
-  )
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  StackTrace? stackTrace;
-
   @JsonKey()
   Throwable? throwable;
 
   NativeException({
     this.error = "",
-    @Deprecated("In a future release, this field will be removed.")
-    this.stackTrace,
     this.throwable,
   });
 
@@ -49,8 +42,7 @@ class NativeException {
         throwable: throwable);
   }
 
-  factory NativeException.fromJson(Map<String, dynamic> json) =>
-      _$NativeExceptionFromJson(json);
+  factory NativeException.fromJson(Map<String, dynamic> json) => _$NativeExceptionFromJson(json);
 
   Map<String, dynamic> toJson() => _$NativeExceptionToJson(this);
 }

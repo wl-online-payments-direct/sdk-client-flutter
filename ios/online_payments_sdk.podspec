@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'online_payments_sdk'
-  s.version          = '1.3.3'
+  s.version          = '2.0.0'
   s.summary          = 'Online Payments Flutter SDK iOS Plugin'
   s.description      = <<-DESC
         iOS Plugin for the Online Payments Flutter SDK.
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.dependency 'Flutter'
   s.dependency 'Alamofire'
   s.dependency 'CryptoSwift'
-  s.vendored_framework = 'Frameworks/OnlinePaymentsKit.xcframework'
+  s.vendored_frameworks = 'Frameworks/OnlinePaymentsKit.xcframework'
   s.platform = :ios, '15.6'
 
   # Flutter.framework does not contain a i386 slice.

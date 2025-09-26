@@ -3,13 +3,15 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2024 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:online_payments_repository/models/session_input.dart';
 import 'package:online_payments_repository/providers/payment_product_state_provider.dart';
@@ -167,6 +169,8 @@ class _ClientSessionDetailsInput extends ConsumerWidget {
         _ClientApiUrlInput(),
         DefaultPadding(),
         _AssetUrlInput(),
+        DefaultPadding(),
+        _PasteSessionDataButton(),
       ],
     );
   }
@@ -261,6 +265,71 @@ class _PaymentProductIdInput extends ConsumerWidget {
           .read(sessionInputStateProvider.notifier)
           .updatePaymentProductId(value),
       validate: (value) => value.validateNullOrEmpty(),
+    );
+  }
+}
+
+class _PasteSessionDataButton extends ConsumerWidget {
+  const _PasteSessionDataButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SizedBox(
+      width: double.infinity,
+      child: FilledButton(
+        onPressed: () async {
+          try {
+            final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
+            if (clipboardData?.text != null) {
+              final jsonData = jsonDecode(clipboardData!.text!);
+              
+              final sessionInputNotifier = ref.read(sessionInputStateProvider.notifier);
+              
+              if (jsonData['assetUrl'] != null) {
+                sessionInputNotifier.updateAssetUrl(jsonData['assetUrl']);
+              }
+              if (jsonData['clientApiUrl'] != null) {
+                sessionInputNotifier.updateClientApiUrl(jsonData['clientApiUrl']);
+              }
+              if (jsonData['clientSessionId'] != null) {
+                sessionInputNotifier.updateClientSessionId(jsonData['clientSessionId']);
+              }
+              if (jsonData['customerId'] != null) {
+                sessionInputNotifier.updateCustomerId(jsonData['customerId']);
+              }
+              
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Session data pasted successfully!'),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+              }
+            }
+          } catch (e) {
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Error pasting session data: ${e.toString()}'),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
+          }
+        },
+        style: FilledButton.styleFrom(
+          padding: const EdgeInsets.all(12),
+          backgroundColor: Colors.blue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+        ),
+        child: const DefaultText(
+          strings.pasteSessionDataButtonLabel,
+          textColor: Colors.white,
+        )
+      ),
     );
   }
 }

@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -17,13 +17,11 @@ part 'validation_rule_terms_and_conditions.g.dart';
 /// Used for validation of terms and conditions.
 @JsonSerializable()
 class ValidationRuleTermsAndConditions extends ValidationRule {
-  ValidationRuleTermsAndConditions(super.validationType, super.messageId);
+  ValidationRuleTermsAndConditions(super.type, super.messageId);
 
-  factory ValidationRuleTermsAndConditions.fromJson(
-          Map<String, dynamic> json) =>
+  factory ValidationRuleTermsAndConditions.fromJson(Map<String, dynamic> json) =>
       _$ValidationRuleTermsAndConditionsFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() =>
-      _$ValidationRuleTermsAndConditionsToJson(this);
+  Map<String, dynamic> toJson() => _$ValidationRuleTermsAndConditionsToJson(this);
 }

@@ -19,7 +19,9 @@ mixin _$SessionContainer {
   Session? get session => throw _privateConstructorUsedError;
   PaymentContext get paymentContext => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionContainer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionContainerCopyWith<SessionContainer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$SessionContainerCopyWithImpl<$Res, $Val extends SessionContainer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionContainer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$SessionContainerImplCopyWithImpl<$Res>
       $Res Function(_$SessionContainerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionContainer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,7 +134,9 @@ class _$SessionContainerImpl implements _SessionContainer {
   @override
   int get hashCode => Object.hash(runtimeType, session, paymentContext);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionContainer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionContainerImplCopyWith<_$SessionContainerImpl> get copyWith =>
@@ -145,8 +153,11 @@ abstract class _SessionContainer implements SessionContainer {
   Session? get session;
   @override
   PaymentContext get paymentContext;
+
+  /// Create a copy of SessionContainer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionContainerImplCopyWith<_$SessionContainerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

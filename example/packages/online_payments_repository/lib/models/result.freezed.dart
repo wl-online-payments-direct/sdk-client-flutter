@@ -20,7 +20,9 @@ mixin _$Result<T> {
   ErrorResponse? get errorResponse => throw _privateConstructorUsedError;
   NativeException? get nativeException => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ResultCopyWith<T, Result<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +48,8 @@ class _$ResultCopyWithImpl<T, $Res, $Val extends Result<T>>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +96,8 @@ class __$$ResultImplCopyWithImpl<T, $Res>
       _$ResultImpl<T> _value, $Res Function(_$ResultImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,7 +158,9 @@ class _$ResultImpl<T> implements _Result<T> {
       errorResponse,
       nativeException);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResultImplCopyWith<T, _$ResultImpl<T>> get copyWith =>
@@ -171,8 +179,11 @@ abstract class _Result<T> implements Result<T> {
   ErrorResponse? get errorResponse;
   @override
   NativeException? get nativeException;
+
+  /// Create a copy of Result
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResultImplCopyWith<T, _$ResultImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

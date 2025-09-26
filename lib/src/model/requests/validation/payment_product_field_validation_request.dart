@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -23,12 +23,13 @@ class PaymentProductFieldValidationRequest {
   @JsonKey(required: true)
   final PaymentProductField field;
 
-  PaymentProductFieldValidationRequest(this.value, this.field);
+  @JsonKey(required: true)
+  final PaymentProduct paymentProduct;
 
-  factory PaymentProductFieldValidationRequest.fromJson(
-          Map<String, dynamic> json) =>
+  PaymentProductFieldValidationRequest(this.value, this.field, this.paymentProduct);
+
+  factory PaymentProductFieldValidationRequest.fromJson(Map<String, dynamic> json) =>
       _$PaymentProductFieldValidationRequestFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$PaymentProductFieldValidationRequestToJson(this);
+  Map<String, dynamic> toJson() => _$PaymentProductFieldValidationRequestToJson(this);
 }

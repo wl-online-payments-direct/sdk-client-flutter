@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -41,7 +41,7 @@ class ValidationRuleTypeAdapter : JsonDeserializer<AbstractValidationRule> {
         typeOfT: Type?,
         context: JsonDeserializationContext?
     ): AbstractValidationRule {
-        return when (val type = json?.asJsonObject?.get("validationType")?.asString) {
+        return when (val type = json?.asJsonObject?.get("type")?.asString) {
             ValidationType.LENGTH.name -> deserializeValidationRule<ValidationRuleLength>(context, json)
             ValidationType.RANGE.name -> deserializeValidationRule<ValidationRuleRange>(context, json)
             ValidationType.REGULAREXPRESSION.name -> deserializeValidationRule<ValidationRuleRegex>(context, json)

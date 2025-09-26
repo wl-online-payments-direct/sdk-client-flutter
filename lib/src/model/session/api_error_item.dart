@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -22,12 +22,6 @@ class ApiErrorItem {
   @JsonKey(required: false)
   String? category;
 
-  @Deprecated(
-    "In a future release, this field will be removed. Use errorCode instead.",
-  )
-  @JsonKey(required: false)
-  String code;
-
   @JsonKey(required: false)
   int? httpStatusCode;
 
@@ -43,14 +37,9 @@ class ApiErrorItem {
   @JsonKey(required: false)
   bool? retriable;
 
-  @Deprecated(
-    "In a future release, code will be removed from this constructor. This object should not be initialized, it is initialized automatically when returned from the API.",
-  )
   ApiErrorItem({
     required this.errorCode,
     this.category,
-    @Deprecated("In a future release, this field will be removed.")
-    this.code = "This error does not contain a code",
     this.httpStatusCode,
     this.id,
     this.message = "This error does not contain a message",
@@ -58,8 +47,7 @@ class ApiErrorItem {
     this.retriable = true,
   });
 
-  factory ApiErrorItem.fromJson(Map<String, dynamic> json) =>
-      _$ApiErrorItemFromJson(json);
+  factory ApiErrorItem.fromJson(Map<String, dynamic> json) => _$ApiErrorItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$ApiErrorItemToJson(this);
 }

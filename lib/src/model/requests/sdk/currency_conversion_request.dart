@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2024 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -36,10 +36,10 @@ class CurrencyConversionRequest {
     this.partialCreditCardNumber, {
     this.paymentProductId,
   });
+
   CurrencyConversionRequest.withToken(this.amountOfMoney, this.token);
 
-  factory CurrencyConversionRequest.fromJson(Map<String, dynamic> json) =>
-      _$CurrencyConversionRequestFromJson(json);
+  factory CurrencyConversionRequest.fromJson(Map<String, dynamic> json) => _$CurrencyConversionRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$CurrencyConversionRequestToJson(this);
 }

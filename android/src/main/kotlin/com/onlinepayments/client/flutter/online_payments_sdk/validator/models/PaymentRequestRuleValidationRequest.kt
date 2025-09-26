@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -23,12 +23,14 @@ data class PaymentRequestRuleValidationRequest(
     val rule: AbstractValidationRule
 ) : ValidationRequest {
     override fun validate(): List<ValidationErrorMessage> {
-        try {
-            return if (rule.validate(paymentRequest, fieldId)) emptyList() else listOf(
-                ValidationErrorMessage(rule.messageId, fieldId, rule)
-            )
+        return try {
+            if(rule.validate(paymentRequest, fieldId)) {
+                emptyList()
+            } else {
+                listOf(ValidationErrorMessage(rule.messageId, fieldId, rule))
+            }
         } catch (ipe: InvalidParameterException) {
-            return listOf(ValidationErrorMessage(ipe.message, fieldId, rule))
+            listOf(ValidationErrorMessage(ipe.message ?: "Unknown error", fieldId, rule))
         }
     }
 }

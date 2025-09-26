@@ -3,17 +3,18 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2023 Worldline and/or its affiliates.
+ * Copyright © 2025 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
-import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
+
+import 'package:json_annotation/json_annotation.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
-import 'package:online_payments_sdk/src/masker.dart';
-import 'package:online_payments_sdk/src/validator.dart';
+import 'package:online_payments_sdk/src/native/masking/masking_util.dart';
+import 'package:online_payments_sdk/src/native/validation/validator.dart';
 
 part 'payment_request.g.dart';
 
@@ -35,8 +36,7 @@ class PaymentRequest {
     this.accountOnFile,
   });
 
-  factory PaymentRequest.fromJson(Map<String, dynamic> json) =>
-      _$PaymentRequestFromJson(json);
+  factory PaymentRequest.fromJson(Map<String, dynamic> json) => _$PaymentRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentRequestToJson(this);
 
@@ -44,8 +44,7 @@ class PaymentRequest {
   /// If a field is prefilled from the [AccountOnFile], but it has been altered, it will be validated.
   /// Returns a list of [ValidationErrorMessage].
   Future<List<ValidationErrorMessage>> validate() async {
-    final errorMessages =
-        await PaymentRequestValidator.validatePaymentRequest(this);
+    final errorMessages = await PaymentRequestValidator.validatePaymentRequest(this);
     errorMessageIds = errorMessages;
     return errorMessages;
   }
@@ -68,25 +67,21 @@ class PaymentRequest {
 
   /// Returns the masked value for the given payment product [fieldId].
   Future<String> getMaskedValue(String fieldId) async {
-    final maskedValue =
-        await PaymentProductRequestMasker.maskedValue(this, fieldId);
+    final maskedValue = await PaymentProductRequestMasker.maskedValue(this, fieldId);
     return maskedValue;
   }
 
   /// Returns the unmasked value for the given payment product [fieldId].
   Future<String> getUnmaskedValue(String fieldId) async {
-    final unmaskedValue =
-        await PaymentProductRequestMasker.unmaskedValue(this, fieldId);
+    final unmaskedValue = await PaymentProductRequestMasker.unmaskedValue(this, fieldId);
     return unmaskedValue;
   }
 
   /// Returns a Map of a payment product field id and the corresponding masked value
   Future<Map<String, String>> getMaskedValues() async {
-    final allMaskedValuesString =
-        await PaymentProductRequestMasker.maskedValues(this);
+    final allMaskedValuesString = await PaymentProductRequestMasker.maskedValues(this);
     if (allMaskedValuesString != null) {
-      final Map<String, String> allMaskedValuesMap =
-          Map.castFrom(json.decode(allMaskedValuesString));
+      final Map<String, String> allMaskedValuesMap = Map.castFrom(json.decode(allMaskedValuesString));
       return allMaskedValuesMap;
     }
     return <String, String>{};
@@ -94,11 +89,9 @@ class PaymentRequest {
 
   /// Returns a Map of a payment product field id and the corresponding unmasked value
   Future<Map<String, String>> getUnmaskedValues() async {
-    final allUnmaskedValuesString =
-        await PaymentProductRequestMasker.unmaskedValues(this);
+    final allUnmaskedValuesString = await PaymentProductRequestMasker.unmaskedValues(this);
     if (allUnmaskedValuesString != null) {
-      final Map<String, String> allUnmaskedValuesMap =
-          Map.castFrom(json.decode(allUnmaskedValuesString));
+      final Map<String, String> allUnmaskedValuesMap = Map.castFrom(json.decode(allUnmaskedValuesString));
       return allUnmaskedValuesMap;
     }
     return <String, String>{};
