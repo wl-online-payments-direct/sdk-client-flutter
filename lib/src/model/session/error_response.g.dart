@@ -7,10 +7,7 @@ part of 'error_response.dart';
 // **************************************************************************
 
 ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['message'],
-  );
+  $checkKeys(json, requiredKeys: const ['message']);
   return ErrorResponse(
     json['message'] as String,
     apiError: json['apiError'] == null

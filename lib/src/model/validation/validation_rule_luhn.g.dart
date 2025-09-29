@@ -7,10 +7,7 @@ part of 'validation_rule_luhn.dart';
 // **************************************************************************
 
 ValidationRuleLuhn _$ValidationRuleLuhnFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['type', 'messageId'],
-  );
+  $checkKeys(json, requiredKeys: const ['type', 'messageId']);
   return ValidationRuleLuhn(
     $enumDecode(_$ValidationTypeEnumMap, json['type']),
     json['messageId'] as String,

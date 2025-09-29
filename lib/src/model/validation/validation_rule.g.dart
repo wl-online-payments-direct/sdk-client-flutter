@@ -7,10 +7,7 @@ part of 'validation_rule.dart';
 // **************************************************************************
 
 ValidationRule _$ValidationRuleFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['type', 'messageId'],
-  );
+  $checkKeys(json, requiredKeys: const ['type', 'messageId']);
   return ValidationRule(
     $enumDecode(_$ValidationTypeEnumMap, json['type']),
     json['messageId'] as String,

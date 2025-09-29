@@ -22,7 +22,7 @@ class NativeFuture<T> {
 
   NativeFuture(this._job, this._fromJson, this._listener);
 
-  awaitJob() async {
+  Future<Null> awaitJob() async {
     return await _job.then(
       (value) {
         final result = _parseResult(value);

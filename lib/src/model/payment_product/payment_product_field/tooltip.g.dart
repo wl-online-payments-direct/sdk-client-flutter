@@ -6,10 +6,9 @@ part of 'tooltip.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Tooltip _$TooltipFromJson(Map<String, dynamic> json) => Tooltip(
-      json['label'] as String,
-    );
+Tooltip _$TooltipFromJson(Map<String, dynamic> json) =>
+    Tooltip(json['label'] as String);
 
 Map<String, dynamic> _$TooltipToJson(Tooltip instance) => <String, dynamic>{
-      'label': instance.label,
-    };
+  'label': instance.label,
+};

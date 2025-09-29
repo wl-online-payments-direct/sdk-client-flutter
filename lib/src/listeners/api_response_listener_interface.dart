@@ -19,9 +19,9 @@ class ApiResponseInterface<T> {
 
   ApiResponseInterface(this.success, this.error, this.exception);
 
-  onSuccess(T response) => success(response);
+  void onSuccess(T response) => success(response);
 
-  onApiError(ErrorResponse? apiError) => error(apiError);
+  void onApiError(ErrorResponse? apiError) => error(apiError);
 
-  onException(NativeException? ex) => exception(ex);
+  void onException(NativeException? ex) => exception(ex);
 }

@@ -14,7 +14,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'session_input.freezed.dart';
 
 @freezed
-class SessionInput with _$SessionInput {
+abstract class SessionInput with _$SessionInput {
   const factory SessionInput({
     String? assetUrl,
     String? clientApiUrl,

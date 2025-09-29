@@ -6,14 +6,11 @@ part of 'form_element.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FormElement _$FormElementFromJson(Map<String, dynamic> json) => FormElement(
-      $enumDecode(_$FormElementTypeEnumMap, json['type']),
-    );
+FormElement _$FormElementFromJson(Map<String, dynamic> json) =>
+    FormElement($enumDecode(_$FormElementTypeEnumMap, json['type']));
 
 Map<String, dynamic> _$FormElementToJson(FormElement instance) =>
-    <String, dynamic>{
-      'type': _$FormElementTypeEnumMap[instance.type]!,
-    };
+    <String, dynamic>{'type': _$FormElementTypeEnumMap[instance.type]!};
 
 const _$FormElementTypeEnumMap = {
   FormElementType.text: 'text',

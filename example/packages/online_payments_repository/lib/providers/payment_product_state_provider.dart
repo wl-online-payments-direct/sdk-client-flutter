@@ -9,23 +9,21 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:online_payments_repository/providers/session_state_provider.dart';
 import 'package:online_payments_repository/models/result.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'payment_product_state_provider.g.dart';
+class PaymentProductStateNotifier extends StateNotifier<Result<PaymentProduct>> {
+  PaymentProductStateNotifier(this._ref) : super(Result<PaymentProduct>());
 
-@Riverpod()
-class PaymentProductState extends _$PaymentProductState {
-  @override
-  Result<PaymentProduct> build() {
-    return Result();
-  }
+  final Ref _ref;
 
   void getPaymentProduct(String? productId) {
-    final session = ref.read(sessionStateProvider).session;
-    final paymentContext = ref.read(sessionStateProvider).paymentContext;
+    final sessionContainer = _ref.read(sessionStateProvider);
+    final session = sessionContainer.session;
+    final paymentContext = sessionContainer.paymentContext;
 
     final request = PaymentProductRequest(
       paymentContext: paymentContext,
@@ -46,7 +44,7 @@ class PaymentProductState extends _$PaymentProductState {
       data: paymentProduct,
       errorResponse: null,
       nativeException: null,
-    ) as Result<PaymentProduct>;
+    );
   }
 
   void _saveErrorResponse(ErrorResponse? errorResponse) {
@@ -54,7 +52,7 @@ class PaymentProductState extends _$PaymentProductState {
       data: null,
       errorResponse: errorResponse,
       nativeException: null,
-    ) as Result<PaymentProduct>;
+    );
   }
 
   void _saveNativeException(NativeException? nativeException) {
@@ -62,6 +60,9 @@ class PaymentProductState extends _$PaymentProductState {
       data: null,
       errorResponse: null,
       nativeException: nativeException,
-    ) as Result<PaymentProduct>;
+    );
   }
 }
+
+final paymentProductStateProvider = StateNotifierProvider<PaymentProductStateNotifier, Result<PaymentProduct>>(
+    (ref) => PaymentProductStateNotifier(ref));

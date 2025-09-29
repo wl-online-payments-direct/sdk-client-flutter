@@ -7,20 +7,20 @@ part of 'account_on_file.dart';
 // **************************************************************************
 
 AccountOnFile _$AccountOnFileFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['id', 'paymentProductId'],
-  );
+  $checkKeys(json, requiredKeys: const ['id', 'paymentProductId']);
   return AccountOnFile(
     json['id'] as String,
     json['paymentProductId'] as String,
     displayHints: json['displayHints'] == null
         ? null
         : AccountOnFileDisplayHints.fromJson(
-            json['displayHints'] as Map<String, dynamic>),
-    attributes: (json['attributes'] as List<dynamic>?)
-            ?.map((e) =>
-                AccountOnFileAttribute.fromJson(e as Map<String, dynamic>))
+            json['displayHints'] as Map<String, dynamic>,
+          ),
+    attributes:
+        (json['attributes'] as List<dynamic>?)
+            ?.map(
+              (e) => AccountOnFileAttribute.fromJson(e as Map<String, dynamic>),
+            )
             .toList() ??
         const [],
     label: json['label'] as String? ?? "",

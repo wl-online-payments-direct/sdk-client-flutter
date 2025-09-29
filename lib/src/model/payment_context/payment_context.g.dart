@@ -13,7 +13,7 @@ PaymentContext _$PaymentContextFromJson(Map<String, dynamic> json) {
       'amountOfMoney',
       'countryCode',
       'isRecurring',
-      'forceBasicFlow'
+      'forceBasicFlow',
     ],
   );
   return PaymentContext(

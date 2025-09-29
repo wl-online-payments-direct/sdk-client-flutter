@@ -7,10 +7,7 @@ part of 'currency_conversion.dart';
 // **************************************************************************
 
 CurrencyConversion _$CurrencyConversionFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['dccSessionId', 'result', 'proposal'],
-  );
+  $checkKeys(json, requiredKeys: const ['dccSessionId', 'result', 'proposal']);
   return CurrencyConversion(
     json['dccSessionId'] as String,
     CurrencyConversionResult.fromJson(json['result'] as Map<String, dynamic>),

@@ -7,10 +7,7 @@ part of 'validation_rule_iban.dart';
 // **************************************************************************
 
 ValidationRuleIBAN _$ValidationRuleIBANFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['type', 'messageId'],
-  );
+  $checkKeys(json, requiredKeys: const ['type', 'messageId']);
   return ValidationRuleIBAN(
     $enumDecode(_$ValidationTypeEnumMap, json['type']),
     json['messageId'] as String,

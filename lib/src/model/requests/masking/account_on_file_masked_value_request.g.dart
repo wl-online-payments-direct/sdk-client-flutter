@@ -7,11 +7,9 @@ part of 'account_on_file_masked_value_request.dart';
 // **************************************************************************
 
 AccountOnFileMaskedValueRequest _$AccountOnFileMaskedValueRequestFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['accountOnFile', 'fieldId'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['accountOnFile', 'fieldId']);
   return AccountOnFileMaskedValueRequest(
     AccountOnFile.fromJson(json['accountOnFile'] as Map<String, dynamic>),
     json['fieldId'] as String,
@@ -19,8 +17,8 @@ AccountOnFileMaskedValueRequest _$AccountOnFileMaskedValueRequestFromJson(
 }
 
 Map<String, dynamic> _$AccountOnFileMaskedValueRequestToJson(
-        AccountOnFileMaskedValueRequest instance) =>
-    <String, dynamic>{
-      'accountOnFile': instance.accountOnFile.toJson(),
-      'fieldId': instance.fieldId,
-    };
+  AccountOnFileMaskedValueRequest instance,
+) => <String, dynamic>{
+  'accountOnFile': instance.accountOnFile.toJson(),
+  'fieldId': instance.fieldId,
+};

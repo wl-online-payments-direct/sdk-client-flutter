@@ -7,11 +7,9 @@ part of 'validation_rule_terms_and_conditions.dart';
 // **************************************************************************
 
 ValidationRuleTermsAndConditions _$ValidationRuleTermsAndConditionsFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['type', 'messageId'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['type', 'messageId']);
   return ValidationRuleTermsAndConditions(
     $enumDecode(_$ValidationTypeEnumMap, json['type']),
     json['messageId'] as String,
@@ -19,11 +17,11 @@ ValidationRuleTermsAndConditions _$ValidationRuleTermsAndConditionsFromJson(
 }
 
 Map<String, dynamic> _$ValidationRuleTermsAndConditionsToJson(
-        ValidationRuleTermsAndConditions instance) =>
-    <String, dynamic>{
-      'type': _$ValidationTypeEnumMap[instance.type]!,
-      'messageId': instance.messageId,
-    };
+  ValidationRuleTermsAndConditions instance,
+) => <String, dynamic>{
+  'type': _$ValidationTypeEnumMap[instance.type]!,
+  'messageId': instance.messageId,
+};
 
 const _$ValidationTypeEnumMap = {
   ValidationType.expirationDate: 'EXPIRATIONDATE',

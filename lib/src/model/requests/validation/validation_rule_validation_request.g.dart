@@ -7,11 +7,9 @@ part of 'validation_rule_validation_request.dart';
 // **************************************************************************
 
 ValidationRuleValidationRequest _$ValidationRuleValidationRequestFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['value', 'rule'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['value', 'rule']);
   return ValidationRuleValidationRequest(
     json['value'] as String,
     ValidationRule.fromJson(json['rule'] as Map<String, dynamic>),
@@ -19,8 +17,5 @@ ValidationRuleValidationRequest _$ValidationRuleValidationRequestFromJson(
 }
 
 Map<String, dynamic> _$ValidationRuleValidationRequestToJson(
-        ValidationRuleValidationRequest instance) =>
-    <String, dynamic>{
-      'value': instance.value,
-      'rule': instance.rule.toJson(),
-    };
+  ValidationRuleValidationRequest instance,
+) => <String, dynamic>{'value': instance.value, 'rule': instance.rule.toJson()};

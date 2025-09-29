@@ -7,11 +7,9 @@ part of 'validation_rule_email_address.dart';
 // **************************************************************************
 
 ValidationRuleEmailAddress _$ValidationRuleEmailAddressFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['type', 'messageId'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['type', 'messageId']);
   return ValidationRuleEmailAddress(
     $enumDecode(_$ValidationTypeEnumMap, json['type']),
     json['messageId'] as String,
@@ -19,11 +17,11 @@ ValidationRuleEmailAddress _$ValidationRuleEmailAddressFromJson(
 }
 
 Map<String, dynamic> _$ValidationRuleEmailAddressToJson(
-        ValidationRuleEmailAddress instance) =>
-    <String, dynamic>{
-      'type': _$ValidationTypeEnumMap[instance.type]!,
-      'messageId': instance.messageId,
-    };
+  ValidationRuleEmailAddress instance,
+) => <String, dynamic>{
+  'type': _$ValidationTypeEnumMap[instance.type]!,
+  'messageId': instance.messageId,
+};
 
 const _$ValidationTypeEnumMap = {
   ValidationType.expirationDate: 'EXPIRATIONDATE',

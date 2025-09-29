@@ -12,7 +12,8 @@
 import 'package:online_payments_repository/models/result.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
 
-/// Extension that processes a Result returned from the SDK. Based on whether the result was succesful, contains an [ErrorResponse] or a [NativeException], the supplied callback is executed.
+/// Extension that processes a Result returned from the SDK. Based on whether the result was successful,
+/// contains an [ErrorResponse] or a [NativeException], the supplied callback is executed.
 extension ProcessResultExtension<T> on Result<T> {
   void process({
     required Function(T) onData,
@@ -20,7 +21,7 @@ extension ProcessResultExtension<T> on Result<T> {
     required Function(NativeException) onNativeException,
   }) {
     if (data != null) {
-      onData(data);
+      onData(data as T);
     } else if (errorResponse != null) {
       onErrorResponse(errorResponse!);
     } else if (nativeException != null) {

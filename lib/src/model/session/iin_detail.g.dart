@@ -19,10 +19,10 @@ IinDetail _$IinDetailFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$IinDetailToJson(IinDetail instance) => <String, dynamic>{
-      'paymentProductId': instance.paymentProductId,
-      'isAllowedInContext': instance.isAllowedInContext,
-      'cardType': _$CardTypeEnumMap[instance.cardType]!,
-    };
+  'paymentProductId': instance.paymentProductId,
+  'isAllowedInContext': instance.isAllowedInContext,
+  'cardType': _$CardTypeEnumMap[instance.cardType]!,
+};
 
 const _$CardTypeEnumMap = {
   CardType.credit: 'Credit',

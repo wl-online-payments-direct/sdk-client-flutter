@@ -20,13 +20,13 @@ ValidationRuleLength _$ValidationRuleLengthFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ValidationRuleLengthToJson(
-        ValidationRuleLength instance) =>
-    <String, dynamic>{
-      'type': _$ValidationTypeEnumMap[instance.type]!,
-      'messageId': instance.messageId,
-      'minLength': instance.minLength,
-      'maxLength': instance.maxLength,
-    };
+  ValidationRuleLength instance,
+) => <String, dynamic>{
+  'type': _$ValidationTypeEnumMap[instance.type]!,
+  'messageId': instance.messageId,
+  'minLength': instance.minLength,
+  'maxLength': instance.maxLength,
+};
 
 const _$ValidationTypeEnumMap = {
   ValidationType.expirationDate: 'EXPIRATIONDATE',

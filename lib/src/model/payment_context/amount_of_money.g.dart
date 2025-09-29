@@ -7,10 +7,7 @@ part of 'amount_of_money.dart';
 // **************************************************************************
 
 AmountOfMoney _$AmountOfMoneyFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['amount', 'currencyCode'],
-  );
+  $checkKeys(json, requiredKeys: const ['amount', 'currencyCode']);
   return AmountOfMoney(
     (json['amount'] as num).toInt(),
     json['currencyCode'] as String,

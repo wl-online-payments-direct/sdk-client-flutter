@@ -13,7 +13,7 @@ SurchargeRate _$SurchargeRateFromJson(Map<String, dynamic> json) {
       'surchargeProductTypeId',
       'surchargeProductTypeVersion',
       'adValoremRate',
-      'specificRate'
+      'specificRate',
     ],
   );
   return SurchargeRate(

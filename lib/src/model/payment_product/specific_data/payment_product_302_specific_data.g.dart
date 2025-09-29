@@ -7,13 +7,11 @@ part of 'payment_product_302_specific_data.dart';
 // **************************************************************************
 
 PaymentProduct302SpecificData _$PaymentProduct302SpecificDataFromJson(
-        Map<String, dynamic> json) =>
-    PaymentProduct302SpecificData(
-      (json['networks'] as List<dynamic>).map((e) => e as String).toList(),
-    );
+  Map<String, dynamic> json,
+) => PaymentProduct302SpecificData(
+  (json['networks'] as List<dynamic>).map((e) => e as String).toList(),
+);
 
 Map<String, dynamic> _$PaymentProduct302SpecificDataToJson(
-        PaymentProduct302SpecificData instance) =>
-    <String, dynamic>{
-      'networks': instance.networks,
-    };
+  PaymentProduct302SpecificData instance,
+) => <String, dynamic>{'networks': instance.networks};

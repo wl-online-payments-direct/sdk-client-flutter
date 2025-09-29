@@ -7,11 +7,8 @@ part of 'payment_request_rule_validation_request.dart';
 // **************************************************************************
 
 PaymentRequestRuleValidationRequest
-    _$PaymentRequestRuleValidationRequestFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['paymentRequest', 'fieldId', 'rule'],
-  );
+_$PaymentRequestRuleValidationRequestFromJson(Map<String, dynamic> json) {
+  $checkKeys(json, requiredKeys: const ['paymentRequest', 'fieldId', 'rule']);
   return PaymentRequestRuleValidationRequest(
     PaymentRequest.fromJson(json['paymentRequest'] as Map<String, dynamic>),
     json['fieldId'] as String,
@@ -20,9 +17,9 @@ PaymentRequestRuleValidationRequest
 }
 
 Map<String, dynamic> _$PaymentRequestRuleValidationRequestToJson(
-        PaymentRequestRuleValidationRequest instance) =>
-    <String, dynamic>{
-      'paymentRequest': instance.paymentRequest.toJson(),
-      'fieldId': instance.fieldId,
-      'rule': instance.rule.toJson(),
-    };
+  PaymentRequestRuleValidationRequest instance,
+) => <String, dynamic>{
+  'paymentRequest': instance.paymentRequest.toJson(),
+  'fieldId': instance.fieldId,
+  'rule': instance.rule.toJson(),
+};

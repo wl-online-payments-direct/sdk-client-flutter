@@ -15,7 +15,7 @@ SdkSessionRequest _$SdkSessionRequestFromJson(Map<String, dynamic> json) {
       'clientApiUrl',
       'assetUrl',
       'appIdentifier',
-      'loggingEnabled'
+      'loggingEnabled',
     ],
   );
   return SdkSessionRequest(

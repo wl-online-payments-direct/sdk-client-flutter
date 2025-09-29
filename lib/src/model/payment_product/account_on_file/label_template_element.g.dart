@@ -7,15 +7,15 @@ part of 'label_template_element.dart';
 // **************************************************************************
 
 LabelTemplateElement _$LabelTemplateElementFromJson(
-        Map<String, dynamic> json) =>
-    LabelTemplateElement(
-      attributeKey: json['attributeKey'] as String,
-      mask: json['mask'] as String,
-    );
+  Map<String, dynamic> json,
+) => LabelTemplateElement(
+  attributeKey: json['attributeKey'] as String,
+  mask: json['mask'] as String,
+);
 
 Map<String, dynamic> _$LabelTemplateElementToJson(
-        LabelTemplateElement instance) =>
-    <String, dynamic>{
-      'attributeKey': instance.attributeKey,
-      'mask': instance.mask,
-    };
+  LabelTemplateElement instance,
+) => <String, dynamic>{
+  'attributeKey': instance.attributeKey,
+  'mask': instance.mask,
+};

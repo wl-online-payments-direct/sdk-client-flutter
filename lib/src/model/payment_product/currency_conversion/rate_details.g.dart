@@ -14,7 +14,7 @@ RateDetails _$RateDetailsFromJson(Map<String, dynamic> json) {
       'invertedExchangeRate',
       'markUpRate',
       'quotationDateTime',
-      'source'
+      'source',
     ],
   );
   return RateDetails(

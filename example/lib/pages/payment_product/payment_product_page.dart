@@ -36,8 +36,7 @@ class PaymentProductPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final paymentProduct =
-        ref.read(paymentProductStateProvider).data as PaymentProduct?;
+    final paymentProduct = ref.read(paymentProductStateProvider).data;
 
     return VerticalScrollView(
       childWidget: Column(

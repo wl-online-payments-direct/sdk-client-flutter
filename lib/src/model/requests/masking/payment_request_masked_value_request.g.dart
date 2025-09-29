@@ -7,11 +7,9 @@ part of 'payment_request_masked_value_request.dart';
 // **************************************************************************
 
 PaymentRequestMaskedValueRequest _$PaymentRequestMaskedValueRequestFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['request', 'fieldId'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['request', 'fieldId']);
   return PaymentRequestMaskedValueRequest(
     PaymentRequest.fromJson(json['request'] as Map<String, dynamic>),
     json['fieldId'] as String,
@@ -19,8 +17,8 @@ PaymentRequestMaskedValueRequest _$PaymentRequestMaskedValueRequestFromJson(
 }
 
 Map<String, dynamic> _$PaymentRequestMaskedValueRequestToJson(
-        PaymentRequestMaskedValueRequest instance) =>
-    <String, dynamic>{
-      'request': instance.request.toJson(),
-      'fieldId': instance.fieldId,
-    };
+  PaymentRequestMaskedValueRequest instance,
+) => <String, dynamic>{
+  'request': instance.request.toJson(),
+  'fieldId': instance.fieldId,
+};

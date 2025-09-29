@@ -7,10 +7,7 @@ part of 'api_error_item.dart';
 // **************************************************************************
 
 ApiErrorItem _$ApiErrorItemFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['errorCode'],
-  );
+  $checkKeys(json, requiredKeys: const ['errorCode']);
   return ApiErrorItem(
     errorCode: json['errorCode'] as String,
     category: json['category'] as String?,

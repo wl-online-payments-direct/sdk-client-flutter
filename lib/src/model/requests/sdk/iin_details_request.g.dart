@@ -13,8 +13,9 @@ IinDetailsRequest _$IinDetailsRequestFromJson(Map<String, dynamic> json) {
   );
   return IinDetailsRequest(
     partialCreditCardNumber: json['partialCreditCardNumber'] as String,
-    paymentContext:
-        PaymentContext.fromJson(json['paymentContext'] as Map<String, dynamic>),
+    paymentContext: PaymentContext.fromJson(
+      json['paymentContext'] as Map<String, dynamic>,
+    ),
   );
 }
 

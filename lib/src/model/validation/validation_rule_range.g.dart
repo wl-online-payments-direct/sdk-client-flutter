@@ -20,13 +20,13 @@ ValidationRuleRange _$ValidationRuleRangeFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ValidationRuleRangeToJson(
-        ValidationRuleRange instance) =>
-    <String, dynamic>{
-      'type': _$ValidationTypeEnumMap[instance.type]!,
-      'messageId': instance.messageId,
-      'minValue': instance.minValue,
-      'maxValue': instance.maxValue,
-    };
+  ValidationRuleRange instance,
+) => <String, dynamic>{
+  'type': _$ValidationTypeEnumMap[instance.type]!,
+  'messageId': instance.messageId,
+  'minValue': instance.minValue,
+  'maxValue': instance.maxValue,
+};
 
 const _$ValidationTypeEnumMap = {
   ValidationType.expirationDate: 'EXPIRATIONDATE',

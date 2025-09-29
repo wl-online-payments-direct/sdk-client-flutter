@@ -46,17 +46,18 @@ class PaymentRequest {
   Future<List<ValidationErrorMessage>> validate() async {
     final errorMessages = await PaymentRequestValidator.validatePaymentRequest(this);
     errorMessageIds = errorMessages;
+
     return errorMessages;
   }
 
   /// Sets the [value] for the [PaymentProductField] corresponding with the [paymentProductFieldId].
-  setValue(String paymentProductFieldId, String value) {
+  void setValue(String paymentProductFieldId, String value) {
     fieldValues.remove(paymentProductFieldId);
     fieldValues[paymentProductFieldId] = value;
   }
 
   /// Removes the value from the [PaymentProductField] corresponding with the [paymentProductFieldId].
-  removeValue(String paymentProductFieldId) {
+  void removeValue(String paymentProductFieldId) {
     fieldValues.remove(paymentProductFieldId);
   }
 
@@ -68,12 +69,14 @@ class PaymentRequest {
   /// Returns the masked value for the given payment product [fieldId].
   Future<String> getMaskedValue(String fieldId) async {
     final maskedValue = await PaymentProductRequestMasker.maskedValue(this, fieldId);
+
     return maskedValue;
   }
 
   /// Returns the unmasked value for the given payment product [fieldId].
   Future<String> getUnmaskedValue(String fieldId) async {
     final unmaskedValue = await PaymentProductRequestMasker.unmaskedValue(this, fieldId);
+
     return unmaskedValue;
   }
 
@@ -84,6 +87,7 @@ class PaymentRequest {
       final Map<String, String> allMaskedValuesMap = Map.castFrom(json.decode(allMaskedValuesString));
       return allMaskedValuesMap;
     }
+
     return <String, String>{};
   }
 
@@ -94,11 +98,12 @@ class PaymentRequest {
       final Map<String, String> allUnmaskedValuesMap = Map.castFrom(json.decode(allUnmaskedValuesString));
       return allUnmaskedValuesMap;
     }
+
     return <String, String>{};
   }
 
   /// Merges existing field values map with the [paymentProduct] values.
-  mergePaymentRequest({required PaymentProduct paymentProduct}) {
+  Map<String, String> mergePaymentRequest({required PaymentProduct paymentProduct}) {
     Map<String, String> newFieldValues = {};
     for (PaymentProductField field in paymentProduct.fields) {
       for (MapEntry<String, String> fieldValue in fieldValues.entries) {
@@ -107,6 +112,7 @@ class PaymentRequest {
         }
       }
     }
+
     return newFieldValues;
   }
 }

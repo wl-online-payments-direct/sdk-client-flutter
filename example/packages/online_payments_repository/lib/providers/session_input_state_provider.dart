@@ -9,17 +9,12 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:online_payments_repository/models/session_input.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'session_input_state_provider.g.dart';
-
-@Riverpod()
-class SessionInputState extends _$SessionInputState {
-  @override
-  SessionInput build() {
-    return const SessionInput();
-  }
+class SessionInputStateNotifier extends StateNotifier<SessionInput> {
+  SessionInputStateNotifier() : super(const SessionInput());
 
   void updateAssetUrl(String assetUrl) {
     state = state.copyWith(assetUrl: assetUrl);
@@ -41,3 +36,6 @@ class SessionInputState extends _$SessionInputState {
     state = state.copyWith(paymentProductId: paymentProductId);
   }
 }
+
+final sessionInputStateProvider = StateNotifierProvider<SessionInputStateNotifier, SessionInput>(
+    (ref) => SessionInputStateNotifier());

@@ -15,10 +15,10 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'result.freezed.dart';
 
 @freezed
-class Result<T> with _$Result {
+abstract class Result<T> with _$Result<T> {
   factory Result({
     T? data,
     ErrorResponse? errorResponse,
     NativeException? nativeException,
-  }) = _Result;
+  }) = _Result<T>;
 }

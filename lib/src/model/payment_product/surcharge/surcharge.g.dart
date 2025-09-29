@@ -14,7 +14,7 @@ Surcharge _$SurchargeFromJson(Map<String, dynamic> json) {
       'result',
       'netAmount',
       'surchargeAmount',
-      'totalAmount'
+      'totalAmount',
     ],
   );
   return Surcharge(
@@ -30,13 +30,13 @@ Surcharge _$SurchargeFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurchargeToJson(Surcharge instance) => <String, dynamic>{
-      'paymentProductId': instance.paymentProductId,
-      'result': _$SurchargeResultEnumMap[instance.result]!,
-      'netAmount': instance.netAmount.toJson(),
-      'surchargeAmount': instance.surchargeAmount.toJson(),
-      'totalAmount': instance.totalAmount.toJson(),
-      'surchargeRate': instance.surchargeRate?.toJson(),
-    };
+  'paymentProductId': instance.paymentProductId,
+  'result': _$SurchargeResultEnumMap[instance.result]!,
+  'netAmount': instance.netAmount.toJson(),
+  'surchargeAmount': instance.surchargeAmount.toJson(),
+  'totalAmount': instance.totalAmount.toJson(),
+  'surchargeRate': instance.surchargeRate?.toJson(),
+};
 
 const _$SurchargeResultEnumMap = {
   SurchargeResult.ok: 'OK',

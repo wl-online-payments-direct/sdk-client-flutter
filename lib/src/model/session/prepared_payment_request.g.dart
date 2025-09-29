@@ -7,7 +7,8 @@ part of 'prepared_payment_request.dart';
 // **************************************************************************
 
 PreparedPaymentRequest _$PreparedPaymentRequestFromJson(
-    Map<String, dynamic> json) {
+  Map<String, dynamic> json,
+) {
   $checkKeys(
     json,
     requiredKeys: const ['encryptedFields', 'encodedClientMetaInfo'],
@@ -19,8 +20,8 @@ PreparedPaymentRequest _$PreparedPaymentRequestFromJson(
 }
 
 Map<String, dynamic> _$PreparedPaymentRequestToJson(
-        PreparedPaymentRequest instance) =>
-    <String, dynamic>{
-      'encryptedFields': instance.encryptedFields,
-      'encodedClientMetaInfo': instance.encodedClientMetaInfo,
-    };
+  PreparedPaymentRequest instance,
+) => <String, dynamic>{
+  'encryptedFields': instance.encryptedFields,
+  'encodedClientMetaInfo': instance.encodedClientMetaInfo,
+};

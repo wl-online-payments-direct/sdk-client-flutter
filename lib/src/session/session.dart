@@ -82,12 +82,12 @@ final class Session {
   }
 
   /// Retrieves the public key as a [PublicKey] object from the Online Payments gateway.
-  getPublicKey({required PublicKeyResponseListener listener}) {
+  Future<void> getPublicKey({required PublicKeyResponseListener listener}) {
     return _nativeSdkCommunicator.listenForPublicKey(listener).awaitJob();
   }
 
   /// Retrieves the IinDetails as a [IinDetailsResponse] object from the Online Payments gateway with the use of a [IinDetailsRequest].
-  getIinDetails({
+  Future<void> getIinDetails({
     required IinDetailsRequest request,
     required IinLookupResponseListener listener,
   }) {
@@ -95,7 +95,7 @@ final class Session {
   }
 
   /// Retrieves the basic payment products as a [BasicPaymentProducts] object from the Online Payments gateway with the use of a [BasicPaymentProductsRequest].
-  getBasicPaymentProducts({
+  Future<void> getBasicPaymentProducts({
     required BasicPaymentProductsRequest request,
     required BasicPaymentProductsResponseListener listener,
   }) {
@@ -103,7 +103,7 @@ final class Session {
   }
 
   /// Retrieves a payment product as a [PaymentProduct] object from the Online Payments gateway with the use of a [PaymentProductRequest].
-  getPaymentProduct({
+  Future<void> getPaymentProduct({
     required PaymentProductRequest request,
     required PaymentProductResponseListener listener,
   }) {
@@ -111,7 +111,7 @@ final class Session {
   }
 
   /// Retrieves payment product networks as a [PaymentProductNetworks] object from the Online Payments gateway with the use of a [PaymentProductNetworksRequest].
-  getPaymentProductNetworks({
+  Future<void> getPaymentProductNetworks({
     required PaymentProductNetworksRequest request,
     required PaymentProductNetworksResponseListener listener,
   }) {
@@ -119,7 +119,7 @@ final class Session {
   }
 
   /// Retrieves a currency conversion quote as a [CurrencyConversion] object from the Online Payments gateway with the use of a [CurrencyConversionRequest].
-  getCurrencyConversionQuote({
+  Future<void> getCurrencyConversionQuote({
     required CurrencyConversionRequest request,
     required CurrencyConversionResponseListener listener,
   }) {
@@ -127,7 +127,7 @@ final class Session {
   }
 
   /// Retrieves a surcharge calculation as a [SurchargeCalculation] object from the Online Payments gateway with the use of a [SurchargeCalculationRequest].
-  getSurchargeCalculation({
+  Future<void> getSurchargeCalculation({
     required SurchargeCalculationRequest request,
     required SurchargeCalculationResponseListener listener,
   }) {
@@ -135,7 +135,7 @@ final class Session {
   }
 
   /// Prepares a payment request - supplied as a [SdkPreparePaymentRequest] - used for creating a payment via the Online Payments gateway, it is returned as a [PreparedPaymentRequest].
-  preparePaymentRequest({
+  Future<void> preparePaymentRequest({
     required SdkPreparePaymentRequest request,
     required PaymentRequestPreparedListener listener,
   }) {

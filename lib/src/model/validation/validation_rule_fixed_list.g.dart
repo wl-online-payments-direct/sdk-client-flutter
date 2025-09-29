@@ -7,11 +7,9 @@ part of 'validation_rule_fixed_list.dart';
 // **************************************************************************
 
 ValidationRuleFixedList _$ValidationRuleFixedListFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['type', 'messageId', 'allowedValues'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['type', 'messageId', 'allowedValues']);
   return ValidationRuleFixedList(
     $enumDecode(_$ValidationTypeEnumMap, json['type']),
     json['messageId'] as String,
@@ -20,12 +18,12 @@ ValidationRuleFixedList _$ValidationRuleFixedListFromJson(
 }
 
 Map<String, dynamic> _$ValidationRuleFixedListToJson(
-        ValidationRuleFixedList instance) =>
-    <String, dynamic>{
-      'type': _$ValidationTypeEnumMap[instance.type]!,
-      'messageId': instance.messageId,
-      'allowedValues': instance.allowedValues,
-    };
+  ValidationRuleFixedList instance,
+) => <String, dynamic>{
+  'type': _$ValidationTypeEnumMap[instance.type]!,
+  'messageId': instance.messageId,
+  'allowedValues': instance.allowedValues,
+};
 
 const _$ValidationTypeEnumMap = {
   ValidationType.expirationDate: 'EXPIRATIONDATE',

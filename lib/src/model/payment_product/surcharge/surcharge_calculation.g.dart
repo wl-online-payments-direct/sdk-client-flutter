@@ -7,10 +7,7 @@ part of 'surcharge_calculation.dart';
 // **************************************************************************
 
 SurchargeCalculation _$SurchargeCalculationFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['surcharges'],
-  );
+  $checkKeys(json, requiredKeys: const ['surcharges']);
   return SurchargeCalculation(
     (json['surcharges'] as List<dynamic>)
         .map((e) => Surcharge.fromJson(e as Map<String, dynamic>))
@@ -19,7 +16,7 @@ SurchargeCalculation _$SurchargeCalculationFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurchargeCalculationToJson(
-        SurchargeCalculation instance) =>
-    <String, dynamic>{
-      'surcharges': instance.surcharges.map((e) => e.toJson()).toList(),
-    };
+  SurchargeCalculation instance,
+) => <String, dynamic>{
+  'surcharges': instance.surcharges.map((e) => e.toJson()).toList(),
+};

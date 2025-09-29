@@ -7,11 +7,9 @@ part of 'validation_rule_expiration_date.dart';
 // **************************************************************************
 
 ValidationRuleExpirationDate _$ValidationRuleExpirationDateFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['type', 'messageId'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['type', 'messageId']);
   return ValidationRuleExpirationDate(
     $enumDecode(_$ValidationTypeEnumMap, json['type']),
     json['messageId'] as String,
@@ -19,11 +17,11 @@ ValidationRuleExpirationDate _$ValidationRuleExpirationDateFromJson(
 }
 
 Map<String, dynamic> _$ValidationRuleExpirationDateToJson(
-        ValidationRuleExpirationDate instance) =>
-    <String, dynamic>{
-      'type': _$ValidationTypeEnumMap[instance.type]!,
-      'messageId': instance.messageId,
-    };
+  ValidationRuleExpirationDate instance,
+) => <String, dynamic>{
+  'type': _$ValidationTypeEnumMap[instance.type]!,
+  'messageId': instance.messageId,
+};
 
 const _$ValidationTypeEnumMap = {
   ValidationType.expirationDate: 'EXPIRATIONDATE',

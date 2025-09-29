@@ -7,21 +7,23 @@ part of 'account_on_file_attribute.dart';
 // **************************************************************************
 
 AccountOnFileAttribute _$AccountOnFileAttributeFromJson(
-        Map<String, dynamic> json) =>
-    AccountOnFileAttribute(
-      key: json['key'] as String? ?? "",
-      value: json['value'] as String? ?? "",
-      status: $enumDecodeNullable(
-          _$AccountOnFileAttributeStatusEnumMap, json['status']),
-    );
+  Map<String, dynamic> json,
+) => AccountOnFileAttribute(
+  key: json['key'] as String? ?? "",
+  value: json['value'] as String? ?? "",
+  status: $enumDecodeNullable(
+    _$AccountOnFileAttributeStatusEnumMap,
+    json['status'],
+  ),
+);
 
 Map<String, dynamic> _$AccountOnFileAttributeToJson(
-        AccountOnFileAttribute instance) =>
-    <String, dynamic>{
-      'key': instance.key,
-      'value': instance.value,
-      'status': _$AccountOnFileAttributeStatusEnumMap[instance.status],
-    };
+  AccountOnFileAttribute instance,
+) => <String, dynamic>{
+  'key': instance.key,
+  'value': instance.value,
+  'status': _$AccountOnFileAttributeStatusEnumMap[instance.status],
+};
 
 const _$AccountOnFileAttributeStatusEnumMap = {
   AccountOnFileAttributeStatus.readOnly: 'READ_ONLY',

@@ -7,10 +7,7 @@ part of 'api_error.dart';
 // **************************************************************************
 
 ApiError _$ApiErrorFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['errorId', 'errors'],
-  );
+  $checkKeys(json, requiredKeys: const ['errorId', 'errors']);
   return ApiError(
     json['errorId'] as String,
     errors: (json['errors'] as List<dynamic>?)
@@ -20,6 +17,6 @@ ApiError _$ApiErrorFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ApiErrorToJson(ApiError instance) => <String, dynamic>{
-      'errorId': instance.errorId,
-      'errors': instance.errors?.map((e) => e.toJson()).toList(),
-    };
+  'errorId': instance.errorId,
+  'errors': instance.errors?.map((e) => e.toJson()).toList(),
+};

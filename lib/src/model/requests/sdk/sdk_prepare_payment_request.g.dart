@@ -7,18 +7,14 @@ part of 'sdk_prepare_payment_request.dart';
 // **************************************************************************
 
 SdkPreparePaymentRequest _$SdkPreparePaymentRequestFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['paymentRequest'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['paymentRequest']);
   return SdkPreparePaymentRequest(
     PaymentRequest.fromJson(json['paymentRequest'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$SdkPreparePaymentRequestToJson(
-        SdkPreparePaymentRequest instance) =>
-    <String, dynamic>{
-      'paymentRequest': instance.paymentRequest.toJson(),
-    };
+  SdkPreparePaymentRequest instance,
+) => <String, dynamic>{'paymentRequest': instance.paymentRequest.toJson()};

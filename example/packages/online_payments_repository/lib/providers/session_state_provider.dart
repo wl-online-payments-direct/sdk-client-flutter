@@ -9,23 +9,17 @@
  *
  * Please contact Worldline for questions regarding license and user rights.
  */
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:online_payments_repository/models/session_container.dart';
 import 'package:online_payments_repository/models/session_input.dart';
 import 'package:online_payments_repository/strings.dart' as strings;
 import 'package:online_payments_sdk/online_payments_sdk.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'session_state_provider.g.dart';
-
-@Riverpod(keepAlive: true)
-class SessionState extends _$SessionState {
-  @override
-  SessionContainer build() {
-    // Since this is only a simple example, the PaymentContext is hardcoded. Please refer to the full example (see the link in the README) if you want to enter your own Payment Context values.
-    return SessionContainer(
-      paymentContext: PaymentContext(AmountOfMoney(10, "USD"), "US", false),
-    );
-  }
+class SessionStateNotifier extends StateNotifier<SessionContainer> {
+  SessionStateNotifier() : super(SessionContainer(
+    paymentContext: PaymentContext(AmountOfMoney(10, "USD"), "US", false),
+  ));
 
   void setSession(SessionInput sessionInput) {
     final session = Session(
@@ -41,3 +35,6 @@ class SessionState extends _$SessionState {
     state = state.copyWith(session: session);
   }
 }
+
+final sessionStateProvider = StateNotifierProvider<SessionStateNotifier, SessionContainer>(
+    (ref) => SessionStateNotifier());

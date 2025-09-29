@@ -7,10 +7,7 @@ part of 'dcc_proposal.dart';
 // **************************************************************************
 
 DccProposal _$DccProposalFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['baseAmount', 'targetAmount', 'rate'],
-  );
+  $checkKeys(json, requiredKeys: const ['baseAmount', 'targetAmount', 'rate']);
   return DccProposal(
     AmountOfMoney.fromJson(json['baseAmount'] as Map<String, dynamic>),
     AmountOfMoney.fromJson(json['targetAmount'] as Map<String, dynamic>),

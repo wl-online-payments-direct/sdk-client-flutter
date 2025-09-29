@@ -1,3 +1,10 @@
+# 2.1.0
+
+# Changed:
+
+* Updated `freezed` dependency with the related dependencies to the latest version
+* Updated the SDK API annotations
+
 # 2.0.0
 
 ## API Changes

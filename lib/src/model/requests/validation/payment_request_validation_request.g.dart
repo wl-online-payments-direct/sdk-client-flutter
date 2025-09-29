@@ -7,11 +7,9 @@ part of 'payment_request_validation_request.dart';
 // **************************************************************************
 
 PaymentRequestValidationRequest _$PaymentRequestValidationRequestFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['paymentRequest'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['paymentRequest']);
   return PaymentRequestValidationRequest(
     PaymentRequest.fromJson(json['paymentRequest'] as Map<String, dynamic>),
     fieldId: json['fieldId'] as String?,
@@ -19,8 +17,8 @@ PaymentRequestValidationRequest _$PaymentRequestValidationRequestFromJson(
 }
 
 Map<String, dynamic> _$PaymentRequestValidationRequestToJson(
-        PaymentRequestValidationRequest instance) =>
-    <String, dynamic>{
-      'paymentRequest': instance.paymentRequest.toJson(),
-      'fieldId': instance.fieldId,
-    };
+  PaymentRequestValidationRequest instance,
+) => <String, dynamic>{
+  'paymentRequest': instance.paymentRequest.toJson(),
+  'fieldId': instance.fieldId,
+};

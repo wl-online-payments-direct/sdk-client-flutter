@@ -7,17 +7,17 @@ part of 'validation_error_message.dart';
 // **************************************************************************
 
 ValidationErrorMessage _$ValidationErrorMessageFromJson(
-        Map<String, dynamic> json) =>
-    ValidationErrorMessage(
-      errorMessage: json['errorMessage'] as String,
-      paymentProductFieldId: json['paymentProductFieldId'] as String,
-      rule: validationRuleFromJson(json['rule']),
-    );
+  Map<String, dynamic> json,
+) => ValidationErrorMessage(
+  errorMessage: json['errorMessage'] as String,
+  paymentProductFieldId: json['paymentProductFieldId'] as String,
+  rule: validationRuleFromJson(json['rule']),
+);
 
 Map<String, dynamic> _$ValidationErrorMessageToJson(
-        ValidationErrorMessage instance) =>
-    <String, dynamic>{
-      'errorMessage': instance.errorMessage,
-      'paymentProductFieldId': instance.paymentProductFieldId,
-      'rule': instance.rule,
-    };
+  ValidationErrorMessage instance,
+) => <String, dynamic>{
+  'errorMessage': instance.errorMessage,
+  'paymentProductFieldId': instance.paymentProductFieldId,
+  'rule': instance.rule,
+};

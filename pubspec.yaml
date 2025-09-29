@@ -1,6 +1,6 @@
 name: online_payments_sdk
 description: A Flutter package to communicate with the Online Payments platform
-version: 2.0.0
+version: 2.1.0
 homepage: https://docs.direct.worldline-solutions.com/en/index
 repository: https://github.com/wl-online-payments-direct/sdk-client-flutter
 issue_tracker: https://github.com/wl-online-payments-direct/sdk-client-flutter/issues
@@ -9,7 +9,7 @@ topics:
   - client
 
 environment:
-  sdk: '>=3.0.3 <4.0.0'
+  sdk: '>=3.8.0 <4.0.0'
   flutter: ">=3.3.0"
 
 dependencies:
@@ -20,22 +20,18 @@ dependencies:
   js: ^0.6.7
   plugin_platform_interface: ^2.1.8
   json_annotation: ^4.9.0
-  freezed: ^2.5.2
-  freezed_annotation: ^2.4.1
-  flutter_riverpod: ^2.5.1
-  riverpod_annotation: ^2.3.5
+  freezed: ^3.2.3
+  freezed_annotation: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
-  json_serializable: ^6.8.0
-  build_runner: ^2.4.9
-  riverpod_generator: ^2.4.0
-  riverpod_lint: ^2.3.10
+  flutter_lints: ^6.0.0
+  json_serializable: ^6.11.1
+  build_runner: ^2.7.1
 
 dependency_overrides:
-  analyzer_plugin: ^0.13.0
+  analyzer_plugin: ^0.13.4
 
 flutter:
   plugin:

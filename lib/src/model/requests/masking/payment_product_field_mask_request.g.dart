@@ -7,11 +7,9 @@ part of 'payment_product_field_mask_request.dart';
 // **************************************************************************
 
 PaymentProductFieldMaskRequest _$PaymentProductFieldMaskRequestFromJson(
-    Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['field', 'value'],
-  );
+  Map<String, dynamic> json,
+) {
+  $checkKeys(json, requiredKeys: const ['field', 'value']);
   return PaymentProductFieldMaskRequest(
     PaymentProductField.fromJson(json['field'] as Map<String, dynamic>),
     json['value'] as String,
@@ -19,8 +17,8 @@ PaymentProductFieldMaskRequest _$PaymentProductFieldMaskRequestFromJson(
 }
 
 Map<String, dynamic> _$PaymentProductFieldMaskRequestToJson(
-        PaymentProductFieldMaskRequest instance) =>
-    <String, dynamic>{
-      'field': instance.field.toJson(),
-      'value': instance.value,
-    };
+  PaymentProductFieldMaskRequest instance,
+) => <String, dynamic>{
+  'field': instance.field.toJson(),
+  'value': instance.value,
+};

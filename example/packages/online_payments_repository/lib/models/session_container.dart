@@ -15,7 +15,7 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 part 'session_container.freezed.dart';
 
 @freezed
-class SessionContainer with _$SessionContainer {
+abstract class SessionContainer with _$SessionContainer {
   const factory SessionContainer({
     Session? session,
     required PaymentContext paymentContext,

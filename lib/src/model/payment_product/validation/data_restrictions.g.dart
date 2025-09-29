@@ -7,10 +7,7 @@ part of 'data_restrictions.dart';
 // **************************************************************************
 
 DataRestrictions _$DataRestrictionsFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['isRequired'],
-  );
+  $checkKeys(json, requiredKeys: const ['isRequired']);
   return DataRestrictions(
     isRequired: json['isRequired'] as bool,
     validators: json['validators'] as Map<String, dynamic>,
