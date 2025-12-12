@@ -342,6 +342,56 @@ void main() {
         expect(maskedValue, isA<String>());
         expect(maskedValue.trim(), equals("1234 5678 9012 3456"));
       });
+
+      testWidgets('payment request masked value for single field', (WidgetTester tester) async {
+        final paymentProduct = await TestHelpers.getPaymentProduct(session, "1");
+        final paymentRequest = TestHelpers.createTestPaymentRequest(paymentProduct!);
+
+        // Test getting masked value for card number field
+        final maskedCardNumber = await paymentRequest.getMaskedValue("cardNumber");
+        expect(maskedCardNumber, isA<String>());
+        expect(maskedCardNumber, isNotEmpty);
+        expect(maskedCardNumber, contains(" "), reason: "Card number should be masked with spaces");
+      });
+
+      testWidgets('payment request unmasked value for single field', (WidgetTester tester) async {
+        final paymentProduct = await TestHelpers.getPaymentProduct(session, "1");
+        final paymentRequest = TestHelpers.createTestPaymentRequest(paymentProduct!);
+
+        // Test getting unmasked value for card number field
+        final unmaskedCardNumber = await paymentRequest.getUnmaskedValue("cardNumber");
+        expect(unmaskedCardNumber, isA<String>());
+        expect(unmaskedCardNumber, isNotEmpty);
+        expect(unmaskedCardNumber, isNot(contains(" ")), reason: "Unmasked card number should not have spaces");
+      });
+
+      testWidgets('payment request all masked values', (WidgetTester tester) async {
+        final paymentProduct = await TestHelpers.getPaymentProduct(session, "1");
+        final paymentRequest = TestHelpers.createTestPaymentRequest(paymentProduct!);
+
+        // Test getting all masked values
+        final allMaskedValues = await paymentRequest.getMaskedValues();
+        expect(allMaskedValues, isA<Map<String, String>>());
+        expect(allMaskedValues, isNotEmpty);
+
+        // Verify card number is masked
+        expect(allMaskedValues.containsKey("cardNumber"), true);
+        expect(allMaskedValues["cardNumber"], contains(" "), reason: "Card number should be masked with spaces");
+      });
+
+      testWidgets('payment request all unmasked values', (WidgetTester tester) async {
+        final paymentProduct = await TestHelpers.getPaymentProduct(session, "1");
+        final paymentRequest = TestHelpers.createTestPaymentRequest(paymentProduct!);
+
+        // Test getting all unmasked values
+        final allUnmaskedValues = await paymentRequest.getUnmaskedValues();
+        expect(allUnmaskedValues, isA<Map<String, String>>());
+        expect(allUnmaskedValues, isNotEmpty);
+
+        // Verify card number is unmasked
+        expect(allUnmaskedValues.containsKey("cardNumber"), true);
+        expect(allUnmaskedValues["cardNumber"], isNot(contains(" ")), reason: "Unmasked card number should not have spaces");
+      });
     });
   });
 }

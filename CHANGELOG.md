@@ -1,6 +1,15 @@
+# 2.2.0
+
+## Changed
+
+* Changed the project's Swift explicit minimum version compatibility to 5.3.
+* Removed explicit Swift dependencies that are not required in production.
+* Updated Android dependency and aligned the package requirements with it.
+* Fixed Android bug in earlier versions with enabled TLS protocols that were not supported.
+
 # 2.1.0
 
-# Changed:
+## Changed:
 
 * Updated `freezed` dependency with the related dependencies to the latest version
 * Updated the SDK API annotations

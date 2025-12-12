@@ -1,23 +1,14 @@
 PODS:
-  - Alamofire (5.9.0)
-  - CryptoSwift (1.8.1)
   - Flutter (1.0.0)
   - integration_test (0.0.1):
     - Flutter
-  - online_payments_sdk (2.0.0):
-    - Alamofire
-    - CryptoSwift
+  - online_payments_sdk (2.2.0):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - online_payments_sdk (from `.symlinks/plugins/online_payments_sdk/ios`)
-
-SPEC REPOS:
-  trunk:
-    - Alamofire
-    - CryptoSwift
 
 EXTERNAL SOURCES:
   Flutter:
@@ -28,11 +19,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/online_payments_sdk/ios"
 
 SPEC CHECKSUMS:
-  Alamofire: 02b772c9910e8eba1a079227c32fbd9e46c90a24
-  CryptoSwift: b9c701d6f5011df23794dbf7f2e480a77835d83d
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
-  online_payments_sdk: 5ad9c59840f2ded04c2aa0edbd8bc867080843c0
+  online_payments_sdk: 12f97c6cdb50e9df20bcebb744a6c5fa9b503954
 
 PODFILE CHECKSUM: 83f6a08c58d4b249cda5d50acce1e33fac59623c
 

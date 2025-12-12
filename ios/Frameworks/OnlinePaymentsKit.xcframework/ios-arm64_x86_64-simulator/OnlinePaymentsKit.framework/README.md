@@ -37,7 +37,7 @@ security credentials to guarantee the safe transit of your customers' data durin
         - [PaymentProductField](#paymentproductfield)
         - [PaymentRequest](#paymentrequest)
             - [Tokenize payment request](#tokenize-payment-request)
-            - [Set field values to payment request](#set-field-values-to-payment-request)
+            - [Set field values to the payment request](#set-field-values-to-the-payment-request)
             - [Validate payment request](#validate-payment-request)
             - [Encrypt payment request](#encrypt-payment-request)
         - [IINDetails](#iindetails)
@@ -51,7 +51,11 @@ security credentials to guarantee the safe transit of your customers' data durin
 
 ## Installation
 
-The Online Payments Swift SDK is available via multiple installation methods:
+The Online Payments Swift SDK library is built for library distribution, which means it can be used
+in Xcode and Swift versions later than the one used for compilation. The minimal Swift version the
+library supports is 5.3.
+
+The SDK is available via multiple installation methods:
 
 - [Swift Package Manager](#swift-package-manager) (recommended),
 - [CocoaPods](#cocoapods-deprecated) **(deprecated)**,
@@ -62,8 +66,8 @@ The Online Payments Swift SDK is available via multiple installation methods:
 
 **Recommended installation method.**
 
-You can add the Swift SDK with Swift Package Manager, by configuring your project
-as following:
+You can add the Swift SDK with Swift Package Manager by configuring your project
+as follows:
 
 1. Go to your project's settings and click the 'Package Dependencies' tab.
 2. Click the '+' to add a new Swift Package dependency.
@@ -134,7 +138,7 @@ carthage update --use-xcframeworks
 
 Navigate to the ```Carthage/Build``` directory, which was created in the same directory as
 where the ```.xcodeproj``` or ```.xcworkspace``` is. Inside this directory the ```.xcframework```
-bundle is stored. Drag the ```.xcframework``` into the "Framework, Libraries and Embedded Content"
+bundle is stored. Drag the ```.xcframework``` into the "Framework, Libraries, and Embedded Content"
 section of the desired target. Make sure that it is set to "Embed & Sign".
 
 ## Objective-C Compatibility
@@ -156,7 +160,7 @@ or [UIKit](https://github.com/online-payments/sdk-client-swift-example) example 
 To accept your first payment using the SDK, complete the steps below. Also see the
 section [Payment Steps](#payment-steps) for more details on these steps.
 
-1. Request your server to create a Client Session, using one of our available Server SDKs. Return the session details to
+1. Request your server to create a Client Session using one of our available Server SDKs. Return the session details to
    your app.
 2. Initialize the SDK using the session details.
 
@@ -172,7 +176,7 @@ section [Payment Steps](#payment-steps) for more details on these steps.
     ```
 
 3. Configure your payment context.
-    
+
     ```swift
     let amountOfMoney = AmountOfMoney(
         totalAmount: 1298, // in cents
@@ -251,7 +255,7 @@ section [Payment Steps](#payment-steps) for more details on these steps.
     )
     ```
 
-8. Request your server to create a payment request, using the Server API's Create Payment call. Provide the encrypted
+8. Request your server to create a payment request using the Server API's Create Payment call. Provide the encrypted
    data in the `encryptedCustomerInput` field.
 
 ## Type definitions
@@ -279,7 +283,7 @@ convert the response to Swift objects that may contain convenience functions.
 
 You are able to log requests made to the server and responses received from the server. By default, logging is disabled,
 and it is important to always disable it in production. You are able to enable the logging in two ways. Either by
-setting its value when creating a Session - as shown in the code fragment above - or by setting its value after the
+setting its value when creating a Session (as shown in the code fragment above) or by setting its value after the
 Session was already created.
 
 ```swift
@@ -289,7 +293,7 @@ session.loggingEnabled = true
 ### PaymentContext
 
 `PaymentContext` is an object that contains the context/settings of the upcoming payment. It is required as an argument
-to some of the methods of the `Session` instance. This object can contain the following details:
+to some methods of the `Session` instance. This object can contain the following details:
 
 ```swift
 public class PaymentContext {
@@ -305,7 +309,7 @@ This object contains the available Payment Items for the current payment. Use th
 request the data.
 
 The object you will receive is `PaymentItems`, which contains three lists. One for all available `BasicPaymentItem`s,
-one for all grouped `BasicPaymentItem`s and one that contains all `AccountOnFile`s.
+one for all grouped `BasicPaymentItem`s, and one that contains all `AccountOnFile`s.
 
 The code fragment below shows how to get the `PaymentItems` instance.
 
@@ -328,13 +332,13 @@ session.paymentItems(
 
 The SDK offers two types to represent information about payment products:
 `BasicPaymentProduct` and `PaymentProduct`. Practically speaking, instances of `BasicPaymentProduct` contain only the
-information that is required to display a simple list of payment products from which the customer can select one.
+information required to display a simple list of payment products from which the customer can select one.
 
 The type `PaymentProduct` contains additional information, such as the specific form fields that the customer is
 required to fill out. This type is typically used when creating a form that asks the customer for their details. See
 the [PaymentProduct](#paymentproduct) section for more info.
 
-Below is an example for how to obtain display names and assets for the Visa product (id: 1).
+Below is an example of how to get display names and assets for the Visa product (id: 1).
 
 ```swift
 let basicPaymentProduct = paymentItems.paymentItem(withIdentifier: "1")
@@ -374,7 +378,7 @@ information, such as a bank account number, a credit card number, or an expiry d
 Each payment product can have several fields that need to be completed to process a payment. Instances of
 `BasicPaymentProduct` do not contain any information about these fields.
 
-Information about the fields of payment products are represented by instances of `PaymentProductField`, which are
+Information about the fields of payment products is represented by instances of `PaymentProductField`, which are
 contained in instances of `PaymentProduct`. The class `PaymentProductField` is described further down below. The
 `Session` instance can be used to retrieve instances of `PaymentProduct`, as shown in the following code fragment.
 
@@ -452,7 +456,7 @@ let paymentRequest = PaymentRequest(
 paymentRequest.accountOnFile = accountOnFile
 ```
 
-#### Set field values to payment request
+#### Set field values to the payment request
 
 Once a payment request has been configured, the value for the payment product's fields can be supplied as shown below.
 The identifiers of the fields, such as "cardNumber" and "cvv" in the example below, are used to set the values of the
@@ -517,14 +521,14 @@ session.prepare(
 ```
 
 > Although it is possible to use your own encryption algorithms to encrypt a payment request, we advise you to use the
-> encryption functionality that is offered by the SDK.
+> encryption functionality offered by the SDK.
 
 ### IINDetails
 
 The first six digits of a payment card number are known as the *Issuer Identification Number (IIN)*. As soon as the
-first 6 digits of the card number have been captured, you can use the `session.iinDetails` call to retrieve the payment
-product and network that are associated with the provided IIN. Then you can verify the card type and check if you can
-accept this card.
+first six digits of the card number have been captured, you can use the `session.iinDetails` call to retrieve the
+payment product and network that are associated with the provided IIN. Then you can verify the card type and check if
+you can accept this card.
 
 An instance of `Session` can be used to check which payment product is associated with an IIN. This is done via the
 `session.iinDetails` function. The result of this check is an instance of `IINDetailsResponse`. This class has a
@@ -535,7 +539,7 @@ customer by showing the appropriate payment product logo.
 The `IINDetailsResponse` has a status property represented through the `IINStatus` enum. The `IINStatus` enum values
 are:
 
-- `supported` indicates that the IIN is associated with a payment product that is supported by our platform.
+- `supported` indicates that the IIN is associated with a payment product supported by our platform.
 - `unknown` indicates that the IIN is not recognized.
 - `notEnoughDigits"` indicates that fewer than six digits have been provided and that the IIN check cannot be performed.
 - `existingButNotAllowed` indicates that the provided IIN is recognized, but that the corresponding product is not
@@ -558,8 +562,8 @@ session.iinDetails(
 )
 ```
 
-Some cards are dual branded and could be processed as either a local card _(with a local brand)_ or an international
-card _(with an international brand)_. In case you are not setup to process these local cards, this API call will not
+Some cards are co-branded and could be processed as either a local card _(with a local brand)_ or an international
+card _(with an international brand)_. In case you are not set up to process these local cards, this API call will not
 return that card type in its response.
 
 ### StringFormatter
@@ -586,7 +590,7 @@ Setting up and completing a payment using the Swift SDK involves the following s
 
 ### 1. Initialize the Swift SDK for this payment
 
-This is done using information such as session and customer identifiers, connection URLs and payment context information
+This is done using information such as session and customer identifiers, connection URLs, and payment context information
 like currency and total amount.
 
 ```swift
@@ -613,7 +617,7 @@ let paymentContext = PaymentContext(
 
 > A successful response from Create Session can be used directly as input for the Session constructor.
 
-- `clientSessionId` / `customerId` properties are used to authentication purposes. These can be obtained your server,
+- `clientSessionId` / `customerId` properties are used to authentication purposes. These can be obtained by your server
   using one of our available Server SDKs.
 - The `baseURL` and `assetBaseURL` are the URLs the SDK should connect to. The SDK communicates with two types of
   servers to perform its tasks. One type of server offers the Client API as discussed above. And the other type of
@@ -663,7 +667,7 @@ the `PaymentRequest`.
 
 ### 3. Retrieve payment product details
 
-Retrieve all the details about the payment product - including its fields - that the customer needs to provide based on
+Retrieve all the details about the payment product, including its fields, that the customer needs to provide based on
 the selected payment product or account on file. Your app can use this information to create the payment product details
 screen.
 
@@ -684,10 +688,10 @@ session.paymentProduct(
 ```
 
 Once the customer has selected a payment product or stored account on file, the SDK can request which information needs
-to be provided by the customer in order to perform a payment. When a single product is retrieved, the SDK provides a
+to be provided by the customer to perform a payment. When a single product is retrieved, the SDK provides a
 list of all the fields that should be rendered, including display hints and validation rules. If the customer selected
-an account on file, information that is already in this account on file can be prefilled in the input fields, instead of
-requesting it from the customer. The data that can be stored and prefilled on behalf of the customer is of course in
+an account on file, information already in this account on file can be prefilled in the input fields, instead of
+requesting it from the customer. The data that can be stored and prefilled on behalf of the customer is, of course, in
 line with applicable regulations. For instance, for a credit card transaction the customer is still expected to input
 the CVC. The details entered by the customer are stored in a `PaymentRequest`. Again, the example app can be used as the
 starting point to create your screen. If there is no additional information that needs to be entered, this screen can be
@@ -698,7 +702,7 @@ skipped.
 Encrypt all the provided payment information in the `PaymentRequest` using `session.prepare`. This function will return
 a `PreparedPaymentRequest` which contains the encrypted payment request fields and encoded client meta info. The
 encrypted fields result is in a format that can be processed by the Server API. The only thing you need to provide to
-the SDK are the values the customer provided in your screens. Once you have retrieved the encrypted fields String from
+the SDK is the values the customer provided in your screens. Once you have retrieved the encrypted fields String from
 the `PreparedPaymentRequest`, your application should send it to your server, which in turn should forward it to the
 Server API.
 
@@ -717,16 +721,16 @@ session.prepare(
 )
 ```
 
-All the heavy lifting, such as requesting a public key from the Client API, performing the encryption and BASE-64
+All the heavy lifting, such as requesting a public key from the Client API, performing the encryption, and BASE-64
 encoding the result into one string, is done for you by the SDK. You only need to make sure that the `PaymentRequest`
 object contains all the information entered by the user.
 
-From your server, make a create payment request, providing the encrypted data in the `encryptedCustomerInput` field.
+From your server, make a Create payment request, providing the encrypted data in the `encryptedCustomerInput` field.
 
 ### 5. Response from the Server API call
 
 It is up to you and your application to show the customer the correct screens based on the response of the Server API
 call. In some cases, the payment has not finished yet since the customer must be redirected to a third party (such as a
-bank or PayPal) to authorise the payment. See the Server API documentation on what kinds of responses the Server API can
+bank or PayPal) to authorize the payment. See the Server API documentation on what kinds of responses the Server API can
 return. The Client API has no part in the remainder of the payment.
 

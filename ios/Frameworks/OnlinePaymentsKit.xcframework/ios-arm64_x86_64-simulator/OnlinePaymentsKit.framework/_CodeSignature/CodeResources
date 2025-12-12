@@ -6,7 +6,7 @@
 	<dict>
 		<key>CHANGELOG.md</key>
 		<data>
-		9PapyqFqy5fKe3ltSajggd5Dlo0=
+		AAgK21eydB96jGswNt1o/Nbi/Hs=
 		</data>
 		<key>Headers/OnlinePaymentsKit-Swift.h</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		kh2zQWGhNX3fFKBHG/E2epcF+cE=
+		cqqqp62jWaLJKVLAXCF1+PPJ5G0=
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ftDfZLslfwt9W1Iub2rgVSirgOE=
+		FkpAlMLrImql4wsRQBW9w7PTsV4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -158,11 +158,11 @@
 		</data>
 		<key>OnlinePaymentsKit.podspec</key>
 		<data>
-		22el05AzZ/bXq7Zhy+CGMyx8ogA=
+		gw+ppqaxZJYHO5C4iF4MZxwKbBQ=
 		</data>
 		<key>README.md</key>
 		<data>
-		2gWOa0pK9s5Rnc4fwG1KXDXCM/4=
+		taXFgqsv87Jx0ijwdNPCKPqx6aw=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -171,7 +171,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qgQ9Ju56EicW1Rff3ZQjJcntiLE6GNMqiQoneK7NKwI=
+			jjnXcY+vpM9CHgNHO9eWo7QlyHYUl3/7GjZA/RQHbj8=
 			</data>
 		</dict>
 		<key>Headers/OnlinePaymentsKit-Swift.h</key>
@@ -213,7 +213,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MrZIv20QO+MY6rT0SyGzoMe8zpLj04Q4pQk5ft1GrRM=
+			io5bEa9D3hePzqrijwlHierGRmHL5F6qnn8TeyEgxSA=
 			</data>
 		</dict>
 		<key>Modules/OnlinePaymentsKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -248,7 +248,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AXMJ9iFsaSBPYref5crqM2FEHAqPCuJzlr9AiNUR7tw=
+			Prz9WiHbRHORIIw74kS+m8FfOE2gV/X4+VghhpcT2Mo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -430,14 +430,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			epEj6dab4j8s+NsIoipmPBRIIA+4g2SWEiM+QhWZrQ4=
+			ae1eV8gGH6f54B+OAj9S+q2ZayNPEXjMd0nmF4tUl+g=
 			</data>
 		</dict>
 		<key>README.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nht62AMw3uQGqaJXK0Y+k8uUq2uBfMTijapO3ItWHIc=
+			tKIv2qudLxqwa4ZKNvaW3abImK+qmU/Z8AUX+eMTt1A=
 			</data>
 		</dict>
 	</dict>

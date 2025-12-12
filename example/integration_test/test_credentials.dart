@@ -79,7 +79,7 @@ class TestCredentials {
           'Authorization': authHeader,
         },
         body: requestBody,
-      );
+      ).timeout(const Duration(seconds: 5));
 
       if (response.statusCode == 201) {
         // Parse the response

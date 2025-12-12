@@ -1,3 +1,9 @@
+# 4.2.3
+
+## Changed
+
+* Changed the project's Swift explicit minimum version compatibility to 5.3.
+
 # 4.2.2
 
 ## Changed
