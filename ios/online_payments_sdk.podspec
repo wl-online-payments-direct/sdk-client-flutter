@@ -13,9 +13,9 @@ Pod::Spec.new do |s|
   s.license          = { :type => "MIT", :file => "../LICENSE" }
   s.author           = "Worldline"
   s.source           = { :path => '.' }
-  s.source_files     = 'Classes/**/*'
+  s.source_files     = 'online_payments_sdk/Sources/online_payments_sdk/**/*.swift'
   s.dependency 'Flutter'
-  s.vendored_frameworks = 'Frameworks/OnlinePaymentsKit.xcframework'
+  s.vendored_frameworks = 'online_payments_sdk/Frameworks/OnlinePaymentsKit.xcframework'
   s.platform = :ios, '15.6'
 
   # Flutter.framework does not contain a i386 slice.
