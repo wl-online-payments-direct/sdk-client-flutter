@@ -1,6 +1,6 @@
 name: online_payments_sdk
 description: A Flutter package to communicate with the Online Payments platform
-version: 2.2.0
+version: 3.0.0
 homepage: https://docs.direct.worldline-solutions.com/en/index
 repository: https://github.com/wl-online-payments-direct/sdk-client-flutter
 issue_tracker: https://github.com/wl-online-payments-direct/sdk-client-flutter/issues
@@ -10,37 +10,16 @@ topics:
 
 environment:
   sdk: '>=3.8.0 <4.0.0'
-  flutter: ">=3.3.0"
+  flutter: '>=3.32.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_web_plugins:
-    sdk: flutter
-  js: ^0.6.7
-  plugin_platform_interface: ^2.1.8
-  json_annotation: ^4.9.0
-  freezed: ^3.2.3
-  freezed_annotation: ^3.1.0
+  http: ^1.2.0
+  pointycastle: ^3.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  json_serializable: ^6.11.1
   build_runner: ^2.7.1
-
-dependency_overrides:
-  analyzer_plugin: ^0.13.4
-
-flutter:
-  plugin:
-    platforms:
-      android:
-        package: com.onlinepayments.client.flutter.online_payments_sdk
-        pluginClass: OnlinePaymentsPlugin
-      ios:
-        pluginClass: OnlinePaymentsPlugin
-      web:
-        pluginClass: OnlinePaymentsWeb
-        fileName: src/web/online_payments_web.dart

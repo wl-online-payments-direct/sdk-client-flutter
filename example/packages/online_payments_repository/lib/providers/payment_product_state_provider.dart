@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2025 Worldline and/or its affiliates.
+ * Copyright © 2026 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -20,47 +20,19 @@ class PaymentProductStateNotifier extends StateNotifier<Result<PaymentProduct>> 
 
   final Ref _ref;
 
-  void getPaymentProduct(String? productId) {
+  Future<void> getPaymentProduct(String? productId) async {
     final sessionContainer = _ref.read(sessionStateProvider);
-    final session = sessionContainer.session;
+    final sdk = sessionContainer.sdk;
     final paymentContext = sessionContainer.paymentContext;
 
-    final request = PaymentProductRequest(
-      paymentContext: paymentContext,
-      productId: productId ?? "1",
-    );
+    final id = int.tryParse(productId ?? "1") ?? 1;
 
-    final listener = PaymentProductResponseListener(
-      onSuccess: _savePaymentProduct,
-      onError: _saveErrorResponse,
-      onException: _saveNativeException,
-    );
-
-    session?.getPaymentProduct(request: request, listener: listener);
-  }
-
-  void _savePaymentProduct(PaymentProduct paymentProduct) {
-    state = state.copyWith(
-      data: paymentProduct,
-      errorResponse: null,
-      nativeException: null,
-    );
-  }
-
-  void _saveErrorResponse(ErrorResponse? errorResponse) {
-    state = state.copyWith(
-      data: null,
-      errorResponse: errorResponse,
-      nativeException: null,
-    );
-  }
-
-  void _saveNativeException(NativeException? nativeException) {
-    state = state.copyWith(
-      data: null,
-      errorResponse: null,
-      nativeException: nativeException,
-    );
+    try {
+      final product = await sdk!.getPaymentProduct(id, paymentContext);
+      state = state.copyWith(data: product, error: null);
+    } on SdkError catch (e) {
+      state = state.copyWith(data: null, error: e);
+    }
   }
 }
 

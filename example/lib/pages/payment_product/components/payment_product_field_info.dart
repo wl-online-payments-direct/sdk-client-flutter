@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2025 Worldline and/or its affiliates.
+ * Copyright © 2026 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -118,9 +118,9 @@ class _DataRestrictionsInfo extends StatelessWidget {
                 textColor: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
-              for (final validationRule in dataRestrictions.validators.keys)
+              for (final validationRule in dataRestrictions.validationRules)
                 DefaultText(
-                  "- $validationRule",
+                  "- ${validationRule.type.name}",
                   textColor: Colors.white,
                 ),
             ],
@@ -132,7 +132,7 @@ class _DataRestrictionsInfo extends StatelessWidget {
 }
 
 class _DisplayHintsInfo extends StatelessWidget {
-  final PaymentProductFieldDisplayHints displayHints;
+  final ProductFieldDisplayHints displayHints;
 
   const _DisplayHintsInfo({required this.displayHints});
 
@@ -156,10 +156,10 @@ class _DisplayHintsInfo extends StatelessWidget {
                 value: displayHints.displayOrder.toString(),
                 textColor: Colors.white,
               ),
-              displayHints.formElement.runIfNotNull(
-                (formElement) => LabelValueRow(
+              displayHints.formElementType.runIfNotNull(
+                (formElementType) => LabelValueRow(
                   label: strings.formElementTypeLabel,
-                  value: formElement.type.name,
+                  value: formElementType,
                   textColor: Colors.white,
                 ),
               ),
@@ -181,21 +181,23 @@ class _DisplayHintsInfo extends StatelessWidget {
                 value: displayHints.obfuscate.toString(),
                 textColor: Colors.white,
               ),
-              LabelValueRow(
-                label: strings.placeholderLabel,
-                value: displayHints.placeholderLabel,
-                textColor: Colors.white,
+              displayHints.placeholderLabel.runIfNotNull(
+                (placeholder) => LabelValueRow(
+                  label: strings.placeholderLabel,
+                  value: placeholder,
+                  textColor: Colors.white,
+                ),
               ),
               displayHints.preferredInputType.runIfNotNull(
                 (preferredInputType) => NextLineValue(
                   label: strings.preferredInputTypeLabel,
-                  value: preferredInputType.name,
+                  value: preferredInputType,
                 ),
               ),
-              displayHints.tooltip.runIfNotNull(
+              displayHints.tooltipLabel.runIfNotNull(
                 (tooltip) => NextLineValue(
                   label: strings.tooltipLabel,
-                  value: tooltip.label,
+                  value: tooltip,
                 ),
               )
             ],

@@ -1,0 +1,35 @@
+/*
+ * Do not remove or alter the notices in this preamble.
+ *
+ * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
+ *
+ * Copyright © 2026 Worldline and/or its affiliates.
+ *
+ * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
+ *
+ * Please contact Worldline for questions regarding license and user rights.
+ */
+
+import '../rule_validation_result.dart';
+import 'validation_rule.dart';
+
+/// Used for validation of whether a value conforms to a regular expression.
+class ValidationRuleRegularExpression extends ValidationRule {
+  final String pattern;
+
+  ValidationRuleRegularExpression(
+    super.type,
+    super.messageId,
+    this.pattern,
+  );
+
+  @override
+  RuleValidationResult validate(String value) {
+    final valid = RegExp(pattern).hasMatch(value);
+
+    return RuleValidationResult(
+      valid: valid,
+      message: valid ? '' : 'Provided value is not in the correct format.',
+    );
+  }
+}

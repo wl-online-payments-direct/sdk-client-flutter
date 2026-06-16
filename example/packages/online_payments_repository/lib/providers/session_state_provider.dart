@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2025 Worldline and/or its affiliates.
+ * Copyright © 2026 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -18,21 +18,23 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 
 class SessionStateNotifier extends StateNotifier<SessionContainer> {
   SessionStateNotifier() : super(SessionContainer(
-    paymentContext: PaymentContext(AmountOfMoney(10, "USD"), "US", false),
+    paymentContext: PaymentContext(AmountOfMoney(10, "USD"), "US", isRecurring: false),
   ));
 
   void setSession(SessionInput sessionInput) {
-    final session = Session(
-      sessionInput.clientSessionId ?? "",
-      sessionInput.customerId ?? "",
-      sessionInput.clientApiUrl ?? "",
-      sessionInput.assetUrl ?? "",
-      isEnvironmentProduction: false,
-      appIdentifier: strings.appIdentifier,
-      loggingEnabled: false,
+    final sessionData = SessionData(
+      clientSessionId: sessionInput.clientSessionId ?? "",
+      customerId: sessionInput.customerId ?? "",
+      clientApiUrl: sessionInput.clientApiUrl ?? "",
+      assetUrl: sessionInput.assetUrl ?? "",
     );
 
-    state = state.copyWith(session: session);
+    final sdk = OnlinePaymentSdk(
+      sessionData,
+      configuration: const SdkConfiguration(appIdentifier: strings.appIdentifier),
+    );
+
+    state = state.copyWith(sdk: sdk);
   }
 }
 

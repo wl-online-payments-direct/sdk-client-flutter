@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2025 Worldline and/or its affiliates.
+ * Copyright © 2026 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -11,86 +11,101 @@
  */
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:online_payments_sdk/online_payments_sdk.dart';
+import 'package:online_payments_sdk/src/facade/session_data_normalizer.dart';
+
+import 'test_credentials.dart';
+
+/// An HTTP client that forwards all requests to a real [inner] client while
+/// counting the number of network calls made. Use [callCount] to assert that
+/// the cache prevented redundant API requests.
+class CountingHttpClient extends http.BaseClient {
+  final http.Client _inner;
+  int callCount = 0;
+
+  CountingHttpClient() : _inner = http.Client();
+
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) {
+    callCount++;
+    return _inner.send(request);
+  }
+
+  @override
+  void close() {
+    _inner.close();
+    super.close();
+  }
+}
+
+/// Creates an [OnlinePaymentSdk] wired with a [CountingHttpClient].
+/// Returns both the SDK and the client so call counts can be asserted.
+///
+/// Session data is normalized (e.g. `/client` path is appended to [clientApiUrl]
+/// when absent) to match what [OnlinePaymentSdk] does internally when no
+/// explicit factory is provided.
+(OnlinePaymentSdk, CountingHttpClient) createSdkWithCounter() {
+  final counter = CountingHttpClient();
+  final sessionData = normalizeSessionData(TestCredentials.createSessionData());
+  final sdk = OnlinePaymentSdk(
+    sessionData,
+    factory: DefaultServiceFactory(
+      sessionData,
+      httpClient: counter,
+      configuration: const SdkConfiguration(appIdentifier: 'FlutterSDKIntegrationTest/2.0.0'),
+    ),
+  );
+  return (sdk, counter);
+}
 
 class TestHelpers {
-  /// Creates a standard PaymentProductRequest.
-  static PaymentProductRequest createTestPaymentProductRequest(
-    String productId, PaymentContext paymentContext) {
-    return PaymentProductRequest(
-      productId: productId,
-      paymentContext: paymentContext,
+  /// Creates an [OnlinePaymentSdk] instance using the current test credentials.
+  static OnlinePaymentSdk createSdk() {
+    return OnlinePaymentSdk(
+      TestCredentials.createSessionData(),
+      configuration: const SdkConfiguration(appIdentifier: 'FlutterSDKIntegrationTest/2.0.0'),
     );
   }
 
-  /// Creates a standard PaymentContext for testing with EUR currency and Netherlands locale.
+  /// Creates a standard [PaymentContext] for testing.
   static PaymentContext createTestPaymentContext({
     int amountInCents = 1000,
-    String currencyCode = "EUR",
-    String countryCode = "NL",
+    String currencyCode = 'EUR',
+    String countryCode = 'NL',
     bool isRecurring = false,
   }) {
     return PaymentContext(
       AmountOfMoney(amountInCents, currencyCode),
       countryCode,
-      isRecurring,
+      isRecurring: isRecurring,
     );
   }
 
-  /// Fetches a payment product and returns it via callback.
-  static Future<PaymentProduct?> getPaymentProduct(
-    Session session,
-    String productId, {
+  /// Fetches a [PaymentProduct] by [productId] and returns it.
+  static Future<PaymentProduct> getPaymentProduct(
+    OnlinePaymentSdk sdk,
+    int productId, {
     PaymentContext? paymentContext,
   }) async {
-    PaymentProduct? paymentProduct;
-    bool completed = false;
-    String? errorMessage;
-
-    final request = createTestPaymentProductRequest(
+    final product = await sdk.getPaymentProduct(
       productId,
       paymentContext ?? createTestPaymentContext(),
     );
-
-    await session.getPaymentProduct(
-      request: request,
-      listener: PaymentProductResponseListener(
-        onSuccess: (PaymentProduct product) {
-          paymentProduct = product;
-          completed = true;
-        },
-        onError: (ErrorResponse? apiError) {
-          errorMessage = "API Error: ${apiError?.message}";
-          completed = true;
-        },
-        onException: (NativeException? throwable) {
-          errorMessage = "Exception: ${throwable?.error}";
-          completed = true;
-        },
-      ),
-    );
-
-    expect(completed, true, reason: "Should complete product retrieval");
-    expect(errorMessage, isNull, reason: "Should not throw an exception");
-    expect(paymentProduct, isNotNull, reason: "Should retrieve payment product");
-
-    return paymentProduct;
+    expect(product, isNotNull);
+    return product;
   }
 
-  /// Creates a PaymentRequest with test credit card values.
-  /// Automatically detects the correct expiry date format based on the field mask.
+  /// Creates a [PaymentRequest] pre-filled with valid test card values.
   static PaymentRequest createTestPaymentRequest(PaymentProduct paymentProduct) {
-    final paymentRequest = PaymentRequest(paymentProduct: paymentProduct);
-
+    final request = PaymentRequest(paymentProduct: paymentProduct);
     createTestFieldValues(paymentProduct).forEach((key, value) {
-      paymentRequest.setValue(key, value);
+      request.setValue(key, value);
     });
-
-    return paymentRequest;
+    return request;
   }
 
-  /// Creates test field values map for validation testing.
-  /// Automatically detects the correct expiry date format.
+  /// Returns a map of valid test field values for the given [paymentProduct].
   static Map<String, String> createTestFieldValues(PaymentProduct paymentProduct) {
     return {
       'cardNumber': '4330264936344675',
@@ -100,90 +115,39 @@ class TestHelpers {
     };
   }
 
-  /// Validates that all required fields have validation errors when empty.
+  /// Asserts that all required fields have at least one validation error when empty.
   static void expectRequiredFieldValidationErrors(
-    List<ValidationErrorMessage> validationResult,
+    ValidationResult result,
     PaymentProduct paymentProduct,
   ) {
-    for (var field in paymentProduct.fields) {
+    for (final field in paymentProduct.fields) {
       if (field.dataRestrictions.isRequired) {
         expect(
-          validationResult.singleWhere((rule) {
-            return rule.paymentProductFieldId == field.id;
-          }),
-          isNotNull,
+          result.errorMessages.where((errorMessage) => errorMessage.paymentProductFieldId == field.id).isNotEmpty,
+          isTrue,
           reason: "Required field '${field.id}' should have validation error when empty",
         );
       }
     }
   }
 
-  /// Validates that a completed payment request has no validation errors.
-  static void expectNoValidationErrors(List<ValidationErrorMessage> validationResult) {
-    expect(
-      validationResult.length,
-      isZero,
-      reason: "Valid payment request should have no validation errors",
-    );
+  /// Asserts that the [result] contains no validation errors.
+  static void expectNoValidationErrors(ValidationResult result) {
+    expect(result.errorMessages, isEmpty, reason: 'Valid request should have no validation errors');
   }
 
-  /// Validates that a completed payment request has validation errors.
-  static void expectValidationErrors(List<ValidationErrorMessage> validationResult) {
-    expect(
-      validationResult.length,
-      isNonZero,
-      reason: "Invalid payment request should have validation errors",
-    );
+  /// Asserts that the [result] contains at least one validation error.
+  static void expectValidationErrors(ValidationResult result) {
+    expect(result.errorMessages, isNotEmpty, reason: 'Invalid request should have validation errors');
   }
 
-  /// Generic helper to execute SDK calls that use callback listeners.
-  /// Returns the result or throws an exception if the call fails.
-  static Future<T> executeWithListener<T>({
-    required String testName,
-    required Future<void> Function(dynamic listener) sdkCall,
-    required T Function(dynamic successResult) extractResult,
-    required dynamic Function({
-      required Function(dynamic) onSuccess,
-      required Function(ErrorResponse?) onError,
-      required Function(NativeException?) onException,
-    }) createListener,
-  }) async {
-    T? result;
-    bool completed = false;
-    String? errorMessage;
-
-    final listener = createListener(
-      onSuccess: (dynamic successResult) {
-        result = extractResult(successResult);
-        completed = true;
-      },
-      onError: (ErrorResponse? apiError) {
-        errorMessage = "API Error: ${apiError?.message}";
-        completed = true;
-      },
-      onException: (NativeException? throwable) {
-        errorMessage = "Exception: ${throwable?.error}";
-        completed = true;
-      },
-    );
-
-    await sdkCall(listener);
-
-    expect(completed, true, reason: "$testName should complete");
-    expect(errorMessage, isNull, reason: "$testName failed: $errorMessage");
-    expect(result, isNotNull, reason: "$testName should return result");
-
-    return result!;
-  }
-
-  /// Determines the correct expiry date format based on the field mask.
-  /// Returns [shortDate] for MM/YY and [longDate] for MM/YYYY format.
+  /// Determines the correct expiry date value based on the field mask (MM/YY vs MM/YYYY).
   static String _getExpiryDateForMask(
     PaymentProduct paymentProduct, {
     String shortDate = '1228',
     String longDate = '122028',
   }) {
-    final expiryDateField = paymentProduct.fields.singleWhere(
+    final expiryDateField = paymentProduct.fields.firstWhere(
       (p) => p.id == 'expiryDate',
       orElse: () => throw Exception('No expiryDate field found'),
     );
@@ -192,3 +156,4 @@ class TestHelpers {
     return nineCount == 4 ? shortDate : longDate;
   }
 }
+

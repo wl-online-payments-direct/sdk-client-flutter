@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2025 Worldline and/or its affiliates.
+ * Copyright © 2026 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -107,20 +107,12 @@ class InitializeSessionPage extends ConsumerWidget {
         context,
         PaymentProductPage.route(),
       );
-    }, onErrorResponse: (errorResponse) {
+    }, onError: (sdkError) {
       showDialog(
         context: context,
         builder: (context) => OkDialog(
-          titleText: strings.apiErrorTitle,
-          messageText: errorResponse.message,
-        ),
-      );
-    }, onNativeException: (nativeException) {
-      showDialog(
-        context: context,
-        builder: (context) => OkDialog(
-          titleText: strings.nativeExceptionTitle,
-          messageText: nativeException.error,
+          titleText: strings.sdkErrorTitle,
+          messageText: sdkError.message,
         ),
       );
     });

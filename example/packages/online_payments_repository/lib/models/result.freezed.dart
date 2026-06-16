@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Result<T> {
 
- T? get data; ErrorResponse? get errorResponse; NativeException? get nativeException;
+ T? get data; SdkError? get error;
 /// Create a copy of Result
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ResultCopyWith<T, Result<T>> get copyWith => _$ResultCopyWithImpl<T, Result<T>>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Result<T>&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.errorResponse, errorResponse) || other.errorResponse == errorResponse)&&(identical(other.nativeException, nativeException) || other.nativeException == nativeException));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Result<T>&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),errorResponse,nativeException);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),error);
 
 @override
 String toString() {
-  return 'Result<$T>(data: $data, errorResponse: $errorResponse, nativeException: $nativeException)';
+  return 'Result<$T>(data: $data, error: $error)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ResultCopyWith<T,$Res>  {
   factory $ResultCopyWith(Result<T> value, $Res Function(Result<T>) _then) = _$ResultCopyWithImpl;
 @useResult
 $Res call({
- T? data, ErrorResponse? errorResponse, NativeException? nativeException
+ T? data, SdkError? error
 });
 
 
@@ -62,12 +62,11 @@ class _$ResultCopyWithImpl<T,$Res>
 
 /// Create a copy of Result
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? data = freezed,Object? errorResponse = freezed,Object? nativeException = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? data = freezed,Object? error = freezed,}) {
   return _then(_self.copyWith(
 data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as T?,errorResponse: freezed == errorResponse ? _self.errorResponse : errorResponse // ignore: cast_nullable_to_non_nullable
-as ErrorResponse?,nativeException: freezed == nativeException ? _self.nativeException : nativeException // ignore: cast_nullable_to_non_nullable
-as NativeException?,
+as T?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as SdkError?,
   ));
 }
 
@@ -152,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( T? data,  ErrorResponse? errorResponse,  NativeException? nativeException)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( T? data,  SdkError? error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Result() when $default != null:
-return $default(_that.data,_that.errorResponse,_that.nativeException);case _:
+return $default(_that.data,_that.error);case _:
   return orElse();
 
 }
@@ -173,10 +172,10 @@ return $default(_that.data,_that.errorResponse,_that.nativeException);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( T? data,  ErrorResponse? errorResponse,  NativeException? nativeException)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( T? data,  SdkError? error)  $default,) {final _that = this;
 switch (_that) {
 case _Result():
-return $default(_that.data,_that.errorResponse,_that.nativeException);case _:
+return $default(_that.data,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -193,10 +192,10 @@ return $default(_that.data,_that.errorResponse,_that.nativeException);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( T? data,  ErrorResponse? errorResponse,  NativeException? nativeException)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( T? data,  SdkError? error)?  $default,) {final _that = this;
 switch (_that) {
 case _Result() when $default != null:
-return $default(_that.data,_that.errorResponse,_that.nativeException);case _:
+return $default(_that.data,_that.error);case _:
   return null;
 
 }
@@ -208,12 +207,11 @@ return $default(_that.data,_that.errorResponse,_that.nativeException);case _:
 
 
 class _Result<T> implements Result<T> {
-   _Result({this.data, this.errorResponse, this.nativeException});
+   _Result({this.data, this.error});
   
 
 @override final  T? data;
-@override final  ErrorResponse? errorResponse;
-@override final  NativeException? nativeException;
+@override final  SdkError? error;
 
 /// Create a copy of Result
 /// with the given fields replaced by the non-null parameter values.
@@ -225,16 +223,16 @@ _$ResultCopyWith<T, _Result<T>> get copyWith => __$ResultCopyWithImpl<T, _Result
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Result<T>&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.errorResponse, errorResponse) || other.errorResponse == errorResponse)&&(identical(other.nativeException, nativeException) || other.nativeException == nativeException));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Result<T>&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),errorResponse,nativeException);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),error);
 
 @override
 String toString() {
-  return 'Result<$T>(data: $data, errorResponse: $errorResponse, nativeException: $nativeException)';
+  return 'Result<$T>(data: $data, error: $error)';
 }
 
 
@@ -245,7 +243,7 @@ abstract mixin class _$ResultCopyWith<T,$Res> implements $ResultCopyWith<T, $Res
   factory _$ResultCopyWith(_Result<T> value, $Res Function(_Result<T>) _then) = __$ResultCopyWithImpl;
 @override @useResult
 $Res call({
- T? data, ErrorResponse? errorResponse, NativeException? nativeException
+ T? data, SdkError? error
 });
 
 
@@ -262,12 +260,11 @@ class __$ResultCopyWithImpl<T,$Res>
 
 /// Create a copy of Result
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? data = freezed,Object? errorResponse = freezed,Object? nativeException = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? data = freezed,Object? error = freezed,}) {
   return _then(_Result<T>(
 data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as T?,errorResponse: freezed == errorResponse ? _self.errorResponse : errorResponse // ignore: cast_nullable_to_non_nullable
-as ErrorResponse?,nativeException: freezed == nativeException ? _self.nativeException : nativeException // ignore: cast_nullable_to_non_nullable
-as NativeException?,
+as T?,error: freezed == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as SdkError?,
   ));
 }
 

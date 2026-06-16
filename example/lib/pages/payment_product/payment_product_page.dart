@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2025 Worldline and/or its affiliates.
+ * Copyright © 2026 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -23,6 +23,7 @@ import 'package:online_payments_sdk_example/reusable_components/expansion_paddin
 import 'package:online_payments_sdk_example/reusable_components/label_value_row.dart';
 import 'package:online_payments_sdk_example/reusable_components/vertical_scroll_view.dart';
 
+import 'package:online_payments_sdk_example/reusable_components/platform_network_image.dart';
 import 'components/payment_product_field_info.dart';
 
 /// This basic example only shows how to initialize a Session and how to make a Payment Product call.
@@ -42,7 +43,7 @@ class PaymentProductPage extends ConsumerWidget {
       childWidget: Column(
         children: [
           if (paymentProduct != null) ...[
-            paymentProduct.displayHintsList[0].label.runIfNotNull(
+          paymentProduct.label.runIfNotNull(
               (label) {
                 return DefaultText(
                   label,
@@ -59,15 +60,7 @@ class PaymentProductPage extends ConsumerWidget {
             const DefaultPadding(),
             _GeneralPaymentProductInfo(paymentProduct: paymentProduct),
             const DefaultPadding(),
-            BoldExpansionTile(
-              title: strings.displayHintsListLabel,
-              backgroundColor: Colors.green,
-              children: [
-                for (final displayHints in paymentProduct.displayHintsList)
-                  ExpansionPadding(
-                      child: _DisplayHintsInfo(displayHints: displayHints)),
-              ],
-            ),
+            _DisplayHintsInfo(paymentProduct: paymentProduct),
             paymentProduct.paymentProduct302SpecificData.runIfNotNull(
               (specific302Data) {
                 return Column(children: [
@@ -149,10 +142,7 @@ class _ProductLogo extends StatelessWidget {
       return SizedBox(
         height: 100,
         width: 100,
-        child: Image.network(
-          logoUrl,
-          errorBuilder: (context, exception, stacktrace) => Container(),
-        ),
+        child: PlatformNetworkImage(url: logoUrl, width: 100, height: 100),
       );
     }
 
@@ -169,8 +159,7 @@ class _GeneralPaymentProductInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        LabelValueRow(label: strings.productIdLabel, value: paymentProduct.id),
-        LabelValueRow(
+        LabelValueRow(label: strings.productIdLabel, value: paymentProduct.id?.toString() ?? ''),        LabelValueRow(
           label: strings.paymentMethodLabel,
           value: paymentProduct.paymentMethod,
         ),
@@ -198,32 +187,40 @@ class _GeneralPaymentProductInfo extends StatelessWidget {
 }
 
 class _DisplayHintsInfo extends StatelessWidget {
-  final PaymentProductDisplayHints displayHints;
+  final PaymentProduct paymentProduct;
 
-  const _DisplayHintsInfo({required this.displayHints});
+  const _DisplayHintsInfo({required this.paymentProduct});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return BoldExpansionTile(
+      title: strings.displayHintsListLabel,
+      backgroundColor: Colors.green,
       children: [
-        LabelValueRow(
-          label: strings.displayOderLabel,
-          value: displayHints.displayOrder.toString(),
-          textColor: Colors.white,
+        ExpansionPadding(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (paymentProduct.displayOrder != null)
+                LabelValueRow(
+                  label: strings.displayOderLabel,
+                  value: paymentProduct.displayOrder.toString(),
+                  textColor: Colors.white,
+                ),
+              paymentProduct.label.runIfNotNull((label) => LabelValueRow(
+                    label: strings.labelLabel,
+                    value: label,
+                    textColor: Colors.white,
+                  )),
+              const DefaultText(
+                strings.logoLabel,
+                fontWeight: FontWeight.bold,
+                textColor: Colors.white,
+              ),
+              paymentProduct.logo.runIfNotNull((logoUrl) => _ProductLogo(logoUrl: logoUrl))
+            ],
+          ),
         ),
-        LabelValueRow(
-          label: strings.labelLabel,
-          value: displayHints.label,
-          textColor: Colors.white,
-        ),
-        const DefaultText(
-          strings.logoLabel,
-          fontWeight: FontWeight.bold,
-          textColor: Colors.white,
-        ),
-        displayHints.logoUrl
-            .runIfNotNull((logoUrl) => _ProductLogo(logoUrl: logoUrl))
       ],
     );
   }

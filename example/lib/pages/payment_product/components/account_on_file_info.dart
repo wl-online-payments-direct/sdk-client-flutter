@@ -3,7 +3,7 @@
  *
  * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
  *
- * Copyright © 2025 Worldline and/or its affiliates.
+ * Copyright © 2026 Worldline and/or its affiliates.
  *
  * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
  *
@@ -17,7 +17,6 @@ import 'package:online_payments_sdk_example/reusable_components/bold_expansion_t
 import 'package:online_payments_sdk_example/reusable_components/default_padding.dart';
 import 'package:online_payments_sdk_example/reusable_components/expansion_padding.dart';
 import 'package:online_payments_sdk_example/reusable_components/label_value_row.dart';
-import 'package:online_payments_sdk_example/reusable_components/next_line_value.dart';
 
 class AccountsOnFileInfo extends StatelessWidget {
   final List<AccountOnFile> accountsOnFile;
@@ -56,17 +55,20 @@ class _AccountOnFileInfo extends StatelessWidget {
         ),
         LabelValueRow(
           label: strings.productIdLabel,
-          value: accountOnFile.paymentProductId,
+          value: accountOnFile.paymentProductId.toString(),
           textColor: Colors.white,
+        ),
+        accountOnFile.label.runIfNotNull(
+          (label) => LabelValueRow(
+            label: strings.labelLabel,
+            value: label,
+            textColor: Colors.white,
+          ),
         ),
         const DefaultPadding(),
         _AttributesInfo(
           attributes: accountOnFile.attributes,
         ),
-        const DefaultPadding(),
-        accountOnFile.displayHints.runIfNotNull(
-          (displayHints) => _DisplayHintsInfo(displayHints: displayHints),
-        )
       ],
     );
   }
@@ -107,59 +109,16 @@ class _AttributeInfo extends StatelessWidget {
           value: attribute.key,
           textColor: Colors.white,
         ),
-        attribute.status.runIfNotNull((status) => LabelValueRow(
-              label: strings.statusLabel,
-              value: status.name,
-              textColor: Colors.white,
-            )),
+        LabelValueRow(
+          label: strings.statusLabel,
+          value: attribute.status?.name ?? '',
+          textColor: Colors.white,
+        ),
         LabelValueRow(
           label: strings.valueLabel,
           value: attribute.value,
           textColor: Colors.white,
         ),
-      ],
-    );
-  }
-}
-
-class _DisplayHintsInfo extends StatelessWidget {
-  final AccountOnFileDisplayHints displayHints;
-
-  const _DisplayHintsInfo({required this.displayHints});
-
-  @override
-  Widget build(BuildContext context) {
-    return BoldExpansionTile(
-      title: strings.displayHintsLabelTemplatesLabel,
-      backgroundColor: Colors.green.shade700,
-      children: [
-        for (final labelTemplate in displayHints.labelTemplate) ...[
-          ExpansionPadding(
-            child: _LabelTemplateInfo(labelTemplate: labelTemplate),
-          ),
-          const DefaultPadding()
-        ]
-      ],
-    );
-  }
-}
-
-class _LabelTemplateInfo extends StatelessWidget {
-  final LabelTemplateElement labelTemplate;
-
-  const _LabelTemplateInfo({required this.labelTemplate});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        LabelValueRow(
-          label: strings.attributeKeyLabel,
-          value: labelTemplate.attributeKey,
-          textColor: Colors.white,
-        ),
-        NextLineValue(label: strings.maskLabel, value: labelTemplate.mask)
       ],
     );
   }

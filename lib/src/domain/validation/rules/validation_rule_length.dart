@@ -1,0 +1,38 @@
+/*
+ * Do not remove or alter the notices in this preamble.
+ *
+ * This software is owned by Worldline and may not be be altered, copied, reproduced, republished, uploaded, posted, transmitted or distributed in any way, without the prior written consent of Worldline.
+ *
+ * Copyright © 2026 Worldline and/or its affiliates.
+ *
+ * All rights reserved. License grant and user rights and obligations according to the applicable license agreement.
+ *
+ * Please contact Worldline for questions regarding license and user rights.
+ */
+
+import '../rule_validation_result.dart';
+import 'validation_rule.dart';
+
+/// Used for validation of the length of an input.
+class ValidationRuleLength extends ValidationRule {
+  final int minLength;
+
+  final int maxLength;
+
+  ValidationRuleLength(
+    super.type,
+    super.messageId,
+    this.minLength,
+    this.maxLength,
+  );
+
+  @override
+  RuleValidationResult validate(String value) {
+    final valid = value.length >= minLength && value.length <= maxLength;
+
+    return RuleValidationResult(
+      valid: valid,
+      message: valid ? '' : 'Provided value does not have an allowed length.',
+    );
+  }
+}

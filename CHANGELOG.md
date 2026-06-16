@@ -1,15 +1,83 @@
-# 2.2.0
+# 3.0.0
+
+The Flutter SDK was rewritten as a pure-Dart implementation, replacing the previous
+Android/iOS native bridge architecture. This release is a full breaking change.
+For usage examples, see `README.md`.
 
 ## Changed
 
-* Changed the project's Swift explicit minimum version compatibility to 5.3.
-* Removed explicit Swift dependencies that are not required in production.
-* Updated Android dependency and aligned the package requirements with it.
-* Fixed Android bug in earlier versions with enabled TLS protocols that were not supported.
+- The main entry point changed from `Session` to `OnlinePaymentSdk`. It is now instantiated
+  directly with `OnlinePaymentSdk(sessionData, configuration?)`.
+- All SDK methods are now `async`/`await`-based `Future`s instead of callback listeners.
+- Fluent API added for domain models:
+  - `PaymentProductField`:
+    - `validate(value)` returns a `List<ValidationErrorMessage>` (replaces `validateValue()`).
+    - `applyMask(value)` and `removeMask(value)` are now synchronous.
+    - Added: `getLabel()`, `getPlaceholder()`, `getDisplayOrder()`, `isRequired()`, `shouldObfuscate()`.
+  - `PaymentRequest`:
+    - Constructor now requires `PaymentProduct`.
+    - `validate()` returns a `ValidationResult` containing validation errors (synchronous).
+    - Field values are managed through `PaymentRequestField` instances.
+    - Setting `AccountOnFile` automatically clears non-writable field values set previously
+      on the payment request.
+    - Setting a value to a `READ_ONLY` field throws `InvalidArgumentError`.
+- The `EncryptedRequest` property `encryptedFields` was renamed to `encryptedCustomerInput` to
+  match the field expected by the Create Payment request.
+- `paymentProduct.id` is now `int?` (previously `String`).
+
+## Added
+
+- `PaymentProduct`: added methods for field access:
+  - `getFields()` — returns all fields.
+  - `getRequiredFields()` — returns only required fields.
+  - `getField(id)` — returns a specific field by ID.
+- `PaymentRequestField`: class for field value management with methods:
+  - `getValue()`, `setValue(value)`, `clearValue()`.
+  - `getMaskedValue()`, `getType()`.
+  - `getId()`, `getLabel()`, `getPlaceholder()`, `isRequired()`, `shouldObfuscate()`.
+  - `validate()` — validates an individual field value.
+- `PaymentRequest`: added methods:
+  - `getField(id)` — returns `PaymentRequestField` for fluent API.
+  - `getValues()` — returns all unmasked values as a map.
+  - `validate()` — validates the entire request and returns `ValidationResult`.
+- `AccountOnFile`: added methods:
+  - `getValue(fieldId)` — gets stored value for a field.
+  - `getRequiredAttributes()` — gets attributes that must be provided.
+  - `isWritable(fieldId)` — checks whether a field can be modified.
+- `BasicPaymentProduct`: added method:
+  - `getAccountOnFile(id)` — retrieves a specific account on file.
+- `ValidationResult`: class wrapping validation results with:
+  - `isValid` — boolean indicating whether validation passed.
+  - `errors` — list of `ValidationErrorMessage`.
+- Error hierarchy:
+  - `SdkError` — abstract base class for all SDK errors.
+  - `ConfigurationError` — invalid session or configuration data.
+  - `InvalidArgumentError` — invalid method arguments.
+  - `CommunicationError` — network or connection failure.
+  - `ResponseError` — API request failures (includes HTTP status).
+  - `ApiError` — structured API error response.
+  - `EncryptionError` — encryption or validation failures.
+- `SdkConfiguration` parameter with `appIdentifier` property to identify the integrating
+  application.
+- `getPublicKey()` method on `OnlinePaymentSdk` to retrieve the server's public encryption key.
+- `CreditCardTokenRequest` and `encryptTokenRequest()` for encrypting token-only requests.
+- Significantly expanded unit and integration test coverage across all major SDK components.
+
+## Removed
+
+- `Session` class removed. Use `OnlinePaymentSdk` directly.
+- `NativeException` and `ErrorResponse` removed. SDK now throws `SdkError` subclasses.
+- `BasicPaymentItems` class and `getBasicPaymentItems()` removed. Use `getBasicPaymentProducts()`.
+- Callback listener pattern (`SuccessListener`, `ErrorListener`, etc.) removed entirely.
+- Native bridge implementation removed:
+  - `android/` folder and all Android bridge modules.
+  - `ios/` folder and all iOS bridge modules and framework wrappers.
+  - `web/` folder and the JavaScript SDK dependency removed.
+  - The SDK is now a pure-Dart package with no native dependencies.
 
 # 2.1.0
 
-## Changed:
+# Changed:
 
 * Updated `freezed` dependency with the related dependencies to the latest version
 * Updated the SDK API annotations

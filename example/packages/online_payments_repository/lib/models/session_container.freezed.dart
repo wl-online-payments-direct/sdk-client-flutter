@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SessionContainer {
 
- Session? get session; PaymentContext get paymentContext;
+ OnlinePaymentSdk? get sdk; PaymentContext get paymentContext;
 /// Create a copy of SessionContainer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $SessionContainerCopyWith<SessionContainer> get copyWith => _$SessionContainerCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SessionContainer&&(identical(other.session, session) || other.session == session)&&(identical(other.paymentContext, paymentContext) || other.paymentContext == paymentContext));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SessionContainer&&(identical(other.sdk, sdk) || other.sdk == sdk)&&(identical(other.paymentContext, paymentContext) || other.paymentContext == paymentContext));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,session,paymentContext);
+int get hashCode => Object.hash(runtimeType,sdk,paymentContext);
 
 @override
 String toString() {
-  return 'SessionContainer(session: $session, paymentContext: $paymentContext)';
+  return 'SessionContainer(sdk: $sdk, paymentContext: $paymentContext)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $SessionContainerCopyWith<$Res>  {
   factory $SessionContainerCopyWith(SessionContainer value, $Res Function(SessionContainer) _then) = _$SessionContainerCopyWithImpl;
 @useResult
 $Res call({
- Session? session, PaymentContext paymentContext
+ OnlinePaymentSdk? sdk, PaymentContext paymentContext
 });
 
 
@@ -62,10 +62,10 @@ class _$SessionContainerCopyWithImpl<$Res>
 
 /// Create a copy of SessionContainer
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? session = freezed,Object? paymentContext = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? sdk = freezed,Object? paymentContext = null,}) {
   return _then(_self.copyWith(
-session: freezed == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
-as Session?,paymentContext: null == paymentContext ? _self.paymentContext : paymentContext // ignore: cast_nullable_to_non_nullable
+sdk: freezed == sdk ? _self.sdk : sdk // ignore: cast_nullable_to_non_nullable
+as OnlinePaymentSdk?,paymentContext: null == paymentContext ? _self.paymentContext : paymentContext // ignore: cast_nullable_to_non_nullable
 as PaymentContext,
   ));
 }
@@ -151,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Session? session,  PaymentContext paymentContext)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( OnlinePaymentSdk? sdk,  PaymentContext paymentContext)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SessionContainer() when $default != null:
-return $default(_that.session,_that.paymentContext);case _:
+return $default(_that.sdk,_that.paymentContext);case _:
   return orElse();
 
 }
@@ -172,10 +172,10 @@ return $default(_that.session,_that.paymentContext);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Session? session,  PaymentContext paymentContext)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( OnlinePaymentSdk? sdk,  PaymentContext paymentContext)  $default,) {final _that = this;
 switch (_that) {
 case _SessionContainer():
-return $default(_that.session,_that.paymentContext);case _:
+return $default(_that.sdk,_that.paymentContext);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -192,10 +192,10 @@ return $default(_that.session,_that.paymentContext);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Session? session,  PaymentContext paymentContext)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( OnlinePaymentSdk? sdk,  PaymentContext paymentContext)?  $default,) {final _that = this;
 switch (_that) {
 case _SessionContainer() when $default != null:
-return $default(_that.session,_that.paymentContext);case _:
+return $default(_that.sdk,_that.paymentContext);case _:
   return null;
 
 }
@@ -207,10 +207,10 @@ return $default(_that.session,_that.paymentContext);case _:
 
 
 class _SessionContainer implements SessionContainer {
-  const _SessionContainer({this.session, required this.paymentContext});
+  const _SessionContainer({this.sdk, required this.paymentContext});
   
 
-@override final  Session? session;
+@override final  OnlinePaymentSdk? sdk;
 @override final  PaymentContext paymentContext;
 
 /// Create a copy of SessionContainer
@@ -223,16 +223,16 @@ _$SessionContainerCopyWith<_SessionContainer> get copyWith => __$SessionContaine
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SessionContainer&&(identical(other.session, session) || other.session == session)&&(identical(other.paymentContext, paymentContext) || other.paymentContext == paymentContext));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SessionContainer&&(identical(other.sdk, sdk) || other.sdk == sdk)&&(identical(other.paymentContext, paymentContext) || other.paymentContext == paymentContext));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,session,paymentContext);
+int get hashCode => Object.hash(runtimeType,sdk,paymentContext);
 
 @override
 String toString() {
-  return 'SessionContainer(session: $session, paymentContext: $paymentContext)';
+  return 'SessionContainer(sdk: $sdk, paymentContext: $paymentContext)';
 }
 
 
@@ -243,7 +243,7 @@ abstract mixin class _$SessionContainerCopyWith<$Res> implements $SessionContain
   factory _$SessionContainerCopyWith(_SessionContainer value, $Res Function(_SessionContainer) _then) = __$SessionContainerCopyWithImpl;
 @override @useResult
 $Res call({
- Session? session, PaymentContext paymentContext
+ OnlinePaymentSdk? sdk, PaymentContext paymentContext
 });
 
 
@@ -260,10 +260,10 @@ class __$SessionContainerCopyWithImpl<$Res>
 
 /// Create a copy of SessionContainer
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? session = freezed,Object? paymentContext = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? sdk = freezed,Object? paymentContext = null,}) {
   return _then(_SessionContainer(
-session: freezed == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
-as Session?,paymentContext: null == paymentContext ? _self.paymentContext : paymentContext // ignore: cast_nullable_to_non_nullable
+sdk: freezed == sdk ? _self.sdk : sdk // ignore: cast_nullable_to_non_nullable
+as OnlinePaymentSdk?,paymentContext: null == paymentContext ? _self.paymentContext : paymentContext // ignore: cast_nullable_to_non_nullable
 as PaymentContext,
   ));
 }
