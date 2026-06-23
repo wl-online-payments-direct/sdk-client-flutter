@@ -35,13 +35,14 @@ void main() {
 
     test('getPaymentProductNetworks_ForGooglePay_ReturnsNetworks', () async {
       final result = await sdk.getPaymentProductNetworks(googlePayId, TestHelpers.createTestPaymentContext());
+
       expect(result, isA<PaymentProductNetworksResponse>());
       expect(result.networks, isNotEmpty);
     });
 
     test('getPaymentProductNetworks_WithUnsupportedProduct_ThrowsSdkError', () async {
       await expectLater(
-        () => sdk.getPaymentProductNetworks(1, TestHelpers.createTestPaymentContext()),
+            () => sdk.getPaymentProductNetworks(1, TestHelpers.createTestPaymentContext()),
         throwsA(isA<SdkError>()),
       );
     });
@@ -54,6 +55,23 @@ void main() {
       await countingSdk.getPaymentProductNetworks(googlePayId, TestHelpers.createTestPaymentContext());
 
       expect(counter.callCount, equals(1));
+    });
+
+    test('getPaymentProductNetworks_WithDifferentContext_MakesNewApiCall', () async {
+      final (countingSdk, counter) = createSdkWithCounter();
+      addTearDown(countingSdk.dispose);
+
+      await countingSdk.getPaymentProductNetworks(
+        googlePayId,
+        TestHelpers.createTestPaymentContext(amountInCents: 1000),
+      );
+
+      await countingSdk.getPaymentProductNetworks(
+        googlePayId,
+        TestHelpers.createTestPaymentContext(amountInCents: 2000),
+      );
+
+      expect(counter.callCount, equals(2));
     });
   });
 }

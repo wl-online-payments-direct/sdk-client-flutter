@@ -20,6 +20,7 @@ import 'payment_product_networks_test.dart' as payment_product_networks;
 import 'payment_product_test.dart' as payment_product;
 import 'payment_request_test.dart' as payment_request;
 import 'public_key_test.dart' as public_key;
+import 'server_api_test.dart' as server_api;
 import 'surcharge_calculation_test.dart' as surcharge_calculation;
 
 void main() {
@@ -34,4 +35,5 @@ void main() {
   surcharge_calculation.main();
   credit_card_token_request.main();
   payment_request.main();
+  server_api.main();
 }

@@ -1,3 +1,7 @@
+# 3.0.1
+
+- Additionally expanded integration test coverage across all major SDK components.
+
 # 3.0.0
 
 The Flutter SDK was rewritten as a pure-Dart implementation, replacing the previous

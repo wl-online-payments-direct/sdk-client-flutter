@@ -20,31 +20,6 @@ import 'package:online_payments_sdk/online_payments_sdk.dart';
 import 'test_credentials.dart';
 import 'test_helpers.dart';
 
-class _FakeHttpClient extends http.BaseClient {
-  final Map<String, dynamic> _responseBody;
-
-  _FakeHttpClient(this._responseBody);
-
-  @override
-  Future<http.StreamedResponse> send(http.BaseRequest request) async {
-    return http.StreamedResponse(
-      Stream.value(utf8.encode(jsonEncode(_responseBody))),
-      200,
-      headers: const {'content-type': 'application/json'},
-    );
-  }
-}
-
-OnlinePaymentSdk _createSdkWithFakeResponse(Map<String, dynamic> responseBody) {
-  return OnlinePaymentSdk(
-    TestCredentials.createSessionData(),
-    factory: DefaultServiceFactory(
-      TestCredentials.createSessionData(),
-      httpClient: _FakeHttpClient(responseBody),
-    ),
-  );
-}
-
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
@@ -60,11 +35,13 @@ void main() {
 
     test('getIinDetails_WithCardNumberOf6Digits_DoesNotThrow', () async {
       final result = await sdk.getIinDetails('401200', TestHelpers.createTestPaymentContext());
+
       expect(result, isA<IinDetailsResponse>());
     });
 
     test('getIinDetails_WithValidBin_ReturnsSupportedStatus', () async {
       final result = await sdk.getIinDetails('401200', TestHelpers.createTestPaymentContext());
+
       expect(result, isA<IinDetailsResponse>());
       expect(result.paymentProductId, isA<int?>());
       expect(result.countryCode, isA<String?>());
@@ -75,24 +52,25 @@ void main() {
 
     test('getIinDetails_WithUnknownCardNumber_ReturnsUnknownStatus', () async {
       final result = await sdk.getIinDetails('999999', TestHelpers.createTestPaymentContext());
+
       expect(result.status, equals(IinStatus.unknown));
     });
 
     test('getIinDetails_WithLessThan6Digits_ThrowsInvalidArgumentError', () async {
       await expectLater(
-        () => sdk.getIinDetails('12345', TestHelpers.createTestPaymentContext()),
+            () => sdk.getIinDetails('12345', TestHelpers.createTestPaymentContext()),
         throwsA(
           isA<InvalidArgumentError>()
               .having((error) => error.message, 'message', isNotEmpty)
               .having(
                 (error) => error.metadata,
-                'metadata',
-                isA<IinDetailsResponse>().having(
+            'metadata',
+            isA<IinDetailsResponse>().having(
                   (response) => response.status,
-                  'status',
-                  equals(IinStatus.notEnoughDigits),
-                ),
-              ),
+              'status',
+              equals(IinStatus.notEnoughDigits),
+            ),
+          ),
         ),
       );
     });
@@ -123,21 +101,86 @@ void main() {
       expect(result, isA<IinDetailsResponse>());
       expect(result.status, equals(IinStatus.supported));
     });
+  });
+
+  group('sdk.getIinDetails deterministic HTTP scenarios', () {
+    test('getIinDetails_WithCardNumberContainingSpaces_AcceptsAndNormalizesCardNumber', () async {
+      final client = StubHttpClient((request) async {
+        expect(request.method, equals('POST'));
+        expect(request.url.path, contains('/services/getIINdetails'));
+
+        final requestBody = jsonDecode((request as http.Request).body) as Map<String, dynamic>;
+
+        expect(requestBody['bin'], equals('40120010'));
+        expect(requestBody['paymentContext'], isA<Map<String, dynamic>>());
+
+        return jsonResponse(
+          200,
+          {
+            'paymentProductId': 1,
+            'countryCode': 'NL',
+            'isAllowedInContext': true,
+          },
+        );
+      });
+
+      final sdk = createSdkWithHttpClient(client);
+      addTearDown(sdk.dispose);
+
+      final result = await sdk.getIinDetails(
+        '4012 0010 3714 1112',
+        TestHelpers.createTestPaymentContext(),
+      );
+
+      expect(result.status, equals(IinStatus.supported));
+      expect(result.paymentProductId, equals(1));
+      expect(result.countryCode, equals('NL'));
+      expect(result.isAllowedInContext, isTrue);
+    });
 
     test('getIinDetails_WhenCardNotAllowedInContext_ReturnsExistingButNotAllowed', () async {
-      final hybridSdk = _createSdkWithFakeResponse({'isAllowedInContext': false});
+      final client = StubHttpClient((request) async {
+        return jsonResponse(
+          200,
+          {
+            'paymentProductId': 1,
+            'countryCode': 'NL',
+            'isAllowedInContext': false,
+          },
+        );
+      });
 
-      final result = await hybridSdk.getIinDetails('401200', TestHelpers.createTestPaymentContext());
+      final sdk = createSdkWithHttpClient(client);
+      addTearDown(sdk.dispose);
+
+      final result = await sdk.getIinDetails('401200', TestHelpers.createTestPaymentContext());
 
       expect(result.status, equals(IinStatus.existingButNotAllowed));
+      expect(result.paymentProductId, equals(1));
+      expect(result.countryCode, equals('NL'));
+      expect(result.isAllowedInContext, isFalse);
     });
 
     test('getIinDetails_WhenIsAllowedInContextAbsent_ReturnsSupportedStatus', () async {
-      final hybridSdk = _createSdkWithFakeResponse({'paymentProductId': 1});
+      final client = StubHttpClient((request) async {
+        return jsonResponse(
+          200,
+          {
+            'paymentProductId': 1,
+            'countryCode': 'NL',
+          },
+        );
+      });
 
-      final result = await hybridSdk.getIinDetails('401200', TestHelpers.createTestPaymentContext());
+      final sdk = createSdkWithHttpClient(client);
+      addTearDown(sdk.dispose);
+
+      final result = await sdk.getIinDetails('401200', TestHelpers.createTestPaymentContext());
 
       expect(result.status, equals(IinStatus.supported));
+      expect(result.paymentProductId, equals(1));
+      expect(result.countryCode, equals('NL'));
+      expect(result.isAllowedInContext, isNull);
     });
   });
 }

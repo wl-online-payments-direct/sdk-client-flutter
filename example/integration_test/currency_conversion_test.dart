@@ -65,7 +65,7 @@ void main() {
         paymentProductId: int.tryParse(const String.fromEnvironment('productIdWithNoCurrencyConversion')),
       ));
       await expectLater(
-        () => sdk.getCurrencyConversionQuote(amountOfMoney, cardSource),
+            () => sdk.getCurrencyConversionQuote(amountOfMoney, cardSource),
         throwsA(isA<SdkError>()),
       );
     });
@@ -75,7 +75,16 @@ void main() {
         const String.fromEnvironment('partialCardNumberWithNoCurrencyConversion'),
       ));
       await expectLater(
-        () => sdk.getCurrencyConversionQuote(amountOfMoney, cardSource),
+            () => sdk.getCurrencyConversionQuote(amountOfMoney, cardSource),
+        throwsA(isA<SdkError>()),
+      );
+    });
+
+    test('getCurrencyConversionQuote_WhenTokenDoesNotSupportConversion_ThrowsSdkError', () async {
+      const cardSource = CardSourceWithToken(String.fromEnvironment('cardTokenWithNoCurrencyConversion'));
+
+      await expectLater(
+            () => sdk.getCurrencyConversionQuote(amountOfMoney, cardSource),
         throwsA(isA<SdkError>()),
       );
     });

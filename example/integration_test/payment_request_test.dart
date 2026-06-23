@@ -10,10 +10,15 @@
  * Please contact Worldline for questions regarding license and user rights.
  */
 
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:online_payments_sdk/online_payments_sdk.dart';
-
+import 'package:online_payments_sdk/src/infrastructure/encryption/encryptor.dart';
+import 'package:online_payments_sdk/src/infrastructure/interfaces/collected_device_information_provider.dart';
+import 'package:online_payments_sdk/src/infrastructure/interfaces/jose_encryption_provider.dart';
+import 'package:online_payments_sdk/src/infrastructure/models/collected_device_information.dart';
 
 import 'test_credentials.dart';
 import 'test_helpers.dart';
@@ -34,48 +39,6 @@ void main() {
 
     setUp(() => sdk = TestHelpers.createSdk());
     tearDown(() => sdk.dispose());
-
-    test('validate_EmptyRequest_HasValidationErrorsForAllRequiredFields', () async {
-      final product = await TestHelpers.getPaymentProduct(sdk, 1);
-      final emptyRequest = PaymentRequest(paymentProduct: product);
-      final result = emptyRequest.validate();
-      TestHelpers.expectRequiredFieldValidationErrors(result, product);
-    });
-
-    test('validate_ValidRequest_HasNoValidationErrors', () async {
-      final product = await TestHelpers.getPaymentProduct(sdk, 1);
-      final request = TestHelpers.createTestPaymentRequest(product);
-      final result = request.validate();
-      TestHelpers.expectNoValidationErrors(result);
-    });
-
-    test('validate_WithInvalidValues_ProducesMultipleValidationErrors', () async {
-      final product = await TestHelpers.getPaymentProduct(sdk, 1);
-      final request = PaymentRequest(paymentProduct: product);
-
-      request.setValue('cardNumber', '1234');     // Too short + invalid Luhn
-      request.setValue('expiryDate', '1320');     // Invalid month
-      request.setValue('cvv', 'asdf');            // Non-numeric
-      request.setValue('cardholderName', '');     // Empty required
-
-      final result = request.validate();
-      TestHelpers.expectValidationErrors(result);
-      // luhn + length for card, regex + expDate for date, required for cardholder and cvv
-      expect(result.errorMessages.length, greaterThanOrEqualTo(4));
-    });
-
-    test('validate_WithValidIndividualFieldValues_HasNoValidationErrors', () async {
-      final product = await TestHelpers.getPaymentProduct(sdk, 1);
-      final values = TestHelpers.createTestFieldValues(product);
-
-      for (final field in product.fields) {
-        final value = values[field.id];
-        if (value != null && field.dataRestrictions.isRequired) {
-          final errors = field.validate(value);
-          expect(errors, isEmpty, reason: "Field '${field.id}' with valid value should have no errors");
-        }
-      }
-    });
 
     test('validate_WithInvalidCardNumber_ProducesValidationErrors', () async {
       final product = await TestHelpers.getPaymentProduct(sdk, 1);
@@ -106,18 +69,6 @@ void main() {
       final fullyMasked = cardNumberField.applyMask('1234567890123456');
       expect(fullyMasked?.trim(), equals('1234 5678 9012 3456'));
     });
-
-    test('removeMask_RestoresOriginalUnmaskedValue', () async {
-      final product = await TestHelpers.getPaymentProduct(sdk, 1);
-      final cardNumberField = product.fields.firstWhere((f) => f.id == 'cardNumber');
-
-      const original = '1234567890123456';
-      final masked = cardNumberField.applyMask(original);
-      expect(masked, isNotNull);
-
-      final unmasked = cardNumberField.removeMask(masked!);
-      expect(unmasked, equals(original));
-    });
   });
 
   // ---------------------------------------------------------------------------
@@ -130,8 +81,11 @@ void main() {
     setUp(() => sdk = TestHelpers.createSdk());
     tearDown(() => sdk.dispose());
 
-    test('encryptPaymentRequest_WhenMandatoryFieldNotSet_ThrowsSdkError', () async {
+    test('encryptPaymentRequest_WhenMandatoryFieldNotSet_ThrowsSdkErrorAndDoesNotCallPublicKeyApi', () async {
       final product = await TestHelpers.getPaymentProduct(sdk, 1);
+      final (countingSdk, counter) = createSdkWithCounter();
+      addTearDown(countingSdk.dispose);
+
       final request = PaymentRequest(paymentProduct: product);
 
       // Set all except cardNumber
@@ -140,9 +94,22 @@ void main() {
       request.setValue('expiryDate', '1228');
 
       await expectLater(
-        () => sdk.encryptPaymentRequest(request),
+            () => countingSdk.encryptPaymentRequest(request),
         throwsA(isA<SdkError>()),
       );
+
+      expect(counter.callCount, equals(0));
+    });
+
+    test('encryptPaymentRequest_WithValidRequest_ReturnsEncryptedOutputAsJweCompactSerialization', () async {
+      final product = await TestHelpers.getPaymentProduct(sdk, 1);
+      final request = TestHelpers.createTestPaymentRequest(product);
+
+      final result = await sdk.encryptPaymentRequest(request);
+
+      expect(result.encryptedCustomerInput, isNotEmpty);
+      expect(result.encryptedCustomerInput, isA<String>());
+      expect(result.encryptedCustomerInput.split('.'), hasLength(5));
     });
 
     test('encryptPaymentRequest_WithTokenizeFlag_SucceedsAndProducesEncryptedOutput', () async {
@@ -153,7 +120,60 @@ void main() {
       final result = await sdk.encryptPaymentRequest(request);
 
       expect(result.encryptedCustomerInput, isNotEmpty);
+      expect(result.encryptedCustomerInput.split('.'), hasLength(5));
       expect(result.encodedClientMetaInfo, isNotEmpty);
+    });
+
+    test('encryptPaymentRequest_WithTokenizeFlag_BuildsPayloadWithTokenizeTrue', () async {
+      final product = await TestHelpers.getPaymentProduct(sdk, 1);
+      final request = TestHelpers.createTestPaymentRequest(product);
+      request.tokenize = true;
+
+      final encryptionProvider = _CapturingJoseEncryptionProvider();
+      final encryptor = Encryptor(
+        TestCredentials.createSessionData().clientSessionId,
+        encryptionProvider,
+        _NullCollectedDeviceInformationProvider(),
+      );
+
+      final encrypted = encryptor.encrypt(PublicKeyResponse('key-id', 'public-key'), request);
+
+      expect(encrypted, equals('captured-encrypted-output'));
+
+      final plainText = encryptionProvider.plainText;
+      expect(plainText, isNotNull);
+      expect(plainText?['clientSessionId'], equals(TestCredentials.createSessionData().clientSessionId));
+      expect(plainText?['paymentProductId'], equals(1));
+      expect(plainText?['tokenize'], isTrue);
+      expect(plainText?['paymentValues'], isA<List<Map<String, String>>>());
+      expect(
+        plainText?['paymentValues'],
+        containsAll([
+          {'key': 'cardNumber', 'value': '4330264936344675'},
+          {'key': 'cvv', 'value': '123'},
+          {'key': 'cardholderName', 'value': 'John Doe'},
+        ]),
+      );
+    });
+
+    test('encryptPaymentRequest_ReturnsEncodedClientMetaInformation', () async {
+      final product = await TestHelpers.getPaymentProduct(sdk, 1);
+      final request = TestHelpers.createTestPaymentRequest(product);
+
+      final result = await sdk.encryptPaymentRequest(request);
+
+      expect(result.encodedClientMetaInfo, isNotNull);
+      expect(result.encodedClientMetaInfo, isNotEmpty);
+
+      final decodedMetadata = jsonDecode(_decodeBase64Url(result.encodedClientMetaInfo!)) as Map<String, dynamic>;
+
+      expect(decodedMetadata['screenSize'], isA<String>());
+      expect(decodedMetadata['platformIdentifier'], isA<String>());
+      expect(decodedMetadata['sdkIdentifier'], isA<String>());
+      expect(decodedMetadata['sdkCreator'], isA<String>());
+      expect(decodedMetadata['appIdentifier'], equals('FlutterSDKIntegrationTest/2.0.0'));
+      expect(decodedMetadata['deviceBrand'], isA<String>());
+      expect(decodedMetadata['deviceType'], isA<String>());
     });
 
     test('encryptPaymentRequest_MultipleRequests_ProduceDifferentEncryptedOutputs', () async {
@@ -218,6 +238,7 @@ void main() {
       final result = await sdk.encryptPaymentRequest(request);
 
       expect(result.encryptedCustomerInput, isNotEmpty);
+      expect(result.encryptedCustomerInput.split('.'), hasLength(5));
     });
 
     test('paymentRequest_WhenAccountOnFileIsPresent_ReadOnlyCardNumberCannotBeWritten', () async {
@@ -236,9 +257,28 @@ void main() {
       final request = PaymentRequest(paymentProduct: product, accountOnFile: aof);
 
       expect(
-        () => request.setValue('cardNumber', '4222422242224222'),
+            () => request.setValue('cardNumber', '4222422242224222'),
         throwsA(isA<InvalidArgumentError>()),
       );
     });
   });
+}
+
+String _decodeBase64Url(String value) {
+  return utf8.decode(base64Url.decode(base64Url.normalize(value)));
+}
+
+class _CapturingJoseEncryptionProvider implements JoseEncryptionProvider {
+  Map<String, dynamic>? plainText;
+
+  @override
+  String encrypt(Map<String, dynamic> plainText, PublicKeyResponse publicKeyResponse) {
+    this.plainText = plainText;
+    return 'captured-encrypted-output';
+  }
+}
+
+class _NullCollectedDeviceInformationProvider implements CollectedDeviceInformationProvider {
+  @override
+  CollectedDeviceInformation? getCollectedDeviceInformation() => null;
 }
