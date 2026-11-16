@@ -15,6 +15,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:online_payments_sdk/src/domain/configuration/sdk_configuration.dart';
 import 'package:online_payments_sdk/src/domain/configuration/session_data.dart';
+import 'package:online_payments_sdk/src/domain/errors/configuration_error.dart';
 import 'package:online_payments_sdk/src/infrastructure/factories/default_service_factory.dart';
 import 'package:online_payments_sdk/src/infrastructure/utils/cache_manager.dart';
 import 'package:online_payments_sdk/src/services/default_client_service.dart';
@@ -93,6 +94,39 @@ void main() {
       final decoded = utf8.decode(base64Url.decode(base64Url.normalize(metaInfo)));
       final meta = jsonDecode(decoded) as Map<String, dynamic>;
       expect(meta['appIdentifier'], equals('my-app'));
+    });
+
+    test('constructor_WhenClientApiUrlHasNoPath_AddsClientPath', () async {
+      final mockHttp = TestHttpClient();
+      mockHttp.setResponse(200, {'keyId': 'test', 'publicKey': 'test'});
+
+      final factory = DefaultServiceFactory(
+        SessionData(
+          clientSessionId: _sessionData.clientSessionId,
+          customerId: _sessionData.customerId,
+          clientApiUrl: 'https://api.example.com',
+          assetUrl: _sessionData.assetUrl,
+        ),
+        httpClient: mockHttp,
+      );
+
+      await factory.getEncryptionService().getPublicKey();
+
+      expect(mockHttp.capturedRequests.first.url.toString(), startsWith('https://api.example.com/client/v1/'));
+    });
+
+    test('constructor_WhenSessionValueIsEmpty_ThrowsConfigurationError', () {
+      expect(
+        () => DefaultServiceFactory(
+          SessionData(
+            clientSessionId: '',
+            customerId: _sessionData.customerId,
+            clientApiUrl: _sessionData.clientApiUrl,
+            assetUrl: _sessionData.assetUrl,
+          ),
+        ),
+        throwsA(isA<ConfigurationError>()),
+      );
     });
   });
 }

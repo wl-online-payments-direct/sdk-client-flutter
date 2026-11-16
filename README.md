@@ -21,6 +21,7 @@ the payment process.
   - [Table of Contents](#table-of-contents)
   - [Requirements](#requirements)
   - [Installation](#installation)
+  - [Working with AI agents](#working-with-ai-agents)
   - [Getting started](#getting-started)
   - [Type definitions](#type-definitions)
     - [OnlinePaymentSdk](#onlinepaymentsdk)
@@ -77,6 +78,24 @@ Then run:
 
 ```bash
 flutter pub get
+```
+
+## Working with AI agents
+
+This package includes an [Agent Skill](https://agentskills.io) with the rules and tested code for
+integrating this SDK. AI coding agents (Claude Code, Codex, Cursor, GitHub Copilot and others) should
+read it before writing code that uses the SDK.
+
+- In your project, after `flutter pub get`: the package is stored in the pub cache, outside your
+  project. Find the `rootUri` of `online_payments_sdk` in `.dart_tool/package_config.json`; the skill
+  is `skills/online_payments_sdk/SKILL.md` in that folder.
+- Online, for this SDK version:
+  https://raw.githubusercontent.com/wl-online-payments-direct/sdk-client-flutter/v3.1.0/skills/online_payments_sdk/SKILL.md
+
+To load it in every session, add this line to your project's `AGENTS.md` or `CLAUDE.md`:
+
+```
+For Online Payments checkout code, read skills/online_payments_sdk/SKILL.md in the online_payments_sdk package (find its rootUri in .dart_tool/package_config.json) first and follow it.
 ```
 
 ## Getting started
@@ -393,20 +412,22 @@ if (iinDetails.status == IinStatus.supported) {
 }
 ```
 
-Possible `IinStatus` values:
+The returned `IinStatus` is one of:
 
 - `supported` — the IIN is associated with a payment product supported by your account.
 - `existingButNotAllowed` — the IIN is recognized, but the product is not allowed for this
   payment or merchant.
-- `unsupported` — the IIN is not recognized.
-- `notEnoughDigits` — fewer than six digits were provided; the check cannot be performed.
-- `unknown` — the status could not be determined.
+- `unknown` — the Client API returned an error. This is the case for an IIN that matches no payment
+  product of your account (HTTP 404), and also for other errors, such as an expired session.
+
+With fewer than six digits, `getIinDetails` throws an `InvalidArgumentError` whose `metadata` is an
+`IinDetailsResponse` with status `notEnoughDigits`.
 
 Some cards are co-branded and can be processed as either a local or an international card. In such
 cases, the response includes a `coBrands` list with the available brand options.
 
 ```dart
-if (iinDetails.coBrands != null && iinDetails.coBrands!.isNotEmpty) {
+if (iinDetails.coBrands.isNotEmpty) {
   // let the customer pick a brand from iinDetails.coBrands
 }
 ```

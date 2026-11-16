@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# Fails the commit when an Agent Skill example no longer analyses cleanly, a skill code block or versioned
+# link is out of date, or the tests of the sync script fail.
+# Uses "dart" from PATH, or the Dart SDK of the Flutter installation in FLUTTER_ROOT.
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ -n "$FLUTTER_ROOT" ]; then
+  DART="$FLUTTER_ROOT/bin/dart"
+else
+  DART=dart
+fi
+
+"$DART" analyze --fatal-infos skills/online_payments_sdk/examples
+node scripts/skill-sync.mjs check
+node --test scripts/skill-sync.test.mjs

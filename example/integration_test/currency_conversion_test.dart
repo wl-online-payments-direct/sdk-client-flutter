@@ -41,6 +41,7 @@ void main() {
       final result = await sdk.getCurrencyConversionQuote(amountOfMoney, cardSource);
       expect(result.proposal, isNotNull);
       expect(result.proposal.baseAmount.amount, equals(amountOfMoney.amount));
+      expect(result.dccSessionId, isNotEmpty);
     });
 
     test('getCurrencyConversionQuote_WithCardAndNoProductId_ReturnsProposal', () async {
@@ -50,6 +51,7 @@ void main() {
       final result = await sdk.getCurrencyConversionQuote(amountOfMoney, cardSource);
       expect(result.proposal, isNotNull);
       expect(result.proposal.baseAmount.amount, equals(amountOfMoney.amount));
+      expect(result.dccSessionId, isNotEmpty);
     });
 
     test('getCurrencyConversionQuote_WithTokenSource_ReturnsProposal', () async {
@@ -57,6 +59,7 @@ void main() {
       final result = await sdk.getCurrencyConversionQuote(amountOfMoney, cardSource);
       expect(result.proposal, isNotNull);
       expect(result.proposal.baseAmount.amount, equals(amountOfMoney.amount));
+      expect(result.dccSessionId, isNotEmpty);
     });
 
     test('getCurrencyConversionQuote_WhenCardDoesNotSupportConversion_ThrowsSdkError', () async {

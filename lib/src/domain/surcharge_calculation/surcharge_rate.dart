@@ -12,25 +12,47 @@
 
 /// Represents a SurchargeRate object.
 class SurchargeRate {
-  final String surchargeProductTypeId;
+  final String? _surchargeProductTypeId;
 
-  final String surchargeProductTypeVersion;
+  final String? _surchargeProductTypeVersion;
 
-  final double adValoremRate;
+  final double? _adValoremRate;
 
-  final int specificRate;
+  final int? _specificRate;
 
   SurchargeRate(
-    this.surchargeProductTypeId,
-    this.surchargeProductTypeVersion,
-    this.adValoremRate,
-    this.specificRate,
+    String surchargeProductTypeId,
+    String surchargeProductTypeVersion,
+    double adValoremRate,
+    int specificRate,
+  )   : _surchargeProductTypeId = surchargeProductTypeId,
+        _surchargeProductTypeVersion = surchargeProductTypeVersion,
+        _adValoremRate = adValoremRate,
+        _specificRate = specificRate;
+
+  SurchargeRate._fromApi(
+    this._surchargeProductTypeId,
+    this._surchargeProductTypeVersion,
+    this._adValoremRate,
+    this._specificRate,
   );
 
-  factory SurchargeRate.fromJson(Map<String, dynamic> json) => SurchargeRate(
-        json['surchargeProductTypeId'] as String,
-        json['surchargeProductTypeVersion'] as String,
-        (json['adValoremRate'] as num).toDouble(),
-        (json['specificRate'] as num).toInt(),
+  /// The getters below throw a [StateError] when the API response did not contain the value.
+  String get surchargeProductTypeId => _surchargeProductTypeId ?? (throw _absent('surchargeProductTypeId'));
+
+  String get surchargeProductTypeVersion =>
+      _surchargeProductTypeVersion ?? (throw _absent('surchargeProductTypeVersion'));
+
+  double get adValoremRate => _adValoremRate ?? (throw _absent('adValoremRate'));
+
+  int get specificRate => _specificRate ?? (throw _absent('specificRate'));
+
+  factory SurchargeRate.fromJson(Map<String, dynamic> json) => SurchargeRate._fromApi(
+        json['surchargeProductTypeId'] as String?,
+        json['surchargeProductTypeVersion'] as String?,
+        (json['adValoremRate'] as num?)?.toDouble(),
+        (json['specificRate'] as num?)?.toInt(),
       );
+
+  static StateError _absent(String field) => StateError('The surcharge rate has no $field.');
 }

@@ -1,3 +1,27 @@
+# 3.1.0
+
+## Added
+
+- An Agent Skill for AI coding agents in `skills/online_payments_sdk/`. See "Working with AI agents" in
+  `README.md`.
+
+## Fixed
+
+- `CurrencyConversionResponse` now reads `dccSessionId` from the API response. It read `docSessionId`, which
+  the API does not return, so the value was always empty. The misspelled field `docSessionId` is removed: use
+  `dccSessionId`.
+- `getCurrencyConversionQuote` no longer fails with a `TypeError` when the result is not `Allowed`
+  (for example `InvalidCard`): the API then sends no `proposal`. Responses without fields that the
+  Client API marks as optional are now parsed. The types of the public fields do not change; reading a
+  value the API did not send throws a `StateError`. This applies to `CurrencyConversionResponse.proposal`,
+  `DccProposal.rate`, `RateDetails.invertedExchangeRate`, `Surcharge.paymentProductId`, `netAmount`,
+  `surchargeAmount` and `totalAmount`, and all fields of `SurchargeRate`. Check `result` before
+  reading them.
+- `getIinDetails` leaves out co-brands without a `paymentProductId` instead of failing.
+- `DefaultServiceFactory` now validates and normalizes the session data like `OnlinePaymentSdk` does.
+  A `clientApiUrl` without the `/client` path no longer leads to wrong request URLs when you pass your
+  own factory (needed for Apple Pay).
+
 # 3.0.1
 
 - Additionally expanded integration test coverage across all major SDK components.

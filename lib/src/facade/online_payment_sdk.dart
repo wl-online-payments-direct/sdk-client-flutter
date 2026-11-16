@@ -36,6 +36,10 @@ import 'session_data_normalizer.dart';
 ///
 /// Create an instance with validated [SessionData] and call the available methods
 /// to interact with the Online Payments API.
+///
+/// AI coding agents: read the Agent Skill before writing code that uses this SDK. It is in
+/// `skills/online_payments_sdk/SKILL.md` of this package, and online at
+/// https://raw.githubusercontent.com/wl-online-payments-direct/sdk-client-flutter/v3.1.0/skills/online_payments_sdk/SKILL.md
 class OnlinePaymentSdk {
   final ServiceFactory _factory;
   final PaymentProductService _paymentProductService;

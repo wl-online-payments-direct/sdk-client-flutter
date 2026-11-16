@@ -14,6 +14,7 @@ import 'package:http/http.dart' as http;
 
 import '../../domain/configuration/sdk_configuration.dart';
 import '../../domain/configuration/session_data.dart';
+import '../../facade/session_data_normalizer.dart';
 import '../../services/default_client_service.dart';
 import '../../services/default_encryption_service.dart';
 import '../../services/default_payment_product_service.dart';
@@ -46,12 +47,14 @@ class DefaultServiceFactory implements ServiceFactory {
   late final ClientService _clientService;
   late final EncryptionService _encryptionService;
 
+  /// Throws [ConfigurationError] if any value of [sessionData] is empty or its clientApiUrl is invalid.
   DefaultServiceFactory(
-    this._sessionData, {
+    SessionData sessionData, {
     SdkConfiguration? configuration,
     ApplePay? applePay,
     http.Client? httpClient,
-  })  : _configuration = configuration,
+  })  : _sessionData = normalizeSessionData(sessionData),
+        _configuration = configuration,
         _applePay = applePay ?? const DefaultApplePay() {
     _cacheManager = CacheManager();
     _deviceInformationProvider = createDeviceInformationProvider();

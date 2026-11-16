@@ -1,2 +1,5 @@
 example/*
 build/*
+scripts/
+.githooks/
+DEV.md

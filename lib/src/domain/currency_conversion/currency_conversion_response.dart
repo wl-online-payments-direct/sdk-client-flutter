@@ -15,17 +15,26 @@ import 'dcc_proposal.dart';
 
 /// Represents the response from a currency conversion request.
 class CurrencyConversionResponse {
-  final String docSessionId;
+  final String dccSessionId;
 
   final CurrencyConversionResult result;
 
-  final DccProposal proposal;
+  final DccProposal? _proposal;
 
-  CurrencyConversionResponse(this.docSessionId, this.result, this.proposal);
+  CurrencyConversionResponse(this.dccSessionId, this.result, DccProposal proposal) : _proposal = proposal;
 
-  factory CurrencyConversionResponse.fromJson(Map<String, dynamic> json) => CurrencyConversionResponse(
-        json['docSessionId'] as String? ?? '',
+  CurrencyConversionResponse._fromApi(this.dccSessionId, this.result, this._proposal);
+
+  /// The offer to show to the customer. The API sends it only when [result] is
+  /// [ConversionResultType.allowed]; check the result first.
+  ///
+  /// Throws a [StateError] when the response contains no proposal.
+  DccProposal get proposal =>
+      _proposal ?? (throw StateError('The currency conversion response has no proposal (result: ${result.result.name}).'));
+
+  factory CurrencyConversionResponse.fromJson(Map<String, dynamic> json) => CurrencyConversionResponse._fromApi(
+        json['dccSessionId'] as String? ?? '',
         CurrencyConversionResult.fromJson(json['result'] as Map<String, dynamic>),
-        DccProposal.fromJson(json['proposal'] as Map<String, dynamic>),
+        json['proposal'] != null ? DccProposal.fromJson(json['proposal'] as Map<String, dynamic>) : null,
       );
 }

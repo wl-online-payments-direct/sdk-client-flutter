@@ -1,0 +1,9 @@
+{
+    "skillDir": "skills/online_payments_sdk",
+    "examplesDir": "skills/online_payments_sdk/examples",
+    "version": {
+        "file": "pubspec.yaml",
+        "pattern": "(?:^|\\n)version:\\s*(\\S+)"
+    },
+    "versionedLinkFiles": ["README.md", "lib/src/facade/online_payment_sdk.dart"]
+}

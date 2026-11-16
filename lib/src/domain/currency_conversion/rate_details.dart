@@ -14,7 +14,7 @@
 class RateDetails {
   final double exchangeRate;
 
-  final double invertedExchangeRate;
+  final double? _invertedExchangeRate;
 
   final double markUpRate;
 
@@ -24,15 +24,27 @@ class RateDetails {
 
   RateDetails(
     this.exchangeRate,
-    this.invertedExchangeRate,
+    double invertedExchangeRate,
+    this.markUpRate,
+    this.quotationDateTime,
+    this.source,
+  ) : _invertedExchangeRate = invertedExchangeRate;
+
+  RateDetails._fromApi(
+    this.exchangeRate,
+    this._invertedExchangeRate,
     this.markUpRate,
     this.quotationDateTime,
     this.source,
   );
 
-  factory RateDetails.fromJson(Map<String, dynamic> json) => RateDetails(
+  /// Throws a [StateError] when the API response contained no inverted exchange rate.
+  double get invertedExchangeRate =>
+      _invertedExchangeRate ?? (throw StateError('The rate details have no inverted exchange rate.'));
+
+  factory RateDetails.fromJson(Map<String, dynamic> json) => RateDetails._fromApi(
         (json['exchangeRate'] as num).toDouble(),
-        (json['invertedExchangeRate'] as num).toDouble(),
+        (json['invertedExchangeRate'] as num?)?.toDouble(),
         (json['markUpRate'] as num).toDouble(),
         json['quotationDateTime'] as String,
         json['source'] as String,

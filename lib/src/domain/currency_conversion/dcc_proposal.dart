@@ -19,7 +19,7 @@ class DccProposal {
 
   final AmountOfMoney targetAmount;
 
-  final RateDetails rate;
+  final RateDetails? _rate;
 
   final String? disclaimerReceipt;
 
@@ -28,15 +28,26 @@ class DccProposal {
   DccProposal(
     this.baseAmount,
     this.targetAmount,
-    this.rate, {
+    RateDetails rate, {
+    this.disclaimerReceipt,
+    this.disclaimerDisplay,
+  }) : _rate = rate;
+
+  DccProposal._fromApi(
+    this.baseAmount,
+    this.targetAmount,
+    this._rate, {
     this.disclaimerReceipt,
     this.disclaimerDisplay,
   });
 
-  factory DccProposal.fromJson(Map<String, dynamic> json) => DccProposal(
+  /// Throws a [StateError] when the API response contained no rate details.
+  RateDetails get rate => _rate ?? (throw StateError('The currency conversion proposal has no rate details.'));
+
+  factory DccProposal.fromJson(Map<String, dynamic> json) => DccProposal._fromApi(
         AmountOfMoney.fromJson(json['baseAmount'] as Map<String, dynamic>),
         AmountOfMoney.fromJson(json['targetAmount'] as Map<String, dynamic>),
-        RateDetails.fromJson(json['rate'] as Map<String, dynamic>),
+        json['rate'] != null ? RateDetails.fromJson(json['rate'] as Map<String, dynamic>) : null,
         disclaimerReceipt: json['disclaimerReceipt'] as String?,
         disclaimerDisplay: json['disclaimerDisplay'] as String?,
       );

@@ -16,35 +16,61 @@ import 'surcharge_result.dart';
 
 /// Represents a Surcharge object.
 class Surcharge {
-  final int paymentProductId;
+  final int? _paymentProductId;
 
   final SurchargeResult result;
 
-  final AmountOfMoney netAmount;
+  final AmountOfMoney? _netAmount;
 
-  final AmountOfMoney surchargeAmount;
+  final AmountOfMoney? _surchargeAmount;
 
-  final AmountOfMoney totalAmount;
+  final AmountOfMoney? _totalAmount;
 
   final SurchargeRate? surchargeRate;
 
   Surcharge(
-    this.paymentProductId,
+    int paymentProductId,
     this.result,
-    this.netAmount,
-    this.surchargeAmount,
-    this.totalAmount, {
+    AmountOfMoney netAmount,
+    AmountOfMoney surchargeAmount,
+    AmountOfMoney totalAmount, {
+    this.surchargeRate,
+  })  : _paymentProductId = paymentProductId,
+        _netAmount = netAmount,
+        _surchargeAmount = surchargeAmount,
+        _totalAmount = totalAmount;
+
+  Surcharge._fromApi(
+    this._paymentProductId,
+    this.result,
+    this._netAmount,
+    this._surchargeAmount,
+    this._totalAmount, {
     this.surchargeRate,
   });
 
-  factory Surcharge.fromJson(Map<String, dynamic> json) => Surcharge(
-        (json['paymentProductId'] as num).toInt(),
+  /// The getters below throw a [StateError] when the API response did not contain the value.
+  int get paymentProductId => _paymentProductId ?? (throw _absent('paymentProductId'));
+
+  AmountOfMoney get netAmount => _netAmount ?? (throw _absent('netAmount'));
+
+  AmountOfMoney get surchargeAmount => _surchargeAmount ?? (throw _absent('surchargeAmount'));
+
+  AmountOfMoney get totalAmount => _totalAmount ?? (throw _absent('totalAmount'));
+
+  factory Surcharge.fromJson(Map<String, dynamic> json) => Surcharge._fromApi(
+        (json['paymentProductId'] as num?)?.toInt(),
         SurchargeResult.fromString(json['result'] as String? ?? ''),
-        AmountOfMoney.fromJson(json['netAmount'] as Map<String, dynamic>),
-        AmountOfMoney.fromJson(json['surchargeAmount'] as Map<String, dynamic>),
-        AmountOfMoney.fromJson(json['totalAmount'] as Map<String, dynamic>),
+        _amountOrNull(json['netAmount']),
+        _amountOrNull(json['surchargeAmount']),
+        _amountOrNull(json['totalAmount']),
         surchargeRate: json['surchargeRate'] != null
             ? SurchargeRate.fromJson(json['surchargeRate'] as Map<String, dynamic>)
             : null,
       );
+
+  static AmountOfMoney? _amountOrNull(Object? json) =>
+      json != null ? AmountOfMoney.fromJson(json as Map<String, dynamic>) : null;
+
+  static StateError _absent(String field) => StateError('The surcharge has no $field.');
 }

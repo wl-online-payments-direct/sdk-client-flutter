@@ -44,7 +44,7 @@ const _surchargeJson = {
 };
 
 const _currencyConversionJson = {
-  'docSessionId': 'doc-1',
+  'dccSessionId': 'dcc-1',
   'result': {
     'result': 'Allowed',
     'resultReason': 'test reason',
@@ -163,6 +163,20 @@ void main() {
       expect(result.status, equals(IinStatus.unknown));
     });
 
+    test('getIinDetails_WhenCoBrandHasNoPaymentProductId_LeavesItOut', () async {
+      apiClient.setMockPost((_) async => successResponse({
+            'paymentProductId': 1,
+            'coBrands': [
+              {'isAllowedInContext': true},
+              {'paymentProductId': 3, 'isAllowedInContext': true},
+            ],
+          }));
+
+      final result = await service.getIinDetails('42424242', _paymentContext);
+
+      expect(result.coBrands.single.paymentProductId, equals(3));
+    });
+
     test('getIinDetails_WhenIsAllowedInContextIsFalse_MapsExistingButNotAllowedStatus', () async {
       apiClient.setMockPost((_) async => successResponse({
             'isAllowedInContext': false,
@@ -264,7 +278,7 @@ void main() {
       final result = await service.getCurrencyConversionQuote(_amountOfMoney, _cardSource);
 
       expect(callCount, 1);
-      expect(result.docSessionId, equals('doc-1'));
+      expect(result.dccSessionId, equals('dcc-1'));
     });
 
     test('returns cached value on subsequent call with same parameters', () async {
@@ -313,6 +327,59 @@ void main() {
               .having((error) => error.message, 'message', 'Error while trying to fetch currency conversion.'),
         ),
       );
+    });
+
+    test('getCurrencyConversionQuote_WhenResultIsNotAllowed_ReturnsResponseWithoutProposal', () async {
+      apiClient.setMockPost((_) async => successResponse({
+            'dccSessionId': '',
+            'result': {'result': 'InvalidCard'},
+          }));
+
+      final result = await service.getCurrencyConversionQuote(_amountOfMoney, _cardSource);
+
+      expect(result.result.result, equals(ConversionResultType.invalidCard));
+      expect(result.dccSessionId, isEmpty);
+      expect(() => result.proposal, throwsStateError);
+    });
+
+    test('getCurrencyConversionQuote_WhenInvertedExchangeRateIsAbsent_ParsesTheRest', () async {
+      apiClient.setMockPost((_) async => successResponse({
+            'dccSessionId': 'dcc-2',
+            'result': {'result': 'Allowed'},
+            'proposal': {
+              'baseAmount': {'amount': 1000, 'currencyCode': 'EUR'},
+              'targetAmount': {'amount': 1100, 'currencyCode': 'USD'},
+              'rate': {
+                'exchangeRate': 1.1,
+                'markUpRate': 3.12,
+                'quotationDateTime': '2021-07-21T08:00:00Z',
+                'source': 'European Central Bank',
+              },
+            },
+          }));
+
+      final result = await service.getCurrencyConversionQuote(_amountOfMoney, _cardSource);
+
+      expect(result.proposal.rate.markUpRate, equals(3.12));
+      expect(() => result.proposal.rate.invertedExchangeRate, throwsStateError);
+    });
+  });
+
+  group('DefaultClientService.getSurchargeCalculation with optional fields', () {
+    test('getSurchargeCalculation_WhenAmountsAreAbsent_ParsesTheResult', () async {
+      apiClient.setMockPost((_) async => successResponse({
+            'surcharges': [
+              {'result': 'NO_SURCHARGE'},
+            ],
+          }));
+
+      final result = await service.getSurchargeCalculation(_amountOfMoney, _cardSource);
+
+      final surcharge = result.surcharges.single;
+      expect(surcharge.result, equals(SurchargeResult.noSurcharge));
+      expect(() => surcharge.paymentProductId, throwsStateError);
+      expect(() => surcharge.surchargeAmount, throwsStateError);
+      expect(() => surcharge.totalAmount, throwsStateError);
     });
   });
 }

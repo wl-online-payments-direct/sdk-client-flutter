@@ -75,8 +75,11 @@ class DefaultClientService extends BaseService implements ClientService {
       countryCode: dto['countryCode'] as String?,
       paymentProductId: dto['paymentProductId'] != null ? (dto['paymentProductId'] as num).toInt() : null,
       isAllowedInContext: isAllowedInContext,
+      // A co-brand without a paymentProductId cannot be used, so it is left out.
       coBrands: (dto['coBrands'] as List<dynamic>? ?? [])
-          .map((e) => IinDetail.fromJson(e as Map<String, dynamic>))
+          .map((e) => e as Map<String, dynamic>)
+          .where((coBrand) => coBrand['paymentProductId'] != null)
+          .map(IinDetail.fromJson)
           .toList(),
     );
 
